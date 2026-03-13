@@ -1,0 +1,2630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sir Phillip Academy | Excellence in Education & JAMB Preparation</title>
+<meta name="description" content="Sir Phillip Academy is a premier tutorial centre offering world-class education and JAMB preparation. Join thousands of students achieving top scores and gaining university admission.">
+<meta name="keywords" content="Sir Phillip Academy, JAMB tutorial, JAMB preparation, education, tutorial centre, Nigeria, UTME, university admission, WAEC, NECO">
+<meta name="author" content="Sir Phillip Academy">
+<meta property="og:title" content="Sir Phillip Academy | Excellence in Education">
+<meta property="og:description" content="Premier tutorial centre for JAMB, WAEC, and academic excellence. Join our winning community today.">
+<meta property="og:type" content="website">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://sirphillipacademy.com">
+
+<!-- Google Fonts - Professional typography -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  /* ========================================
+     CSS CUSTOM PROPERTIES (VARIABLES)
+     These store our color scheme and spacing
+     ======================================== */
+  :root {
+    --cream: #FAF7F2;
+    --milk: #F5F0E8;
+    --gold: #C9922A;
+    --gold-light: #E8B84B;
+    --gold-pale: #FDF3E0;
+    --dark: #1A1208;
+    --dark-brown: #2D1F0A;
+    --text: #3A2C14;
+    --text-muted: #7A6A52;
+    --white: #FFFFFF;
+    --border: #E8DFC8;
+    --nav-h: 72px;
+  }
+
+  /* ========================================
+     GLOBAL RESET & BASE STYLES
+     Removes browser defaults for consistency
+     ======================================== */
+  * { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; /* Makes width/height calculations easier */
+  }
+
+  html { 
+    scroll-behavior: smooth; /* Smooth scrolling for anchor links */
+  }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    overflow-x: hidden; /* Prevents horizontal scrolling on mobile */
+  }
+
+  /* ========================================
+     NAVIGATION BAR
+     Fixed at top, responsive hamburger menu
+     ======================================== */
+  nav {
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    right: 0; 
+    z-index: 1000; /* Stays above all content */
+    height: var(--nav-h);
+    background: rgba(250,247,242,0.96);
+    backdrop-filter: blur(12px); /* Blur effect for modern look */
+    border-bottom: 1px solid var(--border);
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between;
+    padding: 0 5%;
+  }
+
+  /* Logo section with crest and text */
+  .logo {
+    display: flex; 
+    align-items: center; 
+    gap: 12px;
+    text-decoration: none;
+  }
+  
+  .logo-crest {
+    width: 46px; 
+    height: 46px;
+    background: var(--gold);
+    border-radius: 50%; /* Makes it circular */
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+    font-family: 'Playfair Display', serif;
+    color: white; 
+    font-size: 18px; 
+    font-weight: 900;
+    box-shadow: 0 4px 12px rgba(201,146,42,0.35);
+  }
+  
+  .logo-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px; 
+    font-weight: 700;
+    color: var(--dark);
+    line-height: 1.2;
+  }
+  
+  .logo-text span { 
+    display: block; 
+    font-size: 11px; 
+    font-weight: 400; 
+    color: var(--gold); 
+    letter-spacing: 2px; 
+    text-transform: uppercase; 
+  }
+
+  /* Desktop navigation links - hidden on mobile */
+  .nav-links { 
+    display: flex; 
+    gap: 32px; 
+    list-style: none; 
+  }
+  
+  .nav-links a { 
+    text-decoration: none; 
+    color: var(--text); 
+    font-size: 14px; 
+    font-weight: 500; 
+    letter-spacing: 0.3px; 
+    transition: color 0.2s; 
+  }
+  
+  .nav-links a:hover { 
+    color: var(--gold); 
+  }
+
+  /* Call-to-action button in navigation */
+  .nav-cta {
+    background: var(--gold); 
+    color: white;
+    border: none; 
+    padding: 10px 22px; 
+    border-radius: 6px;
+    font-family: 'DM Sans', sans-serif; 
+    font-size: 14px; 
+    font-weight: 600;
+    cursor: pointer; 
+    text-decoration: none;
+    transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+    box-shadow: 0 3px 10px rgba(201,146,42,0.3);
+  }
+  
+  .nav-cta:hover { 
+    background: #b07d1e; 
+    transform: translateY(-1px); 
+    box-shadow: 0 5px 16px rgba(201,146,42,0.4); 
+  }
+
+  /* Hamburger menu icon - shows on mobile */
+  .hamburger { 
+    display: none; /* Hidden by default, shows on mobile */
+    flex-direction: column; 
+    gap: 5px; 
+    cursor: pointer; 
+    background: none; 
+    border: none; 
+  }
+  
+  .hamburger span { 
+    width: 24px; 
+    height: 2px; 
+    background: var(--dark); 
+    border-radius: 2px; 
+    transition: all 0.3s; 
+  }
+
+  /* Mobile navigation menu - slides in from right */
+  .mobile-menu {
+    position: fixed;
+    top: var(--nav-h);
+    right: -100%; /* Hidden off-screen by default */
+    width: 80%;
+    max-width: 300px;
+    height: calc(100vh - var(--nav-h));
+    background: var(--white);
+    box-shadow: -4px 0 20px rgba(0,0,0,0.1);
+    transition: right 0.3s ease;
+    z-index: 999;
+    padding: 2rem 1.5rem;
+  }
+
+  /* When menu is open */
+  .mobile-menu.active {
+    right: 0;
+  }
+
+  /* Mobile menu links styling */
+  .mobile-menu ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .mobile-menu a {
+    text-decoration: none;
+    color: var(--text);
+    font-size: 16px;
+    font-weight: 500;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--border);
+    display: block;
+    transition: color 0.2s;
+  }
+
+  .mobile-menu a:hover {
+    color: var(--gold);
+  }
+
+  /* Overlay that appears behind mobile menu */
+  .menu-overlay {
+    position: fixed;
+    top: var(--nav-h);
+    left: 0;
+    width: 100%;
+    height: calc(100vh - var(--nav-h));
+    background: rgba(0,0,0,0.5);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s;
+    z-index: 998;
+  }
+
+  .menu-overlay.active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  /* ========================================
+     HERO SECTION
+     First section users see on homepage
+     ======================================== */
+  .hero {
+    min-height: 100vh; /* Full screen height */
+    padding-top: var(--nav-h);
+    display: grid; 
+    grid-template-columns: 1fr 1fr; /* Two columns on desktop */
+    align-items: center;
+    padding-left: 7%; 
+    padding-right: 4%;
+    gap: 40px;
+    background: var(--cream);
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Decorative background element */
+  .hero::before {
+    content: '';
+    position: absolute; 
+    top: -100px; 
+    right: -100px;
+    width: 600px; 
+    height: 600px;
+    background: radial-gradient(circle, rgba(201,146,42,0.08) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+
+  /* Large background text "SPA" */
+  .hero::after {
+    content: 'SPA';
+    position: absolute; 
+    bottom: -60px; 
+    left: -40px;
+    font-family: 'Playfair Display', serif;
+    font-size: 280px; 
+    font-weight: 900;
+    color: rgba(201,146,42,0.04);
+    line-height: 1; 
+    pointer-events: none; /* Can't be clicked */
+    user-select: none; /* Can't be selected */
+  }
+
+  /* Badge at top of hero section */
+  .hero-badge {
+    display: inline-flex; 
+    align-items: center; 
+    gap: 8px;
+    background: var(--gold-pale); 
+    border: 1px solid rgba(201,146,42,0.3);
+    border-radius: 100px; 
+    padding: 6px 16px;
+    font-size: 12px; 
+    font-weight: 600; 
+    color: var(--gold);
+    letter-spacing: 1.5px; 
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    animation: fadeUp 0.7s ease both; /* Fade in animation */
+  }
+  
+  .hero-badge::before { 
+    content: '★'; 
+    font-size: 10px; 
+  }
+
+  /* Main hero heading */
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(38px, 5vw, 62px); /* Responsive font size */
+    font-weight: 900; 
+    line-height: 1.1;
+    color: var(--dark);
+    margin-bottom: 20px;
+    animation: fadeUp 0.7s 0.1s ease both; /* Staggered animation */
+  }
+  
+  .hero h1 em { 
+    color: var(--gold); 
+    font-style: normal; /* Not italicized */
+  }
+
+  /* Hero paragraph text */
+  .hero p {
+    font-size: 17px; 
+    color: var(--text-muted); 
+    line-height: 1.75;
+    max-width: 460px; 
+    margin-bottom: 36px;
+    animation: fadeUp 0.7s 0.2s ease both;
+  }
+
+  /* Container for hero buttons */
+  .hero-btns { 
+    display: flex; 
+    gap: 14px; 
+    flex-wrap: wrap; /* Buttons wrap on small screens */
+    animation: fadeUp 0.7s 0.3s ease both; 
+  }
+
+  /* Primary button style (gold background) */
+  .btn-primary {
+    background: var(--gold); 
+    color: white;
+    padding: 14px 28px; 
+    border-radius: 8px;
+    font-weight: 700; 
+    font-size: 15px;
+    text-decoration: none; 
+    display: inline-flex; 
+    align-items: center; 
+    gap: 8px;
+    box-shadow: 0 6px 20px rgba(201,146,42,0.4);
+    transition: all 0.2s;
+  }
+  
+  .btn-primary:hover { 
+    background: #b07d1e; 
+    transform: translateY(-2px); 
+    box-shadow: 0 10px 28px rgba(201,146,42,0.45); 
+  }
+
+  /* Secondary button style (outlined) */
+  .btn-secondary {
+    background: transparent; 
+    color: var(--dark);
+    padding: 14px 28px; 
+    border-radius: 8px;
+    font-weight: 600; 
+    font-size: 15px;
+    text-decoration: none; 
+    display: inline-flex; 
+    align-items: center; 
+    gap: 8px;
+    border: 2px solid var(--border);
+    transition: all 0.2s;
+  }
+  
+  .btn-secondary:hover { 
+    border-color: var(--gold); 
+    color: var(--gold); 
+  }
+
+  /* Statistics display in hero section */
+  .hero-stats { 
+    display: flex; 
+    gap: 32px; 
+    margin-top: 44px; 
+    animation: fadeUp 0.7s 0.4s ease both; 
+  }
+  
+  .stat-item { 
+    text-align: left; 
+  }
+  
+  .stat-num { 
+    font-family: 'Playfair Display', serif; 
+    font-size: 32px; 
+    font-weight: 900; 
+    color: var(--gold); 
+  }
+  
+  .stat-label { 
+    font-size: 12px; 
+    color: var(--text-muted); 
+    text-transform: uppercase; 
+    letter-spacing: 1px; 
+  }
+
+  /* Right side of hero with image grid */
+  .hero-right { 
+    position: relative; 
+    animation: fadeUp 0.8s 0.2s ease both; 
+  }
+  
+  .hero-img-grid {
+    display: grid; 
+    grid-template-columns: 1fr 1fr; /* Two columns */
+    gap: 12px;
+    padding: 20px 0;
+  }
+  
+  .hero-img-card {
+    border-radius: 16px; 
+    overflow: hidden;
+    background: var(--milk);
+    border: 2px dashed var(--border);
+    aspect-ratio: 4/3; /* Maintains 4:3 ratio */
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: center;
+    gap: 8px; 
+    cursor: pointer; 
+    transition: border-color 0.2s;
+  }
+  
+  /* First card spans both columns */
+  .hero-img-card:first-child { 
+    grid-column: span 2; 
+    aspect-ratio: 16/7; 
+  }
+  
+  .hero-img-card:hover { 
+    border-color: var(--gold); 
+  }
+  
+  .hero-img-card .icon { 
+    font-size: 28px; 
+  }
+  
+  .hero-img-card p { 
+    font-size: 12px; 
+    color: var(--text-muted); 
+    text-align: center; 
+  }
+
+  /* ========================================
+     COUNTDOWN BANNER
+     Live countdown to JAMB examination
+     ======================================== */
+  .countdown-banner {
+    background: var(--dark);
+    padding: 28px 5%;
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between;
+    flex-wrap: wrap; /* Wraps on small screens */
+    gap: 20px;
+  }
+
+  /* Countdown label with fire emoji */
+  .countdown-label {
+    display: flex; 
+    align-items: center; 
+    gap: 12px;
+    color: white;
+  }
+  
+  .countdown-label .fire { 
+    font-size: 24px; 
+    animation: pulse 1s infinite; /* Pulsing animation */
+  }
+  
+  .countdown-label h3 { 
+    font-family: 'Playfair Display', serif; 
+    font-size: 18px; 
+    font-weight: 700; 
+  }
+  
+  .countdown-label p { 
+    font-size: 12px; 
+    color: rgba(255,255,255,0.6); 
+  }
+
+  /* Countdown timer boxes */
+  .countdown-boxes { 
+    display: flex; 
+    gap: 12px; 
+    align-items: center; 
+  }
+  
+  .cbox {
+    background: rgba(201,146,42,0.15);
+    border: 1px solid rgba(201,146,42,0.3);
+    border-radius: 10px; 
+    padding: 12px 16px;
+    text-align: center; 
+    min-width: 64px;
+  }
+  
+  .cbox-num { 
+    font-family: 'Playfair Display', serif; 
+    font-size: 28px; 
+    font-weight: 900; 
+    color: var(--gold-light); 
+    line-height: 1; 
+  }
+  
+  .cbox-label { 
+    font-size: 10px; 
+    color: rgba(255,255,255,0.5); 
+    text-transform: uppercase; 
+    letter-spacing: 1.5px; 
+    margin-top: 4px; 
+  }
+  
+  .countdown-sep { 
+    color: var(--gold-light); 
+    font-size: 24px; 
+    font-weight: 700; 
+    margin-bottom: 10px; 
+  }
+
+  /* WhatsApp registration button */
+  .countdown-join { 
+    display: flex; 
+    align-items: center; 
+    gap: 10px; 
+  }
+  
+  .whatsapp-btn {
+    background: #25D366; /* WhatsApp green color */
+    color: white;
+    padding: 12px 24px; 
+    border-radius: 8px;
+    font-weight: 700; 
+    font-size: 14px;
+    text-decoration: none; 
+    display: inline-flex; 
+    align-items: center; 
+    gap: 8px;
+    transition: all 0.2s;
+    box-shadow: 0 4px 14px rgba(37,211,102,0.35);
+  }
+  
+  .whatsapp-btn:hover { 
+    background: #1ebe5d; 
+    transform: translateY(-2px); 
+  }
+  
+  .wa-icon { 
+    width: 20px; 
+    height: 20px; 
+    fill: white; 
+  }
+
+  /* ========================================
+     GENERAL SECTION STYLES
+     Used across multiple sections
+     ======================================== */
+  section { 
+    padding: 80px 5%; /* Vertical and horizontal padding */
+  }
+
+  /* Small label above section titles */
+  .section-tag {
+    font-size: 11px; 
+    font-weight: 700; 
+    color: var(--gold);
+    letter-spacing: 3px; 
+    text-transform: uppercase; 
+    margin-bottom: 12px;
+    display: flex; 
+    align-items: center; 
+    gap: 10px;
+  }
+  
+  /* Decorative lines on either side of tag */
+  .section-tag::before, .section-tag::after { 
+    content: ''; 
+    flex: 0 0 30px; 
+    height: 1px; 
+    background: var(--gold); 
+  }
+
+  /* Main section heading */
+  h2.section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 4vw, 44px); /* Responsive sizing */
+    font-weight: 900;
+    color: var(--dark); 
+    margin-bottom: 16px; 
+    line-height: 1.15;
+  }
+
+  /* Subtitle text below section heading */
+  .section-sub { 
+    font-size: 16px; 
+    color: var(--text-muted); 
+    max-width: 540px; 
+    line-height: 1.7; 
+    margin-bottom: 50px; 
+  }
+
+  /* ========================================
+     EVENTS SECTION
+     New section for upcoming events
+     ======================================== */
+  .events-section { 
+    background: var(--milk); 
+  }
+
+  /* Grid layout for event cards */
+  .events-grid { 
+    display: grid; 
+    grid-template-columns: 1fr; /* Single column by default (mobile) */
+    gap: 30px; 
+    margin-top: 2rem; 
+  }
+
+  /* Individual event card */
+  .event-card {
+    background: var(--white);
+    border-radius: 16px; 
+    overflow: hidden; /* Keeps content inside rounded corners */
+    border: 1px solid var(--border);
+    transition: transform 0.3s, box-shadow 0.3s; /* Smooth animations */
+    cursor: pointer;
+  }
+  
+  .event-card:hover { 
+    transform: translateY(-6px); /* Lifts up on hover */
+    box-shadow: 0 16px 40px rgba(42,28,8,0.12); 
+  }
+
+  /* Event banner image container */
+  .event-banner {
+    width: 100%;
+    height: 250px; /* Fixed height for consistency */
+    background-size: cover; /* Image covers entire area */
+    background-position: center; /* Centers the image */
+    background-color: var(--milk); /* Fallback color */
+    position: relative;
+  }
+
+  /* Placeholder text when no banner image is uploaded */
+  .event-banner .placeholder {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: var(--text-muted);
+  }
+
+  .event-banner .placeholder .icon {
+    font-size: 48px;
+    margin-bottom: 8px;
+  }
+
+  .event-banner .placeholder p {
+    font-size: 13px;
+  }
+
+  /* Event content area below banner */
+  .event-content {
+    padding: 24px;
+  }
+
+  /* Event category tag */
+  .event-tag {
+    display: inline-block;
+    background: var(--gold-pale);
+    color: var(--gold);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border-radius: 100px;
+    padding: 4px 12px;
+    margin-bottom: 12px;
+  }
+
+  /* Event title */
+  .event-content h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 12px;
+    line-height: 1.3;
+  }
+
+  /* Event description text */
+  .event-description {
+    font-size: 15px;
+    color: var(--text-muted);
+    line-height: 1.7;
+    margin-bottom: 20px;
+  }
+
+  /* Container for date and location info */
+  .event-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+  }
+
+  /* Individual meta item (date or location) */
+  .event-meta-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    color: var(--text);
+  }
+
+  /* Icon container for meta items */
+  .event-meta-item .icon {
+    width: 36px;
+    height: 36px;
+    background: var(--gold-pale);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    flex-shrink: 0; /* Prevents icon from shrinking */
+  }
+
+  /* Register button for events */
+  .event-register-btn {
+    display: inline-block;
+    background: var(--gold);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    margin-top: 16px;
+    transition: all 0.2s;
+  }
+
+  .event-register-btn:hover {
+    background: #b07d1e;
+    transform: translateY(-2px);
+  }
+
+  /* ========================================
+     CLASSES SECTION
+     Tutorial classes offered
+     ======================================== */
+  .classes-section { 
+    background: var(--cream); 
+  }
+
+  /* Grid for class cards */
+  .classes-grid { 
+    display: grid; 
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); 
+    gap: 20px; 
+  }
+
+  /* Individual class card */
+  .class-card {
+    background: var(--white);
+    border-radius: 16px; 
+    overflow: hidden;
+    border: 1px solid var(--border);
+    transition: transform 0.25s, box-shadow 0.25s;
+    cursor: pointer;
+  }
+  
+  .class-card:hover { 
+    transform: translateY(-6px); 
+    box-shadow: 0 16px 40px rgba(42,28,8,0.12); 
+  }
+
+  /* Class image placeholder */
+  .class-img {
+    width: 100%; 
+    aspect-ratio: 4/3;
+    background: var(--milk);
+    border: 2px dashed var(--border);
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: center;
+    gap: 10px; 
+    color: var(--text-muted); 
+    font-size: 13px;
+  }
+  
+  .class-img .icon { 
+    font-size: 32px; 
+  }
+
+  /* Class information section */
+  .class-info { 
+    padding: 18px 20px 22px; 
+  }
+
+  /* Class category tag */
+  .class-tag {
+    display: inline-block; 
+    background: var(--gold-pale);
+    color: var(--gold); 
+    font-size: 11px; 
+    font-weight: 700;
+    letter-spacing: 1px; 
+    text-transform: uppercase;
+    border-radius: 100px; 
+    padding: 4px 12px; 
+    margin-bottom: 10px;
+  }
+  
+  .class-info h3 { 
+    font-family: 'Playfair Display', serif; 
+    font-size: 18px; 
+    font-weight: 700; 
+    color: var(--dark); 
+    margin-bottom: 8px; 
+  }
+  
+  .class-info p { 
+    font-size: 13px; 
+    color: var(--text-muted); 
+    line-height: 1.6; 
+  }
+
+  /* ========================================
+     LEADERBOARD SECTION
+     Student performance rankings
+     ======================================== */
+  .lb-section { 
+    background: var(--milk); 
+  }
+
+  /* Leaderboard table */
+  .lb-table {
+    width: 100%; 
+    border-collapse: collapse;
+    background: white; 
+    border-radius: 16px; 
+    overflow: hidden;
+    box-shadow: 0 4px 24px rgba(42,28,8,0.07);
+    border: 1px solid var(--border);
+  }
+  
+  .lb-table thead tr { 
+    background: var(--dark); 
+  }
+  
+  .lb-table th { 
+    padding: 16px 20px; 
+    text-align: left; 
+    font-size: 11px; 
+    font-weight: 700; 
+    color: rgba(255,255,255,0.7); 
+    text-transform: uppercase; 
+    letter-spacing: 1.5px; 
+  }
+  
+  .lb-table tbody tr { 
+    border-bottom: 1px solid var(--border); 
+    transition: background 0.15s; 
+  }
+  
+  .lb-table tbody tr:last-child { 
+    border-bottom: none; 
+  }
+  
+  .lb-table tbody tr:hover { 
+    background: var(--gold-pale); 
+  }
+  
+  .lb-table td { 
+    padding: 16px 20px; 
+    font-size: 14px; 
+    color: var(--text); 
+  }
+
+  /* Rank badge circles */
+  .rank-badge {
+    width: 32px; 
+    height: 32px; 
+    border-radius: 50%;
+    display: inline-flex; 
+    align-items: center; 
+    justify-content: center;
+    font-weight: 700; 
+    font-size: 13px;
+  }
+  
+  .rank-1 { 
+    background: linear-gradient(135deg, #FFD700, #FFA500); 
+    color: white; 
+  }
+  
+  .rank-2 { 
+    background: linear-gradient(135deg, #C0C0C0, #A9A9A9); 
+    color: white; 
+  }
+  
+  .rank-3 { 
+    background: linear-gradient(135deg, #CD7F32, #A0522D); 
+    color: white; 
+  }
+  
+  .rank-other { 
+    background: var(--milk); 
+    color: var(--text-muted); 
+  }
+
+  /* Score visualization bar */
+  .score-bar { 
+    display: flex; 
+    align-items: center; 
+    gap: 10px; 
+  }
+  
+  .score-track { 
+    flex: 1; 
+    height: 6px; 
+    background: var(--milk); 
+    border-radius: 10px; 
+    overflow: hidden; 
+    max-width: 120px; 
+  }
+  
+  .score-fill { 
+    height: 100%; 
+    background: linear-gradient(90deg, var(--gold), var(--gold-light)); 
+    border-radius: 10px; 
+  }
+
+  /* Button to add new student row */
+  .add-row-btn {
+    display: block; 
+    width: 100%; 
+    padding: 14px;
+    background: var(--gold-pale); 
+    border: 2px dashed rgba(201,146,42,0.3);
+    color: var(--gold); 
+    font-weight: 600; 
+    font-size: 13px;
+    border-radius: 0 0 16px 16px; 
+    cursor: pointer;
+    transition: background 0.2s;
+    font-family: 'DM Sans', sans-serif;
+  }
+  
+  .add-row-btn:hover { 
+    background: rgba(201,146,42,0.12); 
+  }
+
+  /* ========================================
+     ALUMNI SECTION
+     Success stories from graduates
+     ======================================== */
+  .alumni-section { 
+    background: var(--dark); 
+  }
+
+  /* Dark theme color overrides */
+  .alumni-section .section-title { 
+    color: white; 
+  }
+  
+  .alumni-section .section-tag { 
+    color: var(--gold-light); 
+  }
+  
+  .alumni-section .section-tag::before, 
+  .alumni-section .section-tag::after { 
+    background: var(--gold-light); 
+  }
+  
+  .alumni-section .section-sub { 
+    color: rgba(255,255,255,0.55); 
+  }
+
+  /* Alumni cards grid */
+  .alumni-grid { 
+    display: grid; 
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); 
+    gap: 20px; 
+  }
+
+  /* Individual alumni card */
+  .alumni-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 18px; 
+    overflow: hidden;
+    transition: transform 0.25s, border-color 0.25s;
+    cursor: pointer;
+  }
+  
+  .alumni-card:hover { 
+    transform: translateY(-6px); 
+    border-color: rgba(201,146,42,0.5); 
+  }
+
+  /* Alumni photo placeholder */
+  .alumni-photo {
+    width: 100%; 
+    aspect-ratio: 1; /* Square photos */
+    background: rgba(255,255,255,0.07);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: center;
+    gap: 8px; 
+    cursor: pointer;
+  }
+  
+  .alumni-photo .icon { 
+    font-size: 36px; 
+    opacity: 0.4; 
+  }
+  
+  .alumni-photo p { 
+    font-size: 11px; 
+    color: rgba(255,255,255,0.35); 
+    text-align: center; 
+  }
+
+  /* Alumni information section */
+  .alumni-info { 
+    padding: 16px 18px 20px; 
+  }
+  
+  .alumni-info h4 { 
+    font-family: 'Playfair Display', serif; 
+    font-size: 16px; 
+    font-weight: 700; 
+    color: white; 
+    margin-bottom: 6px; 
+  }
+
+  /* Alumni score badge */
+  .alumni-score { 
+    display: inline-block; 
+    background: rgba(201,146,42,0.2); 
+    border: 1px solid rgba(201,146,42,0.4); 
+    color: var(--gold-light); 
+    font-size: 12px; 
+    font-weight: 700; 
+    padding: 4px 10px; 
+    border-radius: 100px; 
+    margin-bottom: 8px; 
+  }
+
+  /* University information */
+  .alumni-uni { 
+    font-size: 12px; 
+    color: rgba(255,255,255,0.45); 
+    display: flex; 
+    align-items: center; 
+    gap: 5px; 
+  }
+
+  /* Card to add new alumni */
+  .alumni-add-card {
+    border: 2px dashed rgba(201,146,42,0.3);
+    border-radius: 18px;
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: center;
+    gap: 10px; 
+    padding: 32px; 
+    cursor: pointer; 
+    transition: border-color 0.2s;
+    min-height: 200px;
+  }
+  
+  .alumni-add-card:hover { 
+    border-color: var(--gold); 
+  }
+  
+  .alumni-add-card p { 
+    color: rgba(255,255,255,0.4); 
+    font-size: 13px; 
+    text-align: center; 
+  }
+  
+  .alumni-add-card .plus { 
+    font-size: 32px; 
+    color: rgba(201,146,42,0.5); 
+  }
+
+  /* ========================================
+     ABOUT SECTION
+     Information about the academy
+     ======================================== */
+  .about-section { 
+    background: var(--cream); 
+  }
+
+  /* Two-column layout for about section */
+  .about-grid { 
+    display: grid; 
+    grid-template-columns: 1fr 1fr; 
+    gap: 64px; 
+    align-items: center; 
+  }
+
+  /* About image container */
+  .about-img {
+    border-radius: 20px; 
+    overflow: hidden;
+    background: var(--milk); 
+    border: 2px dashed var(--border);
+    aspect-ratio: 4/5;
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: center;
+    gap: 12px; 
+    position: relative;
+  }
+  
+  .about-img .icon { 
+    font-size: 48px; 
+  }
+  
+  .about-img p { 
+    font-size: 13px; 
+    color: var(--text-muted); 
+  }
+
+  /* Decorative accent box with initials */
+  .about-accent {
+    position: absolute; 
+    bottom: -12px; 
+    right: -12px;
+    width: 100px; 
+    height: 100px;
+    background: var(--gold); 
+    border-radius: 16px;
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+    font-family: 'Playfair Display', serif; 
+    font-size: 32px;
+    color: white; 
+    font-weight: 900;
+    box-shadow: 0 8px 24px rgba(201,146,42,0.4);
+  }
+
+  /* About text paragraphs */
+  .about-text p { 
+    font-size: 16px; 
+    color: var(--text-muted); 
+    line-height: 1.8; 
+    margin-bottom: 20px; 
+  }
+
+  /* Feature highlights grid */
+  .about-features { 
+    display: grid; 
+    grid-template-columns: 1fr 1fr; 
+    gap: 16px; 
+    margin-top: 32px; 
+  }
+
+  /* Individual feature card */
+  .feature-item {
+    background: white; 
+    border-radius: 12px; 
+    padding: 18px;
+    border: 1px solid var(--border);
+    display: flex; 
+    gap: 14px; 
+    align-items: flex-start;
+  }
+  
+  .feature-icon { 
+    font-size: 22px; 
+    line-height: 1; 
+  }
+  
+  .feature-item h4 { 
+    font-size: 14px; 
+    font-weight: 700; 
+    color: var(--dark); 
+    margin-bottom: 4px; 
+  }
+  
+  .feature-item p { 
+    font-size: 12px; 
+    color: var(--text-muted); 
+    line-height: 1.5; 
+  }
+
+  /* ========================================
+     TESTIMONIALS SECTION
+     Student reviews and feedback
+     ======================================== */
+  .testimonials-section { 
+    background: var(--milk); 
+  }
+
+  /* Testimonials grid layout */
+  .testimonials-grid { 
+    display: grid; 
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); 
+    gap: 20px; 
+  }
+
+  /* Individual testimonial card */
+  .testimonial-card {
+    background: white; 
+    border-radius: 16px; 
+    padding: 28px;
+    border: 1px solid var(--border);
+    position: relative;
+  }
+
+  /* Large quotation mark decoration */
+  .testimonial-card::before {
+    content: '"'; 
+    position: absolute; 
+    top: 16px; 
+    right: 20px;
+    font-family: 'Playfair Display', serif; 
+    font-size: 72px; 
+    color: var(--gold-pale);
+    line-height: 1; 
+    pointer-events: none;
+  }
+
+  /* Star rating */
+  .stars { 
+    color: var(--gold); 
+    font-size: 14px; 
+    margin-bottom: 12px; 
+  }
+
+  /* Testimonial quote text */
+  .testimonial-card p { 
+    font-size: 14px; 
+    color: var(--text-muted); 
+    line-height: 1.75; 
+    margin-bottom: 20px; 
+  }
+
+  /* Reviewer information */
+  .reviewer { 
+    display: flex; 
+    align-items: center; 
+    gap: 12px; 
+  }
+
+  /* Reviewer avatar circle */
+  .reviewer-av {
+    width: 40px; 
+    height: 40px; 
+    border-radius: 50%;
+    background: var(--gold-pale); 
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+    font-family: 'Playfair Display', serif; 
+    font-size: 16px; 
+    font-weight: 700; 
+    color: var(--gold);
+  }
+  
+  .reviewer h5 { 
+    font-size: 14px; 
+    font-weight: 700; 
+    color: var(--dark); 
+  }
+  
+  .reviewer p { 
+    font-size: 12px; 
+    color: var(--text-muted); 
+    margin: 0; 
+  }
+
+  /* ========================================
+     CONTACT SECTION
+     Address and contact information
+     ======================================== */
+  .contact-section { 
+    background: var(--dark); 
+  }
+
+  /* Dark theme overrides */
+  .contact-section .section-title { 
+    color: white; 
+  }
+  
+  .contact-section .section-tag { 
+    color: var(--gold-light); 
+  }
+  
+  .contact-section .section-tag::before, 
+  .contact-section .section-tag::after { 
+    background: var(--gold-light); 
+  }
+
+  /* Contact grid layout */
+  .contact-grid { 
+    display: grid; 
+    grid-template-columns: 1fr 1fr; 
+    gap: 50px; 
+    align-items: start; 
+  }
+
+  /* Contact information card */
+  .contact-card {
+    background: rgba(255,255,255,0.05); 
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 16px; 
+    padding: 28px;
+  }
+
+  /* Individual contact item */
+  .contact-item { 
+    display: flex; 
+    gap: 16px; 
+    align-items: flex-start; 
+    margin-bottom: 24px; 
+  }
+  
+  .contact-item:last-child { 
+    margin-bottom: 0; 
+  }
+
+  /* Contact icon container */
+  .contact-icon {
+    width: 44px; 
+    height: 44px; 
+    border-radius: 10px;
+    background: rgba(201,146,42,0.15); 
+    border: 1px solid rgba(201,146,42,0.3);
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+    font-size: 20px; 
+    flex-shrink: 0;
+  }
+  
+  .contact-item h4 { 
+    font-size: 13px; 
+    color: rgba(255,255,255,0.5); 
+    text-transform: uppercase; 
+    letter-spacing: 1px; 
+    margin-bottom: 4px; 
+  }
+  
+  .contact-item p { 
+    font-size: 15px; 
+    color: white; 
+    font-weight: 500; 
+  }
+  
+  .contact-item a { 
+    color: var(--gold-light); 
+    text-decoration: none; 
+  }
+
+  /* Map placeholder */
+  .map-placeholder {
+    width: 100%; 
+    aspect-ratio: 16/10;
+    background: rgba(255,255,255,0.05); 
+    border: 2px dashed rgba(255,255,255,0.15);
+    border-radius: 16px; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: center;
+    gap: 10px; 
+    cursor: pointer; 
+    transition: border-color 0.2s;
+  }
+  
+  .map-placeholder:hover { 
+    border-color: rgba(201,146,42,0.4); 
+  }
+  
+  .map-placeholder .icon { 
+    font-size: 40px; 
+    opacity: 0.3; 
+  }
+  
+  .map-placeholder p { 
+    font-size: 13px; 
+    color: rgba(255,255,255,0.3); 
+    text-align: center; 
+  }
+
+  /* ========================================
+     FOOTER
+     Bottom of page with links
+     ======================================== */
+  footer {
+    background: #0F0A03; 
+    padding: 40px 5% 24px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+
+  /* Top section of footer */
+  .footer-top { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: flex-start; 
+    flex-wrap: wrap; 
+    gap: 32px; 
+    margin-bottom: 32px; 
+  }
+
+  /* Footer brand section */
+  .footer-brand p { 
+    font-size: 13px; 
+    color: rgba(255,255,255,0.4); 
+    max-width: 260px; 
+    margin-top: 10px; 
+    line-height: 1.7; 
+  }
+
+  /* Footer navigation links */
+  .footer-links h5 { 
+    font-size: 13px; 
+    font-weight: 700; 
+    color: white; 
+    margin-bottom: 14px; 
+    letter-spacing: 0.5px; 
+  }
+  
+  .footer-links ul { 
+    list-style: none; 
+    display: flex; 
+    flex-direction: column; 
+    gap: 8px; 
+  }
+  
+  .footer-links a { 
+    font-size: 13px; 
+    color: rgba(255,255,255,0.45); 
+    text-decoration: none; 
+    transition: color 0.2s; 
+  }
+  
+  .footer-links a:hover { 
+    color: var(--gold-light); 
+  }
+
+  /* Bottom section of footer */
+  .footer-bottom { 
+    border-top: 1px solid rgba(255,255,255,0.07); 
+    padding-top: 20px; 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    flex-wrap: wrap; 
+    gap: 12px; 
+  }
+  
+  .footer-bottom p { 
+    font-size: 12px; 
+    color: rgba(255,255,255,0.25); 
+  }
+
+  /* ========================================
+     FLOATING WHATSAPP BUTTON
+     Fixed button in bottom-right corner
+     ======================================== */
+  .float-wa {
+    position: fixed; 
+    bottom: 28px; 
+    right: 28px; 
+    z-index: 999;
+    background: #25D366; 
+    color: white;
+    width: 58px; 
+    height: 58px; 
+    border-radius: 50%;
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+    box-shadow: 0 6px 24px rgba(37,211,102,0.45);
+    text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+    animation: bounce 2s infinite; /* Bouncing animation */
+  }
+  
+  .float-wa:hover { 
+    transform: scale(1.1); 
+    box-shadow: 0 10px 32px rgba(37,211,102,0.55); 
+    animation: none; /* Stop bouncing on hover */
+  }
+  
+  .float-wa svg { 
+    width: 28px; 
+    height: 28px; 
+    fill: white; 
+  }
+
+  /* ========================================
+     ANIMATIONS
+     Keyframe animations used throughout
+     ======================================== */
+  
+  /* Fade up animation for elements entering viewport */
+  @keyframes fadeUp { 
+    from { 
+      opacity: 0; 
+      transform: translateY(24px); 
+    } 
+    to { 
+      opacity: 1; 
+      transform: translateY(0); 
+    } 
+  }
+
+  /* Pulse animation for fire emoji */
+  @keyframes pulse { 
+    0%, 100% { 
+      transform: scale(1); 
+    } 
+    50% { 
+      transform: scale(1.2); 
+    } 
+  }
+
+  /* Bounce animation for WhatsApp button */
+  @keyframes bounce { 
+    0%, 100% { 
+      transform: translateY(0); 
+    } 
+    50% { 
+      transform: translateY(-8px); 
+    } 
+  }
+
+  /* ========================================
+     RESPONSIVE DESIGN - TABLET
+     Breakpoint: 768px (iPad and similar)
+     ======================================== */
+  @media (max-width: 1024px) and (min-width: 769px) {
+    /* Two-column grid for events on tablet */
+    .events-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* Adjust event banner height for tablet */
+    .event-banner {
+      height: 220px;
+    }
+  }
+
+  /* ========================================
+     RESPONSIVE DESIGN - MOBILE & TABLET
+     Breakpoint: 768px and below
+     ======================================== */
+  @media (max-width: 768px) {
+    /* Hide desktop navigation, show hamburger */
+    .nav-links, .nav-cta { 
+      display: none; 
+    }
+    
+    .hamburger { 
+      display: flex; 
+    }
+
+    /* Single column hero layout */
+    .hero { 
+      grid-template-columns: 1fr; 
+      padding: 100px 6% 60px; 
+      text-align: center; 
+    }
+    
+    .hero p { 
+      margin-left: auto; 
+      margin-right: auto; 
+    }
+    
+    .hero-btns { 
+      justify-content: center; 
+    }
+    
+    .hero-stats { 
+      justify-content: center; 
+    }
+    
+    /* Hide hero image grid on mobile */
+    .hero-right { 
+      display: none; 
+    }
+
+    /* Center countdown elements */
+    .countdown-banner { 
+      justify-content: center; 
+      text-align: center; 
+    }
+    
+    .countdown-label { 
+      justify-content: center; 
+    }
+
+    /* Stack countdown boxes vertically on very small screens */
+    .countdown-boxes {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    /* Reduce countdown box size on mobile */
+    .cbox {
+      min-width: 56px;
+      padding: 10px 12px;
+    }
+
+    .cbox-num {
+      font-size: 24px;
+    }
+
+    /* EVENTS SECTION - Mobile optimization */
+    .events-grid {
+      grid-template-columns: 1fr; /* Single column on mobile */
+      gap: 24px;
+    }
+
+    .event-banner {
+      height: 200px; /* Smaller banner on mobile */
+    }
+
+    .event-content {
+      padding: 20px; /* Reduced padding */
+    }
+
+    .event-content h3 {
+      font-size: 20px; /* Slightly smaller title */
+    }
+
+    .event-description {
+      font-size: 14px; /* Smaller description text */
+    }
+
+    /* Stack event meta items on mobile if needed */
+    .event-meta {
+      gap: 10px;
+    }
+
+    /* Single column grids */
+    .about-grid, .contact-grid { 
+      grid-template-columns: 1fr; 
+    }
+    
+    .about-features { 
+      grid-template-columns: 1fr; 
+    }
+
+    /* Adjust classes grid for mobile */
+    .classes-grid {
+      grid-template-columns: 1fr;
+    }
+
+    /* Adjust alumni grid for mobile */
+    .alumni-grid {
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    }
+
+    /* Adjust testimonials grid for mobile */
+    .testimonials-grid {
+      grid-template-columns: 1fr;
+    }
+
+    /* Stack footer columns */
+    .footer-top { 
+      flex-direction: column; 
+    }
+    
+    .footer-bottom { 
+      flex-direction: column; 
+      text-align: center; 
+    }
+
+    /* Center section tags */
+    .section-tag { 
+      justify-content: center; 
+    }
+    
+    h2.section-title { 
+      text-align: center; 
+    }
+    
+    .section-sub { 
+      text-align: center; 
+      margin-left: auto; 
+      margin-right: auto; 
+    }
+
+    /* Reduce section padding on mobile */
+    section {
+      padding: 60px 5%;
+    }
+
+    /* Make leaderboard table scrollable on mobile */
+    .lb-table {
+      display: block;
+      overflow-x: auto; /* Horizontal scroll if needed */
+    }
+
+    /* Smaller floating WhatsApp button on mobile */
+    .float-wa {
+      width: 52px;
+      height: 52px;
+      bottom: 20px;
+      right: 20px;
+    }
+
+    .float-wa svg {
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  /* ========================================
+     EXTRA SMALL MOBILE DEVICES
+     Breakpoint: 480px and below
+     ======================================== */
+  @media (max-width: 480px) {
+    /* Further reduce font sizes */
+    .hero h1 {
+      font-size: 32px;
+    }
+
+    .hero p {
+      font-size: 15px;
+    }
+
+    /* Smaller logo on very small screens */
+    .logo-crest {
+      width: 38px;
+      height: 38px;
+      font-size: 16px;
+    }
+
+    .logo-text {
+      font-size: 16px;
+    }
+
+    /* Reduce navigation height */
+    :root {
+      --nav-h: 64px;
+    }
+
+    /* Stack countdown elements more compactly */
+    .countdown-sep {
+      display: none; /* Hide colons on very small screens */
+    }
+
+    /* Adjust event card spacing */
+    .event-content {
+      padding: 16px;
+    }
+
+    .event-meta-item {
+      font-size: 13px;
+    }
+
+    /* Full-width buttons on small mobile */
+    .btn-primary, .btn-secondary, .event-register-btn {
+      width: 100%;
+      justify-content: center;
+      text-align: center;
+    }
+  }
+
+  /* ========================================
+     TOUCH DEVICE OPTIMIZATIONS
+     Improves touch targets and interactions
+     ======================================== */
+  @media (hover: none) and (pointer: coarse) {
+    /* Larger touch targets for mobile */
+    nav a, .hamburger {
+      min-height: 44px; /* Apple's recommended minimum */
+      min-width: 44px;
+    }
+
+    .mobile-menu a {
+      padding: 1rem 0; /* Larger tap area */
+    }
+
+    /* Remove hover effects on touch devices */
+    .event-card:hover,
+    .class-card:hover,
+    .alumni-card:hover,
+    .testimonial-card:hover {
+      transform: none; /* No lift effect on touch */
+    }
+
+    /* Instead, add active state for touch feedback */
+    .event-card:active,
+    .class-card:active,
+    .alumni-card:active {
+      opacity: 0.9;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- ========================================
+     FLOATING WHATSAPP BUTTON
+     Always visible in bottom-right corner
+     ======================================== -->
+<a href="https://wa.me/2348000000000?text=Hello%20Sir%20Phillip%20Academy!%20I%20want%20to%20enroll." class="float-wa" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<!-- ========================================
+     NAVIGATION BAR
+     Fixed at top with mobile menu
+     ======================================== -->
+<nav>
+  <!-- Logo Section -->
+  <a href="#" class="logo" aria-label="Sir Phillip Academy Home">
+    <div class="logo-crest">SP</div>
+    <div class="logo-text">Sir Phillip Academy<span>Excellence in Education</span></div>
+  </a>
+  
+  <!-- Desktop Navigation Links (hidden on mobile) -->
+  <ul class="nav-links">
+    <li><a href="#classes">Classes</a></li>
+    <li><a href="#events">Events</a></li>
+    <li><a href="#scores">Leaderboard</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#alumni">Alumni</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  
+  <!-- Desktop CTA Button (hidden on mobile) -->
+  <a href="https://wa.me/2348000000000?text=Hello!%20I%20want%20to%20join%20Sir%20Phillip%20Academy." class="nav-cta" target="_blank" rel="noopener">Enroll Now</a>
+  
+  <!-- Hamburger Menu Icon (shows on mobile) -->
+  <button class="hamburger" aria-label="Open menu" id="hamburger">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+</nav>
+
+<!-- Mobile Menu Overlay (darkens background when menu is open) -->
+<div class="menu-overlay" id="menuOverlay"></div>
+
+<!-- Mobile Navigation Menu (slides in from right) -->
+<div class="mobile-menu" id="mobileMenu">
+  <ul>
+    <li><a href="#home" class="mobile-link">Home</a></li>
+    <li><a href="#classes" class="mobile-link">Classes</a></li>
+    <li><a href="#events" class="mobile-link">Events</a></li>
+    <li><a href="#scores" class="mobile-link">Leaderboard</a></li>
+    <li><a href="#about" class="mobile-link">About</a></li>
+    <li><a href="#alumni" class="mobile-link">Alumni</a></li>
+    <li><a href="#contact" class="mobile-link">Contact</a></li>
+    <li><a href="https://wa.me/2348000000000?text=Hello!%20I%20want%20to%20join%20Sir%20Phillip%20Academy." target="_blank" rel="noopener" style="color: var(--gold); border-color: var(--gold);">Enroll Now</a></li>
+  </ul>
+</div>
+
+<!-- ========================================
+     HERO SECTION
+     Main landing section with headline
+     ======================================== -->
+<section class="hero" id="home">
+  <div class="hero-content">
+    <!-- Badge showing academy prestige -->
+    <div class="hero-badge">Nigeria's Premier Tutorial Centre</div>
+    
+    <!-- Main headline -->
+    <h1>Where Students Become <em>Champions</em></h1>
+    
+    <!-- Supporting text -->
+    <p>Sir Phillip Academy prepares students for JAMB, WAEC, NECO and beyond — with expert tutors, proven methods, and a community that never gives up on you.</p>
+    
+    <!-- Call-to-action buttons -->
+    <div class="hero-btns">
+      <a href="https://wa.me/2348000000000?text=Hello!%20I%20want%20to%20enroll%20at%20Sir%20Phillip%20Academy." class="btn-primary" target="_blank" rel="noopener">
+        📲 Join on WhatsApp
+      </a>
+      <a href="#about" class="btn-secondary">Learn More →</a>
+    </div>
+    
+    <!-- Statistics showcase -->
+    <div class="hero-stats">
+      <div class="stat-item">
+        <div class="stat-num">500+</div>
+        <div class="stat-label">Students Enrolled</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">98%</div>
+        <div class="stat-label">Pass Rate</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">300+</div>
+        <div class="stat-label">JAMB 300+ Scorers</div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Image grid (hidden on mobile for better performance) -->
+  <div class="hero-right">
+    <div class="hero-img-grid">
+      <div class="hero-img-card">
+        <div class="icon">📸</div>
+        <p>Add your main academy photo here</p>
+      </div>
+      <div class="hero-img-card">
+        <div class="icon">🏫</div>
+        <p>Classroom photo</p>
+      </div>
+      <div class="hero-img-card">
+        <div class="icon">👨‍🏫</div>
+        <p>Tutor photo</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================================
+     COUNTDOWN BANNER
+     Live countdown to JAMB examination
+     ======================================== -->
+<div class="countdown-banner" id="countdown-section">
+  <div class="countdown-label">
+    <span class="fire">🔥</span>
+    <div>
+      <h3>JAMB 2025 Countdown</h3>
+      <p>Register now — limited slots available!</p>
+    </div>
+  </div>
+  
+  <!-- Countdown timer boxes -->
+  <div class="countdown-boxes">
+    <div class="cbox">
+      <div class="cbox-num" id="cd-days">00</div>
+      <div class="cbox-label">Days</div>
+    </div>
+    <div class="countdown-sep">:</div>
+    <div class="cbox">
+      <div class="cbox-num" id="cd-hours">00</div>
+      <div class="cbox-label">Hours</div>
+    </div>
+    <div class="countdown-sep">:</div>
+    <div class="cbox">
+      <div class="cbox-num" id="cd-mins">00</div>
+      <div class="cbox-label">Mins</div>
+    </div>
+    <div class="countdown-sep">:</div>
+    <div class="cbox">
+      <div class="cbox-num" id="cd-secs">00</div>
+      <div class="cbox-label">Secs</div>
+    </div>
+  </div>
+  
+  <!-- WhatsApp registration button -->
+  <div class="countdown-join">
+    <a href="https://wa.me/2348000000000?text=I%20want%20to%20register%20for%20JAMB%20prep%20at%20Sir%20Phillip%20Academy!" class="whatsapp-btn" target="_blank" rel="noopener">
+      <svg class="wa-icon" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Register Now
+    </a>
+  </div>
+</div>
+
+<!-- ========================================
+     UPCOMING EVENTS SECTION
+     Shows academy events with banners
+     
+     HOW TO ADD YOUR OWN EVENTS:
+     ===========================
+     1. Copy the entire .event-card div (from opening to closing tag)
+     2. Paste it inside the .events-grid div
+     3. Update the following:
+        - Event banner: Replace the URL in style="background-image: url('...')"
+        - Event tag: Change "JAMB Workshop", "Seminar", etc.
+        - Event title: Update the <h3> text
+        - Description: Change the paragraph text
+        - Date: Update the date text
+        - Location: Update the location text
+        - Register link: Update the WhatsApp message if needed
+     
+     HOW TO ADD EVENT BANNER IMAGES:
+     ===============================
+     Option 1 - Upload to free image hosting:
+       1. Go to imgur.com or cloudinary.com
+       2. Upload your image
+       3. Copy the direct image URL
+       4. Paste it in: style="background-image: url('PASTE-HERE')"
+     
+     Option 2 - Use free stock photos:
+       1. Go to unsplash.com
+       2. Find a suitable image
+       3. Click "Share" and copy URL
+       4. Add ?w=800&h=400&fit=crop for optimization
+       5. Use in background-image URL
+     
+     Recommended image size: 800x400px or larger
+     ======================================== -->
+<section class="events-section" id="events">
+  <div class="section-tag">What's Happening</div>
+  <h2 class="section-title">Upcoming Events</h2>
+  <p class="section-sub">Join us for exciting educational events, seminars, and competitions designed to boost your academic excellence.</p>
+  
+  <div class="events-grid">
+    
+    <!-- ========== EVENT CARD 1 ========== -->
+    <div class="event-card">
+      <!-- Event Banner Image 
+           TO CHANGE: Replace the URL below with your own image URL -->
+      <div class="event-banner" style="background-image: url;">
+      </div>
+      
+      <div class="event-content">
+        <!-- Event Category Tag -->
+        <div class="event-tag">JAMB Workshop</div>
+        
+        <!-- Event Title -->
+        <h3>JAMB Intensive Crash Course</h3>
+        
+        <!-- Event Description -->
+        <p class="event-description">
+          Join our comprehensive 2-week intensive JAMB preparation bootcamp. Master all subjects with our expert tutors, practice with past questions, and learn exam strategies that guarantee success.
+        </p>
+        
+        <!-- Event Date and Location -->
+        <div class="event-meta">
+          <div class="event-meta-item">
+            <div class="icon">📅</div>
+            <div>
+              <strong>Date:</strong> April 1-14, 2025
+            </div>
+          </div>
+          <div class="event-meta-item">
+            <div class="icon">📍</div>
+            <div>
+              <strong>Location:</strong> Sir Phillip Academy Main Campus
+            </div>
+          </div>
+        </div>
+        
+        <!-- Register Button -->
+        <a href="https://wa.me/2348000000000?text=I%20want%20to%20register%20for%20JAMB%20Intensive%20Crash%20Course" class="event-register-btn" target="_blank" rel="noopener">
+          Register Now →
+        </a>
+      </div>
+    </div>
+
+    <!-- ========== EVENT CARD 2 ========== -->
+    <div class="event-card">
+      <div class="event-banner" style="background-image: ;">
+      </div>
+      
+      <div class="event-content">
+        <div class="event-tag">Seminar</div>
+        
+        <h3>University Admission Success Seminar</h3>
+        
+        <p class="event-description">
+          Learn the secrets of gaining admission to top Nigerian universities. Hear from recent alumni now studying Medicine, Law, Engineering and more. Get insider tips on Post-UTME preparation.
+        </p>
+        
+        <div class="event-meta">
+          <div class="event-meta-item">
+            <div class="icon">📅</div>
+            <div>
+              <strong>Date:</strong> March 28, 2025 | 2:00 PM
+            </div>
+          </div>
+          <div class="event-meta-item">
+            <div class="icon">📍</div>
+            <div>
+              <strong>Location:</strong> Academy Auditorium
+            </div>
+          </div>
+        </div>
+        
+        <a href="https://wa.me/2348000000000?text=I%20want%20to%20attend%20the%20University%20Admission%20Seminar" class="event-register-btn" target="_blank" rel="noopener">
+          Register Now →
+        </a>
+      </div>
+    </div>
+
+    <!-- ========== EVENT CARD 3 ========== -->
+    <div class="event-card">
+      <div class="event-banner" style="background-image: ;">
+      </div>
+      
+      <div class="event-content">
+        <div class="event-tag">Competition</div>
+        
+        <h3>Inter-Class Mathematics Challenge</h3>
+        
+        <p class="event-description">
+          Test your mathematical skills in our annual quiz competition! Exciting prizes for winners including scholarships, books, and calculators. Open to all Sir Phillip Academy students.
+        </p>
+        
+        <div class="event-meta">
+          <div class="event-meta-item">
+            <div class="icon">📅</div>
+            <div>
+              <strong>Date:</strong> April 20, 2025 | 10:00 AM
+            </div>
+          </div>
+          <div class="event-meta-item">
+            <div class="icon">📍</div>
+            <div>
+              <strong>Location:</strong> Main Hall
+            </div>
+          </div>
+        </div>
+        
+        <a href="https://wa.me/2348000000000?text=I%20want%20to%20participate%20in%20the%20Mathematics%20Challenge" class="event-register-btn" target="_blank" rel="noopener">
+          Register Now →
+        </a>
+      </div>
+    </div>
+
+    <!-- Copy from here to add more events... -->
+
+  </div>
+</section>
+
+<!-- The rest of the sections remain the same as your original code -->
+<!-- I'm including them for completeness -->
+
+<!-- CLASSES SECTION -->
+<section class="classes-section" id="classes">
+  <div class="section-tag">Our Programmes</div>
+  <h2 class="section-title">Tutorial Classes &amp; Courses</h2>
+  <p class="section-sub">We offer structured, expert-led classes across all major subjects to prepare students for excellence in every examination.</p>
+  <div class="classes-grid">
+    <div class="class-card">
+      <div class="class-img"><div class="icon">📷</div><p>Add JAMB class photo</p></div>
+      <div class="class-info">
+        <div class="class-tag">JAMB / UTME</div>
+        <h3>JAMB Intensive Prep</h3>
+        <p>Comprehensive coverage of all JAMB subjects — English, Mathematics, Physics, Chemistry, Biology and more.</p>
+      </div>
+    </div>
+    <div class="class-card">
+      <div class="class-img"><div class="icon">📷</div><p>Add WAEC class photo</p></div>
+      <div class="class-info">
+        <div class="class-tag">WAEC / NECO</div>
+        <h3>WAEC &amp; NECO Coaching</h3>
+        <p>Targeted O'Level preparation with past questions, marking schemes, and expert-guided practice sessions.</p>
+      </div>
+    </div>
+    <div class="class-card">
+      <div class="class-img"><div class="icon">📷</div><p>Add science class photo</p></div>
+      <div class="class-info">
+        <div class="class-tag">Sciences</div>
+        <h3>Science Subjects</h3>
+        <p>Physics, Chemistry, Biology and Mathematics taught with practical demonstrations and real-world examples.</p>
+      </div>
+    </div>
+    <div class="class-card">
+      <div class="class-img"><div class="icon">📷</div><p>Add arts class photo</p></div>
+      <div class="class-info">
+        <div class="class-tag">Arts &amp; Social</div>
+        <h3>Arts &amp; Social Sciences</h3>
+        <p>Literature, Economics, Government, Civic Education, and more — taught by passionate, experienced educators.</p>
+      </div>
+    </div>
+    <div class="class-card">
+      <div class="class-img"><div class="icon">📷</div><p>Add English class photo</p></div>
+      <div class="class-info">
+        <div class="class-tag">Language</div>
+        <h3>English Language</h3>
+        <p>Comprehension, essay writing, grammar and oral English — essential for every student's success.</p>
+      </div>
+    </div>
+    <div class="class-card">
+      <div class="class-img"><div class="icon">📷</div><p>Add remedial class photo</p></div>
+      <div class="class-info">
+        <div class="class-tag">Special Programme</div>
+        <h3>Remedial Classes</h3>
+        <p>Dedicated support for students who need extra attention — nobody gets left behind at Sir Phillip Academy.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LEADERBOARD SECTION -->
+<section class="lb-section" id="scores">
+  <div class="section-tag">Student Scores</div>
+  <h2 class="section-title">Top Performers Leaderboard</h2>
+  <p class="section-sub">Celebrating our best students. Updated regularly to reflect current examination results.</p>
+  <table class="lb-table" role="table" aria-label="Student Leaderboard">
+    <thead>
+      <tr>
+        <th>Rank</th>
+        <th>Student Name</th>
+        <th>Exam</th>
+        <th>Subject</th>
+        <th>Score</th>
+        <th>Year</th>
+      </tr>
+    </thead>
+    <tbody id="lb-body">
+      <tr>
+        <td><span class="rank-badge rank-1">1</span></td>
+        <td><strong>Adaeze Okonkwo</strong></td>
+        <td>JAMB</td>
+        <td>Sciences</td>
+        <td><div class="score-bar"><span>342/400</span><div class="score-track"><div class="score-fill" style="width:85%"></div></div></div></td>
+        <td>2024</td>
+      </tr>
+      <tr>
+        <td><span class="rank-badge rank-2">2</span></td>
+        <td><strong>Emeka Chukwuemeka</strong></td>
+        <td>JAMB</td>
+        <td>Arts</td>
+        <td><div class="score-bar"><span>336/400</span><div class="score-track"><div class="score-fill" style="width:84%"></div></div></div></td>
+        <td>2024</td>
+      </tr>
+      <tr>
+        <td><span class="rank-badge rank-3">3</span></td>
+        <td><strong>Fatima Abdullahi</strong></td>
+        <td>JAMB</td>
+        <td>Sciences</td>
+        <td><div class="score-bar"><span>329/400</span><div class="score-track"><div class="score-fill" style="width:82%"></div></div></div></td>
+        <td>2024</td>
+      </tr>
+      <tr>
+        <td><span class="rank-badge rank-other">4</span></td>
+        <td><strong>Chidi Nwosu</strong></td>
+        <td>WAEC</td>
+        <td>Sciences</td>
+        <td><div class="score-bar"><span>8 A's</span><div class="score-track"><div class="score-fill" style="width:100%"></div></div></div></td>
+        <td>2024</td>
+      </tr>
+      <tr>
+        <td><span class="rank-badge rank-other">5</span></td>
+        <td><strong>Ngozi Eze</strong></td>
+        <td>JAMB</td>
+        <td>Commercial</td>
+        <td><div class="score-bar"><span>318/400</span><div class="score-track"><div class="score-fill" style="width:79%"></div></div></div></td>
+        <td>2024</td>
+      </tr>
+    </tbody>
+  </table>
+  <button class="add-row-btn" onclick="alert('Add your students here by editing the HTML table above!')">+ Add Student Score</button>
+</section>
+
+<!-- ABOUT SECTION -->
+<section class="about-section" id="about">
+  <div class="about-grid">
+    <div class="about-img">
+      <div class="icon">👨‍🏫</div>
+      <p>Add Sir Phillip's photo or<br>academy building photo here</p>
+      <div class="about-accent">SP</div>
+    </div>
+    <div class="about-text">
+      <div class="section-tag">About Us</div>
+      <h2 class="section-title">Built on a Foundation of Excellence</h2>
+      <p>Sir Phillip Academy was founded with one mission: to give every Nigerian student the preparation, support and confidence they need to excel in their examinations and secure their future.</p>
+      <p>Under the leadership of Sir Phillip, our academy has guided hundreds of students into top universities, helping them achieve JAMB scores and WAEC grades that open doors to remarkable futures.</p>
+      <p>We believe every student has the potential to excel. Our expert tutors, structured curriculum, and close-knit community make the difference.</p>
+      <div class="about-features">
+        <div class="feature-item">
+          <div class="feature-icon">🎯</div>
+          <div>
+            <h4>Expert Tutors</h4>
+            <p>Experienced teachers who know exactly what exams require.</p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">📚</div>
+          <div>
+            <h4>Proven Curriculum</h4>
+            <p>Structured lessons built around past questions and exam patterns.</p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">🏆</div>
+          <div>
+            <h4>Track Record</h4>
+            <p>Hundreds of students scoring 300+ in JAMB every year.</p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">🤝</div>
+          <div>
+            <h4>Supportive Community</h4>
+            <p>A family environment where students motivate each other.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS SECTION -->
+<section class="testimonials-section">
+  <div class="section-tag">Testimonials</div>
+  <h2 class="section-title">What Our Students Say</h2>
+  <p class="section-sub">Don't just take our word for it — hear from students who transformed their results with us.</p>
+  <div class="testimonials-grid">
+    <div class="testimonial-card">
+      <div class="stars">★★★★★</div>
+      <p>Sir Phillip Academy changed everything for me. I scored 318 in JAMB after failing the previous year. The tutors never gave up on me even when I almost gave up on myself.</p>
+      <div class="reviewer">
+        <div class="reviewer-av">A</div>
+        <div><h5>Amaka Obi</h5><p>JAMB 2024 — 318/400</p></div>
+      </div>
+    </div>
+    <div class="testimonial-card">
+      <div class="stars">★★★★★</div>
+      <p>The WAEC coaching here is second to none. I got 7 A's and 1 B. My parents couldn't believe it! I owe it all to the dedicated teachers at this academy.</p>
+      <div class="reviewer">
+        <div class="reviewer-av">K</div>
+        <div><h5>Kingsley Eze</h5><p>WAEC 2024 — 7A's, 1B</p></div>
+      </div>
+    </div>
+    <div class="testimonial-card">
+      <div class="stars">★★★★★</div>
+      <p>I was struggling with Mathematics until Sir Phillip Academy. The way they break down complex topics into simple steps is remarkable. Highly recommended!</p>
+      <div class="reviewer">
+        <div class="reviewer-av">B</div>
+        <div><h5>Blessing Adeyemi</h5><p>JAMB 2024 — 305/400</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ALUMNI SECTION -->
+<section class="alumni-section" id="alumni">
+  <div class="section-tag">Our Alumni</div>
+  <h2 class="section-title">Success Stories</h2>
+  <p class="section-sub">Proud alumni now studying in top universities across Nigeria and abroad. Their success is our greatest achievement.</p>
+  <div class="alumni-grid">
+    <div class="alumni-card">
+      <div class="alumni-photo"><div class="icon">👤</div><p>Add alumni photo</p></div>
+      <div class="alumni-info">
+        <h4>Chidinma Okonkwo</h4>
+        <div class="alumni-score">JAMB: 342</div>
+        <p class="alumni-uni">🎓 University of Lagos — Medicine</p>
+      </div>
+    </div>
+    <div class="alumni-card">
+      <div class="alumni-photo"><div class="icon">👤</div><p>Add alumni photo</p></div>
+      <div class="alumni-info">
+        <h4>Emmanuel Nwachukwu</h4>
+        <div class="alumni-score">JAMB: 328</div>
+        <p class="alumni-uni">🎓 OAU Ile-Ife — Engineering</p>
+      </div>
+    </div>
+    <div class="alumni-card">
+      <div class="alumni-photo"><div class="icon">👤</div><p>Add alumni photo</p></div>
+      <div class="alumni-info">
+        <h4>Aisha Mustapha</h4>
+        <div class="alumni-score">JAMB: 315</div>
+        <p class="alumni-uni">🎓 ABU Zaria — Law</p>
+      </div>
+    </div>
+    <div class="alumni-card">
+      <div class="alumni-photo"><div class="icon">👤</div><p>Add alumni photo</p></div>
+      <div class="alumni-info">
+        <h4>Tobechukwu Eze</h4>
+        <div class="alumni-score">JAMB: 310</div>
+        <p class="alumni-uni">🎓 UNIPORT — Pharmacy</p>
+      </div>
+    </div>
+    <div class="alumni-card">
+      <div class="alumni-photo"><div class="icon">👤</div><p>Add alumni photo</p></div>
+      <div class="alumni-info">
+        <h4>Grace Adeleke</h4>
+        <div class="alumni-score">WAEC: 8 A's</div>
+        <p class="alumni-uni">🎓 UI Ibadan — Accounting</p>
+      </div>
+    </div>
+    <div class="alumni-add-card" onclick="alert('To add an alumni, duplicate one of the alumni-card divs above and update the name, score, and university.')">
+      <div class="plus">+</div>
+      <p>Click to add an alumni story</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT SECTION -->
+<section class="contact-section" id="contact">
+  <div class="section-tag">Find Us</div>
+  <h2 class="section-title">Address &amp; Contact</h2>
+  <div class="contact-grid">
+    <div class="contact-card">
+      <div class="contact-item">
+        <div class="contact-icon">📍</div>
+        <div>
+          <h4>Our Address</h4>
+          <p>123 Academy Road, [Your Area],<br>[Your City], Nigeria</p>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">📞</div>
+        <div>
+          <h4>Phone Number</h4>
+          <p><a href="tel:+2348000000000">+234 800 000 0000</a></p>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">💬</div>
+        <div>
+          <h4>WhatsApp</h4>
+          <p><a href="https://wa.me/2348000000000" target="_blank" rel="noopener">Chat with us on WhatsApp</a></p>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">🕐</div>
+        <div>
+          <h4>Opening Hours</h4>
+          <p>Monday – Saturday: 7:00 AM – 6:00 PM<br>Sunday: Closed</p>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">📧</div>
+        <div>
+          <h4>Email</h4>
+          <p><a href="mailto:info@sirphillipacademy.com">info@sirphillipacademy.com</a></p>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="map-placeholder" onclick="window.open('https://maps.google.com', '_blank')">
+        <div class="icon">🗺️</div>
+        <p>Click to open in Google Maps<br><small>Update the link with your actual address</small></p>
+      </div>
+      <div style="margin-top: 20px;">
+        <a href="https://wa.me/2348000000000?text=Hello%20Sir%20Phillip%20Academy!%20I%20want%20to%20find%20out%20more." class="whatsapp-btn" target="_blank" rel="noopener" style="display:inline-flex; width:100%; justify-content:center;">
+          <svg class="wa-icon" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Message Us on WhatsApp
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a href="#" class="logo" aria-label="Sir Phillip Academy">
+        <div class="logo-crest">SP</div>
+        <div class="logo-text" style="color:white;">Sir Phillip Academy<span>Excellence in Education</span></div>
+      </a>
+      <p>Empowering students with knowledge, discipline, and the confidence to achieve their dreams.</p>
+    </div>
+    <div class="footer-links">
+      <h5>Quick Links</h5>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#classes">Classes</a></li>
+        <li><a href="#events">Events</a></li>
+        <li><a href="#scores">Leaderboard</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#alumni">Alumni</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-links">
+      <h5>Programmes</h5>
+      <ul>
+        <li><a href="#classes">JAMB / UTME Prep</a></li>
+        <li><a href="#classes">WAEC Coaching</a></li>
+        <li><a href="#classes">NECO Coaching</a></li>
+        <li><a href="#classes">Science Classes</a></li>
+        <li><a href="#classes">Remedial Classes</a></li>
+      </ul>
+    </div>
+    <div class="footer-links">
+      <h5>Connect</h5>
+      <ul>
+        <li><a href="https://wa.me/2348000000000" target="_blank" rel="noopener">WhatsApp</a></li>
+        <li><a href="mailto:info@sirphillipacademy.com">Email Us</a></li>
+        <li><a href="tel:+2348000000000">Call Us</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 Sir Phillip Academy. All rights reserved.</p>
+    <p>Designed for excellence · Nigeria</p>
+  </div>
+</footer>
+
+<!-- ========================================
+     JAVASCRIPT
+     Handles countdown, mobile menu, animations
+     ======================================== -->
+<script>
+  /* ==========================================
+     JAMB COUNTDOWN TIMER
+     Updates every second to show time remaining
+     TO CHANGE THE DATE:
+     Edit the date in jambDate variable below
+     ========================================== */
+  const jambDate = new Date('2025-04-25T08:00:00'); // Set your JAMB exam date here
+  
+  function updateCountdown() {
+    const now = new Date();
+    const diff = jambDate - now; // Time difference in milliseconds
+    
+    // If countdown is finished, show zeros
+    if (diff <= 0) {
+      document.getElementById('cd-days').textContent = '00';
+      document.getElementById('cd-hours').textContent = '00';
+      document.getElementById('cd-mins').textContent = '00';
+      document.getElementById('cd-secs').textContent = '00';
+      return;
+    }
+    
+    // Calculate days, hours, minutes, seconds
+    const days = Math.floor(diff / (1000*60*60*24));
+    const hours = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
+    const mins = Math.floor((diff % (1000*60*60)) / (1000*60));
+    const secs = Math.floor((diff % (1000*60)) / 1000);
+    
+    // Update the HTML elements
+    document.getElementById('cd-days').textContent = String(days).padStart(2,'0');
+    document.getElementById('cd-hours').textContent = String(hours).padStart(2,'0');
+    document.getElementById('cd-mins').textContent = String(mins).padStart(2,'0');
+    document.getElementById('cd-secs').textContent = String(secs).padStart(2,'0');
+  }
+  
+  // Run countdown immediately and then every second
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+
+  /* ==========================================
+     MOBILE MENU TOGGLE
+     Opens and closes the mobile navigation menu
+     ========================================== */
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const menuOverlay = document.getElementById('menuOverlay');
+  const mobileLinks = document.querySelectorAll('.mobile-link');
+
+  // Function to open mobile menu
+  function openMenu() {
+    mobileMenu.classList.add('active');
+    menuOverlay.classList.add('active');
+    document.body.style.overflow = 'hidden'; // Prevent scrolling when menu is open
+  }
+
+  // Function to close mobile menu
+  function closeMenu() {
+    mobileMenu.classList.remove('active');
+    menuOverlay.classList.remove('active');
+    document.body.style.overflow = ''; // Re-enable scrolling
+  }
+
+  // Toggle menu when hamburger is clicked
+  hamburger.addEventListener('click', function() {
+    if (mobileMenu.classList.contains('active')) {
+      closeMenu();
+    } else {
+      openMenu();
+    }
+  });
+
+  // Close menu when overlay is clicked
+  menuOverlay.addEventListener('click', closeMenu);
+
+  // Close menu when a link is clicked
+  mobileLinks.forEach(link => {
+    link.addEventListener('click', closeMenu);
+  });
+
+  /* ==========================================
+     SCROLL ANIMATIONS
+     Fades in elements as they enter viewport
+     ========================================== */
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        // When element comes into view, trigger fade-up animation
+        e.target.style.animation = 'fadeUp 0.6s ease forwards';
+        e.target.style.opacity = '1';
+      }
+    });
+  }, { threshold: 0.1 }); // Trigger when 10% of element is visible
+
+  // Observe all cards and feature items
+  document.querySelectorAll('.class-card, .event-card, .alumni-card, .testimonial-card, .feature-item').forEach(el => {
+    el.style.opacity = '0'; // Start invisible
+    observer.observe(el);
+  });
+
+  /* ==========================================
+     SMOOTH SCROLLING FOR ANCHOR LINKS
+     Makes navigation links scroll smoothly
+     ========================================== */
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const id = a.getAttribute('href');
+      if (id === '#') return; // Skip empty anchors
+      
+      const el = document.querySelector(id);
+      if (el) {
+        e.preventDefault();
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
