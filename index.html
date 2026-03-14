@@ -49,6 +49,7 @@
 
   html { 
     scroll-behavior: smooth; /* Smooth scrolling for anchor links */
+    font-size: 16px; /* Base font size for rem calculations */
   }
 
   body {
@@ -56,10 +57,12 @@
     background: var(--cream);
     color: var(--text);
     overflow-x: hidden; /* Prevents horizontal scrolling on mobile */
+    width: 100%;
+    position: relative;
   }
 
   /* ========================================
-     NAVIGATION BAR
+     NAVIGATION BAR - FULLY RESPONSIVE
      Fixed at top, responsive hamburger menu
      ======================================== */
   nav {
@@ -67,6 +70,7 @@
     top: 0; 
     left: 0; 
     right: 0; 
+    width: 100%;
     z-index: 1000; /* Stays above all content */
     height: var(--nav-h);
     background: rgba(250,247,242,0.96);
@@ -84,6 +88,7 @@
     align-items: center; 
     gap: 12px;
     text-decoration: none;
+    flex-shrink: 0; /* Prevents logo from shrinking */
   }
   
   .logo-crest {
@@ -99,6 +104,7 @@
     font-size: 18px; 
     font-weight: 900;
     box-shadow: 0 4px 12px rgba(201,146,42,0.35);
+    flex-shrink: 0;
   }
   
   .logo-text {
@@ -132,6 +138,7 @@
     font-weight: 500; 
     letter-spacing: 0.3px; 
     transition: color 0.2s; 
+    white-space: nowrap; /* Prevents text wrapping */
   }
   
   .nav-links a:hover { 
@@ -152,6 +159,7 @@
     text-decoration: none;
     transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
     box-shadow: 0 3px 10px rgba(201,146,42,0.3);
+    white-space: nowrap;
   }
   
   .nav-cta:hover { 
@@ -167,7 +175,9 @@
     gap: 5px; 
     cursor: pointer; 
     background: none; 
-    border: none; 
+    border: none;
+    padding: 10px;
+    z-index: 1001;
   }
   
   .hamburger span { 
@@ -183,14 +193,15 @@
     position: fixed;
     top: var(--nav-h);
     right: -100%; /* Hidden off-screen by default */
-    width: 80%;
-    max-width: 300px;
+    width: 100%;
+    max-width: 320px;
     height: calc(100vh - var(--nav-h));
     background: var(--white);
     box-shadow: -4px 0 20px rgba(0,0,0,0.1);
     transition: right 0.3s ease;
     z-index: 999;
     padding: 2rem 1.5rem;
+    overflow-y: auto; /* Allows scrolling if menu is too long */
   }
 
   /* When menu is open */
@@ -241,21 +252,23 @@
   }
 
   /* ========================================
-     HERO SECTION
+     HERO SECTION - FULLY RESPONSIVE
      First section users see on homepage
      ======================================== */
   .hero {
     min-height: 100vh; /* Full screen height */
-    padding-top: var(--nav-h);
+    padding-top: calc(var(--nav-h) + 2rem);
+    padding-bottom: 4rem;
     display: grid; 
     grid-template-columns: 1fr 1fr; /* Two columns on desktop */
     align-items: center;
-    padding-left: 7%; 
-    padding-right: 4%;
+    padding-left: 5%; 
+    padding-right: 5%;
     gap: 40px;
     background: var(--cream);
     position: relative;
     overflow: hidden;
+    width: 100%;
   }
 
   /* Decorative background element */
@@ -268,6 +281,7 @@
     height: 600px;
     background: radial-gradient(circle, rgba(201,146,42,0.08) 0%, transparent 70%);
     border-radius: 50%;
+    pointer-events: none;
   }
 
   /* Large background text "SPA" */
@@ -277,12 +291,19 @@
     bottom: -60px; 
     left: -40px;
     font-family: 'Playfair Display', serif;
-    font-size: 280px; 
+    font-size: clamp(120px, 20vw, 280px); 
     font-weight: 900;
     color: rgba(201,146,42,0.04);
     line-height: 1; 
     pointer-events: none; /* Can't be clicked */
     user-select: none; /* Can't be selected */
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 100%;
   }
 
   /* Badge at top of hero section */
@@ -294,7 +315,7 @@
     border: 1px solid rgba(201,146,42,0.3);
     border-radius: 100px; 
     padding: 6px 16px;
-    font-size: 12px; 
+    font-size: clamp(10px, 2.5vw, 12px); 
     font-weight: 600; 
     color: var(--gold);
     letter-spacing: 1.5px; 
@@ -311,12 +332,14 @@
   /* Main hero heading */
   .hero h1 {
     font-family: 'Playfair Display', serif;
-    font-size: clamp(38px, 5vw, 62px); /* Responsive font size */
+    font-size: clamp(32px, 6vw, 62px); /* Responsive font size */
     font-weight: 900; 
     line-height: 1.1;
     color: var(--dark);
     margin-bottom: 20px;
     animation: fadeUp 0.7s 0.1s ease both; /* Staggered animation */
+    word-wrap: break-word;
+    max-width: 100%;
   }
   
   .hero h1 em { 
@@ -326,10 +349,10 @@
 
   /* Hero paragraph text */
   .hero p {
-    font-size: 17px; 
+    font-size: clamp(15px, 3vw, 17px); 
     color: var(--text-muted); 
     line-height: 1.75;
-    max-width: 460px; 
+    max-width: 100%; 
     margin-bottom: 36px;
     animation: fadeUp 0.7s 0.2s ease both;
   }
@@ -349,13 +372,15 @@
     padding: 14px 28px; 
     border-radius: 8px;
     font-weight: 700; 
-    font-size: 15px;
+    font-size: clamp(14px, 3vw, 15px);
     text-decoration: none; 
     display: inline-flex; 
     align-items: center; 
+    justify-content: center;
     gap: 8px;
     box-shadow: 0 6px 20px rgba(201,146,42,0.4);
     transition: all 0.2s;
+    white-space: nowrap;
   }
   
   .btn-primary:hover { 
@@ -371,13 +396,15 @@
     padding: 14px 28px; 
     border-radius: 8px;
     font-weight: 600; 
-    font-size: 15px;
+    font-size: clamp(14px, 3vw, 15px);
     text-decoration: none; 
     display: inline-flex; 
     align-items: center; 
+    justify-content: center;
     gap: 8px;
     border: 2px solid var(--border);
     transition: all 0.2s;
+    white-space: nowrap;
   }
   
   .btn-secondary:hover { 
@@ -388,24 +415,27 @@
   /* Statistics display in hero section */
   .hero-stats { 
     display: flex; 
-    gap: 32px; 
+    gap: clamp(16px, 4vw, 32px); 
     margin-top: 44px; 
-    animation: fadeUp 0.7s 0.4s ease both; 
+    animation: fadeUp 0.7s 0.4s ease both;
+    flex-wrap: wrap;
   }
   
   .stat-item { 
-    text-align: left; 
+    text-align: left;
+    flex: 1;
+    min-width: 100px;
   }
   
   .stat-num { 
     font-family: 'Playfair Display', serif; 
-    font-size: 32px; 
+    font-size: clamp(24px, 5vw, 32px); 
     font-weight: 900; 
     color: var(--gold); 
   }
   
   .stat-label { 
-    font-size: 12px; 
+    font-size: clamp(10px, 2.5vw, 12px); 
     color: var(--text-muted); 
     text-transform: uppercase; 
     letter-spacing: 1px; 
@@ -414,7 +444,8 @@
   /* Right side of hero with image grid */
   .hero-right { 
     position: relative; 
-    animation: fadeUp 0.8s 0.2s ease both; 
+    animation: fadeUp 0.8s 0.2s ease both;
+    width: 100%;
   }
   
   .hero-img-grid {
@@ -422,6 +453,7 @@
     grid-template-columns: 1fr 1fr; /* Two columns */
     gap: 12px;
     padding: 20px 0;
+    width: 100%;
   }
   
   .hero-img-card {
@@ -450,27 +482,29 @@
   }
   
   .hero-img-card .icon { 
-    font-size: 28px; 
+    font-size: clamp(20px, 4vw, 28px); 
   }
   
   .hero-img-card p { 
-    font-size: 12px; 
+    font-size: clamp(10px, 2.5vw, 12px); 
     color: var(--text-muted); 
-    text-align: center; 
+    text-align: center;
+    padding: 0 10px;
   }
 
   /* ========================================
-     COUNTDOWN BANNER
+     COUNTDOWN BANNER - FULLY RESPONSIVE
      Live countdown to JAMB examination
      ======================================== */
   .countdown-banner {
     background: var(--dark);
-    padding: 28px 5%;
+    padding: clamp(20px, 4vw, 28px) 5%;
     display: flex; 
     align-items: center; 
-    justify-content: space-between;
+    justify-content: center;
     flex-wrap: wrap; /* Wraps on small screens */
-    gap: 20px;
+    gap: clamp(16px, 3vw, 20px);
+    width: 100%;
   }
 
   /* Countdown label with fire emoji */
@@ -479,50 +513,53 @@
     align-items: center; 
     gap: 12px;
     color: white;
+    text-align: center;
   }
   
   .countdown-label .fire { 
-    font-size: 24px; 
+    font-size: clamp(20px, 4vw, 24px); 
     animation: pulse 1s infinite; /* Pulsing animation */
   }
   
   .countdown-label h3 { 
     font-family: 'Playfair Display', serif; 
-    font-size: 18px; 
+    font-size: clamp(16px, 3.5vw, 18px); 
     font-weight: 700; 
   }
   
   .countdown-label p { 
-    font-size: 12px; 
+    font-size: clamp(10px, 2.5vw, 12px); 
     color: rgba(255,255,255,0.6); 
   }
 
   /* Countdown timer boxes */
   .countdown-boxes { 
     display: flex; 
-    gap: 12px; 
-    align-items: center; 
+    gap: clamp(8px, 2vw, 12px); 
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
   }
   
   .cbox {
     background: rgba(201,146,42,0.15);
     border: 1px solid rgba(201,146,42,0.3);
     border-radius: 10px; 
-    padding: 12px 16px;
+    padding: clamp(8px, 2vw, 12px) clamp(12px, 3vw, 16px);
     text-align: center; 
-    min-width: 64px;
+    min-width: clamp(50px, 12vw, 64px);
   }
   
   .cbox-num { 
     font-family: 'Playfair Display', serif; 
-    font-size: 28px; 
+    font-size: clamp(20px, 5vw, 28px); 
     font-weight: 900; 
     color: var(--gold-light); 
     line-height: 1; 
   }
   
   .cbox-label { 
-    font-size: 10px; 
+    font-size: clamp(8px, 2vw, 10px); 
     color: rgba(255,255,255,0.5); 
     text-transform: uppercase; 
     letter-spacing: 1.5px; 
@@ -531,7 +568,7 @@
   
   .countdown-sep { 
     color: var(--gold-light); 
-    font-size: 24px; 
+    font-size: clamp(18px, 4vw, 24px); 
     font-weight: 700; 
     margin-bottom: 10px; 
   }
@@ -540,22 +577,28 @@
   .countdown-join { 
     display: flex; 
     align-items: center; 
-    gap: 10px; 
+    gap: 10px;
+    width: 100%;
+    max-width: 300px;
+    justify-content: center;
   }
   
   .whatsapp-btn {
     background: #25D366; /* WhatsApp green color */
     color: white;
-    padding: 12px 24px; 
+    padding: clamp(10px, 2.5vw, 12px) clamp(18px, 4vw, 24px); 
     border-radius: 8px;
     font-weight: 700; 
-    font-size: 14px;
+    font-size: clamp(12px, 3vw, 14px);
     text-decoration: none; 
     display: inline-flex; 
     align-items: center; 
+    justify-content: center;
     gap: 8px;
     transition: all 0.2s;
     box-shadow: 0 4px 14px rgba(37,211,102,0.35);
+    width: 100%;
+    white-space: nowrap;
   }
   
   .whatsapp-btn:hover { 
@@ -564,22 +607,25 @@
   }
   
   .wa-icon { 
-    width: 20px; 
-    height: 20px; 
-    fill: white; 
+    width: clamp(16px, 4vw, 20px); 
+    height: clamp(16px, 4vw, 20px); 
+    fill: white;
+    flex-shrink: 0;
   }
 
   /* ========================================
-     GENERAL SECTION STYLES
+     GENERAL SECTION STYLES - RESPONSIVE
      Used across multiple sections
      ======================================== */
   section { 
-    padding: 80px 5%; /* Vertical and horizontal padding */
+    padding: clamp(60px, 10vw, 80px) 5%; /* Responsive padding */
+    width: 100%;
+    overflow-x: hidden;
   }
 
   /* Small label above section titles */
   .section-tag {
-    font-size: 11px; 
+    font-size: clamp(10px, 2.5vw, 11px); 
     font-weight: 700; 
     color: var(--gold);
     letter-spacing: 3px; 
@@ -588,12 +634,13 @@
     display: flex; 
     align-items: center; 
     gap: 10px;
+    justify-content: center;
   }
   
   /* Decorative lines on either side of tag */
   .section-tag::before, .section-tag::after { 
     content: ''; 
-    flex: 0 0 30px; 
+    flex: 0 0 clamp(20px, 5vw, 30px); 
     height: 1px; 
     background: var(--gold); 
   }
@@ -601,24 +648,30 @@
   /* Main section heading */
   h2.section-title {
     font-family: 'Playfair Display', serif;
-    font-size: clamp(28px, 4vw, 44px); /* Responsive sizing */
+    font-size: clamp(28px, 6vw, 44px); /* Responsive sizing */
     font-weight: 900;
     color: var(--dark); 
     margin-bottom: 16px; 
     line-height: 1.15;
+    text-align: center;
+    word-wrap: break-word;
   }
 
   /* Subtitle text below section heading */
   .section-sub { 
-    font-size: 16px; 
+    font-size: clamp(14px, 3.5vw, 16px); 
     color: var(--text-muted); 
-    max-width: 540px; 
+    max-width: 100%; 
     line-height: 1.7; 
-    margin-bottom: 50px; 
+    margin-bottom: 50px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 1rem;
   }
 
   /* ========================================
-     EVENTS SECTION
+     EVENTS SECTION - FULLY RESPONSIVE
      New section for upcoming events
      ======================================== */
   .events-section { 
@@ -629,8 +682,9 @@
   .events-grid { 
     display: grid; 
     grid-template-columns: 1fr; /* Single column by default (mobile) */
-    gap: 30px; 
-    margin-top: 2rem; 
+    gap: clamp(20px, 4vw, 30px); 
+    margin-top: 2rem;
+    width: 100%;
   }
 
   /* Individual event card */
@@ -641,6 +695,8 @@
     border: 1px solid var(--border);
     transition: transform 0.3s, box-shadow 0.3s; /* Smooth animations */
     cursor: pointer;
+    width: 100%;
+    max-width: 100%;
   }
   
   .event-card:hover { 
@@ -651,35 +707,17 @@
   /* Event banner image container */
   .event-banner {
     width: 100%;
-    height: 250px; /* Fixed height for consistency */
+    height: clamp(180px, 40vw, 250px); /* Responsive height */
     background-size: cover; /* Image covers entire area */
     background-position: center; /* Centers the image */
     background-color: var(--milk); /* Fallback color */
     position: relative;
   }
 
-  /* Placeholder text when no banner image is uploaded */
-  .event-banner .placeholder {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    color: var(--text-muted);
-  }
-
-  .event-banner .placeholder .icon {
-    font-size: 48px;
-    margin-bottom: 8px;
-  }
-
-  .event-banner .placeholder p {
-    font-size: 13px;
-  }
-
   /* Event content area below banner */
   .event-content {
-    padding: 24px;
+    padding: clamp(16px, 4vw, 24px);
+    width: 100%;
   }
 
   /* Event category tag */
@@ -687,7 +725,7 @@
     display: inline-block;
     background: var(--gold-pale);
     color: var(--gold);
-    font-size: 11px;
+    font-size: clamp(10px, 2.5vw, 11px);
     font-weight: 700;
     letter-spacing: 1px;
     text-transform: uppercase;
@@ -699,16 +737,17 @@
   /* Event title */
   .event-content h3 {
     font-family: 'Playfair Display', serif;
-    font-size: 22px;
+    font-size: clamp(18px, 4.5vw, 22px);
     font-weight: 700;
     color: var(--dark);
     margin-bottom: 12px;
     line-height: 1.3;
+    word-wrap: break-word;
   }
 
   /* Event description text */
   .event-description {
-    font-size: 15px;
+    font-size: clamp(13px, 3.5vw, 15px);
     color: var(--text-muted);
     line-height: 1.7;
     margin-bottom: 20px;
@@ -721,42 +760,46 @@
     gap: 12px;
     padding-top: 20px;
     border-top: 1px solid var(--border);
+    width: 100%;
   }
 
   /* Individual meta item (date or location) */
   .event-meta-item {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     gap: 10px;
-    font-size: 14px;
+    font-size: clamp(12px, 3vw, 14px);
     color: var(--text);
+    width: 100%;
   }
 
   /* Icon container for meta items */
   .event-meta-item .icon {
-    width: 36px;
-    height: 36px;
+    width: clamp(32px, 7vw, 36px);
+    height: clamp(32px, 7vw, 36px);
     background: var(--gold-pale);
     border-radius: 8px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 16px;
+    font-size: clamp(14px, 3.5vw, 16px);
     flex-shrink: 0; /* Prevents icon from shrinking */
   }
 
   /* Register button for events */
   .event-register-btn {
-    display: inline-block;
+    display: block;
     background: var(--gold);
     color: white;
-    padding: 12px 24px;
+    padding: clamp(10px, 2.5vw, 12px) clamp(18px, 4vw, 24px);
     border-radius: 8px;
     text-decoration: none;
     font-weight: 600;
-    font-size: 14px;
+    font-size: clamp(12px, 3vw, 14px);
     margin-top: 16px;
     transition: all 0.2s;
+    text-align: center;
+    width: 100%;
   }
 
   .event-register-btn:hover {
@@ -765,7 +808,7 @@
   }
 
   /* ========================================
-     CLASSES SECTION
+     CLASSES SECTION - RESPONSIVE
      Tutorial classes offered
      ======================================== */
   .classes-section { 
@@ -775,8 +818,9 @@
   /* Grid for class cards */
   .classes-grid { 
     display: grid; 
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); 
-    gap: 20px; 
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr)); 
+    gap: 20px;
+    width: 100%;
   }
 
   /* Individual class card */
@@ -787,6 +831,7 @@
     border: 1px solid var(--border);
     transition: transform 0.25s, box-shadow 0.25s;
     cursor: pointer;
+    width: 100%;
   }
   
   .class-card:hover { 
@@ -806,16 +851,16 @@
     justify-content: center;
     gap: 10px; 
     color: var(--text-muted); 
-    font-size: 13px;
+    font-size: clamp(12px, 3vw, 13px);
   }
   
   .class-img .icon { 
-    font-size: 32px; 
+    font-size: clamp(28px, 6vw, 32px); 
   }
 
   /* Class information section */
   .class-info { 
-    padding: 18px 20px 22px; 
+    padding: clamp(16px, 3.5vw, 18px) clamp(18px, 4vw, 20px) clamp(20px, 4.5vw, 22px); 
   }
 
   /* Class category tag */
@@ -823,7 +868,7 @@
     display: inline-block; 
     background: var(--gold-pale);
     color: var(--gold); 
-    font-size: 11px; 
+    font-size: clamp(10px, 2.5vw, 11px); 
     font-weight: 700;
     letter-spacing: 1px; 
     text-transform: uppercase;
@@ -834,29 +879,37 @@
   
   .class-info h3 { 
     font-family: 'Playfair Display', serif; 
-    font-size: 18px; 
+    font-size: clamp(16px, 4vw, 18px); 
     font-weight: 700; 
     color: var(--dark); 
     margin-bottom: 8px; 
   }
   
   .class-info p { 
-    font-size: 13px; 
+    font-size: clamp(12px, 3vw, 13px); 
     color: var(--text-muted); 
     line-height: 1.6; 
   }
 
   /* ========================================
-     LEADERBOARD SECTION
+     LEADERBOARD SECTION - RESPONSIVE
      Student performance rankings
      ======================================== */
   .lb-section { 
     background: var(--milk); 
   }
 
+  /* Container for table with horizontal scroll on mobile */
+  .lb-container {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
   /* Leaderboard table */
   .lb-table {
     width: 100%; 
+    min-width: 600px; /* Minimum width to prevent squishing */
     border-collapse: collapse;
     background: white; 
     border-radius: 16px; 
@@ -870,9 +923,9 @@
   }
   
   .lb-table th { 
-    padding: 16px 20px; 
+    padding: clamp(12px, 3vw, 16px) clamp(16px, 4vw, 20px); 
     text-align: left; 
-    font-size: 11px; 
+    font-size: clamp(10px, 2.5vw, 11px); 
     font-weight: 700; 
     color: rgba(255,255,255,0.7); 
     text-transform: uppercase; 
@@ -893,21 +946,21 @@
   }
   
   .lb-table td { 
-    padding: 16px 20px; 
-    font-size: 14px; 
+    padding: clamp(12px, 3vw, 16px) clamp(16px, 4vw, 20px); 
+    font-size: clamp(12px, 3vw, 14px); 
     color: var(--text); 
   }
 
   /* Rank badge circles */
   .rank-badge {
-    width: 32px; 
-    height: 32px; 
+    width: clamp(28px, 6vw, 32px); 
+    height: clamp(28px, 6vw, 32px); 
     border-radius: 50%;
     display: inline-flex; 
     align-items: center; 
     justify-content: center;
     font-weight: 700; 
-    font-size: 13px;
+    font-size: clamp(11px, 3vw, 13px);
   }
   
   .rank-1 { 
@@ -952,35 +1005,14 @@
     border-radius: 10px; 
   }
 
-  /* Button to add new student row */
-  .add-row-btn {
-    display: block; 
-    width: 100%; 
-    padding: 14px;
-    background: var(--gold-pale); 
-    border: 2px dashed rgba(201,146,42,0.3);
-    color: var(--gold); 
-    font-weight: 600; 
-    font-size: 13px;
-    border-radius: 0 0 16px 16px; 
-    cursor: pointer;
-    transition: background 0.2s;
-    font-family: 'DM Sans', sans-serif;
-  }
-  
-  .add-row-btn:hover { 
-    background: rgba(201,146,42,0.12); 
-  }
-
   /* ========================================
-     ALUMNI SECTION
-     Success stories from graduates
+     ALUMNI, ABOUT, TESTIMONIALS SECTIONS
+     Similar responsive patterns
      ======================================== */
   .alumni-section { 
     background: var(--dark); 
   }
 
-  /* Dark theme color overrides */
   .alumni-section .section-title { 
     color: white; 
   }
@@ -998,14 +1030,13 @@
     color: rgba(255,255,255,0.55); 
   }
 
-  /* Alumni cards grid */
   .alumni-grid { 
     display: grid; 
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); 
-    gap: 20px; 
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 220px), 1fr)); 
+    gap: 20px;
+    width: 100%;
   }
 
-  /* Individual alumni card */
   .alumni-card {
     background: rgba(255,255,255,0.05);
     border: 1px solid rgba(255,255,255,0.1);
@@ -1013,6 +1044,7 @@
     overflow: hidden;
     transition: transform 0.25s, border-color 0.25s;
     cursor: pointer;
+    width: 100%;
   }
   
   .alumni-card:hover { 
@@ -1020,10 +1052,9 @@
     border-color: rgba(201,146,42,0.5); 
   }
 
-  /* Alumni photo placeholder */
   .alumni-photo {
     width: 100%; 
-    aspect-ratio: 1; /* Square photos */
+    aspect-ratio: 1;
     background: rgba(255,255,255,0.07);
     border-bottom: 1px solid rgba(255,255,255,0.08);
     display: flex; 
@@ -1035,52 +1066,49 @@
   }
   
   .alumni-photo .icon { 
-    font-size: 36px; 
+    font-size: clamp(32px, 7vw, 36px); 
     opacity: 0.4; 
   }
   
   .alumni-photo p { 
-    font-size: 11px; 
+    font-size: clamp(10px, 2.5vw, 11px); 
     color: rgba(255,255,255,0.35); 
-    text-align: center; 
+    text-align: center;
+    padding: 0 10px;
   }
 
-  /* Alumni information section */
   .alumni-info { 
-    padding: 16px 18px 20px; 
+    padding: clamp(14px, 3.5vw, 16px) clamp(16px, 4vw, 18px) clamp(18px, 4.5vw, 20px); 
   }
   
   .alumni-info h4 { 
     font-family: 'Playfair Display', serif; 
-    font-size: 16px; 
+    font-size: clamp(14px, 3.5vw, 16px); 
     font-weight: 700; 
     color: white; 
     margin-bottom: 6px; 
   }
 
-  /* Alumni score badge */
   .alumni-score { 
     display: inline-block; 
     background: rgba(201,146,42,0.2); 
     border: 1px solid rgba(201,146,42,0.4); 
     color: var(--gold-light); 
-    font-size: 12px; 
+    font-size: clamp(10px, 2.5vw, 12px); 
     font-weight: 700; 
     padding: 4px 10px; 
     border-radius: 100px; 
     margin-bottom: 8px; 
   }
 
-  /* University information */
   .alumni-uni { 
-    font-size: 12px; 
+    font-size: clamp(10px, 2.5vw, 12px); 
     color: rgba(255,255,255,0.45); 
     display: flex; 
     align-items: center; 
     gap: 5px; 
   }
 
-  /* Card to add new alumni */
   .alumni-add-card {
     border: 2px dashed rgba(201,146,42,0.3);
     border-radius: 18px;
@@ -1089,7 +1117,7 @@
     align-items: center; 
     justify-content: center;
     gap: 10px; 
-    padding: 32px; 
+    padding: clamp(24px, 6vw, 32px); 
     cursor: pointer; 
     transition: border-color 0.2s;
     min-height: 200px;
@@ -1101,32 +1129,28 @@
   
   .alumni-add-card p { 
     color: rgba(255,255,255,0.4); 
-    font-size: 13px; 
+    font-size: clamp(12px, 3vw, 13px); 
     text-align: center; 
   }
   
   .alumni-add-card .plus { 
-    font-size: 32px; 
+    font-size: clamp(28px, 6vw, 32px); 
     color: rgba(201,146,42,0.5); 
   }
 
-  /* ========================================
-     ABOUT SECTION
-     Information about the academy
-     ======================================== */
+  /* About section */
   .about-section { 
     background: var(--cream); 
   }
 
-  /* Two-column layout for about section */
   .about-grid { 
     display: grid; 
     grid-template-columns: 1fr 1fr; 
-    gap: 64px; 
-    align-items: center; 
+    gap: clamp(40px, 8vw, 64px); 
+    align-items: center;
+    width: 100%;
   }
 
-  /* About image container */
   .about-img {
     border-radius: 20px; 
     overflow: hidden;
@@ -1139,176 +1163,167 @@
     justify-content: center;
     gap: 12px; 
     position: relative;
+    width: 100%;
   }
   
   .about-img .icon { 
-    font-size: 48px; 
+    font-size: clamp(40px, 8vw, 48px); 
   }
   
   .about-img p { 
-    font-size: 13px; 
-    color: var(--text-muted); 
+    font-size: clamp(12px, 3vw, 13px); 
+    color: var(--text-muted);
+    text-align: center;
+    padding: 0 10px;
   }
 
-  /* Decorative accent box with initials */
   .about-accent {
     position: absolute; 
     bottom: -12px; 
     right: -12px;
-    width: 100px; 
-    height: 100px;
+    width: clamp(80px, 15vw, 100px); 
+    height: clamp(80px, 15vw, 100px);
     background: var(--gold); 
     border-radius: 16px;
     display: flex; 
     align-items: center; 
     justify-content: center;
     font-family: 'Playfair Display', serif; 
-    font-size: 32px;
+    font-size: clamp(24px, 5vw, 32px);
     color: white; 
     font-weight: 900;
     box-shadow: 0 8px 24px rgba(201,146,42,0.4);
   }
 
-  /* About text paragraphs */
   .about-text p { 
-    font-size: 16px; 
+    font-size: clamp(14px, 3.5vw, 16px); 
     color: var(--text-muted); 
     line-height: 1.8; 
     margin-bottom: 20px; 
   }
 
-  /* Feature highlights grid */
   .about-features { 
     display: grid; 
     grid-template-columns: 1fr 1fr; 
     gap: 16px; 
-    margin-top: 32px; 
+    margin-top: 32px;
+    width: 100%;
   }
 
-  /* Individual feature card */
   .feature-item {
     background: white; 
     border-radius: 12px; 
-    padding: 18px;
+    padding: clamp(14px, 3.5vw, 18px);
     border: 1px solid var(--border);
     display: flex; 
     gap: 14px; 
     align-items: flex-start;
+    width: 100%;
   }
   
   .feature-icon { 
-    font-size: 22px; 
-    line-height: 1; 
+    font-size: clamp(18px, 4vw, 22px); 
+    line-height: 1;
+    flex-shrink: 0;
   }
   
   .feature-item h4 { 
-    font-size: 14px; 
+    font-size: clamp(12px, 3vw, 14px); 
     font-weight: 700; 
     color: var(--dark); 
     margin-bottom: 4px; 
   }
   
   .feature-item p { 
-    font-size: 12px; 
+    font-size: clamp(11px, 2.5vw, 12px); 
     color: var(--text-muted); 
     line-height: 1.5; 
   }
 
-  /* ========================================
-     TESTIMONIALS SECTION
-     Student reviews and feedback
-     ======================================== */
+  /* Testimonials section */
   .testimonials-section { 
     background: var(--milk); 
   }
 
-  /* Testimonials grid layout */
   .testimonials-grid { 
     display: grid; 
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); 
-    gap: 20px; 
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); 
+    gap: 20px;
+    width: 100%;
   }
 
-  /* Individual testimonial card */
   .testimonial-card {
     background: white; 
     border-radius: 16px; 
-    padding: 28px;
+    padding: clamp(20px, 5vw, 28px);
     border: 1px solid var(--border);
     position: relative;
+    width: 100%;
   }
 
-  /* Large quotation mark decoration */
   .testimonial-card::before {
     content: '"'; 
     position: absolute; 
     top: 16px; 
     right: 20px;
     font-family: 'Playfair Display', serif; 
-    font-size: 72px; 
+    font-size: clamp(56px, 12vw, 72px); 
     color: var(--gold-pale);
     line-height: 1; 
     pointer-events: none;
   }
 
-  /* Star rating */
   .stars { 
     color: var(--gold); 
-    font-size: 14px; 
+    font-size: clamp(12px, 3vw, 14px); 
     margin-bottom: 12px; 
   }
 
-  /* Testimonial quote text */
   .testimonial-card p { 
-    font-size: 14px; 
+    font-size: clamp(12px, 3vw, 14px); 
     color: var(--text-muted); 
     line-height: 1.75; 
     margin-bottom: 20px; 
   }
 
-  /* Reviewer information */
   .reviewer { 
     display: flex; 
     align-items: center; 
     gap: 12px; 
   }
 
-  /* Reviewer avatar circle */
   .reviewer-av {
-    width: 40px; 
-    height: 40px; 
+    width: clamp(36px, 8vw, 40px); 
+    height: clamp(36px, 8vw, 40px); 
     border-radius: 50%;
     background: var(--gold-pale); 
     display: flex; 
     align-items: center; 
     justify-content: center;
     font-family: 'Playfair Display', serif; 
-    font-size: 16px; 
+    font-size: clamp(14px, 3.5vw, 16px); 
     font-weight: 700; 
     color: var(--gold);
+    flex-shrink: 0;
   }
   
   .reviewer h5 { 
-    font-size: 14px; 
+    font-size: clamp(12px, 3vw, 14px); 
     font-weight: 700; 
     color: var(--dark); 
   }
   
   .reviewer p { 
-    font-size: 12px; 
+    font-size: clamp(10px, 2.5vw, 12px); 
     color: var(--text-muted); 
     margin: 0; 
   }
 
-  /* ========================================
-     CONTACT SECTION
-     Address and contact information
-     ======================================== */
+  /* Contact section */
   .contact-section { 
     background: var(--dark); 
   }
 
-  /* Dark theme overrides */
   .contact-section .section-title { 
     color: white; 
   }
@@ -1322,50 +1337,49 @@
     background: var(--gold-light); 
   }
 
-  /* Contact grid layout */
   .contact-grid { 
     display: grid; 
     grid-template-columns: 1fr 1fr; 
-    gap: 50px; 
-    align-items: start; 
+    gap: clamp(30px, 6vw, 50px); 
+    align-items: start;
+    width: 100%;
   }
 
-  /* Contact information card */
   .contact-card {
     background: rgba(255,255,255,0.05); 
     border: 1px solid rgba(255,255,255,0.1);
     border-radius: 16px; 
-    padding: 28px;
+    padding: clamp(20px, 5vw, 28px);
+    width: 100%;
   }
 
-  /* Individual contact item */
   .contact-item { 
     display: flex; 
     gap: 16px; 
     align-items: flex-start; 
-    margin-bottom: 24px; 
+    margin-bottom: 24px;
+    width: 100%;
   }
   
   .contact-item:last-child { 
     margin-bottom: 0; 
   }
 
-  /* Contact icon container */
   .contact-icon {
-    width: 44px; 
-    height: 44px; 
+    width: clamp(38px, 8vw, 44px); 
+    height: clamp(38px, 8vw, 44px); 
     border-radius: 10px;
     background: rgba(201,146,42,0.15); 
     border: 1px solid rgba(201,146,42,0.3);
     display: flex; 
     align-items: center; 
     justify-content: center;
-    font-size: 20px; 
+    font-size: clamp(16px, 4vw, 20px); 
     flex-shrink: 0;
   }
   
   .contact-item h4 { 
-    font-size: 13px; 
+    font-size: clamp(11px, 2.5vw, 13px); 
     color: rgba(255,255,255,0.5); 
     text-transform: uppercase; 
     letter-spacing: 1px; 
@@ -1373,17 +1387,18 @@
   }
   
   .contact-item p { 
-    font-size: 15px; 
+    font-size: clamp(13px, 3.5vw, 15px); 
     color: white; 
-    font-weight: 500; 
+    font-weight: 500;
+    word-wrap: break-word;
   }
   
   .contact-item a { 
     color: var(--gold-light); 
-    text-decoration: none; 
+    text-decoration: none;
+    word-wrap: break-word;
   }
 
-  /* Map placeholder */
   .map-placeholder {
     width: 100%; 
     aspect-ratio: 16/10;
@@ -1404,48 +1419,45 @@
   }
   
   .map-placeholder .icon { 
-    font-size: 40px; 
+    font-size: clamp(32px, 7vw, 40px); 
     opacity: 0.3; 
   }
   
   .map-placeholder p { 
-    font-size: 13px; 
+    font-size: clamp(11px, 2.5vw, 13px); 
     color: rgba(255,255,255,0.3); 
-    text-align: center; 
+    text-align: center;
+    padding: 0 20px;
   }
 
-  /* ========================================
-     FOOTER
-     Bottom of page with links
-     ======================================== */
+  /* Footer */
   footer {
     background: #0F0A03; 
-    padding: 40px 5% 24px;
+    padding: clamp(32px, 6vw, 40px) 5% clamp(20px, 4vw, 24px);
     border-top: 1px solid rgba(255,255,255,0.06);
+    width: 100%;
   }
 
-  /* Top section of footer */
   .footer-top { 
     display: flex; 
     justify-content: space-between; 
     align-items: flex-start; 
     flex-wrap: wrap; 
-    gap: 32px; 
-    margin-bottom: 32px; 
+    gap: clamp(24px, 5vw, 32px); 
+    margin-bottom: clamp(24px, 5vw, 32px);
+    width: 100%;
   }
 
-  /* Footer brand section */
   .footer-brand p { 
-    font-size: 13px; 
+    font-size: clamp(12px, 3vw, 13px); 
     color: rgba(255,255,255,0.4); 
     max-width: 260px; 
     margin-top: 10px; 
     line-height: 1.7; 
   }
 
-  /* Footer navigation links */
   .footer-links h5 { 
-    font-size: 13px; 
+    font-size: clamp(12px, 3vw, 13px); 
     font-weight: 700; 
     color: white; 
     margin-bottom: 14px; 
@@ -1460,7 +1472,7 @@
   }
   
   .footer-links a { 
-    font-size: 13px; 
+    font-size: clamp(11px, 2.5vw, 13px); 
     color: rgba(255,255,255,0.45); 
     text-decoration: none; 
     transition: color 0.2s; 
@@ -1470,7 +1482,6 @@
     color: var(--gold-light); 
   }
 
-  /* Bottom section of footer */
   .footer-bottom { 
     border-top: 1px solid rgba(255,255,255,0.07); 
     padding-top: 20px; 
@@ -1478,27 +1489,25 @@
     justify-content: space-between; 
     align-items: center; 
     flex-wrap: wrap; 
-    gap: 12px; 
+    gap: 12px;
+    width: 100%;
   }
   
   .footer-bottom p { 
-    font-size: 12px; 
+    font-size: clamp(10px, 2.5vw, 12px); 
     color: rgba(255,255,255,0.25); 
   }
 
-  /* ========================================
-     FLOATING WHATSAPP BUTTON
-     Fixed button in bottom-right corner
-     ======================================== */
+  /* Floating WhatsApp button */
   .float-wa {
     position: fixed; 
-    bottom: 28px; 
-    right: 28px; 
+    bottom: clamp(20px, 4vw, 28px); 
+    right: clamp(20px, 4vw, 28px); 
     z-index: 999;
     background: #25D366; 
     color: white;
-    width: 58px; 
-    height: 58px; 
+    width: clamp(50px, 10vw, 58px); 
+    height: clamp(50px, 10vw, 58px); 
     border-radius: 50%;
     display: flex; 
     align-items: center; 
@@ -1506,18 +1515,18 @@
     box-shadow: 0 6px 24px rgba(37,211,102,0.45);
     text-decoration: none;
     transition: transform 0.2s, box-shadow 0.2s;
-    animation: bounce 2s infinite; /* Bouncing animation */
+    animation: bounce 2s infinite;
   }
   
   .float-wa:hover { 
     transform: scale(1.1); 
     box-shadow: 0 10px 32px rgba(37,211,102,0.55); 
-    animation: none; /* Stop bouncing on hover */
+    animation: none;
   }
   
   .float-wa svg { 
-    width: 28px; 
-    height: 28px; 
+    width: clamp(24px, 5vw, 28px); 
+    height: clamp(24px, 5vw, 28px); 
     fill: white; 
   }
 
@@ -1526,7 +1535,6 @@
      Keyframe animations used throughout
      ======================================== */
   
-  /* Fade up animation for elements entering viewport */
   @keyframes fadeUp { 
     from { 
       opacity: 0; 
@@ -1538,7 +1546,6 @@
     } 
   }
 
-  /* Pulse animation for fire emoji */
   @keyframes pulse { 
     0%, 100% { 
       transform: scale(1); 
@@ -1548,7 +1555,6 @@
     } 
   }
 
-  /* Bounce animation for WhatsApp button */
   @keyframes bounce { 
     0%, 100% { 
       transform: translateY(0); 
@@ -1559,27 +1565,25 @@
   }
 
   /* ========================================
-     RESPONSIVE DESIGN - TABLET
-     Breakpoint: 768px (iPad and similar)
+     RESPONSIVE BREAKPOINTS
+     Additional specific adjustments
      ======================================== */
-  @media (max-width: 1024px) and (min-width: 769px) {
-    /* Two-column grid for events on tablet */
+
+  /* Tablet landscape and desktop */
+  @media (min-width: 769px) {
     .events-grid {
       grid-template-columns: repeat(2, 1fr);
     }
+  }
 
-    /* Adjust event banner height for tablet */
-    .event-banner {
-      height: 220px;
+  @media (min-width: 1024px) {
+    .events-grid {
+      grid-template-columns: repeat(3, 1fr);
     }
   }
 
-  /* ========================================
-     RESPONSIVE DESIGN - MOBILE & TABLET
-     Breakpoint: 768px and below
-     ======================================== */
+  /* Mobile and tablet portrait */
   @media (max-width: 768px) {
-    /* Hide desktop navigation, show hamburger */
     .nav-links, .nav-cta { 
       display: none; 
     }
@@ -1588,85 +1592,43 @@
       display: flex; 
     }
 
-    /* Single column hero layout */
     .hero { 
       grid-template-columns: 1fr; 
-      padding: 100px 6% 60px; 
-      text-align: center; 
+      text-align: center;
+      padding-left: 5%;
+      padding-right: 5%;
     }
     
-    .hero p { 
+    .hero p, .hero h1 { 
       margin-left: auto; 
       margin-right: auto; 
     }
     
     .hero-btns { 
-      justify-content: center; 
+      justify-content: center;
+      width: 100%;
+    }
+    
+    .hero-btns .btn-primary,
+    .hero-btns .btn-secondary {
+      flex: 1;
+      min-width: 140px;
     }
     
     .hero-stats { 
       justify-content: center; 
     }
     
-    /* Hide hero image grid on mobile */
     .hero-right { 
       display: none; 
     }
 
-    /* Center countdown elements */
     .countdown-banner { 
       justify-content: center; 
-      text-align: center; 
-    }
-    
-    .countdown-label { 
-      justify-content: center; 
+      text-align: center;
+      flex-direction: column;
     }
 
-    /* Stack countdown boxes vertically on very small screens */
-    .countdown-boxes {
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-
-    /* Reduce countdown box size on mobile */
-    .cbox {
-      min-width: 56px;
-      padding: 10px 12px;
-    }
-
-    .cbox-num {
-      font-size: 24px;
-    }
-
-    /* EVENTS SECTION - Mobile optimization */
-    .events-grid {
-      grid-template-columns: 1fr; /* Single column on mobile */
-      gap: 24px;
-    }
-
-    .event-banner {
-      height: 200px; /* Smaller banner on mobile */
-    }
-
-    .event-content {
-      padding: 20px; /* Reduced padding */
-    }
-
-    .event-content h3 {
-      font-size: 20px; /* Slightly smaller title */
-    }
-
-    .event-description {
-      font-size: 14px; /* Smaller description text */
-    }
-
-    /* Stack event meta items on mobile if needed */
-    .event-meta {
-      gap: 10px;
-    }
-
-    /* Single column grids */
     .about-grid, .contact-grid { 
       grid-template-columns: 1fr; 
     }
@@ -1675,22 +1637,6 @@
       grid-template-columns: 1fr; 
     }
 
-    /* Adjust classes grid for mobile */
-    .classes-grid {
-      grid-template-columns: 1fr;
-    }
-
-    /* Adjust alumni grid for mobile */
-    .alumni-grid {
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    }
-
-    /* Adjust testimonials grid for mobile */
-    .testimonials-grid {
-      grid-template-columns: 1fr;
-    }
-
-    /* Stack footer columns */
     .footer-top { 
       flex-direction: column; 
     }
@@ -1699,153 +1645,73 @@
       flex-direction: column; 
       text-align: center; 
     }
-
-    /* Center section tags */
-    .section-tag { 
-      justify-content: center; 
-    }
-    
-    h2.section-title { 
-      text-align: center; 
-    }
-    
-    .section-sub { 
-      text-align: center; 
-      margin-left: auto; 
-      margin-right: auto; 
-    }
-
-    /* Reduce section padding on mobile */
-    section {
-      padding: 60px 5%;
-    }
-
-    /* Make leaderboard table scrollable on mobile */
-    .lb-table {
-      display: block;
-      overflow-x: auto; /* Horizontal scroll if needed */
-    }
-
-    /* Smaller floating WhatsApp button on mobile */
-    .float-wa {
-      width: 52px;
-      height: 52px;
-      bottom: 20px;
-      right: 20px;
-    }
-
-    .float-wa svg {
-      width: 24px;
-      height: 24px;
-    }
   }
 
-  /* ========================================
-     EXTRA SMALL MOBILE DEVICES
-     Breakpoint: 480px and below
-     ======================================== */
+  /* Extra small mobile devices */
   @media (max-width: 480px) {
-    /* Further reduce font sizes */
-    .hero h1 {
-      font-size: 32px;
+    .logo-text span {
+      font-size: 9px;
     }
 
-    .hero p {
-      font-size: 15px;
-    }
-
-    /* Smaller logo on very small screens */
     .logo-crest {
       width: 38px;
       height: 38px;
       font-size: 16px;
     }
 
-    .logo-text {
-      font-size: 16px;
-    }
-
-    /* Reduce navigation height */
     :root {
-      --nav-h: 64px;
+      --nav-h: 60px;
     }
 
-    /* Stack countdown elements more compactly */
     .countdown-sep {
-      display: none; /* Hide colons on very small screens */
+      margin: 0 4px;
     }
 
-    /* Adjust event card spacing */
-    .event-content {
-      padding: 16px;
-    }
-
-    .event-meta-item {
-      font-size: 13px;
-    }
-
-    /* Full-width buttons on small mobile */
-    .btn-primary, .btn-secondary, .event-register-btn {
+    .hero-btns .btn-primary,
+    .hero-btns .btn-secondary {
       width: 100%;
-      justify-content: center;
+      flex: none;
+    }
+
+    .stat-item {
+      min-width: 90px;
+    }
+
+    .feature-item {
+      flex-direction: column;
       text-align: center;
+      align-items: center;
     }
   }
 
-  /* ========================================
-     TOUCH DEVICE OPTIMIZATIONS
-     Improves touch targets and interactions
-     ======================================== */
-  @media (hover: none) and (pointer: coarse) {
-    /* Larger touch targets for mobile */
-    nav a, .hamburger {
-      min-height: 44px; /* Apple's recommended minimum */
-      min-width: 44px;
+  /* Landscape orientation on mobile */
+  @media (max-height: 500px) and (orientation: landscape) {
+    .hero {
+      min-height: auto;
+      padding-top: calc(var(--nav-h) + 1rem);
+      padding-bottom: 2rem;
     }
 
-    .mobile-menu a {
-      padding: 1rem 0; /* Larger tap area */
-    }
-
-    /* Remove hover effects on touch devices */
-    .event-card:hover,
-    .class-card:hover,
-    .alumni-card:hover,
-    .testimonial-card:hover {
-      transform: none; /* No lift effect on touch */
-    }
-
-    /* Instead, add active state for touch feedback */
-    .event-card:active,
-    .class-card:active,
-    .alumni-card:active {
-      opacity: 0.9;
+    .hero-stats {
+      margin-top: 20px;
     }
   }
 </style>
 </head>
 <body>
 
-<!-- ========================================
-     FLOATING WHATSAPP BUTTON
-     Always visible in bottom-right corner
-     ======================================== -->
+<!-- FLOATING WHATSAPP BUTTON -->
 <a href="https://wa.me/2347089506428?text=Hello%20Sir%20Phillip%20Academy!%20I%20want%20to%20enroll." class="float-wa" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
   <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
 </a>
 
-<!-- ========================================
-     NAVIGATION BAR
-     Fixed at top with mobile menu
-     ======================================== -->
+<!-- NAVIGATION BAR -->
 <nav>
-  <!-- Logo Section -->
   <a href="#" class="logo" aria-label="Sir Phillip Academy Home">
     <div class="logo-crest">SP</div>
     <div class="logo-text">Sir Phillip Academy<span>Excellence in Education</span></div>
   </a>
   
-  <!-- Desktop Navigation Links (hidden on mobile) -->
   <ul class="nav-links">
     <li><a href="#classes">Classes</a></li>
     <li><a href="#events">Events</a></li>
@@ -1855,10 +1721,8 @@
     <li><a href="#contact">Contact</a></li>
   </ul>
   
-  <!-- Desktop CTA Button (hidden on mobile) -->
   <a href="https://wa.me/2347089506428?text=Hello!%20I%20want%20to%20join%20Sir%20Phillip%20Academy." class="nav-cta" target="_blank" rel="noopener">Enroll Now</a>
   
-  <!-- Hamburger Menu Icon (shows on mobile) -->
   <button class="hamburger" aria-label="Open menu" id="hamburger">
     <span></span>
     <span></span>
@@ -1866,10 +1730,10 @@
   </button>
 </nav>
 
-<!-- Mobile Menu Overlay (darkens background when menu is open) -->
+<!-- MOBILE MENU OVERLAY -->
 <div class="menu-overlay" id="menuOverlay"></div>
 
-<!-- Mobile Navigation Menu (slides in from right) -->
+<!-- MOBILE NAVIGATION MENU -->
 <div class="mobile-menu" id="mobileMenu">
   <ul>
     <li><a href="#home" class="mobile-link">Home</a></li>
@@ -1883,22 +1747,13 @@
   </ul>
 </div>
 
-<!-- ========================================
-     HERO SECTION
-     Main landing section with headline
-     ======================================== -->
+<!-- HERO SECTION -->
 <section class="hero" id="home">
   <div class="hero-content">
-    <!-- Badge showing academy prestige -->
     <div class="hero-badge">Nigeria's Premier Tutorial Centre</div>
-    
-    <!-- Main headline -->
     <h1>Where Students Become <em>Champions</em></h1>
-    
-    <!-- Supporting text -->
     <p>Sir Phillip Academy prepares students for JAMB, WAEC, NECO and beyond — with expert tutors, proven methods, and a community that never gives up on you.</p>
     
-    <!-- Call-to-action buttons -->
     <div class="hero-btns">
       <a href="https://wa.me/2347089506428?text=Hello!%20I%20want%20to%20enroll%20at%20Sir%20Phillip%20Academy." class="btn-primary" target="_blank" rel="noopener">
         📲 Join on WhatsApp
@@ -1906,7 +1761,6 @@
       <a href="#about" class="btn-secondary">Learn More →</a>
     </div>
     
-    <!-- Statistics showcase -->
     <div class="hero-stats">
       <div class="stat-item">
         <div class="stat-num">500+</div>
@@ -1923,7 +1777,6 @@
     </div>
   </div>
   
-  <!-- Image grid (hidden on mobile for better performance) -->
   <div class="hero-right">
     <div class="hero-img-grid">
       <div class="hero-img-card">
@@ -1942,10 +1795,7 @@
   </div>
 </section>
 
-<!-- ========================================
-     COUNTDOWN BANNER
-     Live countdown to JAMB examination
-     ======================================== -->
+<!-- COUNTDOWN BANNER -->
 <div class="countdown-banner" id="countdown-section">
   <div class="countdown-label">
     <span class="fire">🔥</span>
@@ -1955,7 +1805,6 @@
     </div>
   </div>
   
-  <!-- Countdown timer boxes -->
   <div class="countdown-boxes">
     <div class="cbox">
       <div class="cbox-num" id="cd-days">00</div>
@@ -1978,7 +1827,6 @@
     </div>
   </div>
   
-  <!-- WhatsApp registration button -->
   <div class="countdown-join">
     <a href="https://wa.me/2347089506428?text=I%20want%20to%20register%20for%20JAMB%20prep%20at%20Sir%20Phillip%20Academy!" class="whatsapp-btn" target="_blank" rel="noopener">
       <svg class="wa-icon" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
@@ -1987,40 +1835,7 @@
   </div>
 </div>
 
-<!-- ========================================
-     UPCOMING EVENTS SECTION
-     Shows academy events with banners
-     
-     HOW TO ADD YOUR OWN EVENTS:
-     ===========================
-     1. Copy the entire .event-card div (from opening to closing tag)
-     2. Paste it inside the .events-grid div
-     3. Update the following:
-        - Event banner: Replace the URL in style="background-image: url('...')"
-        - Event tag: Change "JAMB Workshop", "Seminar", etc.
-        - Event title: Update the <h3> text
-        - Description: Change the paragraph text
-        - Date: Update the date text
-        - Location: Update the location text
-        - Register link: Update the WhatsApp message if needed
-     
-     HOW TO ADD EVENT BANNER IMAGES:
-     ===============================
-     Option 1 - Upload to free image hosting:
-       1. Go to imgur.com or cloudinary.com
-       2. Upload your image
-       3. Copy the direct image URL
-       4. Paste it in: style="background-image: url('PASTE-HERE')"
-     
-     Option 2 - Use free stock photos:
-       1. Go to unsplash.com
-       2. Find a suitable image
-       3. Click "Share" and copy URL
-       4. Add ?w=800&h=400&fit=crop for optimization
-       5. Use in background-image URL
-     
-     Recommended image size: 800x400px or larger
-     ======================================== -->
+<!-- UPCOMING EVENTS SECTION -->
 <section class="events-section" id="events">
   <div class="section-tag">What's Happening</div>
   <h2 class="section-title">Upcoming Events</h2>
@@ -2028,91 +1843,47 @@
   
   <div class="events-grid">
     
-    <!-- ========== EVENT CARD 1 ========== -->
+    <!-- EVENT CARD 1 -->
     <div class="event-card">
-      <!-- Event Banner Image 
-           TO CHANGE: Replace the URL below with your own image URL -->
-      <div class="event-banner" style="background-image: url;">
+      <div class="event-banner" style="background-image: url();">
       </div>
       
       <div class="event-content">
-        <!-- Event Category Tag -->
         <div class="event-tag">JAMB Workshop</div>
-        
-        <!-- Event Title -->
         <h3>ANJA 1.0</h3>
         
-        <!-- Event Description -->
         <p class="event-description">
           Join our comprehensive 3-week intensive JAMB preparation bootcamp. Master all subjects with our expert tutors, practice with past questions, and learn exam strategies that guarantee success.
         </p>
         
-        <!-- Event Date and Location -->
         <div class="event-meta">
           <div class="event-meta-item">
             <div class="icon">📅</div>
             <div>
-              <strong>Date:</strong> march 30th, 2025
+              <strong>Date:</strong> March 30th, 2025
             </div>
           </div>
           <div class="event-meta-item">
             <div class="icon">📍</div>
             <div>
-              <strong>Location:</strong> 2, Richard Abimbola, Ilasamaja, Lagos.
+              <strong>Location:</strong> 2, Richard Abimbola, Ilasamaja, Lagos
             </div>
           </div>
         </div>
         
-        <!-- Register Button -->
         <a href="https://wa.me/2347089506428?text=I%20want%20to%20register%20for%20JAMB%20Intensive%20Crash%20Course" class="event-register-btn" target="_blank" rel="noopener">
           Register Now →
         </a>
       </div>
     </div>
 
-    <!-- ========== EVENT CARD 2 ========== 
+    <!-- EVENT CARD 2 -->
     <div class="event-card">
-      <div class="event-banner" style="background-image: ;">
+      <div class="event-banner" style="background-image: url();">
       </div>
       
       <div class="event-content">
         <div class="event-tag">Seminar</div>
-        
-        <h3>University Admission Success Seminar</h3>
-        
-        <p class="event-description">
-          Learn the secrets of gaining admission to top Nigerian universities. Hear from recent alumni now studying Medicine, Law, Engineering and more. Get insider tips on Post-UTME preparation.
-        </p>
-        
-        <div class="event-meta">
-          <div class="event-meta-item">
-            <div class="icon">📅</div>
-            <div>
-              <strong>Date:</strong> May, 2025 | 2:00 PM
-            </div>
-          </div>
-          <div class="event-meta-item">
-            <div class="icon">📍</div>
-            <div>
-              <strong>Location:</strong> Academy Auditorium
-            </div>
-          </div>
-        </div>
-        
-        <a href="https://wa.me/2347089506428?text=I%20want%20to%20attend%20the%20University%20Admission%20Seminar" class="event-register-btn" target="_blank" rel="noopener">
-          Register Now →
-        </a>
-      </div>
-    </div> -->
-
-    <!-- ========== EVENT CARD 3 ========== -->
-    <div class="event-card">
-      <div class="event-banner" style="background-image: ;">
-      </div>
-      
-      <div class="event-content">
-        <div class="event-tag">Seminar</div>
-        
         <h3>Secret To Passing Jamb English</h3>
         
         <p class="event-description">
@@ -2129,24 +1900,19 @@
           <div class="event-meta-item">
             <div class="icon">📍</div>
             <div>
-              <strong>Location:</strong> LivingSpring College, Ilasamaja, Lagos.
+              <strong>Location:</strong> LivingSpring College, Ilasamaja, Lagos
             </div>
           </div>
         </div>
         
-        <a href="https://wa.me/2347089506428?text=I%20want%20to%20participate%20in%20the%20Mathematics%20Challenge" class="event-register-btn" target="_blank" rel="noopener">
+        <a href="https://wa.me/2347089506428?text=I%20want%20to%20attend%20Secret%20To%20Passing%20Jamb%20English" class="event-register-btn" target="_blank" rel="noopener">
           Register Now →
         </a>
       </div>
     </div>
 
-    <!-- Copy from here to add more events... -->
-
   </div>
 </section>
-
-<!-- The rest of the sections remain the same as your original code -->
-<!-- I'm including them for completeness -->
 
 <!-- CLASSES SECTION -->
 <section class="classes-section" id="classes">
@@ -2210,64 +1976,63 @@
   <div class="section-tag">Student Scores</div>
   <h2 class="section-title">Top Performers Leaderboard</h2>
   <p class="section-sub">Celebrating our best students. Updated regularly to reflect current examination results.</p>
-  <table class="lb-table" role="table" aria-label="Student Leaderboard">
-    <thead>
-      <tr>
-        <th>Rank</th>
-        <th>Student Name</th>
-        <th>Exam</th>
-        <th>Subject</th>
-        <th>Score</th>
-        <th>Year</th>
-      </tr>
-    </thead>
-    <tbody id="lb-body">
-      <tr>
-        <td><span class="rank-badge rank-1">1</span></td>
-        <td><strong>Adaeze Okonkwo</strong></td>
-        <td>MOCK</td>
-        <td>Sciences</td>
-        <td><div class="score-bar"><span>342/400</span><div class="score-track"><div class="score-fill" style="width:85%"></div></div></div></td>
-        <td>2026</td>
-      </tr>
-      <tr>
-        <td><span class="rank-badge rank-2">2</span></td>
-        <td><strong>Emeka Chukwuemeka</strong></td>
-        <td>MOCK</td>
-        <td>Arts</td>
-        <td><div class="score-bar"><span>336/400</span><div class="score-track"><div class="score-fill" style="width:84%"></div></div></div></td>
-        <td>2026</td>
-      </tr>
-      <tr>
-        <td><span class="rank-badge rank-3">3</span></td>
-        <td><strong>Fatima Abdullahi</strong></td>
-        <td>MOCK</td>
-        <td>Sciences</td>
-        <td><div class="score-bar"><span>329/400</span><div class="score-track"><div class="score-fill" style="width:82%"></div></div></div></td>
-        <td>2026</td>
-      </tr>
-      <tr>
-        <td><span class="rank-badge rank-other">4</span></td>
-        <td><strong>Chidi Nwosu</strong></td>
-        <td>MOCK</td>
-        <td>Sciences</td>
-        <td><div class="score-bar"><span>8 A's</span><div class="score-track"><div class="score-fill" style="width:100%"></div></div></div></td>
-        <td>2026</td>
-      </tr>
-      <tr>
-        <td><span class="rank-badge rank-other">5</span></td>
-        <td><strong>Ngozi Eze</strong></td>
-        <td>MOCK</td>
-        <td>Commercial</td>
-        <td><div class="score-bar"><span>318/400</span><div class="score-track"><div class="score-fill" style="width:79%"></div></div></div></td>
-        <td>2026</td>
-      </tr>
-    </tbody>
-  </table>
-  <!-- ADD STUDENT SCORE
-  <button class="add-row-btn" onclick="alert('Add your students here by editing the HTML table above!')">+ Add Student Score</button>
+  <div class="lb-container">
+    <table class="lb-table" role="table" aria-label="Student Leaderboard">
+      <thead>
+        <tr>
+          <th>Rank</th>
+          <th>Student Name</th>
+          <th>Exam</th>
+          <th>Subject</th>
+          <th>Score</th>
+          <th>Year</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="rank-badge rank-1">1</span></td>
+          <td><strong>Adaeze Okonkwo</strong></td>
+          <td>MOCK</td>
+          <td>Sciences</td>
+          <td><div class="score-bar"><span>341/400</span><div class="score-track"><div class="score-fill" style="width:85%"></div></div></div></td>
+          <td>2026</td>
+        </tr>
+        <tr>
+          <td><span class="rank-badge rank-2">2</span></td>
+          <td><strong>Emeka Chukwuemeka</strong></td>
+          <td>MOCK</td>
+          <td>Arts</td>
+          <td><div class="score-bar"><span>336/400</span><div class="score-track"><div class="score-fill" style="width:84%"></div></div></div></td>
+          <td>2026</td>
+        </tr>
+        <tr>
+          <td><span class="rank-badge rank-3">3</span></td>
+          <td><strong>Fatima Abdullahi</strong></td>
+          <td>MOCK</td>
+          <td>Sciences</td>
+          <td><div class="score-bar"><span>329/400</span><div class="score-track"><div class="score-fill" style="width:82%"></div></div></div></td>
+          <td>2026</td>
+        </tr>
+        <tr>
+          <td><span class="rank-badge rank-other">4</span></td>
+          <td><strong>Chidi Nwosu</strong></td>
+          <td>MOCK</td>
+          <td>Sciences</td>
+          <td><div class="score-bar"><span>8 A's</span><div class="score-track"><div class="score-fill" style="width:100%"></div></div></div></td>
+          <td>2026</td>
+        </tr>
+        <tr>
+          <td><span class="rank-badge rank-other">5</span></td>
+          <td><strong>Ngozi Eze</strong></td>
+          <td>MOCK</td>
+          <td>Commercial</td>
+          <td><div class="score-bar"><span>318/400</span><div class="score-track"><div class="score-fill" style="width:79%"></div></div></div></td>
+          <td>2026</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </section>
--->
 
 <!-- ABOUT SECTION -->
 <section class="about-section" id="about">
@@ -2508,24 +2273,15 @@
   </div>
 </footer>
 
-<!-- ========================================
-     JAVASCRIPT
-     Handles countdown, mobile menu, animations
-     ======================================== -->
+<!-- JAVASCRIPT -->
 <script>
-  /* ==========================================
-     JAMB COUNTDOWN TIMER
-     Updates every second to show time remaining
-     TO CHANGE THE DATE:
-     Edit the date in jambDate variable below
-     ========================================== */
-  const jambDate = new Date('2026-04-16T08:00:00'); // Set your JAMB exam date here
+  // JAMB COUNTDOWN TIMER
+  const jambDate = new Date('2026-04-16T08:00:00');
   
   function updateCountdown() {
     const now = new Date();
-    const diff = jambDate - now; // Time difference in milliseconds
+    const diff = jambDate - now;
     
-    // If countdown is finished, show zeros
     if (diff <= 0) {
       document.getElementById('cd-days').textContent = '00';
       document.getElementById('cd-hours').textContent = '00';
@@ -2534,47 +2290,38 @@
       return;
     }
     
-    // Calculate days, hours, minutes, seconds
     const days = Math.floor(diff / (1000*60*60*24));
     const hours = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
     const mins = Math.floor((diff % (1000*60*60)) / (1000*60));
     const secs = Math.floor((diff % (1000*60)) / 1000);
     
-    // Update the HTML elements
     document.getElementById('cd-days').textContent = String(days).padStart(2,'0');
     document.getElementById('cd-hours').textContent = String(hours).padStart(2,'0');
     document.getElementById('cd-mins').textContent = String(mins).padStart(2,'0');
     document.getElementById('cd-secs').textContent = String(secs).padStart(2,'0');
   }
   
-  // Run countdown immediately and then every second
   updateCountdown();
   setInterval(updateCountdown, 1000);
 
-  /* ==========================================
-     MOBILE MENU TOGGLE
-     Opens and closes the mobile navigation menu
-     ========================================== */
+  // MOBILE MENU TOGGLE
   const hamburger = document.getElementById('hamburger');
   const mobileMenu = document.getElementById('mobileMenu');
   const menuOverlay = document.getElementById('menuOverlay');
   const mobileLinks = document.querySelectorAll('.mobile-link');
 
-  // Function to open mobile menu
   function openMenu() {
     mobileMenu.classList.add('active');
     menuOverlay.classList.add('active');
-    document.body.style.overflow = 'hidden'; // Prevent scrolling when menu is open
+    document.body.style.overflow = 'hidden';
   }
 
-  // Function to close mobile menu
   function closeMenu() {
     mobileMenu.classList.remove('active');
     menuOverlay.classList.remove('active');
-    document.body.style.overflow = ''; // Re-enable scrolling
+    document.body.style.overflow = '';
   }
 
-  // Toggle menu when hamburger is clicked
   hamburger.addEventListener('click', function() {
     if (mobileMenu.classList.contains('active')) {
       closeMenu();
@@ -2583,42 +2330,32 @@
     }
   });
 
-  // Close menu when overlay is clicked
   menuOverlay.addEventListener('click', closeMenu);
 
-  // Close menu when a link is clicked
   mobileLinks.forEach(link => {
     link.addEventListener('click', closeMenu);
   });
 
-  /* ==========================================
-     SCROLL ANIMATIONS
-     Fades in elements as they enter viewport
-     ========================================== */
+  // SCROLL ANIMATIONS
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(e => {
       if (e.isIntersecting) {
-        // When element comes into view, trigger fade-up animation
         e.target.style.animation = 'fadeUp 0.6s ease forwards';
         e.target.style.opacity = '1';
       }
     });
-  }, { threshold: 0.1 }); // Trigger when 10% of element is visible
+  }, { threshold: 0.1 });
 
-  // Observe all cards and feature items
   document.querySelectorAll('.class-card, .event-card, .alumni-card, .testimonial-card, .feature-item').forEach(el => {
-    el.style.opacity = '0'; // Start invisible
+    el.style.opacity = '0';
     observer.observe(el);
   });
 
-  /* ==========================================
-     SMOOTH SCROLLING FOR ANCHOR LINKS
-     Makes navigation links scroll smoothly
-     ========================================== */
+  // SMOOTH SCROLLING
   document.querySelectorAll('a[href^="#"]').forEach(a => {
     a.addEventListener('click', e => {
       const id = a.getAttribute('href');
-      if (id === '#') return; // Skip empty anchors
+      if (id === '#') return;
       
       const el = document.querySelector(id);
       if (el) {
@@ -2627,8 +2364,6 @@
       }
     });
   });
-
-  setInterval(updateCountdown, 1000);
 </script>
 
 </body>
