@@ -4,11 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sir Phillip Academy | Excellence in Education & JAMB Preparation</title>
-<meta name="description" content="Sir Phillip Academy is a premier tutorial centre offering world-class education and JAMB preparation. Join thousands of students achieving top scores and gaining university admission.">
-<meta name="keywords" content="Sir Phillip Academy, JAMB tutorial, JAMB preparation, education, tutorial centre, Nigeria, UTME, university admission, WAEC, NECO">
+<meta name="description" content="Sir Phillip Academy is a premier tutorial centre offering world-class education and JAMB preparation in Lagos, Nigeria. Join thousands of students achieving top scores and gaining university admission.">
+<meta name="keywords" content="Sir Phillip Academy, JAMB tutorial, JAMB preparation, education, tutorial centre, Nigeria, UTME, university admission, WAEC, NECO, Ilasamaja Lagos">
 <meta name="author" content="Sir Phillip Academy">
 <meta property="og:title" content="Sir Phillip Academy | Excellence in Education">
-<meta property="og:description" content="Premier tutorial centre for JAMB, WAEC, and academic excellence. Join our winning community today.">
+<meta property="og:description" content="Premier tutorial centre for JAMB, WAEC, and academic excellence in Lagos. Join our winning community today.">
 <meta property="og:type" content="website">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://sirphillipacademy.com">
@@ -19,8 +19,8 @@
 
 <style>
   /* ========================================
-     CSS CUSTOM PROPERTIES (VARIABLES)
-     These store our color scheme and spacing
+     CSS CUSTOM PROPERTIES (COLOR PALETTE)
+     Central place to update all colors
      ======================================== */
   :root {
     --cream: #FAF7F2;
@@ -34,47 +34,46 @@
     --text-muted: #7A6A52;
     --white: #FFFFFF;
     --border: #E8DFC8;
-    --nav-h: 72px;
+    --nav-h: 72px; /* Height of the navigation bar */
   }
 
   /* ========================================
-     GLOBAL RESET & BASE STYLES
-     Removes browser defaults for consistency
+     GLOBAL RESET
+     Removes browser default styles
      ======================================== */
   * { 
     margin: 0; 
     padding: 0; 
-    box-sizing: border-box; /* Makes width/height calculations easier */
+    box-sizing: border-box;
   }
 
   html { 
-    scroll-behavior: smooth; /* Smooth scrolling for anchor links */
-    font-size: 16px; /* Base font size for rem calculations */
+    scroll-behavior: smooth;
+    font-size: 16px;
   }
 
   body {
     font-family: 'DM Sans', sans-serif;
     background: var(--cream);
     color: var(--text);
-    overflow-x: hidden; /* Prevents horizontal scrolling on mobile */
+    overflow-x: hidden;
     width: 100%;
     position: relative;
   }
 
   /* ========================================
-     NAVIGATION BAR - FULLY RESPONSIVE
-     Fixed at top, responsive hamburger menu
+     NAVIGATION BAR
+     Fixed at top, collapses to hamburger
+     on mobile screens
      ======================================== */
   nav {
     position: fixed; 
-    top: 0; 
-    left: 0; 
-    right: 0; 
+    top: 0; left: 0; right: 0; 
     width: 100%;
-    z-index: 1000; /* Stays above all content */
+    z-index: 1000;
     height: var(--nav-h);
     background: rgba(250,247,242,0.96);
-    backdrop-filter: blur(12px); /* Blur effect for modern look */
+    backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--border);
     display: flex; 
     align-items: center; 
@@ -82,923 +81,629 @@
     padding: 0 5%;
   }
 
-  /* Logo section with crest and text */
+  /* Logo: circular crest + text */
   .logo {
-    display: flex; 
-    align-items: center; 
-    gap: 12px;
-    text-decoration: none;
-    flex-shrink: 0; /* Prevents logo from shrinking */
+    display: flex; align-items: center; gap: 12px;
+    text-decoration: none; flex-shrink: 0;
   }
-  
   .logo-crest {
-    width: 46px; 
-    height: 46px;
-    background: var(--gold);
-    border-radius: 50%; /* Makes it circular */
-    display: flex; 
-    align-items: center; 
-    justify-content: center;
+    width: 46px; height: 46px;
+    background: var(--gold); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
     font-family: 'Playfair Display', serif;
-    color: white; 
-    font-size: 18px; 
-    font-weight: 900;
+    color: white; font-size: 18px; font-weight: 900;
     box-shadow: 0 4px 12px rgba(201,146,42,0.35);
     flex-shrink: 0;
   }
-  
   .logo-text {
     font-family: 'Playfair Display', serif;
-    font-size: 18px; 
-    font-weight: 700;
-    color: var(--dark);
-    line-height: 1.2;
+    font-size: 18px; font-weight: 700;
+    color: var(--dark); line-height: 1.2;
   }
-  
   .logo-text span { 
-    display: block; 
-    font-size: 11px; 
-    font-weight: 400; 
-    color: var(--gold); 
-    letter-spacing: 2px; 
-    text-transform: uppercase; 
+    display: block; font-size: 11px; font-weight: 400; 
+    color: var(--gold); letter-spacing: 2px; text-transform: uppercase; 
   }
 
-  /* Desktop navigation links - hidden on mobile */
+  /* Desktop nav links */
   .nav-links { 
-    display: flex; 
-    gap: 32px; 
-    list-style: none; 
+    display: flex; gap: 32px; list-style: none; 
   }
-  
   .nav-links a { 
-    text-decoration: none; 
-    color: var(--text); 
-    font-size: 14px; 
-    font-weight: 500; 
-    letter-spacing: 0.3px; 
-    transition: color 0.2s; 
-    white-space: nowrap; /* Prevents text wrapping */
+    text-decoration: none; color: var(--text); 
+    font-size: 14px; font-weight: 500; letter-spacing: 0.3px; 
+    transition: color 0.2s; white-space: nowrap;
   }
-  
-  .nav-links a:hover { 
-    color: var(--gold); 
-  }
+  .nav-links a:hover { color: var(--gold); }
 
-  /* Call-to-action button in navigation */
+  /* Enroll button in nav */
   .nav-cta {
-    background: var(--gold); 
-    color: white;
-    border: none; 
-    padding: 10px 22px; 
-    border-radius: 6px;
-    font-family: 'DM Sans', sans-serif; 
-    font-size: 14px; 
-    font-weight: 600;
-    cursor: pointer; 
-    text-decoration: none;
+    background: var(--gold); color: white;
+    border: none; padding: 10px 22px; border-radius: 6px;
+    font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 600;
+    cursor: pointer; text-decoration: none;
     transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
-    box-shadow: 0 3px 10px rgba(201,146,42,0.3);
-    white-space: nowrap;
+    box-shadow: 0 3px 10px rgba(201,146,42,0.3); white-space: nowrap;
   }
-  
   .nav-cta:hover { 
-    background: #b07d1e; 
-    transform: translateY(-1px); 
+    background: #b07d1e; transform: translateY(-1px); 
     box-shadow: 0 5px 16px rgba(201,146,42,0.4); 
   }
 
-  /* Hamburger menu icon - shows on mobile */
+  /* Hamburger icon — hidden on desktop, shown on mobile */
   .hamburger { 
-    display: none; /* Hidden by default, shows on mobile */
-    flex-direction: column; 
-    gap: 5px; 
-    cursor: pointer; 
-    background: none; 
-    border: none;
-    padding: 10px;
-    z-index: 1001;
+    display: none; flex-direction: column; gap: 5px; 
+    cursor: pointer; background: none; border: none; 
+    padding: 10px; z-index: 1001;
   }
-  
   .hamburger span { 
-    width: 24px; 
-    height: 2px; 
-    background: var(--dark); 
-    border-radius: 2px; 
-    transition: all 0.3s; 
+    width: 24px; height: 2px; background: var(--dark); 
+    border-radius: 2px; transition: all 0.3s; 
   }
 
-  /* Mobile navigation menu - slides in from right */
+  /* Mobile slide-in menu from right */
   .mobile-menu {
-    position: fixed;
-    top: var(--nav-h);
-    right: -100%; /* Hidden off-screen by default */
-    width: 100%;
-    max-width: 320px;
+    position: fixed; top: var(--nav-h); right: -100%;
+    width: 100%; max-width: 320px;
     height: calc(100vh - var(--nav-h));
     background: var(--white);
     box-shadow: -4px 0 20px rgba(0,0,0,0.1);
-    transition: right 0.3s ease;
-    z-index: 999;
-    padding: 2rem 1.5rem;
-    overflow-y: auto; /* Allows scrolling if menu is too long */
+    transition: right 0.3s ease; z-index: 999;
+    padding: 2rem 1.5rem; overflow-y: auto;
   }
-
-  /* When menu is open */
-  .mobile-menu.active {
-    right: 0;
+  .mobile-menu.active { right: 0; }
+  .mobile-menu ul { 
+    list-style: none; display: flex; flex-direction: column; gap: 1.5rem; 
   }
-
-  /* Mobile menu links styling */
-  .mobile-menu ul {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-  }
-
   .mobile-menu a {
-    text-decoration: none;
-    color: var(--text);
-    font-size: 16px;
-    font-weight: 500;
-    padding: 0.75rem 0;
-    border-bottom: 1px solid var(--border);
-    display: block;
-    transition: color 0.2s;
+    text-decoration: none; color: var(--text); font-size: 16px; font-weight: 500;
+    padding: 0.75rem 0; border-bottom: 1px solid var(--border);
+    display: block; transition: color 0.2s;
   }
+  .mobile-menu a:hover { color: var(--gold); }
 
-  .mobile-menu a:hover {
-    color: var(--gold);
-  }
-
-  /* Overlay that appears behind mobile menu */
+  /* Dark overlay behind mobile menu */
   .menu-overlay {
-    position: fixed;
-    top: var(--nav-h);
-    left: 0;
-    width: 100%;
-    height: calc(100vh - var(--nav-h));
+    position: fixed; top: var(--nav-h); left: 0;
+    width: 100%; height: calc(100vh - var(--nav-h));
     background: rgba(0,0,0,0.5);
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s, visibility 0.3s;
-    z-index: 998;
+    opacity: 0; visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s; z-index: 998;
   }
-
-  .menu-overlay.active {
-    opacity: 1;
-    visibility: visible;
-  }
+  .menu-overlay.active { opacity: 1; visibility: visible; }
 
   /* ========================================
-     HERO SECTION - FULLY RESPONSIVE
-     First section users see on homepage
+     HERO SECTION
+     Full-screen intro with stats
      ======================================== */
   .hero {
-    min-height: 100vh; /* Full screen height */
+    min-height: 100vh;
     padding-top: calc(var(--nav-h) + 2rem);
     padding-bottom: 4rem;
     display: grid; 
-    grid-template-columns: 1fr 1fr; /* Two columns on desktop */
+    grid-template-columns: 1fr 1fr;
     align-items: center;
-    padding-left: 5%; 
-    padding-right: 5%;
+    padding-left: 5%; padding-right: 5%;
     gap: 40px;
     background: var(--cream);
-    position: relative;
-    overflow: hidden;
-    width: 100%;
+    position: relative; overflow: hidden; width: 100%;
   }
 
-  /* Decorative background element */
+  /* Subtle radial glow decoration in top-right */
   .hero::before {
     content: '';
-    position: absolute; 
-    top: -100px; 
-    right: -100px;
-    width: 600px; 
-    height: 600px;
+    position: absolute; top: -100px; right: -100px;
+    width: 600px; height: 600px;
     background: radial-gradient(circle, rgba(201,146,42,0.08) 0%, transparent 70%);
-    border-radius: 50%;
-    pointer-events: none;
+    border-radius: 50%; pointer-events: none;
   }
 
-  /* Large background text "SPA" */
+  /* Large watermark text in background */
   .hero::after {
     content: 'SPA';
-    position: absolute; 
-    bottom: -60px; 
-    left: -40px;
+    position: absolute; bottom: -60px; left: -40px;
     font-family: 'Playfair Display', serif;
-    font-size: clamp(120px, 20vw, 280px); 
-    font-weight: 900;
-    color: rgba(201,146,42,0.04);
-    line-height: 1; 
-    pointer-events: none; /* Can't be clicked */
-    user-select: none; /* Can't be selected */
+    font-size: clamp(120px, 20vw, 280px); font-weight: 900;
+    color: rgba(201,146,42,0.04); line-height: 1;
+    pointer-events: none; user-select: none;
   }
 
-  .hero-content {
-    position: relative;
-    z-index: 1;
-    width: 100%;
-    max-width: 100%;
-  }
+  .hero-content { position: relative; z-index: 1; width: 100%; max-width: 100%; }
 
-  /* Badge at top of hero section */
+  /* Small pill-shaped label at top of hero */
   .hero-badge {
-    display: inline-flex; 
-    align-items: center; 
-    gap: 8px;
-    background: var(--gold-pale); 
-    border: 1px solid rgba(201,146,42,0.3);
-    border-radius: 100px; 
-    padding: 6px 16px;
-    font-size: clamp(10px, 2.5vw, 12px); 
-    font-weight: 600; 
-    color: var(--gold);
-    letter-spacing: 1.5px; 
-    text-transform: uppercase;
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--gold-pale); border: 1px solid rgba(201,146,42,0.3);
+    border-radius: 100px; padding: 6px 16px;
+    font-size: clamp(10px, 2.5vw, 12px); font-weight: 600; color: var(--gold);
+    letter-spacing: 1.5px; text-transform: uppercase;
     margin-bottom: 24px;
-    animation: fadeUp 0.7s ease both; /* Fade in animation */
+    animation: fadeUp 0.7s ease both;
   }
-  
-  .hero-badge::before { 
-    content: '★'; 
-    font-size: 10px; 
-  }
+  .hero-badge::before { content: '★'; font-size: 10px; }
 
-  /* Main hero heading */
   .hero h1 {
     font-family: 'Playfair Display', serif;
-    font-size: clamp(32px, 6vw, 62px); /* Responsive font size */
-    font-weight: 900; 
-    line-height: 1.1;
-    color: var(--dark);
-    margin-bottom: 20px;
-    animation: fadeUp 0.7s 0.1s ease both; /* Staggered animation */
-    word-wrap: break-word;
-    max-width: 100%;
+    font-size: clamp(32px, 6vw, 62px); font-weight: 900; line-height: 1.1;
+    color: var(--dark); margin-bottom: 20px;
+    animation: fadeUp 0.7s 0.1s ease both;
+    word-wrap: break-word; max-width: 100%;
   }
-  
-  .hero h1 em { 
-    color: var(--gold); 
-    font-style: normal; /* Not italicized */
-  }
+  .hero h1 em { color: var(--gold); font-style: normal; }
 
-  /* Hero paragraph text */
   .hero p {
-    font-size: clamp(15px, 3vw, 17px); 
-    color: var(--text-muted); 
-    line-height: 1.75;
-    max-width: 100%; 
-    margin-bottom: 36px;
+    font-size: clamp(15px, 3vw, 17px); color: var(--text-muted); line-height: 1.75;
+    max-width: 100%; margin-bottom: 36px;
     animation: fadeUp 0.7s 0.2s ease both;
   }
 
-  /* Container for hero buttons */
   .hero-btns { 
-    display: flex; 
-    gap: 14px; 
-    flex-wrap: wrap; /* Buttons wrap on small screens */
+    display: flex; gap: 14px; flex-wrap: wrap;
     animation: fadeUp 0.7s 0.3s ease both; 
   }
 
-  /* Primary button style (gold background) */
+  /* Gold filled button */
   .btn-primary {
-    background: var(--gold); 
-    color: white;
-    padding: 14px 28px; 
-    border-radius: 8px;
-    font-weight: 700; 
-    font-size: clamp(14px, 3vw, 15px);
-    text-decoration: none; 
-    display: inline-flex; 
-    align-items: center; 
-    justify-content: center;
-    gap: 8px;
-    box-shadow: 0 6px 20px rgba(201,146,42,0.4);
-    transition: all 0.2s;
-    white-space: nowrap;
+    background: var(--gold); color: white;
+    padding: 14px 28px; border-radius: 8px;
+    font-weight: 700; font-size: clamp(14px, 3vw, 15px);
+    text-decoration: none; display: inline-flex; align-items: center; justify-content: center;
+    gap: 8px; box-shadow: 0 6px 20px rgba(201,146,42,0.4);
+    transition: all 0.2s; white-space: nowrap;
   }
-  
   .btn-primary:hover { 
-    background: #b07d1e; 
-    transform: translateY(-2px); 
+    background: #b07d1e; transform: translateY(-2px); 
     box-shadow: 0 10px 28px rgba(201,146,42,0.45); 
   }
 
-  /* Secondary button style (outlined) */
+  /* Outlined button */
   .btn-secondary {
-    background: transparent; 
-    color: var(--dark);
-    padding: 14px 28px; 
-    border-radius: 8px;
-    font-weight: 600; 
-    font-size: clamp(14px, 3vw, 15px);
-    text-decoration: none; 
-    display: inline-flex; 
-    align-items: center; 
-    justify-content: center;
-    gap: 8px;
-    border: 2px solid var(--border);
-    transition: all 0.2s;
-    white-space: nowrap;
+    background: transparent; color: var(--dark);
+    padding: 14px 28px; border-radius: 8px;
+    font-weight: 600; font-size: clamp(14px, 3vw, 15px);
+    text-decoration: none; display: inline-flex; align-items: center; justify-content: center;
+    gap: 8px; border: 2px solid var(--border); transition: all 0.2s; white-space: nowrap;
   }
-  
-  .btn-secondary:hover { 
-    border-color: var(--gold); 
-    color: var(--gold); 
-  }
+  .btn-secondary:hover { border-color: var(--gold); color: var(--gold); }
 
-  /* Statistics display in hero section */
+  /* Statistics row below hero text */
   .hero-stats { 
-    display: flex; 
-    gap: clamp(16px, 4vw, 32px); 
-    margin-top: 44px; 
-    animation: fadeUp 0.7s 0.4s ease both;
-    flex-wrap: wrap;
+    display: flex; gap: clamp(16px, 4vw, 32px); margin-top: 44px; 
+    animation: fadeUp 0.7s 0.4s ease both; flex-wrap: wrap;
   }
-  
-  .stat-item { 
-    text-align: left;
-    flex: 1;
-    min-width: 100px;
-  }
-  
+  .stat-item { text-align: left; flex: 1; min-width: 100px; }
   .stat-num { 
     font-family: 'Playfair Display', serif; 
-    font-size: clamp(24px, 5vw, 32px); 
-    font-weight: 900; 
-    color: var(--gold); 
+    font-size: clamp(24px, 5vw, 32px); font-weight: 900; color: var(--gold); 
   }
-  
   .stat-label { 
-    font-size: clamp(10px, 2.5vw, 12px); 
-    color: var(--text-muted); 
-    text-transform: uppercase; 
-    letter-spacing: 1px; 
+    font-size: clamp(10px, 2.5vw, 12px); color: var(--text-muted); 
+    text-transform: uppercase; letter-spacing: 1px; 
   }
 
-  /* Right side of hero with image grid */
-  .hero-right { 
-    position: relative; 
-    animation: fadeUp 0.8s 0.2s ease both;
-    width: 100%;
-  }
-  
+  /* Right side image grid (hidden on mobile) */
+  .hero-right { position: relative; animation: fadeUp 0.8s 0.2s ease both; width: 100%; }
   .hero-img-grid {
-    display: grid; 
-    grid-template-columns: 1fr 1fr; /* Two columns */
-    gap: 12px;
-    padding: 20px 0;
-    width: 100%;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
+    padding: 20px 0; width: 100%;
   }
-  
   .hero-img-card {
-    border-radius: 16px; 
-    overflow: hidden;
-    background: var(--milk);
-    border: 2px dashed var(--border);
-    aspect-ratio: 4/3; /* Maintains 4:3 ratio */
-    display: flex; 
-    flex-direction: column; 
-    align-items: center; 
-    justify-content: center;
-    gap: 8px; 
-    cursor: pointer; 
-    transition: border-color 0.2s;
+    border-radius: 16px; overflow: hidden; background: var(--milk);
+    border: 2px dashed var(--border); aspect-ratio: 4/3;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 8px; cursor: pointer; transition: border-color 0.2s;
   }
-  
-  /* First card spans both columns */
-  .hero-img-card:first-child { 
-    grid-column: span 2; 
-    aspect-ratio: 16/7; 
-  }
-  
-  .hero-img-card:hover { 
-    border-color: var(--gold); 
-  }
-  
-  .hero-img-card .icon { 
-    font-size: clamp(20px, 4vw, 28px); 
-  }
-  
+  .hero-img-card:first-child { grid-column: span 2; aspect-ratio: 16/7; }
+  .hero-img-card:hover { border-color: var(--gold); }
+  .hero-img-card .icon { font-size: clamp(20px, 4vw, 28px); }
   .hero-img-card p { 
-    font-size: clamp(10px, 2.5vw, 12px); 
-    color: var(--text-muted); 
-    text-align: center;
-    padding: 0 10px;
+    font-size: clamp(10px, 2.5vw, 12px); color: var(--text-muted); 
+    text-align: center; padding: 0 10px; 
   }
 
   /* ========================================
-     COUNTDOWN BANNER - FULLY RESPONSIVE
-     Live countdown to JAMB examination
+     COUNTDOWN BANNER
+     Dark bar with live JAMB countdown timer
      ======================================== */
   .countdown-banner {
     background: var(--dark);
     padding: clamp(20px, 4vw, 28px) 5%;
-    display: flex; 
-    align-items: center; 
-    justify-content: center;
-    flex-wrap: wrap; /* Wraps on small screens */
-    gap: clamp(16px, 3vw, 20px);
-    width: 100%;
+    display: flex; align-items: center; justify-content: center;
+    flex-wrap: wrap; gap: clamp(16px, 3vw, 20px); width: 100%;
   }
-
-  /* Countdown label with fire emoji */
   .countdown-label {
-    display: flex; 
-    align-items: center; 
-    gap: 12px;
-    color: white;
-    text-align: center;
+    display: flex; align-items: center; gap: 12px;
+    color: white; text-align: center;
   }
-  
-  .countdown-label .fire { 
-    font-size: clamp(20px, 4vw, 24px); 
-    animation: pulse 1s infinite; /* Pulsing animation */
-  }
-  
+  .countdown-label .fire { font-size: clamp(20px, 4vw, 24px); animation: pulse 1s infinite; }
   .countdown-label h3 { 
     font-family: 'Playfair Display', serif; 
-    font-size: clamp(16px, 3.5vw, 18px); 
-    font-weight: 700; 
+    font-size: clamp(16px, 3.5vw, 18px); font-weight: 700; 
   }
-  
-  .countdown-label p { 
-    font-size: clamp(10px, 2.5vw, 12px); 
-    color: rgba(255,255,255,0.6); 
-  }
+  .countdown-label p { font-size: clamp(10px, 2.5vw, 12px); color: rgba(255,255,255,0.6); }
 
-  /* Countdown timer boxes */
+  /* Individual time boxes */
   .countdown-boxes { 
-    display: flex; 
-    gap: clamp(8px, 2vw, 12px); 
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
+    display: flex; gap: clamp(8px, 2vw, 12px); 
+    align-items: center; justify-content: center; flex-wrap: wrap;
   }
-  
   .cbox {
-    background: rgba(201,146,42,0.15);
-    border: 1px solid rgba(201,146,42,0.3);
-    border-radius: 10px; 
-    padding: clamp(8px, 2vw, 12px) clamp(12px, 3vw, 16px);
-    text-align: center; 
-    min-width: clamp(50px, 12vw, 64px);
+    background: rgba(201,146,42,0.15); border: 1px solid rgba(201,146,42,0.3);
+    border-radius: 10px; padding: clamp(8px, 2vw, 12px) clamp(12px, 3vw, 16px);
+    text-align: center; min-width: clamp(50px, 12vw, 64px);
   }
-  
   .cbox-num { 
     font-family: 'Playfair Display', serif; 
-    font-size: clamp(20px, 5vw, 28px); 
-    font-weight: 900; 
-    color: var(--gold-light); 
-    line-height: 1; 
+    font-size: clamp(20px, 5vw, 28px); font-weight: 900; 
+    color: var(--gold-light); line-height: 1; 
   }
-  
   .cbox-label { 
-    font-size: clamp(8px, 2vw, 10px); 
-    color: rgba(255,255,255,0.5); 
-    text-transform: uppercase; 
-    letter-spacing: 1.5px; 
-    margin-top: 4px; 
+    font-size: clamp(8px, 2vw, 10px); color: rgba(255,255,255,0.5); 
+    text-transform: uppercase; letter-spacing: 1.5px; margin-top: 4px; 
   }
-  
   .countdown-sep { 
-    color: var(--gold-light); 
-    font-size: clamp(18px, 4vw, 24px); 
-    font-weight: 700; 
-    margin-bottom: 10px; 
+    color: var(--gold-light); font-size: clamp(18px, 4vw, 24px); 
+    font-weight: 700; margin-bottom: 10px; 
   }
 
-  /* WhatsApp registration button */
   .countdown-join { 
-    display: flex; 
-    align-items: center; 
-    gap: 10px;
-    width: 100%;
-    max-width: 300px;
-    justify-content: center;
+    display: flex; align-items: center; gap: 10px;
+    width: 100%; max-width: 300px; justify-content: center;
   }
-  
   .whatsapp-btn {
-    background: #25D366; /* WhatsApp green color */
-    color: white;
-    padding: clamp(10px, 2.5vw, 12px) clamp(18px, 4vw, 24px); 
-    border-radius: 8px;
-    font-weight: 700; 
-    font-size: clamp(12px, 3vw, 14px);
-    text-decoration: none; 
-    display: inline-flex; 
-    align-items: center; 
-    justify-content: center;
-    gap: 8px;
-    transition: all 0.2s;
-    box-shadow: 0 4px 14px rgba(37,211,102,0.35);
-    width: 100%;
-    white-space: nowrap;
+    background: #25D366; color: white;
+    padding: clamp(10px, 2.5vw, 12px) clamp(18px, 4vw, 24px); border-radius: 8px;
+    font-weight: 700; font-size: clamp(12px, 3vw, 14px);
+    text-decoration: none; display: inline-flex; align-items: center; justify-content: center;
+    gap: 8px; transition: all 0.2s;
+    box-shadow: 0 4px 14px rgba(37,211,102,0.35); width: 100%; white-space: nowrap;
   }
-  
-  .whatsapp-btn:hover { 
-    background: #1ebe5d; 
-    transform: translateY(-2px); 
-  }
-  
+  .whatsapp-btn:hover { background: #1ebe5d; transform: translateY(-2px); }
   .wa-icon { 
-    width: clamp(16px, 4vw, 20px); 
-    height: clamp(16px, 4vw, 20px); 
-    fill: white;
-    flex-shrink: 0;
+    width: clamp(16px, 4vw, 20px); height: clamp(16px, 4vw, 20px); 
+    fill: white; flex-shrink: 0; 
   }
 
   /* ========================================
-     GENERAL SECTION STYLES - RESPONSIVE
-     Used across multiple sections
+     SHARED SECTION STYLES
+     Used by all content sections below
      ======================================== */
   section { 
-    padding: clamp(60px, 10vw, 80px) 5%; /* Responsive padding */
-    width: 100%;
-    overflow-x: hidden;
+    padding: clamp(60px, 10vw, 80px) 5%; 
+    width: 100%; overflow-x: hidden; 
   }
 
-  /* Small label above section titles */
+  /* Small decorative uppercase label above titles */
   .section-tag {
-    font-size: clamp(10px, 2.5vw, 11px); 
-    font-weight: 700; 
-    color: var(--gold);
-    letter-spacing: 3px; 
-    text-transform: uppercase; 
-    margin-bottom: 12px;
-    display: flex; 
-    align-items: center; 
-    gap: 10px;
-    justify-content: center;
+    font-size: clamp(10px, 2.5vw, 11px); font-weight: 700; color: var(--gold);
+    letter-spacing: 3px; text-transform: uppercase; margin-bottom: 12px;
+    display: flex; align-items: center; gap: 10px; justify-content: center;
   }
-  
-  /* Decorative lines on either side of tag */
   .section-tag::before, .section-tag::after { 
-    content: ''; 
-    flex: 0 0 clamp(20px, 5vw, 30px); 
-    height: 1px; 
-    background: var(--gold); 
+    content: ''; flex: 0 0 clamp(20px, 5vw, 30px); 
+    height: 1px; background: var(--gold); 
   }
 
-  /* Main section heading */
   h2.section-title {
     font-family: 'Playfair Display', serif;
-    font-size: clamp(28px, 6vw, 44px); /* Responsive sizing */
-    font-weight: 900;
-    color: var(--dark); 
-    margin-bottom: 16px; 
-    line-height: 1.15;
-    text-align: center;
-    word-wrap: break-word;
+    font-size: clamp(28px, 6vw, 44px); font-weight: 900;
+    color: var(--dark); margin-bottom: 16px; line-height: 1.15;
+    text-align: center; word-wrap: break-word;
   }
 
-  /* Subtitle text below section heading */
   .section-sub { 
-    font-size: clamp(14px, 3.5vw, 16px); 
-    color: var(--text-muted); 
-    max-width: 100%; 
-    line-height: 1.7; 
-    margin-bottom: 50px;
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 0 1rem;
+    font-size: clamp(14px, 3.5vw, 16px); color: var(--text-muted); 
+    max-width: 100%; line-height: 1.7; margin-bottom: 50px;
+    text-align: center; margin-left: auto; margin-right: auto; padding: 0 1rem;
   }
 
   /* ========================================
-     EVENTS SECTION - FULLY RESPONSIVE
-     New section for upcoming events
+     QUESTION OF THE DAY SECTION
+     Daily rotating Maths and English questions
      ======================================== */
-  .events-section { 
-    background: var(--milk); 
-  }
+  .qotd-section { background: var(--cream); }
 
-  /* Grid layout for event cards */
-  .events-grid { 
-    display: grid; 
-    grid-template-columns: 1fr; /* Single column by default (mobile) */
-    gap: clamp(20px, 4vw, 30px); 
+  /* Two-column grid for the two question cards */
+  .qotd-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
+    gap: clamp(20px, 4vw, 32px);
     margin-top: 2rem;
-    width: 100%;
   }
 
-  /* Individual event card */
-  .event-card {
+  /* Each question card */
+  .qotd-card {
     background: var(--white);
-    border-radius: 16px; 
-    overflow: hidden; /* Keeps content inside rounded corners */
+    border-radius: 20px;
     border: 1px solid var(--border);
-    transition: transform 0.3s, box-shadow 0.3s; /* Smooth animations */
-    cursor: pointer;
-    width: 100%;
-    max-width: 100%;
-  }
-  
-  .event-card:hover { 
-    transform: translateY(-6px); /* Lifts up on hover */
-    box-shadow: 0 16px 40px rgba(42,28,8,0.12); 
+    overflow: hidden;
+    box-shadow: 0 4px 24px rgba(42,28,8,0.06);
   }
 
-  /* Event banner image container */
-  .event-banner {
-    width: 100%;
-    height: clamp(180px, 40vw, 250px); /* Responsive height */
-    background-size: cover; /* Image covers entire area */
-    background-position: center; /* Centers the image */
-    background-color: var(--milk); /* Fallback color */
-    position: relative;
+  /* Coloured top strip on each card */
+  .qotd-card-header {
+    padding: clamp(16px, 4vw, 20px) clamp(20px, 5vw, 28px);
+    display: flex; align-items: center; gap: 12px;
   }
-
-  /* Event content area below banner */
-  .event-content {
-    padding: clamp(16px, 4vw, 24px);
-    width: 100%;
-  }
-
-  /* Event category tag */
-  .event-tag {
-    display: inline-block;
-    background: var(--gold-pale);
-    color: var(--gold);
-    font-size: clamp(10px, 2.5vw, 11px);
-    font-weight: 700;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    border-radius: 100px;
-    padding: 4px 12px;
-    margin-bottom: 12px;
-  }
-
-  /* Event title */
-  .event-content h3 {
+  .qotd-card-header.math { background: linear-gradient(135deg, #1A1208, #2D1F0A); }
+  .qotd-card-header.english { background: linear-gradient(135deg, #C9922A, #E8B84B); }
+  .qotd-card-header .subject-icon { font-size: clamp(24px, 5vw, 28px); }
+  .qotd-card-header h3 {
     font-family: 'Playfair Display', serif;
-    font-size: clamp(18px, 4.5vw, 22px);
-    font-weight: 700;
-    color: var(--dark);
-    margin-bottom: 12px;
-    line-height: 1.3;
-    word-wrap: break-word;
+    font-size: clamp(16px, 4vw, 20px); font-weight: 700; color: white;
   }
+  .qotd-card-header p { font-size: clamp(10px, 2.5vw, 12px); color: rgba(255,255,255,0.6); }
 
-  /* Event description text */
-  .event-description {
-    font-size: clamp(13px, 3.5vw, 15px);
-    color: var(--text-muted);
-    line-height: 1.7;
-    margin-bottom: 20px;
-  }
-
-  /* Container for date and location info */
-  .event-meta {
+  /* Q1 / Q2 / Q3 tab row */
+  .qotd-tabs {
     display: flex;
-    flex-direction: column;
-    gap: 12px;
-    padding-top: 20px;
-    border-top: 1px solid var(--border);
-    width: 100%;
+    border-bottom: 2px solid var(--border);
+    background: var(--milk);
+  }
+  .qotd-tab {
+    flex: 1; padding: clamp(10px,2.5vw,12px) 8px;
+    background: none; border: none; border-bottom: 3px solid transparent;
+    margin-bottom: -2px; cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    font-size: clamp(12px,3vw,13px); font-weight: 600;
+    color: var(--text-muted); transition: all 0.2s;
+    display: flex; flex-direction: column; align-items: center; gap: 4px;
+  }
+  .qotd-tab:hover { color: var(--gold); }
+  /* Active tab gets gold underline */
+  .qotd-tab.active { color: var(--gold); border-bottom-color: var(--gold); }
+
+  /* Small dot on tab — grey until answered, then green or red */
+  .qotd-tab-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--border); transition: background 0.3s;
+  }
+  .qotd-tab-dot.answered-correct { background: #2ecc71; }
+  .qotd-tab-dot.answered-wrong   { background: #e74c3c; }
+
+  /* Question body area */
+  .qotd-body { padding: clamp(20px, 5vw, 28px); }
+
+  /* Each question panel — only .active one is visible */
+  .qotd-panel { display: none; }
+  .qotd-panel.active { display: block; }
+
+  /* The actual question text */
+  .qotd-question {
+    font-size: clamp(14px, 3.5vw, 16px); color: var(--dark);
+    line-height: 1.7; font-weight: 600; margin-bottom: 20px;
+    min-height: 60px;
   }
 
-  /* Individual meta item (date or location) */
-  .event-meta-item {
-    display: flex;
-    align-items: flex-start;
-    gap: 10px;
-    font-size: clamp(12px, 3vw, 14px);
-    color: var(--text);
-    width: 100%;
+  /* Answer option buttons */
+  .qotd-options { 
+    display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px; 
+  }
+  .qotd-option {
+    display: flex; align-items: flex-start; gap: 12px;
+    padding: clamp(10px, 2.5vw, 12px) clamp(14px, 3.5vw, 16px);
+    border-radius: 10px; border: 1.5px solid var(--border);
+    cursor: pointer; transition: all 0.2s; background: var(--cream);
+    font-size: clamp(13px, 3vw, 15px); color: var(--text);
+    text-align: left; width: 100%;
+  }
+  .qotd-option:hover:not([disabled]) { border-color: var(--gold); background: var(--gold-pale); }
+  .qotd-option[disabled] { cursor: default; }
+
+  /* Letter badge (A, B, C, D) inside each option */
+  .qotd-option-letter {
+    width: 24px; height: 24px; border-radius: 50%;
+    background: var(--border); display: flex; align-items: center; justify-content: center;
+    font-size: 11px; font-weight: 700; color: var(--text-muted);
+    flex-shrink: 0; margin-top: 1px;
   }
 
-  /* Icon container for meta items */
-  .event-meta-item .icon {
-    width: clamp(32px, 7vw, 36px);
-    height: clamp(32px, 7vw, 36px);
-    background: var(--gold-pale);
+  /* After user answers: green = correct, red = wrong */
+  .qotd-option.correct { background: #e8f9ee; border-color: #2ecc71; color: #1a6b3a; }
+  .qotd-option.correct .qotd-option-letter { background: #2ecc71; color: white; }
+  .qotd-option.wrong   { background: #fdeaea; border-color: #e74c3c; color: #7b1c1c; }
+  .qotd-option.wrong   .qotd-option-letter { background: #e74c3c; color: white; }
+  /* Highlight selected but not yet submitted */
+  .qotd-option.selected { border-color: var(--gold); background: var(--gold-pale); }
+
+  /* Explanation box shown after answering */
+  .qotd-explanation {
+    background: var(--gold-pale); border: 1px solid rgba(201,146,42,0.3);
+    border-radius: 10px; padding: clamp(12px, 3vw, 16px);
+    font-size: clamp(12px, 3vw, 14px); color: var(--text-muted);
+    line-height: 1.7; display: none;
+  }
+  .qotd-explanation.show { display: block; }
+  .qotd-explanation strong { color: var(--gold); }
+
+  /* Submit button */
+  .qotd-actions { display: flex; gap: 10px; margin-top: 16px; flex-wrap: wrap; }
+  .qotd-submit {
+    background: var(--gold); color: white;
+    border: none; padding: clamp(10px, 2.5vw, 12px) clamp(20px, 5vw, 24px);
+    border-radius: 8px; font-family: 'DM Sans', sans-serif;
+    font-size: clamp(13px, 3vw, 14px); font-weight: 700; cursor: pointer;
+    transition: all 0.2s; flex: 1;
+  }
+  .qotd-submit:hover:not([disabled]) { background: #b07d1e; transform: translateY(-1px); }
+  .qotd-submit[disabled] { background: var(--text-muted); cursor: not-allowed; transform: none; }
+
+  /* Score tracker at bottom of card */
+  .qotd-score {
+    display: flex; align-items: center; justify-content: space-between;
+    padding-top: 16px; border-top: 1px solid var(--border); margin-top: 16px;
+    font-size: clamp(12px, 3vw, 13px); color: var(--text-muted);
+  }
+  .qotd-score strong { color: var(--gold); font-size: clamp(14px, 3.5vw, 16px); }
+
+  /* Loading skeleton shown while question is loading */
+  .qotd-loading {
+    display: flex; flex-direction: column; gap: 10px; padding: 20px 0;
+  }
+  .skeleton {
+    background: linear-gradient(90deg, var(--milk) 25%, var(--border) 50%, var(--milk) 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
     border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: clamp(14px, 3.5vw, 16px);
-    flex-shrink: 0; /* Prevents icon from shrinking */
   }
+  .skeleton-text { height: 16px; }
+  .skeleton-option { height: 48px; }
 
-  /* Register button for events */
-  .event-register-btn {
-    display: block;
-    background: var(--gold);
-    color: white;
-    padding: clamp(10px, 2.5vw, 12px) clamp(18px, 4vw, 24px);
-    border-radius: 8px;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: clamp(12px, 3vw, 14px);
-    margin-top: 16px;
-    transition: all 0.2s;
-    text-align: center;
-    width: 100%;
-  }
-
-  .event-register-btn:hover {
-    background: #b07d1e;
-    transform: translateY(-2px);
+  @keyframes shimmer {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
   }
 
   /* ========================================
-     CLASSES SECTION - RESPONSIVE
-     Tutorial classes offered
+     EVENTS SECTION
+     Upcoming events/workshops
      ======================================== */
-  .classes-section { 
-    background: var(--cream); 
-  }
+  .events-section { background: var(--milk); }
 
-  /* Grid for class cards */
-  .classes-grid { 
-    display: grid; 
-    grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr)); 
-    gap: 20px;
-    width: 100%;
+  .events-grid { 
+    display: grid; grid-template-columns: 1fr; 
+    gap: clamp(20px, 4vw, 30px); margin-top: 2rem; width: 100%;
   }
-
-  /* Individual class card */
-  .class-card {
-    background: var(--white);
-    border-radius: 16px; 
-    overflow: hidden;
+  .event-card {
+    background: var(--white); border-radius: 16px; overflow: hidden;
     border: 1px solid var(--border);
-    transition: transform 0.25s, box-shadow 0.25s;
-    cursor: pointer;
-    width: 100%;
+    transition: transform 0.3s, box-shadow 0.3s; cursor: pointer; width: 100%;
   }
-  
-  .class-card:hover { 
+  .event-card:hover { 
     transform: translateY(-6px); 
     box-shadow: 0 16px 40px rgba(42,28,8,0.12); 
   }
+  .event-banner {
+    width: 100%; height: clamp(180px, 40vw, 250px);
+    background-size: cover; background-position: center;
+    background-color: var(--milk); position: relative;
+  }
+  .event-content { padding: clamp(16px, 4vw, 24px); width: 100%; }
+  .event-tag {
+    display: inline-block; background: var(--gold-pale); color: var(--gold);
+    font-size: clamp(10px, 2.5vw, 11px); font-weight: 700;
+    letter-spacing: 1px; text-transform: uppercase;
+    border-radius: 100px; padding: 4px 12px; margin-bottom: 12px;
+  }
+  .event-content h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(18px, 4.5vw, 22px); font-weight: 700;
+    color: var(--dark); margin-bottom: 12px; line-height: 1.3; word-wrap: break-word;
+  }
+  .event-description { 
+    font-size: clamp(13px, 3.5vw, 15px); color: var(--text-muted); 
+    line-height: 1.7; margin-bottom: 20px; 
+  }
+  .event-meta {
+    display: flex; flex-direction: column; gap: 12px;
+    padding-top: 20px; border-top: 1px solid var(--border); width: 100%;
+  }
+  .event-meta-item {
+    display: flex; align-items: flex-start; gap: 10px;
+    font-size: clamp(12px, 3vw, 14px); color: var(--text); width: 100%;
+  }
+  .event-meta-item .icon {
+    width: clamp(32px, 7vw, 36px); height: clamp(32px, 7vw, 36px);
+    background: var(--gold-pale); border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: clamp(14px, 3.5vw, 16px); flex-shrink: 0;
+  }
+  .event-register-btn {
+    display: block; background: var(--gold); color: white;
+    padding: clamp(10px, 2.5vw, 12px) clamp(18px, 4vw, 24px);
+    border-radius: 8px; text-decoration: none; font-weight: 600;
+    font-size: clamp(12px, 3vw, 14px); margin-top: 16px;
+    transition: all 0.2s; text-align: center; width: 100%;
+  }
+  .event-register-btn:hover { background: #b07d1e; transform: translateY(-2px); }
 
-  /* Class image placeholder */
+  /* ========================================
+     CLASSES SECTION
+     Programme / course offerings
+     ======================================== */
+  .classes-section { background: var(--cream); }
+
+  .classes-grid { 
+    display: grid; 
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr)); 
+    gap: 20px; width: 100%;
+  }
+  .class-card {
+    background: var(--white); border-radius: 16px; overflow: hidden;
+    border: 1px solid var(--border); transition: transform 0.25s, box-shadow 0.25s;
+    cursor: pointer; width: 100%;
+  }
+  .class-card:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(42,28,8,0.12); }
   .class-img {
-    width: 100%; 
-    aspect-ratio: 4/3;
-    background: var(--milk);
+    width: 100%; aspect-ratio: 4/3; background: var(--milk);
     border: 2px dashed var(--border);
-    display: flex; 
-    flex-direction: column; 
-    align-items: center; 
-    justify-content: center;
-    gap: 10px; 
-    color: var(--text-muted); 
-    font-size: clamp(12px, 3vw, 13px);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 10px; color: var(--text-muted); font-size: clamp(12px, 3vw, 13px);
   }
-  
-  .class-img .icon { 
-    font-size: clamp(28px, 6vw, 32px); 
-  }
-
-  /* Class information section */
+  .class-img .icon { font-size: clamp(28px, 6vw, 32px); }
   .class-info { 
     padding: clamp(16px, 3.5vw, 18px) clamp(18px, 4vw, 20px) clamp(20px, 4.5vw, 22px); 
   }
-
-  /* Class category tag */
   .class-tag {
-    display: inline-block; 
-    background: var(--gold-pale);
-    color: var(--gold); 
-    font-size: clamp(10px, 2.5vw, 11px); 
-    font-weight: 700;
-    letter-spacing: 1px; 
-    text-transform: uppercase;
-    border-radius: 100px; 
-    padding: 4px 12px; 
-    margin-bottom: 10px;
+    display: inline-block; background: var(--gold-pale); color: var(--gold);
+    font-size: clamp(10px, 2.5vw, 11px); font-weight: 700;
+    letter-spacing: 1px; text-transform: uppercase;
+    border-radius: 100px; padding: 4px 12px; margin-bottom: 10px;
   }
-  
   .class-info h3 { 
     font-family: 'Playfair Display', serif; 
-    font-size: clamp(16px, 4vw, 18px); 
-    font-weight: 700; 
-    color: var(--dark); 
-    margin-bottom: 8px; 
+    font-size: clamp(16px, 4vw, 18px); font-weight: 700; 
+    color: var(--dark); margin-bottom: 8px; 
   }
-  
   .class-info p { 
-    font-size: clamp(12px, 3vw, 13px); 
-    color: var(--text-muted); 
-    line-height: 1.6; 
+    font-size: clamp(12px, 3vw, 13px); color: var(--text-muted); line-height: 1.6; 
   }
 
   /* ========================================
-     LEADERBOARD SECTION - RESPONSIVE
-     Student performance rankings
+     LEADERBOARD SECTION
+     Top performing students table
      ======================================== */
-  .lb-section { 
-    background: var(--milk); 
-  }
+  .lb-section { background: var(--milk); }
 
-  /* Container for table with horizontal scroll on mobile */
-  .lb-container {
-    width: 100%;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-  }
+  /* Horizontal scroll wrapper for table on small screens */
+  .lb-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
 
-  /* Leaderboard table */
   .lb-table {
-    width: 100%; 
-    min-width: 600px; /* Minimum width to prevent squishing */
-    border-collapse: collapse;
-    background: white; 
-    border-radius: 16px; 
-    overflow: hidden;
-    box-shadow: 0 4px 24px rgba(42,28,8,0.07);
-    border: 1px solid var(--border);
+    width: 100%; min-width: 600px; border-collapse: collapse;
+    background: white; border-radius: 16px; overflow: hidden;
+    box-shadow: 0 4px 24px rgba(42,28,8,0.07); border: 1px solid var(--border);
   }
-  
-  .lb-table thead tr { 
-    background: var(--dark); 
-  }
-  
+  .lb-table thead tr { background: var(--dark); }
   .lb-table th { 
-    padding: clamp(12px, 3vw, 16px) clamp(16px, 4vw, 20px); 
-    text-align: left; 
-    font-size: clamp(10px, 2.5vw, 11px); 
-    font-weight: 700; 
-    color: rgba(255,255,255,0.7); 
-    text-transform: uppercase; 
-    letter-spacing: 1.5px; 
+    padding: clamp(12px, 3vw, 16px) clamp(16px, 4vw, 20px); text-align: left;
+    font-size: clamp(10px, 2.5vw, 11px); font-weight: 700; 
+    color: rgba(255,255,255,0.7); text-transform: uppercase; letter-spacing: 1.5px;
   }
-  
-  .lb-table tbody tr { 
-    border-bottom: 1px solid var(--border); 
-    transition: background 0.15s; 
-  }
-  
-  .lb-table tbody tr:last-child { 
-    border-bottom: none; 
-  }
-  
-  .lb-table tbody tr:hover { 
-    background: var(--gold-pale); 
-  }
-  
+  .lb-table tbody tr { border-bottom: 1px solid var(--border); transition: background 0.15s; }
+  .lb-table tbody tr:last-child { border-bottom: none; }
+  .lb-table tbody tr:hover { background: var(--gold-pale); }
   .lb-table td { 
     padding: clamp(12px, 3vw, 16px) clamp(16px, 4vw, 20px); 
-    font-size: clamp(12px, 3vw, 14px); 
-    color: var(--text); 
+    font-size: clamp(12px, 3vw, 14px); color: var(--text); 
   }
 
-  /* Rank badge circles */
+  /* Rank medal circles */
   .rank-badge {
-    width: clamp(28px, 6vw, 32px); 
-    height: clamp(28px, 6vw, 32px); 
-    border-radius: 50%;
-    display: inline-flex; 
-    align-items: center; 
-    justify-content: center;
-    font-weight: 700; 
-    font-size: clamp(11px, 3vw, 13px);
+    width: clamp(28px, 6vw, 32px); height: clamp(28px, 6vw, 32px); border-radius: 50%;
+    display: inline-flex; align-items: center; justify-content: center;
+    font-weight: 700; font-size: clamp(11px, 3vw, 13px);
   }
-  
-  .rank-1 { 
-    background: linear-gradient(135deg, #FFD700, #FFA500); 
-    color: white; 
-  }
-  
-  .rank-2 { 
-    background: linear-gradient(135deg, #C0C0C0, #A9A9A9); 
-    color: white; 
-  }
-  
-  .rank-3 { 
-    background: linear-gradient(135deg, #CD7F32, #A0522D); 
-    color: white; 
-  }
-  
-  .rank-other { 
-    background: var(--milk); 
-    color: var(--text-muted); 
-  }
+  .rank-1 { background: linear-gradient(135deg, #FFD700, #FFA500); color: white; }
+  .rank-2 { background: linear-gradient(135deg, #C0C0C0, #A9A9A9); color: white; }
+  .rank-3 { background: linear-gradient(135deg, #CD7F32, #A0522D); color: white; }
+  .rank-other { background: var(--milk); color: var(--text-muted); }
 
-  /* Score visualization bar */
-  .score-bar { 
-    display: flex; 
-    align-items: center; 
-    gap: 10px; 
-  }
-  
+  /* Score progress bar */
+  .score-bar { display: flex; align-items: center; gap: 10px; }
   .score-track { 
-    flex: 1; 
-    height: 6px; 
-    background: var(--milk); 
-    border-radius: 10px; 
-    overflow: hidden; 
-    max-width: 120px; 
+    flex: 1; height: 6px; background: var(--milk); 
+    border-radius: 10px; overflow: hidden; max-width: 120px; 
   }
-  
   .score-fill { 
     height: 100%; 
     background: linear-gradient(90deg, var(--gold), var(--gold-light)); 
@@ -1006,706 +711,329 @@
   }
 
   /* ========================================
-     ALUMNI, ABOUT, TESTIMONIALS SECTIONS
-     Similar responsive patterns
+     ALUMNI SECTION
+     Showcase of successful graduates
      ======================================== */
-  .alumni-section { 
-    background: var(--dark); 
-  }
-
-  .alumni-section .section-title { 
-    color: white; 
-  }
-  
-  .alumni-section .section-tag { 
-    color: var(--gold-light); 
-  }
-  
+  .alumni-section { background: var(--dark); }
+  .alumni-section .section-title { color: white; }
+  .alumni-section .section-tag { color: var(--gold-light); }
   .alumni-section .section-tag::before, 
-  .alumni-section .section-tag::after { 
-    background: var(--gold-light); 
-  }
-  
-  .alumni-section .section-sub { 
-    color: rgba(255,255,255,0.55); 
-  }
+  .alumni-section .section-tag::after { background: var(--gold-light); }
+  .alumni-section .section-sub { color: rgba(255,255,255,0.55); }
 
   .alumni-grid { 
     display: grid; 
     grid-template-columns: repeat(auto-fill, minmax(min(100%, 220px), 1fr)); 
-    gap: 20px;
-    width: 100%;
+    gap: 20px; width: 100%;
   }
-
   .alumni-card {
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.1);
-    border-radius: 18px; 
-    overflow: hidden;
+    background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 18px; overflow: hidden;
     transition: transform 0.25s, border-color 0.25s;
-    cursor: pointer;
     width: 100%;
   }
-  
-  .alumni-card:hover { 
-    transform: translateY(-6px); 
-    border-color: rgba(201,146,42,0.5); 
-  }
-
+  .alumni-card:hover { transform: translateY(-6px); border-color: rgba(201,146,42,0.5); }
   .alumni-photo {
-    width: 100%; 
-    aspect-ratio: 1;
-    background: rgba(255,255,255,0.07);
-    border-bottom: 1px solid rgba(255,255,255,0.08);
-    display: flex; 
-    flex-direction: column; 
-    align-items: center; 
-    justify-content: center;
-    gap: 8px; 
-    cursor: pointer;
+    width: 100%; aspect-ratio: 1;
+    background: rgba(255,255,255,0.07); border-bottom: 1px solid rgba(255,255,255,0.08);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 8px;
   }
-  
-  .alumni-photo .icon { 
-    font-size: clamp(32px, 7vw, 36px); 
-    opacity: 0.4; 
-  }
-  
+  .alumni-photo .icon { font-size: clamp(32px, 7vw, 36px); opacity: 0.4; }
   .alumni-photo p { 
-    font-size: clamp(10px, 2.5vw, 11px); 
-    color: rgba(255,255,255,0.35); 
-    text-align: center;
-    padding: 0 10px;
+    font-size: clamp(10px, 2.5vw, 11px); color: rgba(255,255,255,0.35); 
+    text-align: center; padding: 0 10px;
   }
-
   .alumni-info { 
     padding: clamp(14px, 3.5vw, 16px) clamp(16px, 4vw, 18px) clamp(18px, 4.5vw, 20px); 
   }
-  
   .alumni-info h4 { 
     font-family: 'Playfair Display', serif; 
-    font-size: clamp(14px, 3.5vw, 16px); 
-    font-weight: 700; 
-    color: white; 
-    margin-bottom: 6px; 
+    font-size: clamp(14px, 3.5vw, 16px); font-weight: 700; color: white; margin-bottom: 6px; 
   }
-
   .alumni-score { 
-    display: inline-block; 
-    background: rgba(201,146,42,0.2); 
-    border: 1px solid rgba(201,146,42,0.4); 
-    color: var(--gold-light); 
-    font-size: clamp(10px, 2.5vw, 12px); 
-    font-weight: 700; 
-    padding: 4px 10px; 
-    border-radius: 100px; 
-    margin-bottom: 8px; 
+    display: inline-block; background: rgba(201,146,42,0.2); 
+    border: 1px solid rgba(201,146,42,0.4); color: var(--gold-light);
+    font-size: clamp(10px, 2.5vw, 12px); font-weight: 700; 
+    padding: 4px 10px; border-radius: 100px; margin-bottom: 8px; 
   }
-
   .alumni-uni { 
-    font-size: clamp(10px, 2.5vw, 12px); 
-    color: rgba(255,255,255,0.45); 
-    display: flex; 
-    align-items: center; 
-    gap: 5px; 
-  }
-
-  .alumni-add-card {
-    border: 2px dashed rgba(201,146,42,0.3);
-    border-radius: 18px;
-    display: flex; 
-    flex-direction: column; 
-    align-items: center; 
-    justify-content: center;
-    gap: 10px; 
-    padding: clamp(24px, 6vw, 32px); 
-    cursor: pointer; 
-    transition: border-color 0.2s;
-    min-height: 200px;
-  }
-  
-  .alumni-add-card:hover { 
-    border-color: var(--gold); 
-  }
-  
-  .alumni-add-card p { 
-    color: rgba(255,255,255,0.4); 
-    font-size: clamp(12px, 3vw, 13px); 
-    text-align: center; 
-  }
-  
-  .alumni-add-card .plus { 
-    font-size: clamp(28px, 6vw, 32px); 
-    color: rgba(201,146,42,0.5); 
-  }
-
-  /* About section */
-  .about-section { 
-    background: var(--cream); 
-  }
-
-  .about-grid { 
-    display: grid; 
-    grid-template-columns: 1fr 1fr; 
-    gap: clamp(40px, 8vw, 64px); 
-    align-items: center;
-    width: 100%;
-  }
-
-  .about-img {
-    border-radius: 20px; 
-    overflow: hidden;
-    background: var(--milk); 
-    border: 2px dashed var(--border);
-    aspect-ratio: 4/5;
-    display: flex; 
-    flex-direction: column; 
-    align-items: center; 
-    justify-content: center;
-    gap: 12px; 
-    position: relative;
-    width: 100%;
-  }
-  
-  .about-img .icon { 
-    font-size: clamp(40px, 8vw, 48px); 
-  }
-  
-  .about-img p { 
-    font-size: clamp(12px, 3vw, 13px); 
-    color: var(--text-muted);
-    text-align: center;
-    padding: 0 10px;
-  }
-
-  .about-accent {
-    position: absolute; 
-    bottom: -12px; 
-    right: -12px;
-    width: clamp(80px, 15vw, 100px); 
-    height: clamp(80px, 15vw, 100px);
-    background: var(--gold); 
-    border-radius: 16px;
-    display: flex; 
-    align-items: center; 
-    justify-content: center;
-    font-family: 'Playfair Display', serif; 
-    font-size: clamp(24px, 5vw, 32px);
-    color: white; 
-    font-weight: 900;
-    box-shadow: 0 8px 24px rgba(201,146,42,0.4);
-  }
-
-  .about-text p { 
-    font-size: clamp(14px, 3.5vw, 16px); 
-    color: var(--text-muted); 
-    line-height: 1.8; 
-    margin-bottom: 20px; 
-  }
-
-  .about-features { 
-    display: grid; 
-    grid-template-columns: 1fr 1fr; 
-    gap: 16px; 
-    margin-top: 32px;
-    width: 100%;
-  }
-
-  .feature-item {
-    background: white; 
-    border-radius: 12px; 
-    padding: clamp(14px, 3.5vw, 18px);
-    border: 1px solid var(--border);
-    display: flex; 
-    gap: 14px; 
-    align-items: flex-start;
-    width: 100%;
-  }
-  
-  .feature-icon { 
-    font-size: clamp(18px, 4vw, 22px); 
-    line-height: 1;
-    flex-shrink: 0;
-  }
-  
-  .feature-item h4 { 
-    font-size: clamp(12px, 3vw, 14px); 
-    font-weight: 700; 
-    color: var(--dark); 
-    margin-bottom: 4px; 
-  }
-  
-  .feature-item p { 
-    font-size: clamp(11px, 2.5vw, 12px); 
-    color: var(--text-muted); 
-    line-height: 1.5; 
-  }
-
-  /* Testimonials section */
-  .testimonials-section { 
-    background: var(--milk); 
-  }
-
-  .testimonials-grid { 
-    display: grid; 
-    grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); 
-    gap: 20px;
-    width: 100%;
-  }
-
-  .testimonial-card {
-    background: white; 
-    border-radius: 16px; 
-    padding: clamp(20px, 5vw, 28px);
-    border: 1px solid var(--border);
-    position: relative;
-    width: 100%;
-  }
-
-  .testimonial-card::before {
-    content: '"'; 
-    position: absolute; 
-    top: 16px; 
-    right: 20px;
-    font-family: 'Playfair Display', serif; 
-    font-size: clamp(56px, 12vw, 72px); 
-    color: var(--gold-pale);
-    line-height: 1; 
-    pointer-events: none;
-  }
-
-  .stars { 
-    color: var(--gold); 
-    font-size: clamp(12px, 3vw, 14px); 
-    margin-bottom: 12px; 
-  }
-
-  .testimonial-card p { 
-    font-size: clamp(12px, 3vw, 14px); 
-    color: var(--text-muted); 
-    line-height: 1.75; 
-    margin-bottom: 20px; 
-  }
-
-  .reviewer { 
-    display: flex; 
-    align-items: center; 
-    gap: 12px; 
-  }
-
-  .reviewer-av {
-    width: clamp(36px, 8vw, 40px); 
-    height: clamp(36px, 8vw, 40px); 
-    border-radius: 50%;
-    background: var(--gold-pale); 
-    display: flex; 
-    align-items: center; 
-    justify-content: center;
-    font-family: 'Playfair Display', serif; 
-    font-size: clamp(14px, 3.5vw, 16px); 
-    font-weight: 700; 
-    color: var(--gold);
-    flex-shrink: 0;
-  }
-  
-  .reviewer h5 { 
-    font-size: clamp(12px, 3vw, 14px); 
-    font-weight: 700; 
-    color: var(--dark); 
-  }
-  
-  .reviewer p { 
-    font-size: clamp(10px, 2.5vw, 12px); 
-    color: var(--text-muted); 
-    margin: 0; 
-  }
-
-  /* Contact section */
-  .contact-section { 
-    background: var(--dark); 
-  }
-
-  .contact-section .section-title { 
-    color: white; 
-  }
-  
-  .contact-section .section-tag { 
-    color: var(--gold-light); 
-  }
-  
-  .contact-section .section-tag::before, 
-  .contact-section .section-tag::after { 
-    background: var(--gold-light); 
-  }
-
-  .contact-grid { 
-    display: grid; 
-    grid-template-columns: 1fr 1fr; 
-    gap: clamp(30px, 6vw, 50px); 
-    align-items: start;
-    width: 100%;
-  }
-
-  .contact-card {
-    background: rgba(255,255,255,0.05); 
-    border: 1px solid rgba(255,255,255,0.1);
-    border-radius: 16px; 
-    padding: clamp(20px, 5vw, 28px);
-    width: 100%;
-  }
-
-  .contact-item { 
-    display: flex; 
-    gap: 16px; 
-    align-items: flex-start; 
-    margin-bottom: 24px;
-    width: 100%;
-  }
-  
-  .contact-item:last-child { 
-    margin-bottom: 0; 
-  }
-
-  .contact-icon {
-    width: clamp(38px, 8vw, 44px); 
-    height: clamp(38px, 8vw, 44px); 
-    border-radius: 10px;
-    background: rgba(201,146,42,0.15); 
-    border: 1px solid rgba(201,146,42,0.3);
-    display: flex; 
-    align-items: center; 
-    justify-content: center;
-    font-size: clamp(16px, 4vw, 20px); 
-    flex-shrink: 0;
-  }
-  
-  .contact-item h4 { 
-    font-size: clamp(11px, 2.5vw, 13px); 
-    color: rgba(255,255,255,0.5); 
-    text-transform: uppercase; 
-    letter-spacing: 1px; 
-    margin-bottom: 4px; 
-  }
-  
-  .contact-item p { 
-    font-size: clamp(13px, 3.5vw, 15px); 
-    color: white; 
-    font-weight: 500;
-    word-wrap: break-word;
-  }
-  
-  .contact-item a { 
-    color: var(--gold-light); 
-    text-decoration: none;
-    word-wrap: break-word;
-  }
-
-  .map-placeholder {
-    width: 100%; 
-    aspect-ratio: 16/10;
-    background: rgba(255,255,255,0.05); 
-    border: 2px dashed rgba(255,255,255,0.15);
-    border-radius: 16px; 
-    display: flex; 
-    flex-direction: column; 
-    align-items: center; 
-    justify-content: center;
-    gap: 10px; 
-    cursor: pointer; 
-    transition: border-color 0.2s;
-  }
-  
-  .map-placeholder:hover { 
-    border-color: rgba(201,146,42,0.4); 
-  }
-  
-  .map-placeholder .icon { 
-    font-size: clamp(32px, 7vw, 40px); 
-    opacity: 0.3; 
-  }
-  
-  .map-placeholder p { 
-    font-size: clamp(11px, 2.5vw, 13px); 
-    color: rgba(255,255,255,0.3); 
-    text-align: center;
-    padding: 0 20px;
-  }
-
-  /* Footer */
-  footer {
-    background: #0F0A03; 
-    padding: clamp(32px, 6vw, 40px) 5% clamp(20px, 4vw, 24px);
-    border-top: 1px solid rgba(255,255,255,0.06);
-    width: 100%;
-  }
-
-  .footer-top { 
-    display: flex; 
-    justify-content: space-between; 
-    align-items: flex-start; 
-    flex-wrap: wrap; 
-    gap: clamp(24px, 5vw, 32px); 
-    margin-bottom: clamp(24px, 5vw, 32px);
-    width: 100%;
-  }
-
-  .footer-brand p { 
-    font-size: clamp(12px, 3vw, 13px); 
-    color: rgba(255,255,255,0.4); 
-    max-width: 260px; 
-    margin-top: 10px; 
-    line-height: 1.7; 
-  }
-
-  .footer-links h5 { 
-    font-size: clamp(12px, 3vw, 13px); 
-    font-weight: 700; 
-    color: white; 
-    margin-bottom: 14px; 
-    letter-spacing: 0.5px; 
-  }
-  
-  .footer-links ul { 
-    list-style: none; 
-    display: flex; 
-    flex-direction: column; 
-    gap: 8px; 
-  }
-  
-  .footer-links a { 
-    font-size: clamp(11px, 2.5vw, 13px); 
-    color: rgba(255,255,255,0.45); 
-    text-decoration: none; 
-    transition: color 0.2s; 
-  }
-  
-  .footer-links a:hover { 
-    color: var(--gold-light); 
-  }
-
-  .footer-bottom { 
-    border-top: 1px solid rgba(255,255,255,0.07); 
-    padding-top: 20px; 
-    display: flex; 
-    justify-content: space-between; 
-    align-items: center; 
-    flex-wrap: wrap; 
-    gap: 12px;
-    width: 100%;
-  }
-  
-  .footer-bottom p { 
-    font-size: clamp(10px, 2.5vw, 12px); 
-    color: rgba(255,255,255,0.25); 
-  }
-
-  /* Floating WhatsApp button */
-  .float-wa {
-    position: fixed; 
-    bottom: clamp(20px, 4vw, 28px); 
-    right: clamp(20px, 4vw, 28px); 
-    z-index: 999;
-    background: #25D366; 
-    color: white;
-    width: clamp(50px, 10vw, 58px); 
-    height: clamp(50px, 10vw, 58px); 
-    border-radius: 50%;
-    display: flex; 
-    align-items: center; 
-    justify-content: center;
-    box-shadow: 0 6px 24px rgba(37,211,102,0.45);
-    text-decoration: none;
-    transition: transform 0.2s, box-shadow 0.2s;
-    animation: bounce 2s infinite;
-  }
-  
-  .float-wa:hover { 
-    transform: scale(1.1); 
-    box-shadow: 0 10px 32px rgba(37,211,102,0.55); 
-    animation: none;
-  }
-  
-  .float-wa svg { 
-    width: clamp(24px, 5vw, 28px); 
-    height: clamp(24px, 5vw, 28px); 
-    fill: white; 
+    font-size: clamp(10px, 2.5vw, 12px); color: rgba(255,255,255,0.45); 
+    display: flex; align-items: center; gap: 5px; 
   }
 
   /* ========================================
-     ANIMATIONS
-     Keyframe animations used throughout
+     ABOUT SECTION
+     Academy story and key features
      ======================================== */
-  
+  .about-section { background: var(--cream); }
+  .about-grid { 
+    display: grid; grid-template-columns: 1fr 1fr; 
+    gap: clamp(40px, 8vw, 64px); align-items: center; width: 100%;
+  }
+  .about-img {
+    border-radius: 20px; overflow: hidden; background: var(--milk);
+    border: 2px dashed var(--border); aspect-ratio: 4/5;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 12px; position: relative; width: 100%;
+  }
+  .about-img .icon { font-size: clamp(40px, 8vw, 48px); }
+  .about-img p { 
+    font-size: clamp(12px, 3vw, 13px); color: var(--text-muted); 
+    text-align: center; padding: 0 10px; 
+  }
+  .about-accent {
+    position: absolute; bottom: -12px; right: -12px;
+    width: clamp(80px, 15vw, 100px); height: clamp(80px, 15vw, 100px);
+    background: var(--gold); border-radius: 16px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Playfair Display', serif; font-size: clamp(24px, 5vw, 32px);
+    color: white; font-weight: 900; box-shadow: 0 8px 24px rgba(201,146,42,0.4);
+  }
+  .about-text p { 
+    font-size: clamp(14px, 3.5vw, 16px); color: var(--text-muted); 
+    line-height: 1.8; margin-bottom: 20px; 
+  }
+  .about-features { 
+    display: grid; grid-template-columns: 1fr 1fr; gap: 16px; 
+    margin-top: 32px; width: 100%;
+  }
+  .feature-item {
+    background: white; border-radius: 12px; padding: clamp(14px, 3.5vw, 18px);
+    border: 1px solid var(--border); display: flex; gap: 14px; align-items: flex-start; width: 100%;
+  }
+  .feature-icon { font-size: clamp(18px, 4vw, 22px); line-height: 1; flex-shrink: 0; }
+  .feature-item h4 { 
+    font-size: clamp(12px, 3vw, 14px); font-weight: 700; color: var(--dark); margin-bottom: 4px; 
+  }
+  .feature-item p { 
+    font-size: clamp(11px, 2.5vw, 12px); color: var(--text-muted); line-height: 1.5; 
+  }
+
+  /* ========================================
+     TESTIMONIALS SECTION
+     Student reviews and star ratings
+     ======================================== */
+  .testimonials-section { background: var(--milk); }
+  .testimonials-grid { 
+    display: grid; 
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); 
+    gap: 20px; width: 100%;
+  }
+  .testimonial-card {
+    background: white; border-radius: 16px; padding: clamp(20px, 5vw, 28px);
+    border: 1px solid var(--border); position: relative; width: 100%;
+  }
+  /* Decorative large quote mark in the corner */
+  .testimonial-card::before {
+    content: '"'; position: absolute; top: 16px; right: 20px;
+    font-family: 'Playfair Display', serif; font-size: clamp(56px, 12vw, 72px);
+    color: var(--gold-pale); line-height: 1; pointer-events: none;
+  }
+  .stars { color: var(--gold); font-size: clamp(12px, 3vw, 14px); margin-bottom: 12px; }
+  .testimonial-card p { 
+    font-size: clamp(12px, 3vw, 14px); color: var(--text-muted); 
+    line-height: 1.75; margin-bottom: 20px; 
+  }
+  .reviewer { display: flex; align-items: center; gap: 12px; }
+  .reviewer-av {
+    width: clamp(36px, 8vw, 40px); height: clamp(36px, 8vw, 40px); border-radius: 50%;
+    background: var(--gold-pale); display: flex; align-items: center; justify-content: center;
+    font-family: 'Playfair Display', serif; 
+    font-size: clamp(14px, 3.5vw, 16px); font-weight: 700; color: var(--gold); flex-shrink: 0;
+  }
+  .reviewer h5 { font-size: clamp(12px, 3vw, 14px); font-weight: 700; color: var(--dark); }
+  .reviewer p { font-size: clamp(10px, 2.5vw, 12px); color: var(--text-muted); margin: 0; }
+
+  /* ========================================
+     CONTACT SECTION
+     Address, phone, map
+     ======================================== */
+  .contact-section { background: var(--dark); }
+  .contact-section .section-title { color: white; }
+  .contact-section .section-tag { color: var(--gold-light); }
+  .contact-section .section-tag::before, 
+  .contact-section .section-tag::after { background: var(--gold-light); }
+
+  .contact-grid { 
+    display: grid; grid-template-columns: 1fr 1fr; 
+    gap: clamp(30px, 6vw, 50px); align-items: start; width: 100%;
+  }
+  .contact-card {
+    background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 16px; padding: clamp(20px, 5vw, 28px); width: 100%;
+  }
+  .contact-item { 
+    display: flex; gap: 16px; align-items: flex-start; 
+    margin-bottom: 24px; width: 100%;
+  }
+  .contact-item:last-child { margin-bottom: 0; }
+  .contact-icon {
+    width: clamp(38px, 8vw, 44px); height: clamp(38px, 8vw, 44px); border-radius: 10px;
+    background: rgba(201,146,42,0.15); border: 1px solid rgba(201,146,42,0.3);
+    display: flex; align-items: center; justify-content: center;
+    font-size: clamp(16px, 4vw, 20px); flex-shrink: 0;
+  }
+  .contact-item h4 { 
+    font-size: clamp(11px, 2.5vw, 13px); color: rgba(255,255,255,0.5); 
+    text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; 
+  }
+  .contact-item p { 
+    font-size: clamp(13px, 3.5vw, 15px); color: white; font-weight: 500; word-wrap: break-word; 
+  }
+  .contact-item a { color: var(--gold-light); text-decoration: none; word-wrap: break-word; }
+
+  /* Google Maps embed wrapper */
+  .map-wrapper {
+    width: 100%; border-radius: 16px; overflow: hidden;
+    border: 2px solid rgba(255,255,255,0.1);
+    aspect-ratio: 16/10;
+  }
+  .map-wrapper iframe {
+    width: 100%; height: 100%; border: 0; display: block;
+  }
+
+  /* ========================================
+     FOOTER
+     Links, copyright, branding
+     ======================================== */
+  footer {
+    background: #0F0A03; 
+    padding: clamp(32px, 6vw, 40px) 5% clamp(20px, 4vw, 24px);
+    border-top: 1px solid rgba(255,255,255,0.06); width: 100%;
+  }
+  .footer-top { 
+    display: flex; justify-content: space-between; align-items: flex-start; 
+    flex-wrap: wrap; gap: clamp(24px, 5vw, 32px); margin-bottom: clamp(24px, 5vw, 32px); width: 100%;
+  }
+  .footer-brand p { 
+    font-size: clamp(12px, 3vw, 13px); color: rgba(255,255,255,0.4); 
+    max-width: 260px; margin-top: 10px; line-height: 1.7; 
+  }
+  .footer-links h5 { 
+    font-size: clamp(12px, 3vw, 13px); font-weight: 700; color: white; 
+    margin-bottom: 14px; letter-spacing: 0.5px; 
+  }
+  .footer-links ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+  .footer-links a { 
+    font-size: clamp(11px, 2.5vw, 13px); color: rgba(255,255,255,0.45); 
+    text-decoration: none; transition: color 0.2s; 
+  }
+  .footer-links a:hover { color: var(--gold-light); }
+  .footer-bottom { 
+    border-top: 1px solid rgba(255,255,255,0.07); padding-top: 20px;
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 12px; width: 100%;
+  }
+  /* 
+    DYNAMIC YEAR: The copyright year shown here is 
+    injected by JavaScript so it always stays current
+  */
+  .footer-bottom p { font-size: clamp(10px, 2.5vw, 12px); color: rgba(255,255,255,0.25); }
+
+  /* ========================================
+     FLOATING WHATSAPP BUTTON
+     Always visible in bottom-right corner
+     ======================================== */
+  .float-wa {
+    position: fixed; bottom: clamp(20px, 4vw, 28px); right: clamp(20px, 4vw, 28px); z-index: 999;
+    background: #25D366; color: white;
+    width: clamp(50px, 10vw, 58px); height: clamp(50px, 10vw, 58px); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 6px 24px rgba(37,211,102,0.45); text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s; animation: bounce 2s infinite;
+  }
+  .float-wa:hover { 
+    transform: scale(1.1); box-shadow: 0 10px 32px rgba(37,211,102,0.55); 
+    animation: none; 
+  }
+  .float-wa svg { 
+    width: clamp(24px, 5vw, 28px); height: clamp(24px, 5vw, 28px); fill: white; 
+  }
+
+  /* ========================================
+     KEYFRAME ANIMATIONS
+     ======================================== */
   @keyframes fadeUp { 
-    from { 
-      opacity: 0; 
-      transform: translateY(24px); 
-    } 
-    to { 
-      opacity: 1; 
-      transform: translateY(0); 
-    } 
+    from { opacity: 0; transform: translateY(24px); } 
+    to { opacity: 1; transform: translateY(0); } 
   }
-
   @keyframes pulse { 
-    0%, 100% { 
-      transform: scale(1); 
-    } 
-    50% { 
-      transform: scale(1.2); 
-    } 
+    0%, 100% { transform: scale(1); } 
+    50% { transform: scale(1.2); } 
   }
-
   @keyframes bounce { 
-    0%, 100% { 
-      transform: translateY(0); 
-    } 
-    50% { 
-      transform: translateY(-8px); 
-    } 
+    0%, 100% { transform: translateY(0); } 
+    50% { transform: translateY(-8px); } 
   }
 
   /* ========================================
      RESPONSIVE BREAKPOINTS
-     Additional specific adjustments
      ======================================== */
 
-  /* Tablet landscape and desktop */
+  /* Two-column event grid on tablets */
   @media (min-width: 769px) {
-    .events-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
+    .events-grid { grid-template-columns: repeat(2, 1fr); }
   }
-
+  /* Three-column event grid on desktop */
   @media (min-width: 1024px) {
-    .events-grid {
-      grid-template-columns: repeat(3, 1fr);
-    }
+    .events-grid { grid-template-columns: repeat(3, 1fr); }
   }
 
-  /* Mobile and tablet portrait */
+  /* Mobile: stacked layouts, hamburger menu */
   @media (max-width: 768px) {
-    .nav-links, .nav-cta { 
-      display: none; 
-    }
-    
-    .hamburger { 
-      display: flex; 
-    }
-
+    .nav-links, .nav-cta { display: none; }
+    .hamburger { display: flex; }
     .hero { 
-      grid-template-columns: 1fr; 
-      text-align: center;
-      padding-left: 5%;
-      padding-right: 5%;
+      grid-template-columns: 1fr; text-align: center;
+      padding-left: 5%; padding-right: 5%;
     }
-    
-    .hero p, .hero h1 { 
-      margin-left: auto; 
-      margin-right: auto; 
-    }
-    
-    .hero-btns { 
-      justify-content: center;
-      width: 100%;
-    }
-    
-    .hero-btns .btn-primary,
-    .hero-btns .btn-secondary {
-      flex: 1;
-      min-width: 140px;
-    }
-    
-    .hero-stats { 
-      justify-content: center; 
-    }
-    
-    .hero-right { 
-      display: none; 
-    }
-
-    .countdown-banner { 
-      justify-content: center; 
-      text-align: center;
-      flex-direction: column;
-    }
-
-    .about-grid, .contact-grid { 
-      grid-template-columns: 1fr; 
-    }
-    
-    .about-features { 
-      grid-template-columns: 1fr; 
-    }
-
-    .footer-top { 
-      flex-direction: column; 
-    }
-    
-    .footer-bottom { 
-      flex-direction: column; 
-      text-align: center; 
-    }
+    .hero p, .hero h1 { margin-left: auto; margin-right: auto; }
+    .hero-btns { justify-content: center; width: 100%; }
+    .hero-btns .btn-primary, .hero-btns .btn-secondary { flex: 1; min-width: 140px; }
+    .hero-stats { justify-content: center; }
+    .hero-right { display: none; }
+    .countdown-banner { justify-content: center; text-align: center; flex-direction: column; }
+    .about-grid, .contact-grid { grid-template-columns: 1fr; }
+    .about-features { grid-template-columns: 1fr; }
+    .footer-top { flex-direction: column; }
+    .footer-bottom { flex-direction: column; text-align: center; }
   }
 
-  /* Extra small mobile devices */
+  /* Very small phones */
   @media (max-width: 480px) {
-    .logo-text span {
-      font-size: 9px;
-    }
-
-    .logo-crest {
-      width: 38px;
-      height: 38px;
-      font-size: 16px;
-    }
-
-    :root {
-      --nav-h: 60px;
-    }
-
-    .countdown-sep {
-      margin: 0 4px;
-    }
-
-    .hero-btns .btn-primary,
-    .hero-btns .btn-secondary {
-      width: 100%;
-      flex: none;
-    }
-
-    .stat-item {
-      min-width: 90px;
-    }
-
-    .feature-item {
-      flex-direction: column;
-      text-align: center;
-      align-items: center;
-    }
+    .logo-text span { font-size: 9px; }
+    .logo-crest { width: 38px; height: 38px; font-size: 16px; }
+    :root { --nav-h: 60px; }
+    .countdown-sep { margin: 0 4px; }
+    .hero-btns .btn-primary, .hero-btns .btn-secondary { width: 100%; flex: none; }
+    .stat-item { min-width: 90px; }
+    .feature-item { flex-direction: column; text-align: center; align-items: center; }
   }
 
-  /* Landscape orientation on mobile */
+  /* Landscape mode on small phones */
   @media (max-height: 500px) and (orientation: landscape) {
-    .hero {
-      min-height: auto;
-      padding-top: calc(var(--nav-h) + 1rem);
-      padding-bottom: 2rem;
-    }
-
-    .hero-stats {
-      margin-top: 20px;
-    }
+    .hero { min-height: auto; padding-top: calc(var(--nav-h) + 1rem); padding-bottom: 2rem; }
+    .hero-stats { margin-top: 20px; }
   }
 </style>
 </head>
 <body>
 
-<!-- FLOATING WHATSAPP BUTTON -->
-<a href="https://wa.me/2347089506428?text=Hello%20Sir%20Phillip%20Academy!%20I%20want%20to%20enroll." class="float-wa" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
-  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+<!-- ========================================
+     FLOATING WHATSAPP BUTTON
+     Always visible, bounces to get attention
+     ======================================== -->
+<a href="https://wa.me/2347089506428?text=Hello%20Sir%20Phillip%20Academy!%20I%20want%20to%20enroll." 
+   class="float-wa" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
 </a>
 
-<!-- NAVIGATION BAR -->
+<!-- ========================================
+     NAVIGATION BAR
+     ======================================== -->
 <nav>
   <a href="#" class="logo" aria-label="Sir Phillip Academy Home">
     <div class="logo-crest">SP</div>
@@ -1715,39 +1043,47 @@
   <ul class="nav-links">
     <li><a href="#classes">Classes</a></li>
     <li><a href="#events">Events</a></li>
+    <li><a href="#qotd">Q of the Day</a></li>
     <li><a href="#scores">Leaderboard</a></li>
     <li><a href="#about">About</a></li>
     <li><a href="#alumni">Alumni</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
   
-  <a href="https://wa.me/2347089506428?text=Hello!%20I%20want%20to%20join%20Sir%20Phillip%20Academy." class="nav-cta" target="_blank" rel="noopener">Enroll Now</a>
+  <a href="https://wa.me/2347089506428?text=Hello!%20I%20want%20to%20join%20Sir%20Phillip%20Academy." 
+     class="nav-cta" target="_blank" rel="noopener">Enroll Now</a>
   
   <button class="hamburger" aria-label="Open menu" id="hamburger">
-    <span></span>
-    <span></span>
-    <span></span>
+    <span></span><span></span><span></span>
   </button>
 </nav>
 
-<!-- MOBILE MENU OVERLAY -->
+<!-- Dark overlay behind mobile menu -->
 <div class="menu-overlay" id="menuOverlay"></div>
 
-<!-- MOBILE NAVIGATION MENU -->
+<!-- Slide-in mobile menu -->
 <div class="mobile-menu" id="mobileMenu">
   <ul>
     <li><a href="#home" class="mobile-link">Home</a></li>
     <li><a href="#classes" class="mobile-link">Classes</a></li>
     <li><a href="#events" class="mobile-link">Events</a></li>
+    <li><a href="#qotd" class="mobile-link">Question of the Day</a></li>
     <li><a href="#scores" class="mobile-link">Leaderboard</a></li>
     <li><a href="#about" class="mobile-link">About</a></li>
     <li><a href="#alumni" class="mobile-link">Alumni</a></li>
     <li><a href="#contact" class="mobile-link">Contact</a></li>
-    <li><a href="https://wa.me/2347089506428?text=Hello!%20I%20want%20to%20join%20Sir%20Phillip%20Academy." target="_blank" rel="noopener" style="color: var(--gold); border-color: var(--gold);">Enroll Now</a></li>
+    <li>
+      <a href="https://wa.me/2347089506428?text=Hello!%20I%20want%20to%20join%20Sir%20Phillip%20Academy." 
+         target="_blank" rel="noopener" style="color: var(--gold); border-color: var(--gold);">
+        Enroll Now
+      </a>
+    </li>
   </ul>
 </div>
 
-<!-- HERO SECTION -->
+<!-- ========================================
+     HERO SECTION
+     ======================================== -->
 <section class="hero" id="home">
   <div class="hero-content">
     <div class="hero-badge">Nigeria's Premier Tutorial Centre</div>
@@ -1755,7 +1091,8 @@
     <p>Sir Phillip Academy prepares students for JAMB, WAEC, NECO and beyond — with expert tutors, proven methods, and a community that never gives up on you.</p>
     
     <div class="hero-btns">
-      <a href="https://wa.me/2347089506428?text=Hello!%20I%20want%20to%20enroll%20at%20Sir%20Phillip%20Academy." class="btn-primary" target="_blank" rel="noopener">
+      <a href="https://wa.me/2347089506428?text=Hello!%20I%20want%20to%20enroll%20at%20Sir%20Phillip%20Academy." 
+         class="btn-primary" target="_blank" rel="noopener">
         📲 Join on WhatsApp
       </a>
       <a href="#about" class="btn-secondary">Learn More →</a>
@@ -1777,6 +1114,7 @@
     </div>
   </div>
   
+  <!-- Right side image placeholders — replace src="" with your actual photos -->
   <div class="hero-right">
     <div class="hero-img-grid">
       <div class="hero-img-card">
@@ -1795,12 +1133,14 @@
   </div>
 </section>
 
-<!-- COUNTDOWN BANNER -->
+<!-- ========================================
+     JAMB COUNTDOWN BANNER
+     ======================================== -->
 <div class="countdown-banner" id="countdown-section">
   <div class="countdown-label">
     <span class="fire">🔥</span>
     <div>
-      <h3>JAMB 2026 Countdown</h3>
+      <h3>JAMB <span id="countdown-year"></span> Countdown</h3>
       <p>Register now — limited slots available!</p>
     </div>
   </div>
@@ -1828,14 +1168,19 @@
   </div>
   
   <div class="countdown-join">
-    <a href="https://wa.me/2347089506428?text=I%20want%20to%20register%20for%20JAMB%20prep%20at%20Sir%20Phillip%20Academy!" class="whatsapp-btn" target="_blank" rel="noopener">
-      <svg class="wa-icon" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    <a href="https://wa.me/2347089506428?text=I%20want%20to%20register%20for%20JAMB%20prep%20at%20Sir%20Phillip%20Academy!" 
+       class="whatsapp-btn" target="_blank" rel="noopener">
+      <svg class="wa-icon" viewBox="0 0 24 24">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+      </svg>
       Register Now
     </a>
   </div>
 </div>
 
-<!-- UPCOMING EVENTS SECTION -->
+<!-- ========================================
+     EVENTS SECTION
+     ======================================== -->
 <section class="events-section" id="events">
   <div class="section-tag">What's Happening</div>
   <h2 class="section-title">Upcoming Events</h2>
@@ -1843,69 +1188,57 @@
   
   <div class="events-grid">
     
-    <!-- EVENT CARD 1 -->
+    <!-- EVENT 1 -->
     <div class="event-card">
-      <div class="event-banner" style="background-image: url();">
+      <div class="event-banner" style="background-color: var(--milk);">
+        <!-- Replace background-color with: background-image: url('your-event-image.jpg') -->
       </div>
-      
       <div class="event-content">
         <div class="event-tag">JAMB Workshop</div>
         <h3>ANJA 1.0</h3>
-        
         <p class="event-description">
           Join our comprehensive 3-week intensive JAMB preparation bootcamp. Master all subjects with our expert tutors, practice with past questions, and learn exam strategies that guarantee success.
         </p>
-        
         <div class="event-meta">
           <div class="event-meta-item">
             <div class="icon">📅</div>
-            <div>
-              <strong>Date:</strong> March 30th, 2025
-            </div>
+            <div><strong>Date:</strong> March 30th, 2026</div>
           </div>
           <div class="event-meta-item">
             <div class="icon">📍</div>
-            <div>
-              <strong>Location:</strong> 2, Richard Abimbola, Ilasamaja, Lagos
-            </div>
+            <div><strong>Location:</strong> 2, Richard Abimbola, Ilasamaja, Lagos</div>
           </div>
         </div>
-        
-        <a href="https://wa.me/2347089506428?text=I%20want%20to%20register%20for%20JAMB%20Intensive%20Crash%20Course" class="event-register-btn" target="_blank" rel="noopener">
+        <a href="https://wa.me/2347089506428?text=I%20want%20to%20register%20for%20ANJA%201.0" 
+           class="event-register-btn" target="_blank" rel="noopener">
           Register Now →
         </a>
       </div>
     </div>
 
-    <!-- EVENT CARD 2 -->
+    <!-- EVENT 2 -->
     <div class="event-card">
-      <div class="event-banner" style="background-image: url();">
+      <div class="event-banner" style="background-color: var(--milk);">
+        <!-- Replace background-color with: background-image: url('your-event-image.jpg') -->
       </div>
-      
       <div class="event-content">
         <div class="event-tag">Seminar</div>
-        <h3>Secret To Passing Jamb English</h3>
-        
+        <h3>Secret To Passing JAMB English</h3>
         <p class="event-description">
-          Join Prof D class teaching you the secret to passing English in Jamb 98% success rate
+          Join Prof D's class teaching you the secret to passing English in JAMB — 98% success rate guaranteed.
         </p>
-        
         <div class="event-meta">
           <div class="event-meta-item">
             <div class="icon">📅</div>
-            <div>
-              <strong>Date:</strong> March 27, 2025 | 3:00 PM - 7:00 PM
-            </div>
+            <div><strong>Date:</strong> March 27, 2026 | 3:00 PM – 7:00 PM</div>
           </div>
           <div class="event-meta-item">
             <div class="icon">📍</div>
-            <div>
-              <strong>Location:</strong> LivingSpring College, Ilasamaja, Lagos
-            </div>
+            <div><strong>Location:</strong> LivingSpring College, Ilasamaja, Lagos</div>
           </div>
         </div>
-        
-        <a href="https://wa.me/2347089506428?text=I%20want%20to%20attend%20Secret%20To%20Passing%20Jamb%20English" class="event-register-btn" target="_blank" rel="noopener">
+        <a href="https://wa.me/2347089506428?text=I%20want%20to%20attend%20Secret%20To%20Passing%20JAMB%20English" 
+           class="event-register-btn" target="_blank" rel="noopener">
           Register Now →
         </a>
       </div>
@@ -1914,7 +1247,79 @@
   </div>
 </section>
 
-<!-- CLASSES SECTION -->
+<!-- ========================================
+     QUESTION OF THE DAY SECTION
+     - 3 questions per subject each day
+     - Q1/Q2/Q3 tabs to switch between them
+     - Answers saved to localStorage (survive refresh)
+     - Resets automatically the next day
+     - After answering you can review all 3 via tabs
+     ======================================== -->
+<section class="qotd-section" id="qotd">
+  <div class="section-tag">Practice Daily</div>
+  <h2 class="section-title">Question of the Day</h2>
+  <p class="section-sub">3 fresh Maths and 3 fresh English questions every day. Your answers are saved — refresh freely. Switch tabs to review your answers anytime.</p>
+
+  <div class="qotd-grid">
+
+    <!-- ===== MATHS CARD ===== -->
+    <div class="qotd-card" id="math-card">
+      <div class="qotd-card-header math">
+        <div class="subject-icon">📐</div>
+        <div>
+          <h3>Mathematics</h3>
+          <p id="math-date-label">Today's questions</p>
+        </div>
+      </div>
+      <!-- Q1 / Q2 / Q3 tabs — each has a small dot that turns green or red after answering -->
+      <div class="qotd-tabs" id="math-tabs">
+        <button class="qotd-tab active" onclick="switchTab('math',0)">Q1 <span class="qotd-tab-dot" id="math-dot-0"></span></button>
+        <button class="qotd-tab"        onclick="switchTab('math',1)">Q2 <span class="qotd-tab-dot" id="math-dot-1"></span></button>
+        <button class="qotd-tab"        onclick="switchTab('math',2)">Q3 <span class="qotd-tab-dot" id="math-dot-2"></span></button>
+      </div>
+      <div class="qotd-body">
+        <!-- JS fills in these three panels -->
+        <div class="qotd-panel active" id="math-panel-0"></div>
+        <div class="qotd-panel"        id="math-panel-1"></div>
+        <div class="qotd-panel"        id="math-panel-2"></div>
+        <div class="qotd-score">
+          <span>Today's Score</span>
+          <strong id="math-score-display">—</strong>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== ENGLISH CARD ===== -->
+    <div class="qotd-card" id="english-card">
+      <div class="qotd-card-header english">
+        <div class="subject-icon">📖</div>
+        <div>
+          <h3>English Language</h3>
+          <p id="english-date-label">Today's questions</p>
+        </div>
+      </div>
+      <div class="qotd-tabs" id="english-tabs">
+        <button class="qotd-tab active" onclick="switchTab('english',0)">Q1 <span class="qotd-tab-dot" id="english-dot-0"></span></button>
+        <button class="qotd-tab"        onclick="switchTab('english',1)">Q2 <span class="qotd-tab-dot" id="english-dot-1"></span></button>
+        <button class="qotd-tab"        onclick="switchTab('english',2)">Q3 <span class="qotd-tab-dot" id="english-dot-2"></span></button>
+      </div>
+      <div class="qotd-body">
+        <div class="qotd-panel active" id="english-panel-0"></div>
+        <div class="qotd-panel"        id="english-panel-1"></div>
+        <div class="qotd-panel"        id="english-panel-2"></div>
+        <div class="qotd-score">
+          <span>Today's Score</span>
+          <strong id="english-score-display">—</strong>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ========================================
+     CLASSES SECTION
+     ======================================== -->
 <section class="classes-section" id="classes">
   <div class="section-tag">Our Programmes</div>
   <h2 class="section-title">Tutorial Classes &amp; Courses</h2>
@@ -1971,7 +1376,9 @@
   </div>
 </section>
 
-<!-- LEADERBOARD SECTION -->
+<!-- ========================================
+     LEADERBOARD SECTION
+     ======================================== -->
 <section class="lb-section" id="scores">
   <div class="section-tag">Student Scores</div>
   <h2 class="section-title">Top Performers Leaderboard</h2>
@@ -1994,7 +1401,12 @@
           <td><strong>Adaeze Okonkwo</strong></td>
           <td>MOCK</td>
           <td>Sciences</td>
-          <td><div class="score-bar"><span>341/400</span><div class="score-track"><div class="score-fill" style="width:85%"></div></div></div></td>
+          <td>
+            <div class="score-bar">
+              <span>341/400</span>
+              <div class="score-track"><div class="score-fill" style="width:85%"></div></div>
+            </div>
+          </td>
           <td>2026</td>
         </tr>
         <tr>
@@ -2002,7 +1414,12 @@
           <td><strong>Emeka Chukwuemeka</strong></td>
           <td>MOCK</td>
           <td>Arts</td>
-          <td><div class="score-bar"><span>336/400</span><div class="score-track"><div class="score-fill" style="width:84%"></div></div></div></td>
+          <td>
+            <div class="score-bar">
+              <span>336/400</span>
+              <div class="score-track"><div class="score-fill" style="width:84%"></div></div>
+            </div>
+          </td>
           <td>2026</td>
         </tr>
         <tr>
@@ -2010,15 +1427,25 @@
           <td><strong>Fatima Abdullahi</strong></td>
           <td>MOCK</td>
           <td>Sciences</td>
-          <td><div class="score-bar"><span>329/400</span><div class="score-track"><div class="score-fill" style="width:82%"></div></div></div></td>
+          <td>
+            <div class="score-bar">
+              <span>329/400</span>
+              <div class="score-track"><div class="score-fill" style="width:82%"></div></div>
+            </div>
+          </td>
           <td>2026</td>
         </tr>
         <tr>
           <td><span class="rank-badge rank-other">4</span></td>
           <td><strong>Chidi Nwosu</strong></td>
-          <td>MOCK</td>
+          <td>WAEC</td>
           <td>Sciences</td>
-          <td><div class="score-bar"><span>8 A's</span><div class="score-track"><div class="score-fill" style="width:100%"></div></div></div></td>
+          <td>
+            <div class="score-bar">
+              <span>8 A's</span>
+              <div class="score-track"><div class="score-fill" style="width:100%"></div></div>
+            </div>
+          </td>
           <td>2026</td>
         </tr>
         <tr>
@@ -2026,7 +1453,12 @@
           <td><strong>Ngozi Eze</strong></td>
           <td>MOCK</td>
           <td>Commercial</td>
-          <td><div class="score-bar"><span>318/400</span><div class="score-track"><div class="score-fill" style="width:79%"></div></div></div></td>
+          <td>
+            <div class="score-bar">
+              <span>318/400</span>
+              <div class="score-track"><div class="score-fill" style="width:79%"></div></div>
+            </div>
+          </td>
           <td>2026</td>
         </tr>
       </tbody>
@@ -2034,7 +1466,9 @@
   </div>
 </section>
 
-<!-- ABOUT SECTION -->
+<!-- ========================================
+     ABOUT SECTION
+     ======================================== -->
 <section class="about-section" id="about">
   <div class="about-grid">
     <div class="about-img">
@@ -2082,7 +1516,9 @@
   </div>
 </section>
 
-<!-- TESTIMONIALS SECTION -->
+<!-- ========================================
+     TESTIMONIALS SECTION
+     ======================================== -->
 <section class="testimonials-section">
   <div class="section-tag">Testimonials</div>
   <h2 class="section-title">What Our Students Say</h2>
@@ -2115,7 +1551,10 @@
   </div>
 </section>
 
-<!-- ALUMNI SECTION -->
+<!-- ========================================
+     ALUMNI SECTION
+     Read-only showcase — no editing by visitors
+     ======================================== -->
 <section class="alumni-section" id="alumni">
   <div class="section-tag">Our Alumni</div>
   <h2 class="section-title">Success Stories</h2>
@@ -2161,19 +1600,25 @@
         <p class="alumni-uni">🎓 UI Ibadan — Accounting</p>
       </div>
     </div>
-  
-    <div class="alumni-add-card" onclick="alert('To add an alumni, duplicate one of the alumni-card divs above and update the name, score, and university.')">
-      <div class="plus">+</div>
-      <p>Click to add an alumni story</p>
-    </div>
+    <!-- 
+      TO ADD MORE ALUMNI: Copy one alumni-card block above 
+      and update the name, score, and university text.
+      Only the website admin should do this — visitors cannot edit the page.
+    -->
   </div>
 </section>
 
-<!-- CONTACT SECTION -->
+<!-- ========================================
+     CONTACT SECTION
+     Includes embedded Google Maps pointing to
+     the academy's exact address
+     ======================================== -->
 <section class="contact-section" id="contact">
   <div class="section-tag">Find Us</div>
   <h2 class="section-title">Address &amp; Contact</h2>
   <div class="contact-grid">
+
+    <!-- Contact details card -->
     <div class="contact-card">
       <div class="contact-item">
         <div class="contact-icon">📍</div>
@@ -2186,7 +1631,7 @@
         <div class="contact-icon">📞</div>
         <div>
           <h4>Phone Number</h4>
-          <p><a href="tel:+2347089506428">+2347089506428</a></p>
+          <p><a href="tel:+2347089506428">+234 708 950 6428</a></p>
         </div>
       </div>
       <div class="contact-item">
@@ -2207,26 +1652,59 @@
         <div class="contact-icon">📧</div>
         <div>
           <h4>Email</h4>
-          <p><a href="mailto:info@sirphillipacademy.com">info@sirphillipacademy.com</a></p>
+          <p><a href="/cdn-cgi/l/email-protection#fc95929a93bc8f958e8c94959090958c9d9f9d98999185d29f9391"><span class="__cf_email__" data-cfemail="1970777f76596a706b69717075757069787a787d7c7460377a7674">[email&#160;protected]</span></a></p>
         </div>
       </div>
     </div>
+
+    <!-- 
+      LOCATION CARD
+      The Google Maps iframe was blocked for some users, so we replaced it
+      with two direct links — one for Google Maps, one for Apple Maps (iPhone users).
+      Clicking either button opens the map app directly with our address pre-loaded.
+    -->
     <div>
-      <div class="map-placeholder" onclick="window.open('https://maps.google.com', '_blank')">
-        <div class="icon">🗺️</div>
-        <p>Click to open in Google Maps<br><small>Update the link with your actual address</small></p>
-      </div>
-      <div style="margin-top: 20px;">
-        <a href="https://wa.me/2347089506428?text=Hello%20Sir%20Phillip%20Academy!%20I%20want%20to%20find%20out%20more." class="whatsapp-btn" target="_blank" rel="noopener" style="display:inline-flex; width:100%; justify-content:center;">
-          <svg class="wa-icon" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-          Message Us on WhatsApp
-        </a>
+      <div style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.12); border-radius:16px; overflow:hidden;">
+
+        <!-- Visual address display block -->
+        <div style="width:100%; aspect-ratio:16/9; background:rgba(201,146,42,0.08); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:14px; border-bottom:1px solid rgba(255,255,255,0.08);">
+          <div style="font-size:44px;">📍</div>
+          <div style="text-align:center; padding:0 20px;">
+            <p style="color:white; font-size:clamp(14px,3.5vw,16px); font-weight:700; margin-bottom:6px;">Sir Phillip Academy</p>
+            <p style="color:rgba(255,255,255,0.55); font-size:clamp(12px,3vw,14px);">2 Richard Abimbola, Ilasamaja<br>Lagos, Nigeria</p>
+          </div>
+        </div>
+
+        <!-- Direction buttons -->
+        <div style="padding:20px; display:flex; flex-direction:column; gap:12px;">
+
+          <!-- Opens Google Maps with our address — works on Android, desktop, and browser -->
+          <a href="https://www.google.com/maps/search/?api=1&query=2+Richard+Abimbola+Ilasamaja+Lagos+Nigeria"
+             target="_blank" rel="noopener"
+             style="display:flex; align-items:center; justify-content:center; gap:10px; background:var(--gold); color:white; padding:14px 20px; border-radius:10px; text-decoration:none; font-weight:700; font-size:clamp(13px,3vw,15px); box-shadow:0 4px 14px rgba(201,146,42,0.3); transition:all 0.2s;"
+             onmouseover="this.style.background='#b07d1e'" onmouseout="this.style.background='var(--gold)'">
+            🗺️ &nbsp; Get Directions (Google Maps)
+          </a>
+
+          <!-- Opens Apple Maps — automatically used by iPhones -->
+          <a href="https://maps.apple.com/?q=2+Richard+Abimbola+Ilasamaja+Lagos+Nigeria"
+             target="_blank" rel="noopener"
+             style="display:flex; align-items:center; justify-content:center; gap:10px; background:rgba(255,255,255,0.07); color:rgba(255,255,255,0.75); border:1px solid rgba(255,255,255,0.15); padding:14px 20px; border-radius:10px; text-decoration:none; font-weight:600; font-size:clamp(13px,3vw,15px); transition:all 0.2s;"
+             onmouseover="this.style.background='rgba(255,255,255,0.13)'" onmouseout="this.style.background='rgba(255,255,255,0.07)'">
+            🍎 &nbsp; Get Directions (Apple Maps)
+          </a>
+
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- FOOTER -->
+<!-- ========================================
+     FOOTER
+     Copyright year is set by JavaScript so
+     it automatically updates every year
+     ======================================== -->
 <footer>
   <div class="footer-top">
     <div class="footer-brand">
@@ -2242,6 +1720,7 @@
         <li><a href="#home">Home</a></li>
         <li><a href="#classes">Classes</a></li>
         <li><a href="#events">Events</a></li>
+        <li><a href="#qotd">Question of the Day</a></li>
         <li><a href="#scores">Leaderboard</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#alumni">Alumni</a></li>
@@ -2262,109 +1741,614 @@
       <h5>Connect</h5>
       <ul>
         <li><a href="https://wa.me/2347089506428" target="_blank" rel="noopener">WhatsApp</a></li>
-        <li><a href="mailto:info@sirphillipacademy.com">Email Us</a></li>
+        <li><a href="/cdn-cgi/l/email-protection#f0999e969fb08399828098999c9c998091939194959d89de939f9d">Email Us</a></li>
         <li><a href="tel:+2347089506428">Call Us</a></li>
       </ul>
     </div>
   </div>
   <div class="footer-bottom">
-    <p>© 2026 Sir Phillip Academy. All rights reserved.</p>
+    <!-- 
+      id="footer-year" is filled in by JavaScript below.
+      No need to ever manually update this number again.
+    -->
+    <p>© <span id="footer-year"></span> Sir Phillip Academy. All rights reserved.</p>
     <p>Designed for excellence · Nigeria</p>
   </div>
 </footer>
 
-<!-- JAVASCRIPT -->
-<script>
-  // JAMB COUNTDOWN TIMER
-  const jambDate = new Date('2026-04-16T08:00:00');
-  
-  function updateCountdown() {
-    const now = new Date();
-    const diff = jambDate - now;
-    
-    if (diff <= 0) {
-      document.getElementById('cd-days').textContent = '00';
-      document.getElementById('cd-hours').textContent = '00';
-      document.getElementById('cd-mins').textContent = '00';
-      document.getElementById('cd-secs').textContent = '00';
-      return;
-    }
-    
-    const days = Math.floor(diff / (1000*60*60*24));
-    const hours = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
-    const mins = Math.floor((diff % (1000*60*60)) / (1000*60));
-    const secs = Math.floor((diff % (1000*60)) / 1000);
-    
-    document.getElementById('cd-days').textContent = String(days).padStart(2,'0');
-    document.getElementById('cd-hours').textContent = String(hours).padStart(2,'0');
-    document.getElementById('cd-mins').textContent = String(mins).padStart(2,'0');
-    document.getElementById('cd-secs').textContent = String(secs).padStart(2,'0');
-  }
-  
-  updateCountdown();
-  setInterval(updateCountdown, 1000);
 
-  // MOBILE MENU TOGGLE
-  const hamburger = document.getElementById('hamburger');
-  const mobileMenu = document.getElementById('mobileMenu');
-  const menuOverlay = document.getElementById('menuOverlay');
-  const mobileLinks = document.querySelectorAll('.mobile-link');
+<!-- ========================================
+     JAVASCRIPT
+     All interactive behaviour is here
+     ======================================== -->
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 
-  function openMenu() {
-    mobileMenu.classList.add('active');
-    menuOverlay.classList.add('active');
-    document.body.style.overflow = 'hidden';
-  }
+/* ================================================
+   1. DYNAMIC YEAR
+   Automatically fills in the current year wherever
+   we need it, so we never have to update it manually.
+   ================================================ */
+(function setDynamicYear() {
+  const currentYear = new Date().getFullYear();
 
-  function closeMenu() {
-    mobileMenu.classList.remove('active');
-    menuOverlay.classList.remove('active');
-    document.body.style.overflow = '';
+  // Footer copyright year
+  const footerYearEl = document.getElementById('footer-year');
+  if (footerYearEl) footerYearEl.textContent = currentYear;
+
+  // Countdown banner heading (e.g. "JAMB 2026 Countdown")
+  const countdownYearEl = document.getElementById('countdown-year');
+  if (countdownYearEl) countdownYearEl.textContent = currentYear;
+})();
+
+
+/* ================================================
+   2. JAMB COUNTDOWN TIMER
+   Counts down to April 16 of the CURRENT year.
+   When that date passes, it automatically targets
+   April 16 of the NEXT year — so it is always
+   pointing to the upcoming JAMB exam season.
+   ================================================ */
+function getNextJambDate() {
+  const now = new Date();
+  const thisYear = now.getFullYear();
+
+  // Try April 16 of this year first
+  let target = new Date(thisYear, 3, 16, 8, 0, 0); // Month 3 = April (0-indexed)
+
+  // If that date has already passed, move to next year
+  if (now >= target) {
+    target = new Date(thisYear + 1, 3, 16, 8, 0, 0);
   }
 
-  hamburger.addEventListener('click', function() {
-    if (mobileMenu.classList.contains('active')) {
-      closeMenu();
-    } else {
-      openMenu();
+  return target;
+}
+
+function updateCountdown() {
+  const now = new Date();
+  const jambDate = getNextJambDate();
+  const diff = jambDate - now;
+
+  if (diff <= 0) {
+    // If somehow we hit exactly zero, refresh to get next year's date
+    document.getElementById('cd-days').textContent  = '00';
+    document.getElementById('cd-hours').textContent = '00';
+    document.getElementById('cd-mins').textContent  = '00';
+    document.getElementById('cd-secs').textContent  = '00';
+    return;
+  }
+
+  const days  = Math.floor(diff / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const mins  = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+  const secs  = Math.floor((diff % (1000 * 60)) / 1000);
+
+  // padStart(2,'0') turns "5" into "05" for a neat two-digit display
+  document.getElementById('cd-days').textContent  = String(days).padStart(2, '0');
+  document.getElementById('cd-hours').textContent = String(hours).padStart(2, '0');
+  document.getElementById('cd-mins').textContent  = String(mins).padStart(2, '0');
+  document.getElementById('cd-secs').textContent  = String(secs).padStart(2, '0');
+}
+
+// Run immediately so there's no blank flash, then update every second
+updateCountdown();
+setInterval(updateCountdown, 1000);
+
+
+/* ================================================
+   3. MOBILE MENU TOGGLE
+   Opens/closes the slide-in navigation on mobile
+   ================================================ */
+const hamburger   = document.getElementById('hamburger');
+const mobileMenu  = document.getElementById('mobileMenu');
+const menuOverlay = document.getElementById('menuOverlay');
+const mobileLinks = document.querySelectorAll('.mobile-link');
+
+function openMenu() {
+  mobileMenu.classList.add('active');
+  menuOverlay.classList.add('active');
+  document.body.style.overflow = 'hidden'; // Stop page scrolling behind menu
+}
+
+function closeMenu() {
+  mobileMenu.classList.remove('active');
+  menuOverlay.classList.remove('active');
+  document.body.style.overflow = ''; // Restore scrolling
+}
+
+hamburger.addEventListener('click', function () {
+  mobileMenu.classList.contains('active') ? closeMenu() : openMenu();
+});
+
+// Close when user taps the dark overlay
+menuOverlay.addEventListener('click', closeMenu);
+
+// Close when a nav link is tapped (smooth scroll will take over)
+mobileLinks.forEach(link => link.addEventListener('click', closeMenu));
+
+
+/* ================================================
+   4. SCROLL-IN ANIMATIONS
+   Cards and feature items fade up into view when
+   the user scrolls them into the viewport.
+   ================================================ */
+const scrollObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.style.animation = 'fadeUp 0.6s ease forwards';
+      entry.target.style.opacity = '1';
     }
   });
+}, { threshold: 0.1 });
 
-  menuOverlay.addEventListener('click', closeMenu);
+// Apply to all card-style elements
+document.querySelectorAll(
+  '.class-card, .event-card, .alumni-card, .testimonial-card, .feature-item'
+).forEach(el => {
+  el.style.opacity = '0'; // Start invisible; animation brings them in
+  scrollObserver.observe(el);
+});
 
-  mobileLinks.forEach(link => {
-    link.addEventListener('click', closeMenu);
+
+/* ================================================
+   5. SMOOTH SCROLLING
+   Makes all in-page # links scroll smoothly
+   ================================================ */
+document.querySelectorAll('a[href^="#"]').forEach(link => {
+  link.addEventListener('click', function (e) {
+    const targetId = link.getAttribute('href');
+    if (targetId === '#') return; // Skip plain # links
+
+    const targetEl = document.querySelector(targetId);
+    if (targetEl) {
+      e.preventDefault();
+      targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+
+
+
+/* ================================================
+   6. QUESTION OF THE DAY
+   
+   HOW IT WORKS:
+   - 3 questions per subject are shown each day
+   - Questions are picked using day-of-year as the start index
+     so they rotate automatically every day
+   - Answers are saved to localStorage with today's date in
+     the key — so refresh keeps your answers, but tomorrow
+     starts completely fresh with new questions automatically
+   - Tab dots turn green (correct) or red (wrong) after submitting
+   - You can click tabs to review all 3 questions any time
+   ================================================ */
+
+// ---- MATHS QUESTION BANK (60 questions) ----
+const MATH_QUESTIONS = [
+  { q:"If 2x + 3 = 11, find x.", opts:["3","4","5","6"], ans:1, exp:"2x = 11 − 3 = 8, so x = 4." },
+  { q:"Find the simple interest on ₦5,000 at 8% per annum for 3 years.", opts:["₦1,000","₦1,200","₦1,500","₦2,000"], ans:1, exp:"SI = PRT/100 = 5000×8×3/100 = ₦1,200." },
+  { q:"Evaluate: 3² + 4²", opts:["25","30","18","49"], ans:0, exp:"9 + 16 = 25." },
+  { q:"A triangle has angles 60°, 70° and x°. Find x.", opts:["40°","50°","60°","70°"], ans:1, exp:"Angles in a triangle sum to 180°. x = 180 − 60 − 70 = 50°." },
+  { q:"Simplify: (x² − 4) ÷ (x − 2)", opts:["x − 2","x + 2","x²","2x"], ans:1, exp:"x² − 4 = (x+2)(x−2). Dividing by (x−2) gives (x+2)." },
+  { q:"What is 15% of 200?", opts:["25","30","35","40"], ans:1, exp:"15/100 × 200 = 30." },
+  { q:"Find the LCM of 12 and 18.", opts:["24","36","48","6"], ans:1, exp:"LCM = 36." },
+  { q:"The mean of 4, 7, x and 9 is 7. Find x.", opts:["5","6","7","8"], ans:3, exp:"(4+7+x+9)/4=7 → x=8." },
+  { q:"Solve: 5x − 2 = 3x + 8", opts:["3","5","4","6"], ans:1, exp:"2x = 10, x = 5." },
+  { q:"A rectangle has length 12 cm and width 5 cm. Find its area.", opts:["34 cm²","60 cm²","17 cm²","70 cm²"], ans:1, exp:"Area = 12 × 5 = 60 cm²." },
+  { q:"Convert 0.35 to a fraction in its simplest form.", opts:["7/20","3/5","35/100","1/3"], ans:0, exp:"0.35 = 35/100 = 7/20." },
+  { q:"If P = {2,3,5,7} and Q = {1,2,3}, find P∩Q.", opts:["{2,3}","{1,2,3,5,7}","{}","{5,7}"], ans:0, exp:"Intersection = elements in both = {2,3}." },
+  { q:"Evaluate: log₁₀ 1000", opts:["2","3","4","10"], ans:1, exp:"10³ = 1000, so log₁₀ 1000 = 3." },
+  { q:"A car travels 120 km in 2 hours. What is its average speed?", opts:["40 km/h","60 km/h","80 km/h","50 km/h"], ans:1, exp:"Speed = 120 ÷ 2 = 60 km/h." },
+  { q:"Find the gradient of y = 3x − 5.", opts:["−5","3","5","−3"], ans:1, exp:"In y = mx + c, the gradient m = 3." },
+  { q:"What is the sum of angles in a quadrilateral?", opts:["180°","270°","360°","540°"], ans:2, exp:"Interior angles of a quadrilateral sum to 360°." },
+  { q:"Factorise: x² + 5x + 6", opts:["(x+1)(x+6)","(x+2)(x+3)","(x−2)(x−3)","(x+4)(x+2)"], ans:1, exp:"Two numbers that multiply to 6 and add to 5: 2 and 3." },
+  { q:"If 3ⁿ = 81, find n.", opts:["3","4","5","6"], ans:1, exp:"81 = 3⁴, so n = 4." },
+  { q:"A circle has radius 7 cm. Find its circumference. (π ≈ 22/7)", opts:["22 cm","44 cm","154 cm","88 cm"], ans:1, exp:"C = 2πr = 2 × 22/7 × 7 = 44 cm." },
+  { q:"Simplify: 2/3 + 1/4", opts:["3/7","11/12","7/12","1/2"], ans:1, exp:"LCD=12. 8/12 + 3/12 = 11/12." },
+  { q:"If 2^x = 32, what is x?", opts:["4","5","6","3"], ans:1, exp:"32 = 2⁵, so x = 5." },
+  { q:"Perimeter of an equilateral triangle with side 9 cm?", opts:["18 cm","27 cm","36 cm","81 cm"], ans:1, exp:"Perimeter = 3 × 9 = 27 cm." },
+  { q:"What is the HCF of 24 and 36?", opts:["6","8","12","18"], ans:2, exp:"HCF = 12." },
+  { q:"Evaluate: (2/5) × (15/4)", opts:["3/2","6/5","3","1/2"], ans:0, exp:"30/20 = 3/2." },
+  { q:"Probability of picking red from 3 red and 7 blue balls?", opts:["7/10","3/7","3/10","1/3"], ans:2, exp:"P = 3/10." },
+  { q:"Solve: x/3 + 2 = 5", opts:["6","9","3","12"], ans:1, exp:"x/3 = 3, x = 9." },
+  { q:"Area of circle with diameter 14 cm. (π ≈ 22/7)", opts:["44 cm²","88 cm²","154 cm²","616 cm²"], ans:2, exp:"r=7. Area = 22/7 × 49 = 154 cm²." },
+  { q:"If y = 2x² − 3, find y when x = 3.", opts:["15","21","9","12"], ans:0, exp:"y = 2(9) − 3 = 15." },
+  { q:"Exterior angle of a regular hexagon?", opts:["45°","60°","72°","90°"], ans:1, exp:"360°/6 = 60°." },
+  { q:"Simplify: 4a²b ÷ 2ab", opts:["2ab","2a","8a²b²","2b"], ans:1, exp:"= 2a." },
+  { q:"Find the next term: 2, 5, 10, 17, ___", opts:["24","26","28","30"], ans:1, exp:"Differences: 3,5,7,9. Next = 17+9 = 26." },
+  { q:"What is 3! (3 factorial)?", opts:["3","5","6","9"], ans:2, exp:"3! = 3×2×1 = 6." },
+  { q:"Solve the inequality: 2x < 10", opts:["x<3","x<5","x<4","x<6"], ans:1, exp:"x < 5." },
+  { q:"Trader buys ₦400, sells ₦500. Percentage profit?", opts:["20%","25%","15%","10%"], ans:1, exp:"Profit=₦100. 100/400×100 = 25%." },
+  { q:"Evaluate: √144", opts:["11","12","13","14"], ans:1, exp:"12 × 12 = 144." },
+  { q:"Median of: 3, 7, 1, 9, 5", opts:["5","7","4","6"], ans:0, exp:"Arranged: 1,3,5,7,9. Middle = 5." },
+  { q:"If a=3 and b=4, find √(a² + b²).", opts:["5","7","25","12"], ans:0, exp:"√(9+16) = √25 = 5." },
+  { q:"How many sides does a pentagon have?", opts:["4","5","6","7"], ans:1, exp:"Pentagon = 5 sides." },
+  { q:"Evaluate: 2³ × 2²", opts:["2⁵","2⁶","4⁵","10"], ans:0, exp:"Same base: add exponents. 2⁵." },
+  { q:"Ratio of boys to girls is 3:5. If 24 boys, how many girls?", opts:["30","35","40","45"], ans:2, exp:"1 part = 8. Girls = 5×8 = 40." },
+  { q:"Volume of a cube with side 4 cm?", opts:["16 cm³","48 cm³","64 cm³","32 cm³"], ans:2, exp:"V = 4³ = 64 cm³." },
+  { q:"How many multiples of 3 are less than 20?", opts:["5","6","7","8"], ans:1, exp:"3,6,9,12,15,18 = 6 elements." },
+  { q:"Simplify: (3x²)²", opts:["6x⁴","9x⁴","9x²","6x²"], ans:1, exp:"9x⁴." },
+  { q:"Hypotenuse 13 cm, one leg 5 cm. Find the other leg.", opts:["8 cm","10 cm","12 cm","11 cm"], ans:2, exp:"√(169−25) = √144 = 12 cm." },
+  { q:"Express 0.000405 in standard form.", opts:["4.05×10⁻⁴","4.05×10⁻³","4.05×10⁻⁵","40.5×10⁻⁵"], ans:0, exp:"4.05 × 10⁻⁴." },
+  { q:"Solve: 3(x − 2) = 9", opts:["5","4","3","6"], ans:0, exp:"3x=15, x=5." },
+  { q:"Mode of: 2, 4, 4, 6, 7, 4, 9", opts:["6","7","4","2"], ans:2, exp:"4 appears 3 times." },
+  { q:"40 students, 24 girls. Percentage of boys?", opts:["40%","50%","60%","30%"], ans:0, exp:"16/40×100 = 40%." },
+  { q:"If sin θ = 3/5, find cos θ.", opts:["4/5","3/4","5/4","5/3"], ans:0, exp:"3-4-5 triangle: cos = 4/5." },
+  { q:"Evaluate: 100 − 3 × (4 + 6)", opts:["70","10","130","40"], ans:0, exp:"BODMAS: 3×10=30. 100−30=70." },
+  { q:"nth term of: 5, 8, 11, 14, ...", opts:["3n+2","3n+1","2n+3","4n+1"], ans:0, exp:"a=5, d=3. nth term = 3n+2." },
+  { q:"What is 20% of 350?", opts:["60","70","75","80"], ans:1, exp:"70." },
+  { q:"Simplify: (x³ × x²) ÷ x⁴", opts:["x","x²","x³","1/x"], ans:0, exp:"x⁵ ÷ x⁴ = x." },
+  { q:"Two supplementary angles in ratio 2:3. Find the larger.", opts:["60°","72°","108°","120°"], ans:2, exp:"3/5 × 180 = 108°." },
+  { q:"Compound interest on ₦2,000 at 10% for 2 years.", opts:["₦400","₦420","₦440","₦200"], ans:1, exp:"2000→2200→2420. CI = ₦420." },
+  { q:"Find x: 2/x = 4/10", opts:["5","4","3","2"], ans:0, exp:"20 = 4x, x = 5." },
+  { q:"Bearing of 270° is which direction?", opts:["North","South","East","West"], ans:3, exp:"270° = due West." },
+  { q:"Expand: (x + 3)²", opts:["x²+6x+9","x²+3x+9","x²+9","x²+6x+6"], ans:0, exp:"x²+6x+9." },
+  { q:"y varies directly as x. y=12 when x=4. Find y when x=7.", opts:["21","14","28","18"], ans:0, exp:"k=3. y=3×7=21." },
+  { q:"Find x if 4(x+1) = 2(x+5)", opts:["2","3","4","5"], ans:1, exp:"4x+4=2x+10. 2x=6. x=3." },
+  { q:"What is the sum of interior angles of a pentagon?", opts:["360°","450°","540°","720°"], ans:2, exp:"(5−2)×180 = 540°." }
+];
+
+// ---- ENGLISH QUESTION BANK (60 questions) ----
+const ENGLISH_QUESTIONS = [
+  { q:"Choose the word that best completes: 'He is known for his _____ speech — never saying more than is needed.'", opts:["verbose","concise","ambiguous","redundant"], ans:1, exp:"'Concise' means brief and to the point." },
+  { q:"Identify the correct sentence.", opts:["She don't know the answer.","She doesn't know the answer.","She not know the answer.","She do not knows the answer."], ans:1, exp:"Third-person singular negative = 'doesn't'." },
+  { q:"What is the plural of 'phenomenon'?", opts:["phenomenons","phenomena","phenomenas","phenomenes"], ans:1, exp:"'Phenomena' is the correct plural." },
+  { q:"Choose the correct spelling:", opts:["recieve","receive","receve","reciieve"], ans:1, exp:"'i before e except after c' — re-CEIVE." },
+  { q:"Which sentence uses a simile?", opts:["The wind howled.","Life is a journey.","He ran like the wind.","The stars danced."], ans:2, exp:"A simile uses 'like' or 'as'. 'He ran LIKE the wind'." },
+  { q:"The antonym of 'transparent' is:", opts:["clear","opaque","visible","bright"], ans:1, exp:"'Opaque' = cannot be seen through." },
+  { q:"'By this time tomorrow, I ___ the exam.'", opts:["will have written","wrote","will write","have written"], ans:0, exp:"Future perfect = 'will have written'." },
+  { q:"Identify the odd one out:", opts:["hammer","chisel","dictionary","saw"], ans:2, exp:"Dictionary is a book; others are tools." },
+  { q:"The word 'benevolent' means:", opts:["cruel","well-meaning and kind","boastful","lazy"], ans:1, exp:"'Benevolent' means kind and generous." },
+  { q:"Passive form of: 'The teacher marked the scripts.'", opts:["The scripts marked by the teacher.","The scripts were marked by the teacher.","The scripts are marked by the teacher.","The teacher had marked the scripts."], ans:1, exp:"Passive: The scripts were marked by the teacher." },
+  { q:"'Neither the students nor the teacher ___ present.'", opts:["were","are","is","have been"], ans:2, exp:"Verb agrees with the nearest noun 'teacher' (singular) = 'is'." },
+  { q:"Literary device in: 'The kettle sang on the stove'?", opts:["Simile","Personification","Hyperbole","Metaphor"], ans:1, exp:"Giving the kettle a human action = personification." },
+  { q:"Synonym for 'alleviate':", opts:["worsen","reduce","ignore","enlarge"], ans:1, exp:"'Alleviate' = reduce/lessen." },
+  { q:"Select the correctly punctuated sentence:", opts:["Its raining,today.","It's raining today.","Its' raining today.","It's raining, today"], ans:1, exp:"'It's' = 'it is'. No comma needed." },
+  { q:"'Running fast, she caught the bus' — 'Running fast' is a:", opts:["Noun phrase","Adverbial clause","Participial phrase","Prepositional phrase"], ans:2, exp:"A participial phrase begins with a participle ('Running')." },
+  { q:"The prefix 'mis-' in 'misunderstand' means:", opts:["before","again","wrongly","not"], ans:2, exp:"'mis-' = wrongly." },
+  { q:"Choose the correctly spelt word:", opts:["accomodation","accommodation","acommodation","accomodaation"], ans:1, exp:"Double 'c' and double 'm': accommodation." },
+  { q:"Identify the conjunction in: 'I studied hard but still failed.'", opts:["hard","still","but","failed"], ans:2, exp:"'But' is the coordinating conjunction." },
+  { q:"'A new broom sweeps clean' is an example of:", opts:["Hyperbole","Proverb","Metaphor","Alliteration"], ans:1, exp:"A proverb is a short saying expressing a general truth." },
+  { q:"'She has been waiting ___ an hour.'", opts:["since","for","at","during"], ans:1, exp:"'For' is used with a duration of time." },
+  { q:"Synonym of 'meticulous':", opts:["careless","thorough","lazy","hasty"], ans:1, exp:"'Meticulous' = thorough, very careful." },
+  { q:"The rhyme scheme ABAB is called:", opts:["Alternate rhyme","Couplet","Triplet","Free verse"], ans:0, exp:"ABAB = alternate rhyme." },
+  { q:"'If I ___ you, I would apologise.'", opts:["am","was","were","be"], ans:2, exp:"Subjunctive conditional: 'If I were you'." },
+  { q:"'The politician's speech was ___, full of empty phrases.'", opts:["eloquent","hollow","inspiring","memorable"], ans:1, exp:"'Hollow' = empty/lacking substance." },
+  { q:"A person who teaches is a ___.", opts:["teachable","teaching","teacher","teached"], ans:2, exp:"Suffix '-er' = one who does the action." },
+  { q:"Subject in: 'Across the field ran the frightened horse.'", opts:["field","frightened","ran","horse"], ans:3, exp:"Who ran? The horse — 'horse' is the subject." },
+  { q:"'The book ___ I borrowed was interesting.'", opts:["who","whom","which","whose"], ans:2, exp:"'Which' for things, 'who/whom' for people." },
+  { q:"What is an oxymoron?", opts:["Repeating consonant sound","Two contradictory words together","A word that sounds like what it means","Exaggeration for effect"], ans:1, exp:"Oxymoron = contradictory terms e.g. 'deafening silence'." },
+  { q:"'She is ___ than her sister.'", opts:["more smarter","smarter","most smart","smartest"], ans:1, exp:"One-syllable adjective: add '-er'. smarter." },
+  { q:"'Gregarious' means:", opts:["lonely","antisocial","sociable and outgoing","hardworking"], ans:2, exp:"Gregarious = sociable, fond of company." },
+  { q:"'___ university is a great institution.'", opts:["A","An","The","No article"], ans:0, exp:"'University' starts with 'y' sound — use 'a'." },
+  { q:"'I've told you a million times!' is:", opts:["Simile","Metaphor","Hyperbole","Understatement"], ans:2, exp:"Hyperbole = deliberate exaggeration." },
+  { q:"Word closest in meaning to 'obsolete':", opts:["modern","outdated","useful","improved"], ans:1, exp:"Obsolete = no longer in use = outdated." },
+  { q:"'Close the window!' is what type of sentence?", opts:["Declarative","Interrogative","Exclamatory","Imperative"], ans:3, exp:"Imperative sentences give commands." },
+  { q:"'He is good ___ mathematics.'", opts:["in","on","at","for"], ans:2, exp:"Correct collocation: good AT a subject." },
+  { q:"'The moon smiled down on the earth' — figure of speech?", opts:["Simile","Personification","Alliteration","Irony"], ans:1, exp:"Giving the moon a human ability = personification." },
+  { q:"'Despite the ___, the team kept playing.'", opts:["victory","downpour","encouragement","success"], ans:1, exp:"'Despite' signals adversity. 'Downpour' is an obstacle." },
+  { q:"Past tense of 'arise'?", opts:["arised","arose","arosen","arises"], ans:1, exp:"Irregular verb: arise → arose → arisen." },
+  { q:"In 'She gave him a gift', 'him' is a:", opts:["Subject","Direct object","Indirect object","Predicate"], ans:2, exp:"'Him' = indirect object (recipient). 'Gift' = direct object." },
+  { q:"'The news ___ shocking.'", opts:["are","is","were","have been"], ans:1, exp:"'News' is uncountable/singular — takes 'is'." },
+  { q:"Same spelling but different meaning (dog's bark / tree bark) is:", opts:["Synonym","Antonym","Homonym","Prefix"], ans:2, exp:"Homonym = same spelling/pronunciation, different meaning." },
+  { q:"Most formal opening for an application letter:", opts:["Hey boss, I want the job.","I wish to apply for the advertised position.","Give me a chance.","I'm writing about the job."], ans:1, exp:"Option B is the only fully formal register." },
+  { q:"Does NOT belong: happy, elated, joyful, melancholy", opts:["happy","elated","joyful","melancholy"], ans:3, exp:"'Melancholy' = sadness; others all mean happiness." },
+  { q:"Function of a semicolon (;)?", opts:["End a sentence","Introduce a list","Join two independent clauses","Show possession"], ans:2, exp:"Semicolon joins two related independent clauses." },
+  { q:"Correctly spelt word:", opts:["goverment","government","govenment","governement"], ans:1, exp:"g-o-v-e-r-n-m-e-n-t." },
+  { q:"'I will see you anon' — 'anon' means:", opts:["never","soon","later today","yesterday"], ans:1, exp:"'Anon' = shortly/soon (archaic)." },
+  { q:"Gerund in: 'Swimming is her favourite sport.'", opts:["her","favourite","sport","Swimming"], ans:3, exp:"A gerund = verb form used as a noun. 'Swimming' is the subject." },
+  { q:"'I ___ to the market yesterday.'", opts:["go","goes","went","gone"], ans:2, exp:"Simple past of 'go' = 'went'." },
+  { q:"'Ephemeral' means:", opts:["long-lasting","permanent","short-lived","massive"], ans:2, exp:"Ephemeral = lasting only a short time." },
+  { q:"'He was accused ___ theft.'", opts:["for","of","with","about"], ans:1, exp:"Accused OF a crime." },
+  { q:"Which is an abstract noun?", opts:["table","Lagos","freedom","teacher"], ans:2, exp:"Abstract noun = cannot be seen or touched. 'Freedom' qualifies." },
+  { q:"'The ___ of the choir was beautiful.' (correct homophone)", opts:["hymn","him","hymme","hym"], ans:0, exp:"'Hymn' = religious song. 'Him' = pronoun." },
+  { q:"'All that glitters is not gold' means:", opts:["Everything shiny is valuable","Appearances can be deceiving","Gold is most valuable","Glitter is not real gold"], ans:1, exp:"Appearances don't always reflect true value." },
+  { q:"Sentence in the active voice:", opts:["The book was read by Amina.","Amina read the book.","The book had been read.","It was Amina who read it."], ans:1, exp:"Active: Amina (subject) read (verb) the book (object)." },
+  { q:"Suffix '-ology' means:", opts:["lover of","against","the study of","full of"], ans:2, exp:"'-ology' = the study of. E.g. biology = study of life." },
+  { q:"Correctly punctuated sentence:", opts:["Lets go now","Let's go, now.","Let's go now.","Lets' go now!"], ans:2, exp:"Let's = let us (apostrophe needed). No comma before 'now'." },
+  { q:"'Ourselves' is what type of pronoun?", opts:["Personal","Reflexive","Relative","Demonstrative"], ans:1, exp:"Reflexive pronouns end in -self/-selves." },
+  { q:"Word closest in meaning to 'indignant':", opts:["happy","offended","confused","embarrassed"], ans:1, exp:"Indignant = angry at unfairness = offended." },
+  { q:"Type of clause: '…that she won the prize'", opts:["Main clause","Adverbial clause","Relative clause","Noun clause"], ans:3, exp:"Noun clause acts as a noun (object here)." },
+  { q:"Sentence containing alliteration:", opts:["She slowly sipped the sweet syrup.","He ran to the store.","The cat sat on the mat.","Birds fly south in winter."], ans:0, exp:"Alliteration = same consonant start. S-s-s-s-s." },
+  { q:"'Verbose' means:", opts:["silent","using too many words","speaking fast","hard to understand"], ans:1, exp:"Verbose = excessively wordy." }
+];
+
+
+/* ================================================
+   LOCALSTORAGE SYSTEM
+   
+   Key format:  spa_qotd_math_2026-03-14
+                spa_qotd_english_2026-03-14
+   
+   - Same key today no matter how many times you refresh
+   - Tomorrow = different date = new key = fresh start
+   - No manual cleanup needed — old keys just get ignored
+   ================================================ */
+
+// Returns today's date as a string e.g. "2026-03-14"
+function getTodayKey() {
+  const d = new Date();
+  const m = String(d.getMonth() + 1).padStart(2, '0');
+  const day = String(d.getDate()).padStart(2, '0');
+  return d.getFullYear() + '-' + m + '-' + day;
+}
+
+// Full localStorage key for a subject
+function storageKey(subject) {
+  return 'spa_qotd_' + subject + '_' + getTodayKey();
+}
+
+// Load today's saved answers — or return blank defaults
+function loadData(subject) {
+  try {
+    var raw = localStorage.getItem(storageKey(subject));
+    if (raw) return JSON.parse(raw);
+  } catch(e) {}
+  // Default: nothing selected, nothing submitted
+  return { answers: [null, null, null], submitted: [false, false, false] };
+}
+
+// Save current state to localStorage
+function saveData(subject, data) {
+  try {
+    localStorage.setItem(storageKey(subject), JSON.stringify(data));
+  } catch(e) {}
+}
+
+
+/* ================================================
+   PICK TODAY'S 3 QUESTIONS
+   
+   day-of-year (1-366) is used as the start index.
+   3 consecutive questions from that point = today's set.
+   Wraps around safely at end of bank.
+   ================================================ */
+function getDayOfYear() {
+  var now = new Date();
+  var start = new Date(now.getFullYear(), 0, 0);
+  return Math.floor((now - start) / 86400000); // 86400000ms = 1 day
+}
+
+function getTodaysQuestions(bank) {
+  var start = getDayOfYear() % bank.length;
+  return [0, 1, 2].map(function(i) {
+    return bank[(start + i) % bank.length];
+  });
+}
+
+
+/* ================================================
+   SWITCH TAB
+   Shows the correct panel and marks the tab active
+   ================================================ */
+function switchTab(subject, index) {
+  // Show only the selected panel
+  [0, 1, 2].forEach(function(i) {
+    var panel = document.getElementById(subject + '-panel-' + i);
+    if (panel) panel.classList.toggle('active', i === index);
+  });
+  // Highlight only the selected tab
+  var tabs = document.getElementById(subject + '-tabs');
+  if (tabs) {
+    tabs.querySelectorAll('.qotd-tab').forEach(function(tab, i) {
+      tab.classList.toggle('active', i === index);
+    });
+  }
+}
+
+
+/* ================================================
+   RENDER ONE QUESTION PANEL
+   
+   Builds the HTML for one question and injects it.
+   If already answered (from localStorage), it shows
+   the results immediately — green/red + explanation.
+   ================================================ */
+function renderPanel(subject, qIndex, question, data) {
+  var panel = document.getElementById(subject + '-panel-' + qIndex);
+  if (!panel) return;
+
+  var letters = ['A','B','C','D'];
+  var submitted = data.submitted[qIndex];
+  var selected  = data.answers[qIndex];
+
+  // Build options HTML
+  var optsHTML = '';
+  question.opts.forEach(function(text, i) {
+    var cls = 'qotd-option';
+    var letterStyle = '';
+
+    if (submitted) {
+      if (i === question.ans) {
+        cls += ' correct';
+        letterStyle = 'background:#2ecc71;color:white;';
+      } else if (i === selected && i !== question.ans) {
+        cls += ' wrong';
+        letterStyle = 'background:#e74c3c;color:white;';
+      }
+    } else if (i === selected) {
+      cls += ' selected';
+    }
+
+    optsHTML += '<button class="' + cls + '" data-idx="' + i + '" '
+      + (submitted ? 'disabled' : '')
+      + ' onclick="selectOption(\'' + subject + '\',' + qIndex + ',' + i + ')">'
+      + '<span class="qotd-option-letter" style="' + letterStyle + '">' + letters[i] + '</span>'
+      + '<span>' + text + '</span>'
+      + '</button>';
   });
 
-  // SCROLL ANIMATIONS
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.style.animation = 'fadeUp 0.6s ease forwards';
-        e.target.style.opacity = '1';
+  // Build explanation HTML
+  var expShow = submitted ? 'show' : '';
+  var expLabel = submitted ? (selected === question.ans ? '✅ Correct! ' : '❌ Wrong! ') : '';
+  var expHTML = '<div class="qotd-explanation ' + expShow + '" id="' + subject + '-exp-' + qIndex + '">'
+    + '<strong>' + expLabel + '</strong>' + (submitted ? question.exp : '')
+    + '</div>';
+
+  // Submit button
+  var btnDisabled = (submitted || selected === null) ? 'disabled' : '';
+  var btnText     = submitted ? 'Answered ✓' : 'Submit Answer';
+
+  panel.innerHTML =
+    '<div class="qotd-question">' + question.q + '</div>'
+    + '<div class="qotd-options" id="' + subject + '-opts-' + qIndex + '">' + optsHTML + '</div>'
+    + expHTML
+    + '<div class="qotd-actions">'
+    + '<button class="qotd-submit" id="' + subject + '-btn-' + qIndex + '" '
+    + btnDisabled
+    + ' onclick="submitAnswer(\'' + subject + '\',' + qIndex + ')">' + btnText + '</button>'
+    + '</div>';
+}
+
+
+/* ================================================
+   SELECT OPTION
+   Highlights the chosen option, enables submit button,
+   saves selection to localStorage immediately
+   ================================================ */
+function selectOption(subject, qIndex, optIndex) {
+  var data = loadData(subject);
+  if (data.submitted[qIndex]) return; // Already answered, ignore
+
+  // Save selection
+  data.answers[qIndex] = optIndex;
+  saveData(subject, data);
+
+  // Update visual
+  var opts = document.getElementById(subject + '-opts-' + qIndex);
+  if (!opts) return;
+  opts.querySelectorAll('.qotd-option').forEach(function(btn) {
+    btn.classList.remove('selected');
+  });
+  var chosen = opts.querySelectorAll('.qotd-option')[optIndex];
+  if (chosen) chosen.classList.add('selected');
+
+  // Enable submit button
+  var btn = document.getElementById(subject + '-btn-' + qIndex);
+  if (btn) btn.disabled = false;
+}
+
+
+/* ================================================
+   SUBMIT ANSWER
+   Locks the question, saves to localStorage,
+   shows green/red feedback + explanation,
+   updates tab dot and score summary
+   ================================================ */
+function submitAnswer(subject, qIndex) {
+  var bank      = subject === 'math' ? MATH_QUESTIONS : ENGLISH_QUESTIONS;
+  var questions = getTodaysQuestions(bank);
+  var question  = questions[qIndex];
+  var data      = loadData(subject);
+
+  if (data.answers[qIndex] === null) return; // Nothing selected
+  if (data.submitted[qIndex]) return;         // Already submitted
+
+  // Mark submitted and save permanently
+  data.submitted[qIndex] = true;
+  saveData(subject, data);
+
+  var selected  = data.answers[qIndex];
+  var isCorrect = selected === question.ans;
+
+  // Apply colours to all options
+  var opts = document.getElementById(subject + '-opts-' + qIndex);
+  if (opts) {
+    opts.querySelectorAll('.qotd-option').forEach(function(btn, i) {
+      btn.classList.remove('selected');
+      btn.disabled = true;
+      if (i === question.ans) {
+        btn.classList.add('correct');
+        btn.querySelector('.qotd-option-letter').style.background = '#2ecc71';
+        btn.querySelector('.qotd-option-letter').style.color = 'white';
+      } else if (i === selected && i !== question.ans) {
+        btn.classList.add('wrong');
+        btn.querySelector('.qotd-option-letter').style.background = '#e74c3c';
+        btn.querySelector('.qotd-option-letter').style.color = 'white';
       }
     });
-  }, { threshold: 0.1 });
+  }
 
-  document.querySelectorAll('.class-card, .event-card, .alumni-card, .testimonial-card, .feature-item').forEach(el => {
-    el.style.opacity = '0';
-    observer.observe(el);
+  // Show explanation
+  var exp = document.getElementById(subject + '-exp-' + qIndex);
+  if (exp) {
+    exp.innerHTML = '<strong>' + (isCorrect ? '✅ Correct! ' : '❌ Wrong! ') + '</strong>' + question.exp;
+    exp.classList.add('show');
+  }
+
+  // Disable and relabel submit button
+  var btn = document.getElementById(subject + '-btn-' + qIndex);
+  if (btn) { btn.disabled = true; btn.textContent = 'Answered ✓'; }
+
+  // Update tab dot and score summary
+  updateDots(subject, data, questions);
+  updateScore(subject, data, questions);
+}
+
+
+/* ================================================
+   UPDATE TAB DOTS
+   Grey = not answered | Green = correct | Red = wrong
+   ================================================ */
+function updateDots(subject, data, questions) {
+  [0, 1, 2].forEach(function(i) {
+    var dot = document.getElementById(subject + '-dot-' + i);
+    if (!dot) return;
+    dot.className = 'qotd-tab-dot';
+    if (data.submitted[i]) {
+      dot.classList.add(data.answers[i] === questions[i].ans ? 'answered-correct' : 'answered-wrong');
+    }
+  });
+}
+
+
+/* ================================================
+   UPDATE SCORE SUMMARY
+   Shows e.g. "2 / 3 ✅" at bottom of card
+   ================================================ */
+function updateScore(subject, data, questions) {
+  var el = document.getElementById(subject + '-score-display');
+  if (!el) return;
+  var answered = data.submitted.filter(Boolean).length;
+  if (answered === 0) { el.textContent = '—'; return; }
+  var correct = 0;
+  data.submitted.forEach(function(done, i) {
+    if (done && data.answers[i] === questions[i].ans) correct++;
+  });
+  el.textContent = correct + ' / ' + answered + ' \u2705';
+}
+
+
+/* ================================================
+   INIT — runs once on page load
+   Restores everything from localStorage
+   ================================================ */
+function initQOTD() {
+  var today = new Date().toLocaleDateString('en-NG', {
+    weekday: 'long', day: 'numeric', month: 'long'
   });
 
-  // SMOOTH SCROLLING
-  document.querySelectorAll('a[href^="#"]').forEach(a => {
-    a.addEventListener('click', e => {
-      const id = a.getAttribute('href');
-      if (id === '#') return;
-      
-      const el = document.querySelector(id);
-      if (el) {
-        e.preventDefault();
-        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
+  ['math', 'english'].forEach(function(subject) {
+    var bank      = subject === 'math' ? MATH_QUESTIONS : ENGLISH_QUESTIONS;
+    var questions = getTodaysQuestions(bank);
+    var data      = loadData(subject);
+
+    // Set date label in header
+    var label = document.getElementById(subject + '-date-label');
+    if (label) label.textContent = today;
+
+    // Render all 3 panels (with saved state if any)
+    questions.forEach(function(q, i) {
+      renderPanel(subject, i, q, data);
     });
+
+    // Restore dots and score
+    updateDots(subject, data, questions);
+    updateScore(subject, data, questions);
   });
+}
+
+initQOTD();
+
 </script>
-
 </body>
 </html>
