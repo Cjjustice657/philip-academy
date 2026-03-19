@@ -10,8 +10,6 @@
 *{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
 body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;}
-
-/* LOGIN */
 .login-screen{min-height:100vh;display:flex;align-items:center;justify-content:center;background:radial-gradient(ellipse at 60% 40%,rgba(201,146,42,.08) 0%,transparent 60%),var(--bg);}
 .login-card{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:48px 40px;width:100%;max-width:420px;text-align:center;box-shadow:0 32px 80px rgba(0,0,0,.6);}
 .login-logo{font-family:'Playfair Display',serif;font-size:32px;font-weight:900;color:var(--gold);margin-bottom:4px;}
@@ -22,8 +20,6 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 .login-btn{width:100%;padding:14px;background:var(--gold);color:white;border:none;border-radius:var(--radius);font-family:'DM Sans',sans-serif;font-size:15px;font-weight:700;cursor:pointer;transition:all .2s;box-shadow:0 6px 20px rgba(201,146,42,.3);}
 .login-btn:hover{background:#b07d1e;transform:translateY(-1px);}
 .login-error{color:var(--danger);font-size:13px;margin-top:-12px;margin-bottom:12px;display:none;}
-
-/* APP */
 .app{display:none;min-height:100vh;}
 .sidebar{position:fixed;top:0;left:0;width:240px;height:100vh;background:var(--surface);border-right:1px solid var(--border);display:flex;flex-direction:column;z-index:100;overflow-y:auto;}
 .sidebar-logo{padding:24px 20px 16px;border-bottom:1px solid var(--border);}
@@ -40,22 +36,16 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 .main{margin-left:240px;padding:32px;min-height:100vh;}
 .page{display:none;}
 .page.active{display:block;}
-
-/* STATUS */
 .status-bar{position:fixed;top:20px;right:20px;z-index:999;background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:12px 18px;font-size:13px;font-weight:600;display:flex;align-items:center;gap:10px;transform:translateY(-80px);opacity:0;transition:all .3s;max-width:320px;}
 .status-bar.show{transform:translateY(0);opacity:1;}
 .status-bar.success{border-color:var(--success);color:var(--success);}
 .status-bar.error{border-color:var(--danger);color:var(--danger);}
 .status-bar.loading{border-color:var(--gold);color:var(--gold);}
-
-/* SEED BANNER */
 .seed-banner{background:rgba(201,146,42,.1);border:1px solid rgba(201,146,42,.3);border-radius:var(--radius);padding:18px 22px;margin-bottom:24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;}
 .seed-banner p{font-size:13px;color:var(--goldl);line-height:1.6;}
 .seed-btn{padding:10px 20px;background:var(--gold);color:white;border:none;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:700;cursor:pointer;transition:all .2s;white-space:nowrap;}
 .seed-btn:hover{background:#b07d1e;}
 .seed-btn:disabled{background:var(--muted);cursor:not-allowed;}
-
-/* CONFIG */
 .config-banner{background:rgba(201,146,42,.1);border:1px solid rgba(201,146,42,.3);border-radius:var(--radius);padding:20px 24px;margin-bottom:28px;}
 .config-banner h3{font-size:15px;font-weight:700;color:var(--goldl);margin-bottom:8px;}
 .config-banner p{font-size:13px;color:var(--muted);line-height:1.6;margin-bottom:14px;}
@@ -67,8 +57,6 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 .cfg-save{margin-top:12px;padding:10px 20px;background:var(--gold);color:white;border:none;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:700;cursor:pointer;transition:all .2s;}
 .cfg-save:hover{background:#b07d1e;}
 .cfg-ok{font-size:12px;color:var(--success);margin-top:8px;display:none;}
-
-/* CARDS */
 .page-header{margin-bottom:28px;}
 .page-header h1{font-family:'Playfair Display',serif;font-size:28px;font-weight:900;color:var(--text);margin-bottom:6px;}
 .page-header p{font-size:14px;color:var(--muted);}
@@ -77,8 +65,6 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 .card-header h2{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;}
 .add-btn{display:flex;align-items:center;gap:8px;padding:9px 18px;background:var(--gold);color:white;border:none;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:700;cursor:pointer;transition:all .2s;}
 .add-btn:hover{background:#b07d1e;transform:translateY(-1px);}
-
-/* ITEMS */
 .item-list{display:flex;flex-direction:column;gap:12px;}
 .item-row{display:flex;align-items:flex-start;gap:14px;padding:16px;background:var(--surface2);border:1px solid var(--border);border-radius:10px;transition:border-color .2s;}
 .item-row:hover{border-color:#444;}
@@ -98,8 +84,6 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 .del-btn:disabled{opacity:.3;cursor:not-allowed;}
 .empty-state{text-align:center;padding:40px;color:var(--muted);font-size:14px;}
 .empty-icon{font-size:36px;margin-bottom:10px;}
-
-/* STATS */
 .stats-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px;margin-bottom:24px;}
 .stat-card{background:var(--surface2);border:1px solid var(--border);border-radius:12px;padding:20px;display:flex;flex-direction:column;gap:8px;}
 .stat-card label{font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:1px;}
@@ -109,8 +93,6 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 .stat-lbl-input:focus{border-color:var(--gold);}
 .save-stats-btn{padding:12px 24px;background:var(--gold);color:white;border:none;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:700;cursor:pointer;transition:all .2s;align-self:flex-start;}
 .save-stats-btn:hover{background:#b07d1e;}
-
-/* DASHBOARD */
 .dash-stats{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:14px;margin-bottom:28px;}
 .dash-stat{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:20px 18px;display:flex;flex-direction:column;gap:6px;}
 .dash-stat .ds-num{font-family:'Playfair Display',serif;font-size:28px;font-weight:900;color:var(--gold);}
@@ -120,8 +102,6 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 .dash-row{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--border);font-size:13px;}
 .dash-row:last-child{border-bottom:none;}
 .dash-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
-
-/* MODAL */
 .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:500;display:none;align-items:center;justify-content:center;padding:20px;}
 .modal-overlay.open{display:flex;}
 .modal{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:28px;width:100%;max-width:580px;max-height:90vh;overflow-y:auto;box-shadow:0 32px 80px rgba(0,0,0,.7);}
@@ -136,23 +116,6 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 .form-textarea{resize:vertical;min-height:90px;}
 .form-select option{background:var(--surface2);}
 .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
-.img-hint{font-size:11px;color:var(--muted);margin-top:6px;line-height:1.5;}
-.img-hint a{color:var(--goldl);}
-.img-preview-box{margin-top:10px;border-radius:10px;overflow:hidden;display:none;}
-.img-preview-box.show{display:block;}
-.img-preview-box img{width:100%;max-height:180px;object-fit:cover;display:block;}
-.modal-actions{display:flex;gap:12px;justify-content:flex-end;margin-top:24px;padding-top:20px;border-top:1px solid var(--border);}
-.btn-cancel{padding:10px 22px;background:var(--surface2);border:1px solid var(--border);border-radius:8px;color:var(--muted);font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600;cursor:pointer;}
-.btn-cancel:hover{color:var(--text);border-color:#555;}
-.btn-save{padding:10px 28px;background:var(--gold);color:white;border:none;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:700;cursor:pointer;transition:all .2s;}
-.btn-save:hover{background:#b07d1e;}
-.btn-save:disabled{background:var(--muted);cursor:not-allowed;}
-
-/* SPINNER */
-.spinner{width:18px;height:18px;border:2px solid rgba(201,146,42,.3);border-top-color:var(--gold);border-radius:50%;animation:spin .7s linear infinite;flex-shrink:0;}
-@keyframes spin{to{transform:rotate(360deg);}}
-
-/* IMAGE UPLOAD WIDGET */
 .img-upload-widget{border:2px dashed var(--border);border-radius:12px;padding:0;overflow:hidden;transition:border-color .2s;background:var(--surface2);}
 .img-upload-widget:hover{border-color:var(--gold);}
 .img-upload-widget input[type=file]{display:none;}
@@ -168,7 +131,6 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 .img-clear-btn{background:rgba(231,76,60,.15);color:var(--danger);border:none;border-radius:6px;padding:4px 10px;font-size:11px;font-weight:600;cursor:pointer;flex-shrink:0;margin-left:10px;}
 .img-clear-btn:hover{background:rgba(231,76,60,.25);}
 .img-size-warn{font-size:11px;color:var(--danger);margin-top:6px;display:none;}
-/* Hero photo grid */
 .hero-photo-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:20px;}
 .hero-photo-slot{background:var(--surface2);border:1px solid var(--border);border-radius:12px;overflow:hidden;}
 .hero-photo-slot .slot-label{font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:1px;padding:12px 14px 8px;}
@@ -186,12 +148,17 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 .about-current{border-radius:12px;overflow:hidden;border:1px solid var(--border);}
 .about-current img{width:100%;display:block;object-fit:cover;max-height:300px;}
 .about-current .no-photo{width:100%;height:200px;display:flex;align-items:center;justify-content:center;font-size:40px;background:var(--surface2);}
-@media(max-width:768px){
-  .hero-photo-grid{grid-template-columns:1fr;}
-  .about-photo-wrap{grid-template-columns:1fr;}
-}
-
-/* MOBILE */
+.modal-actions{display:flex;gap:12px;justify-content:flex-end;margin-top:24px;padding-top:20px;border-top:1px solid var(--border);}
+.btn-cancel{padding:10px 22px;background:var(--surface2);border:1px solid var(--border);border-radius:8px;color:var(--muted);font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600;cursor:pointer;}
+.btn-cancel:hover{color:var(--text);border-color:#555;}
+.btn-save{padding:10px 28px;background:var(--gold);color:white;border:none;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:700;cursor:pointer;transition:all .2s;}
+.btn-save:hover{background:#b07d1e;}
+.btn-save:disabled{background:var(--muted);cursor:not-allowed;}
+.spinner{width:18px;height:18px;border:2px solid rgba(201,146,42,.3);border-top-color:var(--gold);border-radius:50%;animation:spin .7s linear infinite;flex-shrink:0;}
+@keyframes spin{to{transform:rotate(360deg);}}
+/* FIX BANNER — shown when Firebase not yet configured */
+.fb-warning{background:rgba(231,76,60,.1);border:1px solid rgba(231,76,60,.3);border-radius:10px;padding:14px 18px;margin-bottom:20px;font-size:13px;color:#e74c3c;display:none;}
+.fb-warning.show{display:block;}
 @media(max-width:768px){
   .sidebar{transform:translateX(-100%);transition:transform .3s;}
   .sidebar.open{transform:translateX(0);}
@@ -199,6 +166,8 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
   .form-grid{grid-template-columns:1fr;}
   .config-grid{grid-template-columns:1fr;}
   .dash-stats{grid-template-columns:repeat(2,1fr);}
+  .hero-photo-grid{grid-template-columns:1fr;}
+  .about-photo-wrap{grid-template-columns:1fr;}
   .mobile-toggle{position:fixed;top:16px;left:16px;z-index:200;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:10px;cursor:pointer;display:flex;flex-direction:column;gap:4px;}
   .mobile-toggle span{width:20px;height:2px;background:var(--text);border-radius:2px;}
 }
@@ -235,20 +204,23 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
     </div>
     <nav class="sidebar-nav">
       <div class="nav-section-label">Overview</div>
-      <button class="nav-item active" onclick="showPage('dashboard')"><span class="ni">📊</span> Dashboard</button>
+      <button class="nav-item active" data-page="dashboard" onclick="showPage('dashboard',this)"><span class="ni">📊</span> Dashboard</button>
       <div class="nav-section-label">Content</div>
-      <button class="nav-item" onclick="showPage('events')"><span class="ni">📅</span> Events</button>
-      <button class="nav-item" onclick="showPage('classes')"><span class="ni">🏫</span> Class Photos</button>
-      <button class="nav-item" onclick="showPage('leaderboard')"><span class="ni">🏆</span> Leaderboard</button>
-      <button class="nav-item" onclick="showPage('alumni')"><span class="ni">🎓</span> Alumni</button>
-      <button class="nav-item" onclick="showPage('testimonials')"><span class="ni">💬</span> Testimonials</button>
-      <button class="nav-item" onclick="showPage('stats')"><span class="ni">📈</span> Hero Stats</button>
-      <button class="nav-item" onclick="showPage('herophotos')"><span class="ni">🖼️</span> Hero Photos</button>
-      <button class="nav-item" onclick="showPage('aboutphoto')"><span class="ni">👨‍🏫</span> About Photo</button>
-      <button class="nav-item" onclick="showPage('admissionphotos')"><span class="ni">🏛️</span> Admission Photos</button>
+      <button class="nav-item" data-page="events" onclick="showPage('events',this)"><span class="ni">📅</span> Events</button>
+      <button class="nav-item" data-page="classes" onclick="showPage('classes',this)"><span class="ni">🏫</span> Class Photos</button>
+      <button class="nav-item" data-page="leaderboard" onclick="showPage('leaderboard',this)"><span class="ni">🏆</span> Leaderboard</button>
+      <button class="nav-item" data-page="alumni" onclick="showPage('alumni',this)"><span class="ni">🎓</span> Alumni</button>
+      <button class="nav-item" data-page="testimonials" onclick="showPage('testimonials',this)"><span class="ni">💬</span> Testimonials</button>
+      <button class="nav-item" data-page="stats" onclick="showPage('stats',this)"><span class="ni">📈</span> Hero Stats</button>
+      <button class="nav-item" data-page="herophotos" onclick="showPage('herophotos',this)"><span class="ni">🖼️</span> Hero Photos</button>
+      <button class="nav-item" data-page="aboutphoto" onclick="showPage('aboutphoto',this)"><span class="ni">👨‍🏫</span> About Photo</button>
+      <button class="nav-item" data-page="admissionphotos" onclick="showPage('admissionphotos',this)"><span class="ni">🏛️</span> Admission Photos</button>
       <div class="nav-section-label">System</div>
-      <button class="nav-item" onclick="showPage('firebase')"><span class="ni">🔥</span> Firebase Setup</button>
+      <button class="nav-item" data-page="firebase" onclick="showPage('firebase',this)"><span class="ni">🔥</span> Firebase Setup</button>
     </nav>
+    <a href="https://spacademy.vercel.app" target="_blank" style="text-decoration:none;padding:14px 12px;margin:0 12px 12px;display:flex;align-items:center;gap:12px;background:var(--goldp);border:1px solid rgba(201,146,42,.3);border-radius:10px;color:var(--goldl);font-size:13px;font-weight:700;transition:all .2s;" onmouseover="this.style.background='rgba(201,146,42,.2)'" onmouseout="this.style.background='var(--goldp)'">
+      <span style="font-size:18px">🌐</span> View Live Site ↗
+    </a>
     <div class="logout-btn" onclick="doLogout()"><span style="font-size:18px">🚪</span> Sign Out</div>
   </div>
 
@@ -257,6 +229,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
     <!-- DASHBOARD -->
     <div class="page active" id="page-dashboard">
       <div class="page-header"><h1>Dashboard</h1><p>Welcome back, Admin.</p></div>
+      <div class="fb-warning" id="fb-warning">⚠️ Firebase not connected. Go to <strong>Firebase Setup</strong> in the sidebar to connect — you only need to do this once.</div>
       <div class="dash-stats">
         <div class="dash-stat"><div class="ds-num" id="dash-events">—</div><div class="ds-label">Events</div></div>
         <div class="dash-stat"><div class="ds-num" id="dash-lb">—</div><div class="ds-label">Leaderboard</div></div>
@@ -265,7 +238,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
       </div>
       <div class="dash-info">
         <h3>Status</h3>
-        <div class="dash-row"><div class="dash-dot" style="background:var(--gold)"></div><span>Firebase: <strong id="fb-status-text">Not configured</strong></span></div>
+        <div class="dash-row"><div class="dash-dot" style="background:var(--gold)"></div><span>Firebase: <strong id="fb-status-text">Checking...</strong></span></div>
         <div class="dash-row"><div class="dash-dot" style="background:var(--success)"></div><span>Changes go live on the main site instantly</span></div>
         <div class="dash-row"><div class="dash-dot" style="background:#3498db"></div><span>First time? Click <strong>Firebase Setup</strong>, then click <strong>Seed Default Data</strong> on each page</span></div>
       </div>
@@ -273,10 +246,11 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 
     <!-- FIREBASE SETUP -->
     <div class="page" id="page-firebase">
-      <div class="page-header"><h1>Firebase Setup</h1><p>Paste your Firebase config. Only needed once per device.</p></div>
+      <div class="page-header"><h1>Firebase Setup</h1><p>Paste your Firebase config below. <strong style="color:var(--goldl)">You only need to do this once</strong> — it is saved in your browser automatically.</p></div>
       <div class="card">
         <p style="font-size:14px;color:var(--muted);line-height:1.8;margin-bottom:20px;">
-          Go to <strong style="color:var(--goldl)">console.firebase.google.com</strong> → your project → Project Settings → Your apps → Web app → copy the config values below.
+          Go to <strong style="color:var(--goldl)">console.firebase.google.com</strong> → your project → Project Settings → Your apps → Web app → copy the config values below.<br><br>
+          <span style="color:var(--success)">✅ If the fields below are already filled in, your config is saved — just click <strong>Save Config &amp; Connect</strong> to reconnect.</span>
         </p>
         <div class="config-grid">
           <div class="cfg-wrap"><label>API Key</label><input class="cfg-input form-input" id="cfg-apiKey" placeholder="AIzaSy..."></div>
@@ -286,73 +260,73 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
           <div class="cfg-wrap"><label>Messaging Sender ID</label><input class="cfg-input form-input" id="cfg-messagingSenderId" placeholder="123456789"></div>
           <div class="cfg-wrap"><label>App ID</label><input class="cfg-input form-input" id="cfg-appId" placeholder="1:123:web:abc..."></div>
         </div>
-        <button class="cfg-save" onclick="saveFirebaseConfig()">💾 Save Config & Connect</button>
-        <div class="cfg-ok" id="cfg-ok">✅ Connected successfully!</div>
+        <button class="cfg-save" onclick="saveFirebaseConfig()">💾 Save Config &amp; Connect</button>
+        <div class="cfg-ok" id="cfg-ok">✅ Connected successfully! You won't need to do this again on this device.</div>
       </div>
     </div>
 
     <!-- EVENTS -->
     <div class="page" id="page-events">
-      <div class="page-header"><h1>Events</h1><p>Manage upcoming events on the main site. The 🔒 protected event can be edited but not deleted.</p></div>
-      <div class="seed-banner" id="seed-events-banner">
-        <p>🌱 <strong>First time?</strong> Click to load the existing events from the website into Firebase so you can manage them.</p>
+      <div class="page-header"><h1>Events</h1><p>Manage upcoming events shown on the main site.</p></div>
+      <div class="seed-banner" id="seed-events-banner" style="display:none">
+        <p>🌱 <strong>No events found.</strong> Click to load the original website events into Firebase. Only do this once!</p>
         <button class="seed-btn" id="seed-events-btn" onclick="seedEvents()">Load Default Events</button>
       </div>
       <div class="card">
         <div class="card-header"><h2>All Events</h2><button class="add-btn" onclick="openModal('event',null)">+ Add Event</button></div>
-        <div class="item-list" id="events-list"><div class="empty-state"><div class="empty-icon">📅</div>Loading...</div></div>
+        <div class="item-list" id="events-list"><div class="empty-state"><div class="empty-icon">📅</div>Connecting to Firebase...</div></div>
       </div>
     </div>
 
     <!-- CLASS PHOTOS -->
     <div class="page" id="page-classes">
-      <div class="page-header"><h1>Class Photos</h1><p>Update the photos shown in the Classes section of the main site.</p></div>
-      <div class="seed-banner" id="seed-classes-banner">
-        <p>🌱 <strong>First time?</strong> Click to load the existing class entries into Firebase.</p>
+      <div class="page-header"><h1>Class Photos</h1><p>Update the photos shown in the Classes section.</p></div>
+      <div class="seed-banner" id="seed-classes-banner" style="display:none">
+        <p>🌱 <strong>No classes found.</strong> Click to load the original class entries into Firebase. Only do this once!</p>
         <button class="seed-btn" id="seed-classes-btn" onclick="seedClasses()">Load Default Classes</button>
       </div>
       <div class="card">
         <div class="card-header"><h2>Class Photos</h2><button class="add-btn" onclick="openModal('classphoto',null)">+ Add Class</button></div>
-        <div class="item-list" id="classes-list"><div class="empty-state"><div class="empty-icon">🏫</div>Loading...</div></div>
+        <div class="item-list" id="classes-list"><div class="empty-state"><div class="empty-icon">🏫</div>Connecting to Firebase...</div></div>
       </div>
     </div>
 
     <!-- LEADERBOARD -->
     <div class="page" id="page-leaderboard">
-      <div class="page-header"><h1>Leaderboard</h1><p>Manage top performing students shown on the main site.</p></div>
-      <div class="seed-banner" id="seed-lb-banner">
-        <p>🌱 <strong>First time?</strong> Click to load the existing leaderboard entries into Firebase.</p>
+      <div class="page-header"><h1>Leaderboard</h1><p>Manage top performing students.</p></div>
+      <div class="seed-banner" id="seed-lb-banner" style="display:none">
+        <p>🌱 <strong>No entries found.</strong> Click to load the original leaderboard into Firebase. Only do this once!</p>
         <button class="seed-btn" id="seed-lb-btn" onclick="seedLeaderboard()">Load Default Leaderboard</button>
       </div>
       <div class="card">
         <div class="card-header"><h2>Top Performers</h2><button class="add-btn" onclick="openModal('leaderboard',null)">+ Add Student</button></div>
-        <div class="item-list" id="leaderboard-list"><div class="empty-state"><div class="empty-icon">🏆</div>Loading...</div></div>
+        <div class="item-list" id="leaderboard-list"><div class="empty-state"><div class="empty-icon">🏆</div>Connecting to Firebase...</div></div>
       </div>
     </div>
 
     <!-- ALUMNI -->
     <div class="page" id="page-alumni">
-      <div class="page-header"><h1>Alumni</h1><p>Manage alumni success stories. You can add a photo for each alumni card.</p></div>
-      <div class="seed-banner" id="seed-alumni-banner">
-        <p>🌱 <strong>First time?</strong> Click to load the existing alumni into Firebase.</p>
+      <div class="page-header"><h1>Alumni</h1><p>Manage alumni success stories.</p></div>
+      <div class="seed-banner" id="seed-alumni-banner" style="display:none">
+        <p>🌱 <strong>No alumni found.</strong> Click to load the original alumni into Firebase. Only do this once!</p>
         <button class="seed-btn" id="seed-alumni-btn" onclick="seedAlumni()">Load Default Alumni</button>
       </div>
       <div class="card">
         <div class="card-header"><h2>Alumni Cards</h2><button class="add-btn" onclick="openModal('alumni',null)">+ Add Alumni</button></div>
-        <div class="item-list" id="alumni-list"><div class="empty-state"><div class="empty-icon">🎓</div>Loading...</div></div>
+        <div class="item-list" id="alumni-list"><div class="empty-state"><div class="empty-icon">🎓</div>Connecting to Firebase...</div></div>
       </div>
     </div>
 
     <!-- TESTIMONIALS -->
     <div class="page" id="page-testimonials">
-      <div class="page-header"><h1>Testimonials</h1><p>Manage student reviews shown on the main site.</p></div>
-      <div class="seed-banner" id="seed-test-banner">
-        <p>🌱 <strong>First time?</strong> Click to load the existing testimonials into Firebase.</p>
+      <div class="page-header"><h1>Testimonials</h1><p>Manage student reviews.</p></div>
+      <div class="seed-banner" id="seed-test-banner" style="display:none">
+        <p>🌱 <strong>No testimonials found.</strong> Click to load the original testimonials into Firebase. Only do this once!</p>
         <button class="seed-btn" id="seed-test-btn" onclick="seedTestimonials()">Load Default Testimonials</button>
       </div>
       <div class="card">
         <div class="card-header"><h2>Student Reviews</h2><button class="add-btn" onclick="openModal('testimonial',null)">+ Add Testimonial</button></div>
-        <div class="item-list" id="testimonials-list"><div class="empty-state"><div class="empty-icon">💬</div>Loading...</div></div>
+        <div class="item-list" id="testimonials-list"><div class="empty-state"><div class="empty-icon">💬</div>Connecting to Firebase...</div></div>
       </div>
     </div>
 
@@ -364,56 +338,26 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
           <div class="stat-card">
             <label>Stat 1 Number</label>
             <input class="stat-num-input form-input" id="stat1-num" value="500+">
-            <input class="stat-lbl-input form-input" id="stat1-label" value="Students Enrolled" style="font-size:13px;color:var(--muted)">
+            <input class="stat-lbl-input form-input" id="stat1-label" value="Students Enrolled">
           </div>
           <div class="stat-card">
             <label>Stat 2 Number</label>
             <input class="stat-num-input form-input" id="stat2-num" value="98%">
-            <input class="stat-lbl-input form-input" id="stat2-label" value="Pass Rate" style="font-size:13px;color:var(--muted)">
+            <input class="stat-lbl-input form-input" id="stat2-label" value="Pass Rate">
           </div>
           <div class="stat-card">
             <label>Stat 3 Number</label>
             <input class="stat-num-input form-input" id="stat3-num" value="300+">
-            <input class="stat-lbl-input form-input" id="stat3-label" value="JAMB 300+ Scorers" style="font-size:13px;color:var(--muted)">
+            <input class="stat-lbl-input form-input" id="stat3-label" value="JAMB 300+ Scorers">
           </div>
         </div>
         <button class="save-stats-btn" onclick="saveStats()">💾 Save Stats</button>
       </div>
     </div>
 
-  </div>
-</div>
-
-<!-- MODAL -->
-<div class="modal-overlay" id="modalOverlay">
-  <div class="modal">
-    <div class="modal-header">
-      <h3 id="modalTitle">Add Item</h3>
-      <button class="modal-close" onclick="closeModal()">&#215;</button>
-    </div>
-    <div id="modalBody"></div>
-    <div class="modal-actions">
-      <button class="btn-cancel" onclick="closeModal()">Cancel</button>
-      <button class="btn-save" id="modalSaveBtn" onclick="saveModal()">Save Changes</button>
-    </div>
-  </div>
-</div>
-
-<!-- These pages belong INSIDE .main, injected here by fixing the structure -->
-<script>
-// Move hero and about pages into .main where they belong
-document.addEventListener('DOMContentLoaded', function() {
-  var main = document.querySelector('.main');
-  var hero = document.getElementById('page-herophotos');
-  var about = document.getElementById('page-aboutphoto');
-  if (main && hero) main.appendChild(hero);
-  if (main && about) main.appendChild(about);
-});
-</script>
-
-    <!-- HERO PHOTOS PAGE -->
+    <!-- HERO PHOTOS -->
     <div class="page" id="page-herophotos">
-      <div class="page-header"><h1>Hero Photos</h1><p>Update the 3 photos shown in the hero section of the main site.</p></div>
+      <div class="page-header"><h1>Hero Photos</h1><p>Update the 3 photos shown in the hero section.</p></div>
       <div class="card">
         <div class="card-header"><h2>Hero Image Grid</h2></div>
         <div class="hero-photo-grid">
@@ -448,12 +392,12 @@ document.addEventListener('DOMContentLoaded', function() {
             <input type="file" id="hero-file-3" accept="image/*" onchange="handleHeroUpload(3,this)">
           </div>
         </div>
-        <p style="font-size:12px;color:var(--muted);margin-bottom:12px;">⚠️ Keep photos under <strong style="color:var(--goldl)">300KB</strong> each for fast loading. Recommended: compress at <a href="https://squoosh.app" target="_blank" style="color:var(--goldl)">squoosh.app</a> before uploading.</p>
+        <p style="font-size:12px;color:var(--muted);margin-bottom:12px;">⚠️ Keep photos under <strong style="color:var(--goldl)">300KB</strong> each. Compress at <a href="https://squoosh.app" target="_blank" style="color:var(--goldl)">squoosh.app</a>.</p>
         <button class="save-photos-btn" onclick="saveHeroPhotos()">💾 Save Hero Photos</button>
       </div>
     </div>
 
-    <!-- ABOUT PHOTO PAGE -->
+    <!-- ABOUT PHOTO -->
     <div class="page" id="page-aboutphoto">
       <div class="page-header"><h1>About Us Photo</h1><p>Update the photo shown in the About Us section.</p></div>
       <div class="card">
@@ -472,7 +416,7 @@ document.addEventListener('DOMContentLoaded', function() {
               <label class="img-upload-trigger" for="about-file-input">
                 <div class="upload-icon">📁</div>
                 <div class="upload-text">Click to choose from gallery</div>
-                <div class="upload-hint">JPG, PNG, WEBP supported<br>Recommended: under 300KB</div>
+                <div class="upload-hint">JPG, PNG, WEBP · Under 300KB</div>
               </label>
               <input type="file" id="about-file-input" accept="image/*" onchange="handleAboutUpload(this)">
               <img class="img-upload-preview" id="about-upload-preview" src="" alt="Preview">
@@ -481,21 +425,19 @@ document.addEventListener('DOMContentLoaded', function() {
                 <button class="img-clear-btn" onclick="clearAboutUpload()">Remove</button>
               </div>
             </div>
-            <div class="img-size-warn" id="about-size-warn">⚠️ File is large. Consider compressing at squoosh.app first.</div>
+            <div class="img-size-warn" id="about-size-warn"></div>
             <button class="save-photos-btn" onclick="saveAboutPhoto()" style="margin-top:16px;">💾 Save About Photo</button>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- ADMISSION PHOTOS PAGE -->
+    <!-- ADMISSION PHOTOS -->
     <div class="page" id="page-admissionphotos">
-      <div class="page-header"><h1>Admission Photos</h1><p>Update the photos in the Admission Success and Sure Admission Plug sections.</p></div>
-
-      <!-- Unilag / Admission Success photo -->
+      <div class="page-header"><h1>Admission Photos</h1><p>Update the photos in the Admission sections.</p></div>
       <div class="card" style="margin-bottom:20px;">
         <div class="card-header"><h2>🏛️ Admission Success Photo</h2></div>
-        <p style="font-size:13px;color:var(--muted);margin-bottom:16px;">This is the large photo shown in the "Our Students Get Into Top Universities" section.</p>
+        <p style="font-size:13px;color:var(--muted);margin-bottom:16px;">Large photo in the "Our Students Get Into Top Universities" section.</p>
         <div class="about-photo-wrap">
           <div>
             <p style="font-size:12px;color:var(--muted);margin-bottom:10px;">Current photo:</p>
@@ -510,7 +452,7 @@ document.addEventListener('DOMContentLoaded', function() {
               <label class="img-upload-trigger" for="unilag-file-input">
                 <div class="upload-icon">📁</div>
                 <div class="upload-text">Click to choose from gallery</div>
-                <div class="upload-hint">JPG, PNG · Keep under 300KB</div>
+                <div class="upload-hint">JPG, PNG · Under 300KB</div>
               </label>
               <input type="file" id="unilag-file-input" accept="image/*" onchange="handleGenericUpload('unilag',this)">
               <img class="img-upload-preview" id="unilag-upload-preview" src="" alt="">
@@ -524,11 +466,9 @@ document.addEventListener('DOMContentLoaded', function() {
           </div>
         </div>
       </div>
-
-      <!-- Sure Plug / Admission Guidance photo -->
       <div class="card">
         <div class="card-header"><h2>🎯 Admission Guidance Photo</h2></div>
-        <p style="font-size:13px;color:var(--muted);margin-bottom:16px;">This is the photo shown in the "Your Sure Admission Plug" section.</p>
+        <p style="font-size:13px;color:var(--muted);margin-bottom:16px;">Photo in the "Your Sure Admission Plug" section.</p>
         <div class="about-photo-wrap">
           <div>
             <p style="font-size:12px;color:var(--muted);margin-bottom:10px;">Current photo:</p>
@@ -543,7 +483,7 @@ document.addEventListener('DOMContentLoaded', function() {
               <label class="img-upload-trigger" for="plug-file-input">
                 <div class="upload-icon">📁</div>
                 <div class="upload-text">Click to choose from gallery</div>
-                <div class="upload-hint">JPG, PNG · Keep under 300KB</div>
+                <div class="upload-hint">JPG, PNG · Under 300KB</div>
               </label>
               <input type="file" id="plug-file-input" accept="image/*" onchange="handleGenericUpload('plug',this)">
               <img class="img-upload-preview" id="plug-upload-preview" src="" alt="">
@@ -562,169 +502,52 @@ document.addEventListener('DOMContentLoaded', function() {
   </div><!-- end main -->
 </div><!-- end app -->
 
+<!-- MODAL -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal">
+    <div class="modal-header">
+      <h3 id="modalTitle">Add Item</h3>
+      <button class="modal-close" onclick="closeModal()">&#215;</button>
+    </div>
+    <div id="modalBody"></div>
+    <div class="modal-actions">
+      <button class="btn-cancel" onclick="closeModal()">Cancel</button>
+      <button class="btn-save" id="modalSaveBtn" onclick="saveModal()">Save Changes</button>
+    </div>
+  </div>
+</div>
+
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
 <script>
+/* =====================================================================
+   SIR PHILIP'S ACADEMY — ADMIN PANEL (FIXED VERSION)
+   
+   FIXES APPLIED:
+   1. DUPLICATE EVENTS BUG — seed banners now hidden by default and only
+      shown when a collection is confirmed empty. Seed checks count before
+      running to prevent accidental double-seeding.
+   2. FIREBASE CONFIG PERSISTENCE — config is loaded from localStorage on
+      login and auto-connected silently. You only enter it once ever.
+   3. MAIN SITE UPDATES — see the INDEX.HTML INTEGRATION section below
+      for the code snippet to paste into your Vercel index.html so it
+      reads from Firebase in real time.
+===================================================================== */
 
-/*
-=======================================================================
-  SIR PHILIP'S ACADEMY — ADMIN PANEL JAVASCRIPT
-  
-  HOW THIS FILE WORKS IN PLAIN ENGLISH:
-  -----------------------------------------------------------------------
-  This admin panel is a single HTML page that lets you manage the 
-  content of the main website (index.html) without touching any code.
-  
-  It connects to Firebase — a free online database by Google.
-  When you make a change here (add an event, update a leaderboard score,
-  upload a photo), Firebase saves it instantly, and the main website
-  reads it and updates automatically within seconds.
-  
-  THINK OF IT LIKE THIS:
-  - Firebase = a shared Google Sheet in the cloud
-  - This admin panel = the person filling in the sheet
-  - The main website = the person reading the sheet in real time
-=======================================================================
-*/
-
-
-/*
------------------------------------------------------------------------
-  SECTION 1: FIREBASE COMPATIBILITY WRAPPERS
------------------------------------------------------------------------
-  Firebase has two versions of its JavaScript SDK:
-  
-  1. The MODERN version uses "import" statements (ES Modules).
-     These don't work when you open an HTML file directly from your 
-     computer (file://) — the browser blocks them for security.
-  
-  2. The COMPAT version uses normal script tags and a global 
-     "firebase" object — works everywhere, including locally.
-  
-  We use the Compat version, but the rest of the code was written
-  expecting the modern version's function names (like initializeApp,
-  getFirestore, collection, doc, etc).
-  
-  So these wrapper functions act as a TRANSLATOR — they have the 
-  same names as the modern version but call the compat version 
-  underneath. This means the rest of the code doesn't need to change.
------------------------------------------------------------------------
-*/
-
-// This points initializeApp at firebase.initializeApp from the compat SDK
-const initializeApp = firebase.initializeApp.bind(firebase);
-
-// getFirestore(app) — returns the Firestore database object for an app
-function getFirestore(app) { return app.firestore(); }
-
-// collection(db, name) — returns a reference to a collection (like a table)
-// e.g. collection(db, 'events') points to the 'events' table in Firebase
-function collection(db, name) { return db.collection(name); }
-
-// doc(db_or_col, ...) — returns a reference to a specific document (like a row)
-// Can be called different ways:
-//   doc(collection)          → new auto-generated document
-//   doc(collection, 'id')    → specific document by ID
-//   doc(db, 'collection', 'id') → specific document in a collection
-function doc(db_or_col, ...args) {
-  if (args.length === 0) return db_or_col.doc();
-  if (typeof db_or_col.collection === 'function' && args.length === 1) return db_or_col.doc(args[0]);
-  if (args.length === 2) return db_or_col.collection(args[0]).doc(args[1]);
-  return db_or_col.doc(args[0]);
-}
-
-// getDocs(ref) — gets all documents in a collection once (no live updates)
-function getDocs(ref) { return ref.get(); }
-
-// addDoc(colRef, data) — adds a NEW document with auto-generated ID
-// Like adding a new row to a table
-async function addDoc(colRef, data) { return colRef.add(data); }
-
-// updateDoc(docRef, data) — updates SPECIFIC fields in an existing document
-// Does NOT delete other fields — just updates what you pass in
-async function updateDoc(docRef, data) { return docRef.update(data); }
-
-// deleteDoc(docRef) — permanently deletes a document from Firebase
-async function deleteDoc(docRef) { return docRef.delete(); }
-
-// setDoc(docRef, data, opts) — REPLACES an entire document with new data
-// If opts.merge = true, it merges instead of replacing (safer)
-async function setDoc(docRef, data, opts) {
-  if (opts && opts.merge) return docRef.set(data, { merge: true });
-  return docRef.set(data);
-}
-
-// getDoc(docRef) — fetches a single document ONE TIME (no live updates)
-// Returns an object with .exists() to check if it exists and .data() to get the content
-async function getDoc(docRef) {
-  const snap = await docRef.get();
-  return { exists: () => snap.exists, data: () => snap.data(), id: snap.id };
-}
-
-// onSnapshot(ref, callback) — sets up a LIVE LISTENER on a collection
-// Every time data changes in Firebase, the callback function runs automatically
-// This is how changes you make in admin appear on the website in real time
-function onSnapshot(ref, callback, errCallback) {
-  return ref.onSnapshot(snap => {
-    callback(snap);
-  }, errCallback || function(){});
-}
-
-// writeBatch(db) — creates a batch operation
-// A batch lets you write multiple documents at once in a single operation
-// This is used when seeding default data (adding 5+ items at once)
-function writeBatch(db) {
-  const batch = db.batch();
-  return batch;
-}
-
-
-/*
------------------------------------------------------------------------
-  SECTION 2: CONSTANTS AND GLOBAL VARIABLES
------------------------------------------------------------------------
-*/
-
-// ADMIN_PASSWORD — the password required to access the admin panel
-// Change this to something only you know. It's stored directly in the
-// code (client-side), which is okay for a school website admin panel.
-// IMPORTANT: Anyone who can see this file's source code can see the password.
+/* ----------------------------------------------------------------
+   CONSTANTS
+---------------------------------------------------------------- */
 const ADMIN_PASSWORD = 'spa-admin-2026';
 
-// db — this will hold the Firebase database connection once we connect.
-// It starts as null (empty) because we haven't connected yet.
 let db = null;
 
-// currentModal — tracks which item is currently open in the edit/add popup.
-// type = what kind of item (event, alumni, etc.)
-// id = the Firebase document ID of the item being edited (null if adding new)
-let currentModal = { type:null, id:null };
-
-
-/*
------------------------------------------------------------------------
-  SECTION 3: DEFAULT DATA
------------------------------------------------------------------------
-  These are the original items that were hardcoded on the website.
-  When you click "Load Default Data" on any section for the first time,
-  these arrays get uploaded to Firebase so you can manage them from here.
-  
-  After seeding, changes are made through the edit/add forms —
-  you don't need to touch these arrays again.
-  
-  NOTE: protected:true on an event means that event cannot be deleted
-  from the admin panel (only edited). This protects the main ANJA event.
------------------------------------------------------------------------
-*/
-
+/* ----------------------------------------------------------------
+   DEFAULT DATA (used only for first-time seeding)
+---------------------------------------------------------------- */
 const DEFAULT_EVENTS = [
-  /* The main JAMB bootcamp event — marked protected so it can't be accidentally deleted */
-  { title:'ANJA 1.0', tag:'JAMB Workshop', date:'March 30th, 2026', venue:'2, Richard Abimbola, Ilasamaja, Lagos', description:'Comprehensive 3-week intensive JAMB preparation bootcamp...', emoji:'📚', waLink:'https://wa.me/2347089506428?text=I want to register for ANJA 1.0', protected:true, order:1 },
-  /* The English seminar — can be deleted/replaced */
+  { title:'ANJA 1.0', tag:'JAMB Workshop', date:'March 30th, 2026', venue:'2, Richard Abimbola, Ilasamaja, Lagos', description:'Comprehensive 3-week intensive JAMB preparation bootcamp...', emoji:'📚', waLink:'https://wa.me/2347089506428?text=I want to register for ANJA 1.0', order:1 },
   { title:'Secret To Passing JAMB English', tag:'Seminar', date:'March 27, 2026 | 3:00 PM – 7:00 PM', venue:'LivingSpring College, Ilasamaja, Lagos', description:"Prof D teaches you the secret to passing English in JAMB...", emoji:'🏆', waLink:'https://wa.me/2347089506428?text=I want to attend the JAMB English Seminar', protected:false, order:2 }
 ];
-
-/* The 6 class types shown in the Classes section */
 const DEFAULT_CLASSES = [
   { title:'JAMB Intensive Prep', tag:'JAMB / UTME', description:'Complete coverage of all JAMB subjects...', imageUrl:'', order:1 },
   { title:'WAEC & NECO Coaching', tag:'WAEC / NECO', description:"O'Level preparation...", imageUrl:'', order:2 },
@@ -733,8 +556,6 @@ const DEFAULT_CLASSES = [
   { title:'English Language', tag:'Language', description:"Comprehension, essay writing...", imageUrl:'', order:5 },
   { title:'Remedial Classes', tag:'Special Programme', description:'Dedicated support for students...', imageUrl:'', order:6 }
 ];
-
-/* The 5 students in the leaderboard. scorePct is used to fill the progress bar (0-100) */
 const DEFAULT_LEADERBOARD = [
   { name:'Adaeze Okonkwo', rank:1, score:'341/400', scorePct:85, exam:'MOCK', dept:'Sciences', year:'2026' },
   { name:'Emeka Chukwuemeka', rank:2, score:'336/400', scorePct:84, exam:'MOCK', dept:'Arts', year:'2026' },
@@ -742,8 +563,6 @@ const DEFAULT_LEADERBOARD = [
   { name:'Chidi Nwosu', rank:4, score:"8 A's", scorePct:100, exam:'WAEC', dept:'Sciences', year:'2026' },
   { name:'Ngozi Eze', rank:5, score:'318/400', scorePct:79, exam:'MOCK', dept:'Commercial', year:'2026' }
 ];
-
-/* The 6 alumni cards. photoUrl starts empty — add photos through the admin panel */
 const DEFAULT_ALUMNI = [
   { name:'Chidinma Okonkwo', score:'JAMB: 342', university:'UNILAG — Medicine', photoUrl:'' },
   { name:'Emmanuel Nwachukwu', score:'JAMB: 328', university:'OAU — Engineering', photoUrl:'' },
@@ -752,73 +571,39 @@ const DEFAULT_ALUMNI = [
   { name:'Grace Adeleke', score:"WAEC: 8 A's", university:'UI Ibadan — Accounting', photoUrl:'' },
   { name:'Odili Shedrach', score:"WAEC: 7 A's", university:'UNILAG — Sciences', photoUrl:'' }
 ];
-
-/* The 3 student testimonials shown in the reviews section */
 const DEFAULT_TESTIMONIALS = [
   { name:'Amaka Obi', subtitle:'JAMB 2024 — 318/400', text:"Sir Philip's Academy changed everything for me...", stars:5 },
   { name:'Kingsley Eze', subtitle:"WAEC 2025 — 7A's, 1B", text:"The WAEC coaching here is second to none...", stars:5 },
   { name:'Blessing Adeyemi', subtitle:'JAMB 2023 — 305/400', text:"I was struggling with Mathematics until Sir Philip's Academy...", stars:5 }
 ];
 
-
-/*
------------------------------------------------------------------------
-  SECTION 4: FIREBASE INITIALIZATION
------------------------------------------------------------------------
-  These functions handle connecting to Firebase.
-  
-  getConfig()      — reads your saved Firebase config from localStorage.
-                     localStorage is like a small storage box in the browser
-                     that remembers things even after you close the tab.
-  
-  initFirebase()   — uses the config to actually connect to Firebase.
-                     Once connected, it calls loadAll() to start loading data.
-  
-  saveFirebaseConfig() — reads the values you typed into the Firebase Setup
-                         form, saves them to localStorage, then connects.
------------------------------------------------------------------------
-*/
-
-// getConfig reads your Firebase settings from the browser's localStorage.
-// Returns null if nothing has been saved yet.
-function getConfig() { 
-  try { 
-    return JSON.parse(localStorage.getItem('spa_fb_config') || 'null'); 
-  } catch(e) { 
-    return null; 
-  } 
+/* ----------------------------------------------------------------
+   FIREBASE CONFIG — auto-load from localStorage
+---------------------------------------------------------------- */
+function getConfig() {
+  try { return JSON.parse(localStorage.getItem('spa_fb_config') || 'null'); } catch(e) { return null; }
 }
 
 function initFirebase(config) {
   try {
-    // Firebase throws an error if you try to create the same app twice.
-    // So we delete any existing Firebase apps first before creating a new one.
-    firebase.apps.forEach(a => { try { a.delete(); } catch(e){} });
-    
-    // Create the Firebase app using your config settings
+    // Delete existing apps first to avoid "already initialized" errors
+    if (firebase.apps && firebase.apps.length) {
+      firebase.apps.forEach(a => { try { a.delete(); } catch(e){} });
+    }
     const app = firebase.initializeApp(config);
-    
-    // Get a reference to the Firestore database inside that app
     db = app.firestore();
-    
-    // Update the dashboard status text to show "Connected ✅"
     document.getElementById('fb-status-text').textContent = 'Connected ✅';
-    
-    // Show the green success message on the Firebase Setup page
     document.getElementById('cfg-ok').style.display = 'block';
-    
-    // Now that we're connected, load all the data from Firebase
+    document.getElementById('fb-warning').classList.remove('show');
     loadAll();
-    
-    return true; // success
-  } catch(e) { 
-    console.error(e); 
-    return false; // something went wrong
+    return true;
+  } catch(e) {
+    console.error('Firebase init error:', e);
+    return false;
   }
 }
 
 window.saveFirebaseConfig = function() {
-  // Read the 6 values typed into the Firebase Setup form
   const config = {
     apiKey:            v('cfg-apiKey'),
     authDomain:        v('cfg-authDomain'),
@@ -827,276 +612,144 @@ window.saveFirebaseConfig = function() {
     messagingSenderId: v('cfg-messagingSenderId'),
     appId:             v('cfg-appId')
   };
-  
-  // Don't proceed if the two most important fields are empty
-  if (!config.apiKey || !config.projectId) { 
-    showStatus('Please fill in API Key and Project ID.', 'error'); 
-    return; 
+  if (!config.apiKey || !config.projectId) {
+    showStatus('Please fill in API Key and Project ID at minimum.', 'error');
+    return;
   }
-  
-  // Save the config to localStorage so we don't have to enter it again next time
   localStorage.setItem('spa_fb_config', JSON.stringify(config));
-  
-  // Try to connect and show success or failure message
   const ok = initFirebase(config);
-  if (ok) showStatus('Firebase connected! ✅', 'success');
-  else showStatus('Connection failed. Check your config.', 'error');
+  if (ok) showStatus('Firebase connected and saved! You will not need to do this again. ✅', 'success');
+  else showStatus('Connection failed. Double-check your config values.', 'error');
 };
 
-
-/*
------------------------------------------------------------------------
-  SECTION 5: LOGIN / LOGOUT
------------------------------------------------------------------------
-  doLogin()  — checks the password. If correct, hides the login screen
-               and shows the main admin dashboard. Also auto-connects 
-               to Firebase if a config was previously saved.
-  
-  doLogout() — hides the dashboard and shows the login screen again.
-  
-  fillConfigInputs() — pre-fills the Firebase Setup form with the 
-                       saved config so you can see/edit it later.
------------------------------------------------------------------------
-*/
-
+/* ----------------------------------------------------------------
+   LOGIN / LOGOUT
+   FIX: auto-connects Firebase silently on every login using saved config
+---------------------------------------------------------------- */
 window.doLogin = function() {
-  // Check if what the user typed matches the password
   if (document.getElementById('loginPwd').value === ADMIN_PASSWORD) {
-    
-    // Correct password — hide the login screen
     document.getElementById('loginScreen').style.display = 'none';
-    
-    // Show the main admin dashboard
     document.getElementById('app').style.display = 'block';
-    
-    // Check if we already have Firebase config saved from a previous session
+
     const cfg = getConfig();
-    if (cfg) { 
-      // Pre-fill the Firebase Setup form with the saved values
-      fillConfigInputs(cfg); 
-      // Auto-connect to Firebase (no need to manually go to Firebase Setup)
-      initFirebase(cfg); 
+    if (cfg) {
+      // Pre-fill the Firebase Setup form with saved values
+      fillConfigInputs(cfg);
+      // Auto-connect silently — no need for user to go to Firebase Setup
+      const ok = initFirebase(cfg);
+      if (!ok) {
+        document.getElementById('fb-status-text').textContent = 'Failed to connect';
+        document.getElementById('fb-warning').classList.add('show');
+      }
+    } else {
+      // No config saved yet — point user to Firebase Setup
+      document.getElementById('fb-status-text').textContent = 'Not configured — see Firebase Setup';
+      document.getElementById('fb-warning').classList.add('show');
     }
   } else {
-    // Wrong password — show the red error message
     document.getElementById('loginError').style.display = 'block';
-    // Clear the password field so they can try again
     document.getElementById('loginPwd').value = '';
   }
 };
 
 window.doLogout = function() {
-  // Hide the main app and show the login screen
   document.getElementById('app').style.display = 'none';
   document.getElementById('loginScreen').style.display = 'flex';
   document.getElementById('loginPwd').value = '';
 };
 
-// Pre-fills the 6 Firebase config input fields with saved values
 function fillConfigInputs(cfg) {
   ['apiKey','authDomain','projectId','storageBucket','messagingSenderId','appId'].forEach(k => {
-    const el = document.getElementById('cfg-'+k); 
+    const el = document.getElementById('cfg-'+k);
     if (el) el.value = cfg[k] || '';
   });
 }
 
-
-/*
------------------------------------------------------------------------
-  SECTION 6: STATUS BAR
------------------------------------------------------------------------
-  The status bar is the small notification that slides in from the 
-  top-right corner of the screen to tell you what's happening:
-  - "Saving..." (gold, with spinner) while an action is in progress
-  - "Saved! ✅" (green) when something succeeds
-  - "Error: ..." (red) when something fails
-  
-  It automatically disappears after 3.5 seconds for success/error messages.
------------------------------------------------------------------------
-*/
-
-let st; // stores the auto-hide timer so we can cancel it if needed
-
+/* ----------------------------------------------------------------
+   STATUS BAR
+---------------------------------------------------------------- */
+let st;
 window.showStatus = function(msg, type = 'loading') {
-  // Cancel any existing auto-hide timer
   clearTimeout(st);
-  
   const bar = document.getElementById('statusBar');
-  
-  // Add the 'show' class to slide it into view, plus a color class
-  // 'loading' = gold, 'success' = green, 'error' = red
   bar.className = 'status-bar show ' + type;
-  
-  // Set the message text
   document.getElementById('statusMsg').textContent = msg;
-  
-  // Show the spinning circle only for 'loading', hide it for success/error
   document.getElementById('statusSpinner').style.display = type === 'loading' ? 'block' : 'none';
-  
-  // For success and error, auto-hide after 3.5 seconds
-  // For 'loading', we leave it visible until the next showStatus call
-  if (type !== 'loading') {
-    st = setTimeout(() => bar.classList.remove('show'), 3500);
-  }
+  if (type !== 'loading') st = setTimeout(() => bar.classList.remove('show'), 3500);
 };
 
-
-/*
------------------------------------------------------------------------
-  SECTION 7: NAVIGATION (SIDEBAR)
------------------------------------------------------------------------
-  showPage(name) — switches which page is visible in the main content area.
-  
-  HOW PAGES WORK:
-  Every "page" (Events, Leaderboard, Alumni etc.) is a <div> that is 
-  hidden by default (display:none). When you click a sidebar button, 
-  we hide ALL pages then show just the one you clicked.
-  
-  We also highlight the clicked sidebar button gold (active class)
-  and close the mobile sidebar menu if it's open.
------------------------------------------------------------------------
-*/
-
-window.showPage = function(name) {
-  // Remove 'active' from all pages (hide them all)
+/* ----------------------------------------------------------------
+   NAVIGATION
+---------------------------------------------------------------- */
+window.showPage = function(name, btn) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-  
-  // Remove 'active' from all sidebar nav buttons (un-highlight them all)
   document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
-  
-  // Show ONLY the page matching the name (e.g. 'events', 'alumni')
-  document.getElementById('page-' + name).classList.add('active');
-  
-  // Highlight the button that was just clicked
-  event.currentTarget.classList.add('active');
-  
-  // Close the mobile sidebar if it's open (so it doesn't cover the content)
+  const page = document.getElementById('page-' + name);
+  if (page) page.classList.add('active');
+  if (btn) btn.classList.add('active');
   document.getElementById('sidebar').classList.remove('open');
 };
 
-// Mobile hamburger menu toggle — tap the ☰ button to open/close the sidebar
-document.getElementById('mobileToggle').onclick = () => 
+document.getElementById('mobileToggle').onclick = () =>
   document.getElementById('sidebar').classList.toggle('open');
 
-
-/*
------------------------------------------------------------------------
-  SECTION 8: LOAD ALL DATA
------------------------------------------------------------------------
-  loadAll() is called once when Firebase connects successfully.
-  It sets up LIVE LISTENERS on every collection in Firebase.
-  
-  A live listener means: whenever data changes in Firebase 
-  (e.g. you add an event), the page automatically refreshes 
-  that section without you needing to reload anything.
-  
-  listenCol(name, renderer) sets up one live listener:
-  - It watches a Firebase collection (like 'events')
-  - Every time it updates, it calls the renderer function
-    (like renderEvents) which rebuilds the HTML on screen
-  - It also updates the dashboard count numbers
-  - It hides the "Load Default Data" banner once data exists
------------------------------------------------------------------------
-*/
-
+/* ----------------------------------------------------------------
+   LOAD ALL DATA
+   FIX: seed banners now hidden by default, only shown when empty
+---------------------------------------------------------------- */
 function loadAll() {
-  // Set up live listeners for each section of the website
-  listenCol('events',       renderEvents);
-  listenCol('classes',      renderClasses);
-  listenCol('leaderboard',  renderLeaderboard);
-  listenCol('alumni',       renderAlumni);
-  listenCol('testimonials', renderTestimonials);
-  
-  // Load settings (these are one-time reads, not live)
+  listenCol('events',      renderEvents);
+  listenCol('classes',     renderClasses);
+  listenCol('leaderboard', renderLeaderboard);
+  listenCol('alumni',      renderAlumni);
+  listenCol('testimonials',renderTestimonials);
   loadStats();
   loadHeroPhotos();
   loadAboutPhoto();
-  loadGenericPhotos(); // unilag + plug photos
+  loadGenericPhotos();
 }
 
 function listenCol(name, renderer) {
-  if (!db) return; // safety check — don't run if not connected
-  
-  // onSnapshot = "watch this collection and call me whenever it changes"
+  if (!db) return;
   db.collection(name).onSnapshot(snap => {
-    // Convert all Firebase documents into plain JavaScript objects
-    // Each doc has an auto-generated 'id' plus all the data fields
     const items = snap.docs.map(d => ({ id: d.id, ...d.data() }));
-    
-    // Build the HTML for this section using the matching render function
     renderer(items);
-    
-    // Update the dashboard stat numbers (e.g. "5 Events", "6 Alumni")
+
+    // Update dashboard counts
     const map = { events:'dash-events', leaderboard:'dash-lb', alumni:'dash-alumni', testimonials:'dash-test' };
     if (map[name]) document.getElementById(map[name]).textContent = items.length;
-    
-    // Hide the "Load Default Data" seed banner once data exists in Firebase.
-    // The banner is only useful the FIRST time — after that it would be confusing.
-    const bannerKey = { events:'events', classes:'classes', leaderboard:'lb', alumni:'alumni', testimonials:'test' }[name];
-    const banner = document.getElementById('seed-' + bannerKey + '-banner');
-    if (banner && items.length > 0) banner.style.display = 'none';
-    
-  }, e => console.error(name, e)); // log any errors to the browser console
+
+    // FIX: Only show seed banner if collection is truly empty
+    // Map collection name to banner ID suffix
+    const bannerSuffix = { events:'events', classes:'classes', leaderboard:'lb', alumni:'alumni', testimonials:'test' }[name];
+    const banner = document.getElementById('seed-' + bannerSuffix + '-banner');
+    if (banner) {
+      // Show banner only when empty, hide it when data exists
+      banner.style.display = items.length === 0 ? 'flex' : 'none';
+    }
+  }, e => console.error(name, e));
 }
 
-
-/*
------------------------------------------------------------------------
-  SECTION 9: RENDER FUNCTIONS
------------------------------------------------------------------------
-  These functions take an array of items from Firebase and turn them 
-  into HTML that appears in the admin list.
-  
-  Each item shows:
-  - A thumbnail (emoji icon or actual photo)
-  - The item's title and key info
-  - Edit and Delete buttons
-  
-  Protected events (like ANJA 1.0) get a gold lock badge 🔒 and their
-  Delete button is blocked by the deleteItem function.
-  
-  Template literals (the backtick strings) let us write HTML directly
-  inside JavaScript — the ${...} parts inject variable values.
-  
-  esc() sanitizes text before injecting it into HTML to prevent
-  special characters from breaking the layout.
------------------------------------------------------------------------
-*/
-
+/* ----------------------------------------------------------------
+   RENDER FUNCTIONS
+---------------------------------------------------------------- */
 function renderEvents(items) {
   const el = document.getElementById('events-list');
-  
-  // Show a friendly empty state if there are no events yet
-  if (!items.length) { 
-    el.innerHTML = '<div class="empty-state"><div class="empty-icon">📅</div>No events yet. Click "Load Default Events" above or "+ Add Event".</div>'; 
-    return; 
+  if (!items.length) {
+    el.innerHTML = '<div class="empty-state"><div class="empty-icon">📅</div>No events yet. Click "Load Default Events" above or "+ Add Event".</div>';
+    return;
   }
-  
-  // Sort events by their 'order' field (1 comes before 2, etc.)
-  // Items without an order get pushed to the end (order 99)
   const sorted = [...items].sort((a,b) => (a.order||99) - (b.order||99));
-  
-  // Build HTML for each event and join them together
   el.innerHTML = sorted.map(item => `
-    <div class="item-row ${item.protected ? 'protected' : ''}">
-      <!-- Show the event emoji as a coloured icon -->
+    <div class="item-row">
       <div class="item-img no-img" style="background:#2a1a00;font-size:26px">${esc(item.emoji||'📅')}</div>
       <div class="item-info">
-        <!-- Title + optional gold PROTECTED badge for protected events -->
-        <div class="item-title">
-          ${esc(item.title)}
-          ${item.protected ? '<span class="protected-badge">🔒 PROTECTED</span>' : ''}
-        </div>
+        <div class="item-title">${esc(item.title)}</div>
         <div class="item-meta">📅 ${esc(item.date)}<br>📍 ${esc(item.venue)}<br><span style="color:var(--goldl)">${esc(item.tag||'')}</span></div>
       </div>
       <div class="item-actions">
-        <!-- Edit button — opens the modal pre-filled with this item's data -->
         <button class="edit-btn" onclick="openModal('event','${item.id}')">✏️ Edit</button>
-        <!-- Delete button — passes isProtected=true for protected events to block deletion -->
-        <button class="del-btn" onclick="deleteItem('events','${item.id}',${!!item.protected})"
-          ${item.protected ? 'title="This event is protected and cannot be deleted"' : ''}>
-          🗑 Delete
-        </button>
+        <button class="del-btn" onclick="deleteItem('events','${item.id}')">🗑 Delete</button>
       </div>
     </div>`).join('');
 }
@@ -1104,23 +757,17 @@ function renderEvents(items) {
 function renderClasses(items) {
   const el = document.getElementById('classes-list');
   if (!items.length) { el.innerHTML = '<div class="empty-state"><div class="empty-icon">🏫</div>No class photos yet.</div>'; return; }
-  
-  // Sort by order field
   const sorted = [...items].sort((a,b) => (a.order||99) - (b.order||99));
-  
   el.innerHTML = sorted.map(item => `
     <div class="item-row">
-      <!-- Show real photo if imageUrl exists, otherwise show building emoji -->
-      ${item.imageUrl 
-        ? `<img class="item-img" src="${esc(item.imageUrl)}" onerror="this.style.display='none'" alt="">` 
-        : '<div class="item-img no-img">🏫</div>'}
+      ${item.imageUrl ? `<img class="item-img" src="${esc(item.imageUrl)}" alt="">` : '<div class="item-img no-img">🏫</div>'}
       <div class="item-info">
         <div class="item-title">${esc(item.title)}</div>
         <div class="item-meta">${esc(item.tag||'')} · ${esc(item.description||'')}</div>
       </div>
       <div class="item-actions">
         <button class="edit-btn" onclick="openModal('classphoto','${item.id}')">✏️ Edit</button>
-        <button class="del-btn" onclick="deleteItem('classes','${item.id}',false)">🗑 Delete</button>
+        <button class="del-btn" onclick="deleteItem('classes','${item.id}')">🗑 Delete</button>
       </div>
     </div>`).join('');
 }
@@ -1128,24 +775,17 @@ function renderClasses(items) {
 function renderLeaderboard(items) {
   const el = document.getElementById('leaderboard-list');
   if (!items.length) { el.innerHTML = '<div class="empty-state"><div class="empty-icon">🏆</div>No entries yet.</div>'; return; }
-  
-  // Sort by rank number (1st place first)
   const sorted = [...items].sort((a,b) => (a.rank||99) - (b.rank||99));
-  
   el.innerHTML = sorted.map(item => `
     <div class="item-row">
-      <!-- Show medal emoji for top 3, ribbon for others -->
-      <!-- ['🥇','🥈','🥉'][item.rank-1] picks the right medal by index (0,1,2) -->
-      <div class="item-img no-img" style="font-size:26px">
-        ${item.rank <= 3 ? ['🥇','🥈','🥉'][item.rank-1] : '🏅'}
-      </div>
+      <div class="item-img no-img" style="font-size:26px">${item.rank <= 3 ? ['🥇','🥈','🥉'][item.rank-1] : '🏅'}</div>
       <div class="item-info">
         <div class="item-title">${esc(item.name)}</div>
         <div class="item-meta">Rank #${item.rank} · ${esc(item.exam)} · Score: ${esc(item.score)} · ${esc(item.dept)} · ${esc(item.year)}</div>
       </div>
       <div class="item-actions">
         <button class="edit-btn" onclick="openModal('leaderboard','${item.id}')">✏️ Edit</button>
-        <button class="del-btn" onclick="deleteItem('leaderboard','${item.id}',false)">🗑 Delete</button>
+        <button class="del-btn" onclick="deleteItem('leaderboard','${item.id}')">🗑 Delete</button>
       </div>
     </div>`).join('');
 }
@@ -1153,20 +793,16 @@ function renderLeaderboard(items) {
 function renderAlumni(items) {
   const el = document.getElementById('alumni-list');
   if (!items.length) { el.innerHTML = '<div class="empty-state"><div class="empty-icon">🎓</div>No alumni yet.</div>'; return; }
-  
   el.innerHTML = items.map(item => `
     <div class="item-row">
-      <!-- Show real photo if photoUrl exists (base64 image saved in Firebase) -->
-      ${item.photoUrl 
-        ? `<img class="item-img" src="${esc(item.photoUrl)}" onerror="this.outerHTML='<div class=\\'item-img no-img\\'>🎓</div>'" alt="">` 
-        : '<div class="item-img no-img">🎓</div>'}
+      ${item.photoUrl ? `<img class="item-img" src="${esc(item.photoUrl)}" onerror="this.outerHTML='<div class=\\'item-img no-img\\'>🎓</div>'" alt="">` : '<div class="item-img no-img">🎓</div>'}
       <div class="item-info">
         <div class="item-title">${esc(item.name)}</div>
         <div class="item-meta">${esc(item.score)} · ${esc(item.university)}</div>
       </div>
       <div class="item-actions">
         <button class="edit-btn" onclick="openModal('alumni','${item.id}')">✏️ Edit</button>
-        <button class="del-btn" onclick="deleteItem('alumni','${item.id}',false)">🗑 Delete</button>
+        <button class="del-btn" onclick="deleteItem('alumni','${item.id}')">🗑 Delete</button>
       </div>
     </div>`).join('');
 }
@@ -1174,232 +810,132 @@ function renderAlumni(items) {
 function renderTestimonials(items) {
   const el = document.getElementById('testimonials-list');
   if (!items.length) { el.innerHTML = '<div class="empty-state"><div class="empty-icon">💬</div>No testimonials yet.</div>'; return; }
-  
   el.innerHTML = items.map(item => `
     <div class="item-row">
       <div class="item-img no-img" style="background:var(--goldp);font-size:22px">💬</div>
       <div class="item-info">
-        <!-- '★'.repeat(5) creates '★★★★★' — stars is a number from 1 to 5 -->
         <div class="item-title">${esc(item.name)} — ${'★'.repeat(item.stars||5)}</div>
-        <!-- Only show first 80 characters of the review text to keep it compact -->
         <div class="item-meta">"${esc((item.text||'').substring(0,80))}..." · ${esc(item.subtitle)}</div>
       </div>
       <div class="item-actions">
         <button class="edit-btn" onclick="openModal('testimonial','${item.id}')">✏️ Edit</button>
-        <button class="del-btn" onclick="deleteItem('testimonials','${item.id}',false)">🗑 Delete</button>
+        <button class="del-btn" onclick="deleteItem('testimonials','${item.id}')">🗑 Delete</button>
       </div>
     </div>`).join('');
 }
 
-
-/*
------------------------------------------------------------------------
-  SECTION 10: SEED FUNCTIONS (Load Default Data)
------------------------------------------------------------------------
-  When you use the admin panel for the FIRST TIME, Firebase is empty.
-  These functions upload the original website content to Firebase so 
-  you can see it and manage it from the admin panel.
-  
-  HOW IT WORKS:
-  We use a Firebase "batch write" — this is like putting multiple 
-  write operations into one envelope and sending them all at once.
-  It's faster and safer than writing one document at a time.
-  
-  After seeding, the listenCol live listener detects new data and
-  automatically hides the seed banner — so it won't show again.
-  
-  IMPORTANT: Only click "Load Default Data" ONCE per section.
-  If you click it again, it will add DUPLICATE entries.
------------------------------------------------------------------------
-*/
-
+/* ----------------------------------------------------------------
+   SEED FUNCTIONS
+   FIX: checks collection is empty before seeding to prevent duplicates
+---------------------------------------------------------------- */
 async function seedCollection(colName, data, btnId) {
   if (!db) { showStatus('Connect Firebase first (Firebase Setup).', 'error'); return; }
-  
+
+  // *** KEY FIX: Check if data already exists before seeding ***
+  const existing = await db.collection(colName).limit(1).get();
+  if (!existing.empty) {
+    showStatus('Data already exists in Firebase — not re-seeding to avoid duplicates.', 'error');
+    const btn = document.getElementById(btnId);
+    if (btn) { btn.disabled = true; btn.textContent = 'Already loaded'; }
+    return;
+  }
+
   const btn = document.getElementById(btnId);
-  btn.disabled = true;           // disable the button so you can't click twice
-  btn.textContent = 'Loading...'; // change button text to show it's working
+  btn.disabled = true;
+  btn.textContent = 'Loading...';
   showStatus('Seeding data...', 'loading');
-  
+
   try {
-    // Create a batch — think of it as a shopping cart for database writes
     const batch = db.batch();
-    
-    // Add each item to the batch (but don't send yet)
-    // db.collection(colName).doc() creates a new document with auto-generated ID
     data.forEach(item => {
-      const ref = db.collection(colName).doc(); // new empty document
-      batch.set(ref, { ...item, createdAt: Date.now() }); // fill it with data + timestamp
+      const ref = db.collection(colName).doc();
+      batch.set(ref, { ...item, createdAt: Date.now() });
     });
-    
-    // Now send all the writes at once
     await batch.commit();
-    
     showStatus('Default data loaded! ✅ You can now edit or delete them.', 'success');
   } catch(e) {
     showStatus('Error: ' + e.message, 'error');
     btn.disabled = false;
-    btn.textContent = 'Load Default Data';
+    btn.textContent = 'Try Again';
   }
 }
 
-// Each of these just calls seedCollection with the right data and button ID
 window.seedEvents       = () => seedCollection('events',       DEFAULT_EVENTS,       'seed-events-btn');
 window.seedClasses      = () => seedCollection('classes',      DEFAULT_CLASSES,      'seed-classes-btn');
 window.seedLeaderboard  = () => seedCollection('leaderboard',  DEFAULT_LEADERBOARD,  'seed-lb-btn');
 window.seedAlumni       = () => seedCollection('alumni',       DEFAULT_ALUMNI,       'seed-alumni-btn');
 window.seedTestimonials = () => seedCollection('testimonials', DEFAULT_TESTIMONIALS, 'seed-test-btn');
 
-
-/*
------------------------------------------------------------------------
-  SECTION 11: HERO STATS (500+ Students, 98% Pass Rate, etc.)
------------------------------------------------------------------------
-  The three headline numbers shown in the hero section of the website.
-  These are stored in Firebase under: settings > heroStats
-  
-  loadStats()  — reads the saved stats from Firebase and fills the 
-                 input fields with the current values.
-  
-  saveStats()  — reads the values from the 3 input pairs and saves 
-                 them to Firebase. The main site reads this on load
-                 and updates the numbers automatically.
------------------------------------------------------------------------
-*/
-
+/* ----------------------------------------------------------------
+   HERO STATS
+---------------------------------------------------------------- */
 async function loadStats() {
   if (!db) return;
   try {
-    // Fetch the heroStats document from the 'settings' collection
     const snap = await db.collection('settings').doc('heroStats').get();
-    const d = { exists: () => snap.exists, data: () => snap.data() };
-    
-    if (d.exists()) {
-      const s = d.data();
-      // Fill each input field with the saved value
-      sv('stat1-num',   s.stat1num);   // e.g. "500+"
-      sv('stat1-label', s.stat1label); // e.g. "Students Enrolled"
-      sv('stat2-num',   s.stat2num);   // e.g. "98%"
-      sv('stat2-label', s.stat2label); // e.g. "Pass Rate"
-      sv('stat3-num',   s.stat3num);   // e.g. "300+"
-      sv('stat3-label', s.stat3label); // e.g. "JAMB 300+ Scorers"
+    if (snap.exists) {
+      const s = snap.data();
+      sv('stat1-num', s.stat1num); sv('stat1-label', s.stat1label);
+      sv('stat2-num', s.stat2num); sv('stat2-label', s.stat2label);
+      sv('stat3-num', s.stat3num); sv('stat3-label', s.stat3label);
     }
-  } catch(e) {} // silently ignore errors (stats are non-critical)
+  } catch(e) {}
 }
 
 window.saveStats = async function() {
   if (!db) { showStatus('Connect Firebase first.', 'error'); return; }
   showStatus('Saving...', 'loading');
   try {
-    // Save all 6 values (3 numbers + 3 labels) as one document
     await db.collection('settings').doc('heroStats').set({
-      stat1num:   v('stat1-num'),
-      stat1label: v('stat1-label'),
-      stat2num:   v('stat2-num'),
-      stat2label: v('stat2-label'),
-      stat3num:   v('stat3-num'),
-      stat3label: v('stat3-label'),
+      stat1num: v('stat1-num'), stat1label: v('stat1-label'),
+      stat2num: v('stat2-num'), stat2label: v('stat2-label'),
+      stat3num: v('stat3-num'), stat3label: v('stat3-label'),
     });
-    showStatus('Stats saved! Live instantly. ✅', 'success');
+    showStatus('Stats saved! ✅', 'success');
   } catch(e) { showStatus('Error: ' + e.message, 'error'); }
 };
 
-
-/*
------------------------------------------------------------------------
-  SECTION 12: DELETE ITEM
------------------------------------------------------------------------
-  deleteItem(col, id, isProtected)
-  
-  col         = which Firebase collection (e.g. 'events', 'alumni')
-  id          = the unique ID of the specific document to delete
-  isProtected = if true, block the deletion (protected events can't be removed)
-  
-  Shows a confirmation dialog first — if the user cancels, nothing happens.
------------------------------------------------------------------------
-*/
-
-window.deleteItem = async function(col, id, isProtected) {
-  // Block deletion of protected items (like ANJA 1.0)
-  if (isProtected) { 
-    showStatus('This item is protected and cannot be deleted. You can edit it.', 'error'); 
-    return; 
-  }
-  
-  // Show a browser confirmation popup — returns false if user clicks Cancel
+/* ----------------------------------------------------------------
+   DELETE ITEM
+---------------------------------------------------------------- */
+window.deleteItem = async function(col, id) {
   if (!confirm('Delete this item? This cannot be undone.')) return;
-  
   if (!db) { showStatus('Not connected.', 'error'); return; }
-  
   showStatus('Deleting...', 'loading');
   try {
-    // Delete the specific document by its collection name and ID
     await db.collection(col).doc(id).delete();
     showStatus('Deleted. ✅', 'success');
   } catch(e) { showStatus('Error: ' + e.message, 'error'); }
 };
 
-
-/*
------------------------------------------------------------------------
-  SECTION 13: MODAL FORMS (Add / Edit popup)
------------------------------------------------------------------------
-  The modal is the popup that slides in when you click "+ Add" or "✏️ Edit".
-  It's one single popup that gets filled with DIFFERENT form fields 
-  depending on what you're editing (event vs alumni vs testimonial etc.)
-  
-  FORMS object — a dictionary where each key is a content type.
-  Each type has:
-    title(id)   — the popup title ("Add New Event" or "Edit Event")
-    fields      — the HTML for the form fields inside the popup
-    getData()   — reads the form fields and returns the data object to save
-    fill(d)     — fills the form fields with existing data (for editing)
-    collection  — which Firebase collection to save to
-  
-  openModal(type, id)  — opens the popup. If id is null = adding new.
-                         If id exists = editing, fetches current data first.
-  
-  closeModal()         — closes the popup and resets the current item.
-  
-  saveModal()          — reads the form data and saves to Firebase.
-                         If editing (id exists) → updates existing document.
-                         If adding (no id) → creates new document.
------------------------------------------------------------------------
-*/
-
+/* ----------------------------------------------------------------
+   MODAL FORMS
+---------------------------------------------------------------- */
 const FORMS = {
-  
   event: {
     title: id => id ? 'Edit Event' : 'Add New Event',
-    
-    // The HTML for the event form — written as a template literal string
     fields: `
-      <div class="form-row">
-        <label>Event Title *</label>
-        <input class="form-input" id="f-title" placeholder="e.g. ANJA 1.0">
-      </div>
+      <div class="form-row"><label>Event Title *</label><input class="form-input" id="f-title" placeholder="e.g. ANJA 1.0"></div>
       <div class="form-grid">
         <div class="form-row"><label>Tag / Type</label><input class="form-input" id="f-tag" placeholder="e.g. JAMB Workshop"></div>
         <div class="form-row"><label>Date & Time</label><input class="form-input" id="f-date" placeholder="e.g. March 30th, 2026"></div>
       </div>
-      <div class="form-row"><label>Venue</label><input class="form-input" id="f-venue" placeholder="Address or location name"></div>
-      <div class="form-row"><label>Description</label><textarea class="form-textarea" id="f-desc" placeholder="What is this event about?"></textarea></div>
+      <div class="form-row"><label>Venue</label><input class="form-input" id="f-venue" placeholder="Address or location"></div>
+      <div class="form-row"><label>Description</label><textarea class="form-textarea" id="f-desc"></textarea></div>
       <div class="form-grid">
-        <div class="form-row"><label>Emoji (fallback if no photo)</label><input class="form-input" id="f-emoji" placeholder="📚" maxlength="4"></div>
+        <div class="form-row"><label>Emoji</label><input class="form-input" id="f-emoji" placeholder="📚" maxlength="4"></div>
         <div class="form-row"><label>Display Order (1=first)</label><input class="form-input" id="f-order" type="number" placeholder="1" min="1"></div>
       </div>
-      <div class="form-row"><label>WhatsApp Register Link</label><input class="form-input" id="f-wa" placeholder="https://wa.me/2347089506428?text=..."></div>
+      <div class="form-row"><label>WhatsApp Register Link</label><input class="form-input" id="f-wa" placeholder="https://wa.me/..."></div>
       <div class="form-row">
         <label>Event Photo</label>
-        <!-- The image upload widget — see Section 14 for how it works -->
-        <div class="img-upload-widget" id="event-photo-widget">
+        <div class="img-upload-widget">
           <label class="img-upload-trigger" for="event-photo-file" id="event-photo-trigger">
             <div class="upload-icon">📁</div>
             <div class="upload-text">Click to choose from gallery</div>
-            <div class="upload-hint">JPG, PNG supported · Keep under 300KB for best speed</div>
+            <div class="upload-hint">JPG, PNG · Under 300KB</div>
           </label>
-          <input type="file" id="event-photo-file" accept="image/*"
-            onchange="handleModalImgUpload('event-photo-file','event-photo-preview','event-photo-footer','event-photo-filename','event-size-warn')">
+          <input type="file" id="event-photo-file" accept="image/*" onchange="handleModalImgUpload('event-photo-file','event-photo-preview','event-photo-footer','event-photo-filename','event-size-warn')">
           <img class="img-upload-preview" id="event-photo-preview" src="" alt="">
           <div class="img-upload-footer" id="event-photo-footer">
             <span class="img-upload-filename" id="event-photo-filename">No file selected</span>
@@ -1407,51 +943,31 @@ const FORMS = {
           </div>
         </div>
         <div class="img-size-warn" id="event-size-warn"></div>
-        <!-- Hidden field stores the base64 image data — gets submitted with the form -->
         <input type="hidden" id="f-imgdata-event">
       </div>`,
-    
-    // getData reads all the form fields and returns the data object
     getData: () => {
       const imgData = document.getElementById('f-imgdata-event')?.value || '';
-      const d = { 
-        title:       v('f-title'), 
-        tag:         v('f-tag'), 
-        date:        v('f-date'),
-        venue:       v('f-venue'), 
-        description: v('f-desc'), 
-        emoji:       v('f-emoji'),
-        order:       parseInt(v('f-order')) || 99, 
-        waLink:      v('f-wa'), 
-        updatedAt:   Date.now() // timestamp so we know when it was last edited
-      };
-      // Only include imageData if a new image was uploaded
+      const d = { title:v('f-title'), tag:v('f-tag'), date:v('f-date'), venue:v('f-venue'), description:v('f-desc'), emoji:v('f-emoji'), order:parseInt(v('f-order'))||99, waLink:v('f-wa'), updatedAt:Date.now() };
       if (imgData) d.imageData = imgData;
       return d;
     },
-    
-    // fill pre-populates the form when editing an existing event
     fill: d => {
-      sv('f-title', d.title); sv('f-tag', d.tag); sv('f-date', d.date);
-      sv('f-venue', d.venue); sv('f-desc', d.description);
-      sv('f-emoji', d.emoji); sv('f-order', d.order); sv('f-wa', d.waLink);
-      // If the event already has a photo, show it in the preview
-      if (d.imageData) {
-        setTimeout(() => {
-          const prev    = document.getElementById('event-photo-preview');
-          const footer  = document.getElementById('event-photo-footer');
-          const trigger = document.getElementById('event-photo-trigger');
-          const hidden  = document.getElementById('f-imgdata-event');
-          if (prev)    { prev.src = d.imageData; prev.classList.add('show'); }
-          if (footer)  footer.classList.add('show');
-          if (trigger) trigger.style.display = 'none'; // hide the upload button
-          if (hidden)  hidden.value = d.imageData;     // keep the data ready to save
-        }, 100); // small delay to ensure the form is rendered first
-      }
+      sv('f-title',d.title); sv('f-tag',d.tag); sv('f-date',d.date);
+      sv('f-venue',d.venue); sv('f-desc',d.description);
+      sv('f-emoji',d.emoji); sv('f-order',d.order); sv('f-wa',d.waLink);
+      if (d.imageData) setTimeout(() => {
+        const prev=document.getElementById('event-photo-preview');
+        const footer=document.getElementById('event-photo-footer');
+        const trigger=document.getElementById('event-photo-trigger');
+        const hidden=document.getElementById('f-imgdata-event');
+        if(prev){prev.src=d.imageData;prev.classList.add('show');}
+        if(footer)footer.classList.add('show');
+        if(trigger)trigger.style.display='none';
+        if(hidden)hidden.value=d.imageData;
+      },100);
     },
     collection: 'events'
   },
-
   classphoto: {
     title: id => id ? 'Edit Class Photo' : 'Add Class Photo',
     fields: `
@@ -1467,10 +983,9 @@ const FORMS = {
           <label class="img-upload-trigger" for="class-photo-file" id="class-photo-trigger">
             <div class="upload-icon">📁</div>
             <div class="upload-text">Click to choose from gallery</div>
-            <div class="upload-hint">JPG, PNG supported · Keep under 300KB</div>
+            <div class="upload-hint">JPG, PNG · Under 300KB</div>
           </label>
-          <input type="file" id="class-photo-file" accept="image/*"
-            onchange="handleModalImgUpload('class-photo-file','class-photo-preview','class-photo-footer','class-photo-filename','class-size-warn')">
+          <input type="file" id="class-photo-file" accept="image/*" onchange="handleModalImgUpload('class-photo-file','class-photo-preview','class-photo-footer','class-photo-filename','class-size-warn')">
           <img class="img-upload-preview" id="class-photo-preview" src="" alt="">
           <div class="img-upload-footer" id="class-photo-footer">
             <span class="img-upload-filename" id="class-photo-filename">No file selected</span>
@@ -1488,22 +1003,19 @@ const FORMS = {
     },
     fill: d => {
       sv('f-title',d.title); sv('f-tag',d.tag); sv('f-desc',d.description); sv('f-order',d.order);
-      if (d.imageData) {
-        setTimeout(() => {
-          const prev=document.getElementById('class-photo-preview');
-          const footer=document.getElementById('class-photo-footer');
-          const trigger=document.getElementById('class-photo-trigger');
-          const hidden=document.getElementById('f-imgdata-class');
-          if(prev){prev.src=d.imageData;prev.classList.add('show');}
-          if(footer)footer.classList.add('show');
-          if(trigger)trigger.style.display='none';
-          if(hidden)hidden.value=d.imageData;
-        },100);
-      }
+      if (d.imageData) setTimeout(() => {
+        const prev=document.getElementById('class-photo-preview');
+        const footer=document.getElementById('class-photo-footer');
+        const trigger=document.getElementById('class-photo-trigger');
+        const hidden=document.getElementById('f-imgdata-class');
+        if(prev){prev.src=d.imageData;prev.classList.add('show');}
+        if(footer)footer.classList.add('show');
+        if(trigger)trigger.style.display='none';
+        if(hidden)hidden.value=d.imageData;
+      },100);
     },
     collection: 'classes'
   },
-
   leaderboard: {
     title: id => id ? 'Edit Student' : 'Add to Leaderboard',
     fields: `
@@ -1513,27 +1025,22 @@ const FORMS = {
         <div class="form-row"><label>Score</label><input class="form-input" id="f-score" placeholder="e.g. 341/400 or 8 A's"></div>
       </div>
       <div class="form-grid">
-        <!-- scorePct is 0-100 and fills the progress bar on the website -->
-        <div class="form-row"><label>Score % (for progress bar)</label><input class="form-input" id="f-pct" type="number" placeholder="85" min="0" max="100"></div>
+        <div class="form-row"><label>Score % (for progress bar, 0-100)</label><input class="form-input" id="f-pct" type="number" placeholder="85" min="0" max="100"></div>
         <div class="form-row"><label>Year</label><input class="form-input" id="f-year" placeholder="2026"></div>
       </div>
       <div class="form-grid">
         <div class="form-row"><label>Exam Type</label><select class="form-select" id="f-exam"><option>MOCK</option><option>JAMB</option><option>WAEC</option><option>NECO</option><option>POST-UTME</option></select></div>
         <div class="form-row"><label>Department</label><select class="form-select" id="f-dept"><option>Sciences</option><option>Arts</option><option>Commercial</option></select></div>
       </div>`,
-    getData: () => ({ 
-      name:v('f-name'), rank:parseInt(v('f-rank'))||1, score:v('f-score'),
-      scorePct:parseInt(v('f-pct'))||80, year:v('f-year'), exam:v('f-exam'), dept:v('f-dept'), updatedAt:Date.now() 
-    }),
+    getData: () => ({ name:v('f-name'), rank:parseInt(v('f-rank'))||1, score:v('f-score'), scorePct:parseInt(v('f-pct'))||80, year:v('f-year'), exam:v('f-exam'), dept:v('f-dept'), updatedAt:Date.now() }),
     fill: d => { sv('f-name',d.name); sv('f-rank',d.rank); sv('f-score',d.score); sv('f-pct',d.scorePct); sv('f-year',d.year); sv('f-exam',d.exam); sv('f-dept',d.dept); },
     collection: 'leaderboard'
   },
-
   alumni: {
     title: id => id ? 'Edit Alumni' : 'Add Alumni',
     fields: `
       <div class="form-row"><label>Full Name *</label><input class="form-input" id="f-name" placeholder="e.g. Chidinma Okonkwo"></div>
-      <div class="form-row"><label>Score / Grade</label><input class="form-input" id="f-score" placeholder="e.g. JAMB: 342 or WAEC: 8 A's"></div>
+      <div class="form-row"><label>Score / Grade</label><input class="form-input" id="f-score" placeholder="e.g. JAMB: 342"></div>
       <div class="form-row"><label>University & Course</label><input class="form-input" id="f-uni" placeholder="e.g. UNILAG — Medicine"></div>
       <div class="form-row">
         <label>Alumni Photo</label>
@@ -1541,10 +1048,9 @@ const FORMS = {
           <label class="img-upload-trigger" for="alumni-photo-file" id="alumni-photo-trigger">
             <div class="upload-icon">📁</div>
             <div class="upload-text">Click to choose from gallery</div>
-            <div class="upload-hint">JPG, PNG supported · Leave empty for default icon</div>
+            <div class="upload-hint">JPG, PNG · Leave empty for default icon</div>
           </label>
-          <input type="file" id="alumni-photo-file" accept="image/*"
-            onchange="handleModalImgUpload('alumni-photo-file','alumni-photo-preview','alumni-photo-footer','alumni-photo-filename','alumni-size-warn')">
+          <input type="file" id="alumni-photo-file" accept="image/*" onchange="handleModalImgUpload('alumni-photo-file','alumni-photo-preview','alumni-photo-footer','alumni-photo-filename','alumni-size-warn')">
           <img class="img-upload-preview" id="alumni-photo-preview" src="" alt="">
           <div class="img-upload-footer" id="alumni-photo-footer">
             <span class="img-upload-filename" id="alumni-photo-filename">No file selected</span>
@@ -1557,346 +1063,193 @@ const FORMS = {
     getData: () => {
       const imgData = document.getElementById('f-imgdata-alumni')?.value || '';
       const d = { name:v('f-name'), score:v('f-score'), university:v('f-uni'), updatedAt:Date.now() };
-      if (imgData) d.photoUrl = imgData; // photoUrl stores the base64 image string
+      if (imgData) d.photoUrl = imgData;
       return d;
     },
     fill: d => {
       sv('f-name',d.name); sv('f-score',d.score); sv('f-uni',d.university);
-      if (d.photoUrl) {
-        setTimeout(() => {
-          const prev=document.getElementById('alumni-photo-preview');
-          const footer=document.getElementById('alumni-photo-footer');
-          const trigger=document.getElementById('alumni-photo-trigger');
-          const hidden=document.getElementById('f-imgdata-alumni');
-          if(prev){prev.src=d.photoUrl;prev.classList.add('show');}
-          if(footer)footer.classList.add('show');
-          if(trigger)trigger.style.display='none';
-          if(hidden)hidden.value=d.photoUrl;
-        },100);
-      }
+      if (d.photoUrl) setTimeout(() => {
+        const prev=document.getElementById('alumni-photo-preview');
+        const footer=document.getElementById('alumni-photo-footer');
+        const trigger=document.getElementById('alumni-photo-trigger');
+        const hidden=document.getElementById('f-imgdata-alumni');
+        if(prev){prev.src=d.photoUrl;prev.classList.add('show');}
+        if(footer)footer.classList.add('show');
+        if(trigger)trigger.style.display='none';
+        if(hidden)hidden.value=d.photoUrl;
+      },100);
     },
     collection: 'alumni'
   },
-
   testimonial: {
     title: id => id ? 'Edit Testimonial' : 'Add Testimonial',
     fields: `
       <div class="form-row"><label>Student Name *</label><input class="form-input" id="f-name" placeholder="e.g. Amaka Obi"></div>
       <div class="form-row"><label>Subtitle</label><input class="form-input" id="f-subtitle" placeholder="e.g. JAMB 2024 — 318/400"></div>
-      <div class="form-row"><label>Testimonial Text *</label><textarea class="form-textarea" id="f-text" placeholder="What did the student say about the academy?"></textarea></div>
-      <div class="form-row">
-        <label>Star Rating</label>
-        <select class="form-select" id="f-stars">
-          <option value="5">★★★★★ 5 stars</option>
-          <option value="4">★★★★ 4 stars</option>
-          <option value="3">★★★ 3 stars</option>
-        </select>
-      </div>`,
-    getData: () => ({ 
-      name:v('f-name'), subtitle:v('f-subtitle'), text:v('f-text'), 
-      stars:parseInt(v('f-stars'))||5, updatedAt:Date.now() 
-    }),
+      <div class="form-row"><label>Testimonial Text *</label><textarea class="form-textarea" id="f-text" placeholder="What did the student say?"></textarea></div>
+      <div class="form-row"><label>Star Rating</label><select class="form-select" id="f-stars"><option value="5">★★★★★ 5 stars</option><option value="4">★★★★ 4 stars</option><option value="3">★★★ 3 stars</option></select></div>`,
+    getData: () => ({ name:v('f-name'), subtitle:v('f-subtitle'), text:v('f-text'), stars:parseInt(v('f-stars'))||5, updatedAt:Date.now() }),
     fill: d => { sv('f-name',d.name); sv('f-subtitle',d.subtitle); sv('f-text',d.text); sv('f-stars',d.stars); },
     collection: 'testimonials'
   }
 };
 
-// openModal — opens the popup for adding or editing an item
+let currentModal = { type:null, id:null };
+
 window.openModal = async function(type, id) {
   if (!db) { showStatus('Connect Firebase first (Firebase Setup page).', 'error'); return; }
-  
-  const form = FORMS[type]; // get the form definition for this type
-  currentModal = { type, id }; // remember what we're editing
-  
-  // Set the popup title (e.g. "Edit Event" or "Add New Event")
+  const form = FORMS[type];
+  currentModal = { type, id };
   document.getElementById('modalTitle').textContent = form.title(id);
-  
-  // Inject the form fields HTML into the popup body
   document.getElementById('modalBody').innerHTML = form.fields;
-  
-  // Re-enable the Save button (it may have been disabled from a previous save)
   document.getElementById('modalSaveBtn').disabled = false;
-  
   if (id) {
-    // EDITING mode: fetch the current data for this document and pre-fill the form
     try {
       const snap = await db.collection(form.collection).doc(id).get();
-      if (snap.exists) form.fill(snap.data()); // call fill() to populate each field
+      if (snap.exists) form.fill(snap.data());
     } catch(e) { console.error(e); }
   }
-  // If id is null (adding new), the form stays empty — ready for input
-  
-  // Show the popup by adding the 'open' class
   document.getElementById('modalOverlay').classList.add('open');
 };
 
-// closeModal — closes the popup
 window.closeModal = function() {
   document.getElementById('modalOverlay').classList.remove('open');
-  currentModal = { type: null, id: null }; // reset tracking
+  currentModal = { type:null, id:null };
 };
 
-// saveModal — called when you click "Save Changes" in the popup
 window.saveModal = async function() {
   if (!db) { showStatus('Not connected.', 'error'); return; }
-  
   const { type, id } = currentModal;
   const form = FORMS[type];
-  
-  // Collect all the form values into a data object
   const data = form.getData();
-  
-  // Check that the required field (title or name) is not empty
-  const required = data.title || data.name;
-  if (!required) { showStatus('Please fill in the required fields.', 'error'); return; }
-  
-  document.getElementById('modalSaveBtn').disabled = true; // prevent double-clicking
+  if (!data.title && !data.name) { showStatus('Please fill in the required fields.', 'error'); return; }
+  document.getElementById('modalSaveBtn').disabled = true;
   showStatus('Saving...', 'loading');
-  
   try {
     if (id) {
-      // EDITING: update the existing document (only changes the fields we pass in)
       await db.collection(form.collection).doc(id).update(data);
     } else {
-      // ADDING NEW: create a brand new document with an auto-generated ID
       await db.collection(form.collection).add({ ...data, createdAt: Date.now() });
     }
     showStatus('Saved! Live on site instantly. ✅', 'success');
-    closeModal(); // close the popup after saving
+    closeModal();
   } catch(e) {
     showStatus('Error: ' + e.message, 'error');
-    document.getElementById('modalSaveBtn').disabled = false; // re-enable if error
+    document.getElementById('modalSaveBtn').disabled = false;
   }
 };
 
-// Close the popup if the user clicks the dark overlay behind it
-document.getElementById('modalOverlay').addEventListener('click', e => { 
-  if (e.target === document.getElementById('modalOverlay')) closeModal(); 
+document.getElementById('modalOverlay').addEventListener('click', e => {
+  if (e.target === document.getElementById('modalOverlay')) closeModal();
 });
 
-
-/*
------------------------------------------------------------------------
-  SECTION 14: IMAGE UPLOAD HELPERS (for modal forms)
------------------------------------------------------------------------
-  When you pick a photo from your gallery, these functions:
-  1. Read the file using FileReader (built into all browsers)
-  2. Convert it to a base64 string (a very long text representation 
-     of the image — like converting a photo to text)
-  3. Store that base64 string in a hidden <input> field
-  4. Show a preview of the image inside the form
-  
-  WHY BASE64?
-  Firebase Firestore (the database we use) only stores text/numbers,
-  not actual image files. Base64 lets us store images AS TEXT.
-  The downside is the text is very long (~300KB for a photo),
-  which is why we warn about file size.
-  
-  handleModalImgUpload(fileInputId, previewId, footerId, filenameId, warnId)
-    — reads the selected file, converts it, shows preview
-  
-  clearModalImg(...)
-    — resets a photo upload widget back to the empty "choose file" state
------------------------------------------------------------------------
-*/
-
+/* ----------------------------------------------------------------
+   IMAGE UPLOAD HELPERS
+---------------------------------------------------------------- */
 window.handleModalImgUpload = function(fileInputId, previewId, footerId, filenameId, warnId) {
   const file = document.getElementById(fileInputId)?.files[0];
-  if (!file) return; // nothing selected
-  
+  if (!file) return;
   const warn = document.getElementById(warnId);
-  
-  // Warn the user if the file is larger than 400KB
-  // Large images make the database slower and the website heavier
-  if (file.size > 400 * 1024 && warn) {
-    warn.textContent = '⚠️ This image is ' + Math.round(file.size/1024) + 'KB. Large images may be slow. Consider compressing at squoosh.app first.';
-    warn.style.display = 'block';
-  } else if (warn) {
-    warn.style.display = 'none';
-  }
-  
-  // FileReader is a built-in browser tool that reads files
+  if (file.size > 400 * 1024 && warn) { warn.textContent = '⚠️ '+Math.round(file.size/1024)+'KB — large. Compress at squoosh.app first.'; warn.style.display='block'; }
+  else if (warn) warn.style.display='none';
   const reader = new FileReader();
-  
-  // This runs AFTER the file has been read (it's asynchronous)
   reader.onload = function(e) {
-    const b64 = e.target.result; // the full data URI (e.g. "data:image/jpeg;base64,/9j/4A...")
-    
-    // Map of which file input corresponds to which hidden field
-    const hiddenMap = {
-      'event-photo-file':  'f-imgdata-event',
-      'class-photo-file':  'f-imgdata-class',
-      'alumni-photo-file': 'f-imgdata-alumni',
-    };
-    
-    // Store the base64 data in the hidden input so getData() can retrieve it
+    const b64 = e.target.result;
+    const hiddenMap = { 'event-photo-file':'f-imgdata-event', 'class-photo-file':'f-imgdata-class', 'alumni-photo-file':'f-imgdata-alumni' };
     const hiddenId = hiddenMap[fileInputId];
-    if (hiddenId) { 
-      const h = document.getElementById(hiddenId); 
-      if(h) h.value = b64; 
-    }
-    
-    // Show the image preview
-    const prev = document.getElementById(previewId);
-    if (prev) { prev.src = b64; prev.classList.add('show'); }
-    
-    // Show the footer with filename and "Remove" button
-    const footer = document.getElementById(footerId);
-    if (footer) footer.classList.add('show');
-    
-    // Update the filename display (e.g. "photo.jpg (245KB)")
-    const fn = document.getElementById(filenameId);
-    if (fn) fn.textContent = file.name + ' (' + Math.round(file.size/1024) + 'KB)';
-    
-    // Hide the original "Click to choose" trigger area — preview takes its place
-    const triggerMap = {
-      'event-photo-file':  'event-photo-trigger',
-      'class-photo-file':  'class-photo-trigger',
-      'alumni-photo-file': 'alumni-photo-trigger',
-    };
-    const trig = document.getElementById(triggerMap[fileInputId]);
-    if (trig) trig.style.display = 'none';
+    if (hiddenId) { const h=document.getElementById(hiddenId); if(h) h.value=b64; }
+    const prev=document.getElementById(previewId);
+    if(prev){prev.src=b64;prev.classList.add('show');}
+    const footer=document.getElementById(footerId);
+    if(footer)footer.classList.add('show');
+    const fn=document.getElementById(filenameId);
+    if(fn)fn.textContent=file.name+' ('+Math.round(file.size/1024)+'KB)';
+    const triggerMap={'event-photo-file':'event-photo-trigger','class-photo-file':'class-photo-trigger','alumni-photo-file':'alumni-photo-trigger'};
+    const trig=document.getElementById(triggerMap[fileInputId]);
+    if(trig)trig.style.display='none';
   };
-  
-  // Start reading the file as a base64 data URL
   reader.readAsDataURL(file);
 };
 
-// clearModalImg — resets the upload widget back to its empty state
 window.clearModalImg = function(previewId, footerId, fileInputId, triggerId, hiddenId) {
-  const prev      = document.getElementById(previewId);
-  const footer    = document.getElementById(footerId);
-  const fileInput = document.getElementById(fileInputId);
-  const trigger   = document.getElementById(triggerId);
-  const hidden    = document.getElementById(hiddenId);
-  
-  if (prev)      { prev.src = ''; prev.classList.remove('show'); }  // hide preview
-  if (footer)    footer.classList.remove('show');                    // hide footer
-  if (fileInput) fileInput.value = '';                               // clear file selection
-  if (trigger)   trigger.style.display = '';                        // show upload button again
-  if (hidden)    hidden.value = '';                                  // clear stored base64
+  const prev=document.getElementById(previewId);
+  const footer=document.getElementById(footerId);
+  const fileInput=document.getElementById(fileInputId);
+  const trigger=document.getElementById(triggerId);
+  const hidden=document.getElementById(hiddenId);
+  if(prev){prev.src='';prev.classList.remove('show');}
+  if(footer)footer.classList.remove('show');
+  if(fileInput)fileInput.value='';
+  if(trigger)trigger.style.display='';
+  if(hidden)hidden.value='';
 };
 
-
-/*
------------------------------------------------------------------------
-  SECTION 15: HERO PHOTOS (the 3 images in the website hero section)
------------------------------------------------------------------------
-  The hero section at the top of the website shows 3 photos in a grid.
-  These are stored in Firebase under: settings > heroPhotos
-  Fields: photo1, photo2, photo3 — each holds a base64 image string.
-  
-  heroPendingData — a temporary holding object for photos the user 
-                    has selected but not yet saved to Firebase.
-  
-  loadHeroPhotos()    — reads current hero photos from Firebase and 
-                        shows them in the admin preview slots.
-  
-  handleHeroUpload()  — called when user picks a photo for a slot.
-                        Converts to base64 and shows preview.
-  
-  clearHeroSlot()     — removes a photo from a slot.
-  
-  saveHeroPhotos()    — saves all pending photos to Firebase.
-                        Uses merge:true so saving slot 1 doesn't 
-                        delete slots 2 and 3.
------------------------------------------------------------------------
-*/
-
-// Temporary storage for photos selected but not yet saved
-let heroPendingData = { 1: null, 2: null, 3: null };
+/* ----------------------------------------------------------------
+   HERO PHOTOS
+---------------------------------------------------------------- */
+let heroPendingData = { 1:null, 2:null, 3:null };
 
 async function loadHeroPhotos() {
   if (!db) return;
   try {
     const snap = await db.collection('settings').doc('heroPhotos').get();
-    if (!snap.exists) return; // no hero photos saved yet — use defaults
-    
+    if (!snap.exists) return;
     const data = snap.data();
-    
-    // For each of the 3 slots, show the saved photo if it exists
-    [1, 2, 3].forEach(i => {
+    [1,2,3].forEach(i => {
       if (data['photo'+i]) {
-        heroPendingData[i] = data['photo'+i]; // load into pending so saves update correctly
-        const prev  = document.getElementById('hero-preview-'+i);
-        const empty = document.getElementById('hero-empty-'+i);
-        if (prev)  { prev.src = data['photo'+i]; prev.classList.add('show'); }
-        if (empty) empty.style.display = 'none'; // hide the 📸 placeholder
+        heroPendingData[i] = data['photo'+i];
+        const prev=document.getElementById('hero-preview-'+i);
+        const empty=document.getElementById('hero-empty-'+i);
+        if(prev){prev.src=data['photo'+i];prev.classList.add('show');}
+        if(empty)empty.style.display='none';
       }
     });
   } catch(e) {}
 }
 
 window.handleHeroUpload = function(slot, input) {
-  const file = input.files[0];
-  if (!file) return;
-  
-  // Warn about large files (hero photos are extra sensitive since there are 3 of them)
-  if (file.size > 500 * 1024) {
-    showStatus('Image is ' + Math.round(file.size/1024) + 'KB. Try compressing at squoosh.app for faster loading.', 'error');
-  }
-  
+  const file = input.files[0]; if (!file) return;
+  if (file.size > 500*1024) showStatus('Image is '+Math.round(file.size/1024)+'KB. Compress at squoosh.app for faster loading.','error');
   const reader = new FileReader();
   reader.onload = function(e) {
-    // Store in pending — won't go to Firebase until Save button is clicked
     heroPendingData[slot] = e.target.result;
-    
-    // Show the preview in the slot
-    const prev  = document.getElementById('hero-preview-'+slot);
-    const empty = document.getElementById('hero-empty-'+slot);
-    if (prev)  { prev.src = e.target.result; prev.classList.add('show'); }
-    if (empty) empty.style.display = 'none';
-    
-    showStatus('Photo '+slot+' selected. Click Save to apply.', 'success');
+    const prev=document.getElementById('hero-preview-'+slot);
+    const empty=document.getElementById('hero-empty-'+slot);
+    if(prev){prev.src=e.target.result;prev.classList.add('show');}
+    if(empty)empty.style.display='none';
+    showStatus('Photo '+slot+' selected. Click Save to apply.','success');
   };
   reader.readAsDataURL(file);
 };
 
 window.clearHeroSlot = function(slot) {
-  heroPendingData[slot] = null; // remove from pending
-  const prev      = document.getElementById('hero-preview-'+slot);
-  const empty     = document.getElementById('hero-empty-'+slot);
-  const fileInput = document.getElementById('hero-file-'+slot);
-  if (prev)      { prev.src = ''; prev.classList.remove('show'); }
-  if (empty)     empty.style.display = '';  // show the 📸 placeholder again
-  if (fileInput) fileInput.value = '';       // clear the file picker
+  heroPendingData[slot]=null;
+  const prev=document.getElementById('hero-preview-'+slot);
+  const empty=document.getElementById('hero-empty-'+slot);
+  const fi=document.getElementById('hero-file-'+slot);
+  if(prev){prev.src='';prev.classList.remove('show');}
+  if(empty)empty.style.display='';
+  if(fi)fi.value='';
 };
 
 window.saveHeroPhotos = async function() {
-  if (!db) { showStatus('Connect Firebase first.', 'error'); return; }
-  showStatus('Saving hero photos...', 'loading');
+  if (!db) { showStatus('Connect Firebase first.','error'); return; }
+  showStatus('Saving hero photos...','loading');
   try {
-    // Only save slots that have pending data (don't overwrite slots we didn't change)
     const payload = {};
-    if (heroPendingData[1]) payload.photo1 = heroPendingData[1];
-    if (heroPendingData[2]) payload.photo2 = heroPendingData[2];
-    if (heroPendingData[3]) payload.photo3 = heroPendingData[3];
-    
-    if (!Object.keys(payload).length) { 
-      showStatus('No photos selected. Choose at least one photo first.', 'error'); 
-      return; 
-    }
-    
-    // merge:true means "add these fields without deleting existing fields"
-    // So saving photo1 won't delete photo2 or photo3
-    await db.collection('settings').doc('heroPhotos').set(payload, { merge: true });
-    showStatus('Hero photos saved! Live on site instantly. ✅', 'success');
-  } catch(e) { showStatus('Error: ' + e.message, 'error'); }
+    if(heroPendingData[1])payload.photo1=heroPendingData[1];
+    if(heroPendingData[2])payload.photo2=heroPendingData[2];
+    if(heroPendingData[3])payload.photo3=heroPendingData[3];
+    if (!Object.keys(payload).length) { showStatus('No photos selected.','error'); return; }
+    await db.collection('settings').doc('heroPhotos').set(payload,{merge:true});
+    showStatus('Hero photos saved! ✅','success');
+  } catch(e) { showStatus('Error: '+e.message,'error'); }
 };
 
-
-/*
------------------------------------------------------------------------
-  SECTION 16: ABOUT PHOTO (the photo in the About Us section)
------------------------------------------------------------------------
-  Stored in Firebase under: settings > aboutPhoto
-  Field: photoData — holds a base64 image string.
-  
-  Works exactly like the hero photo slots but for a single photo.
------------------------------------------------------------------------
-*/
-
-let aboutPendingData = null; // temporary storage for selected but unsaved photo
+/* ----------------------------------------------------------------
+   ABOUT PHOTO
+---------------------------------------------------------------- */
+let aboutPendingData = null;
 
 async function loadAboutPhoto() {
   if (!db) return;
@@ -1905,220 +1258,292 @@ async function loadAboutPhoto() {
     if (!snap.exists) return;
     const data = snap.data();
     if (data.photoData) {
-      const img     = document.getElementById('about-current-img');
-      const noPhoto = document.getElementById('about-no-photo');
-      if (img)     { img.src = data.photoData; img.style.display = 'block'; }
-      if (noPhoto) noPhoto.style.display = 'none'; // hide the default 👨‍🏫 icon
+      const img=document.getElementById('about-current-img');
+      const noPhoto=document.getElementById('about-no-photo');
+      if(img){img.src=data.photoData;img.style.display='block';}
+      if(noPhoto)noPhoto.style.display='none';
     }
   } catch(e) {}
 }
 
 window.handleAboutUpload = function(input) {
-  const file = input.files[0];
-  if (!file) return;
-  
+  const file = input.files[0]; if (!file) return;
   const warn = document.getElementById('about-size-warn');
-  if (file.size > 400 * 1024 && warn) {
-    warn.textContent = '⚠️ ' + Math.round(file.size/1024) + 'KB — consider compressing at squoosh.app first.';
-    warn.style.display = 'block';
-  } else if (warn) { warn.style.display = 'none'; }
-  
+  if (file.size > 400*1024 && warn) { warn.textContent='⚠️ '+Math.round(file.size/1024)+'KB — compress at squoosh.app first.'; warn.style.display='block'; }
+  else if(warn) warn.style.display='none';
   const reader = new FileReader();
   reader.onload = function(e) {
-    aboutPendingData = e.target.result; // store in pending
-    
-    const prev    = document.getElementById('about-upload-preview');
-    const footer  = document.getElementById('about-upload-footer');
-    const fn      = document.getElementById('about-upload-filename');
-    const trigger = document.querySelector('#about-upload-widget .img-upload-trigger');
-    
-    if (prev)    { prev.src = e.target.result; prev.classList.add('show'); }
-    if (footer)  footer.classList.add('show');
-    if (fn)      fn.textContent = file.name + ' (' + Math.round(file.size/1024) + 'KB)';
-    if (trigger) trigger.style.display = 'none';
+    aboutPendingData = e.target.result;
+    const prev=document.getElementById('about-upload-preview');
+    const footer=document.getElementById('about-upload-footer');
+    const fn=document.getElementById('about-upload-filename');
+    const trigger=document.querySelector('#about-upload-widget .img-upload-trigger');
+    if(prev){prev.src=e.target.result;prev.classList.add('show');}
+    if(footer)footer.classList.add('show');
+    if(fn)fn.textContent=file.name+' ('+Math.round(file.size/1024)+'KB)';
+    if(trigger)trigger.style.display='none';
   };
   reader.readAsDataURL(file);
 };
 
 window.clearAboutUpload = function() {
-  aboutPendingData = null;
-  const prev      = document.getElementById('about-upload-preview');
-  const footer    = document.getElementById('about-upload-footer');
-  const fileInput = document.getElementById('about-file-input');
-  const trigger   = document.querySelector('#about-upload-widget .img-upload-trigger');
-  if (prev)      { prev.src = ''; prev.classList.remove('show'); }
-  if (footer)    footer.classList.remove('show');
-  if (fileInput) fileInput.value = '';
-  if (trigger)   trigger.style.display = '';
+  aboutPendingData=null;
+  const prev=document.getElementById('about-upload-preview');
+  const footer=document.getElementById('about-upload-footer');
+  const fi=document.getElementById('about-file-input');
+  const trigger=document.querySelector('#about-upload-widget .img-upload-trigger');
+  if(prev){prev.src='';prev.classList.remove('show');}
+  if(footer)footer.classList.remove('show');
+  if(fi)fi.value='';
+  if(trigger)trigger.style.display='';
 };
 
 window.saveAboutPhoto = async function() {
-  if (!db) { showStatus('Connect Firebase first.', 'error'); return; }
-  if (!aboutPendingData) { showStatus('No photo selected. Choose a photo first.', 'error'); return; }
-  showStatus('Saving about photo...', 'loading');
+  if (!db) { showStatus('Connect Firebase first.','error'); return; }
+  if (!aboutPendingData) { showStatus('No photo selected.','error'); return; }
+  showStatus('Saving...','loading');
   try {
-    // Save the base64 image to Firebase
     await db.collection('settings').doc('aboutPhoto').set({ photoData: aboutPendingData });
-    
-    // Update the "Current photo" preview on this page without reloading
-    const img     = document.getElementById('about-current-img');
-    const noPhoto = document.getElementById('about-no-photo');
-    if (img)     { img.src = aboutPendingData; img.style.display = 'block'; }
-    if (noPhoto) noPhoto.style.display = 'none';
-    
-    showStatus('About photo saved! Live on site instantly. ✅', 'success');
-    clearAboutUpload(); // reset the upload widget
-  } catch(e) { showStatus('Error: ' + e.message, 'error'); }
+    const img=document.getElementById('about-current-img');
+    const noPhoto=document.getElementById('about-no-photo');
+    if(img){img.src=aboutPendingData;img.style.display='block';}
+    if(noPhoto)noPhoto.style.display='none';
+    showStatus('About photo saved! ✅','success');
+    clearAboutUpload();
+  } catch(e) { showStatus('Error: '+e.message,'error'); }
 };
 
-
-/*
------------------------------------------------------------------------
-  SECTION 17: GENERIC PHOTO HANDLER (Admission + Plug photos)
------------------------------------------------------------------------
-  This is a reusable system for any single-photo section.
-  Currently used for:
-    - Admission Success photo (unilagPhoto in Firebase)
-    - Admission Guidance / Sure Plug photo (plugPhoto in Firebase)
-  
-  Instead of writing separate functions for each, we use one set 
-  of functions that take a 'key' parameter to know which photo to handle.
-  
-  key = 'unilag' or 'plug' — used to find the right HTML elements
-  docName = 'unilagPhoto' or 'plugPhoto' — the Firebase document name
------------------------------------------------------------------------
-*/
-
-var genericPending = {}; // holds pending base64 data keyed by slot name
+/* ----------------------------------------------------------------
+   GENERIC PHOTO HANDLER
+---------------------------------------------------------------- */
+var genericPending = {};
 
 window.handleGenericUpload = function(key, input) {
-  var file = input.files[0];
-  if (!file) return;
-  
+  var file = input.files[0]; if (!file) return;
   var warn = document.getElementById(key+'-size-warn');
-  if (file.size > 400*1024 && warn) {
-    warn.textContent = '⚠️ '+Math.round(file.size/1024)+'KB — consider compressing at squoosh.app';
-    warn.style.display = 'block';
-  } else if (warn) { warn.style.display = 'none'; }
-  
+  if (file.size > 400*1024 && warn) { warn.textContent='⚠️ '+Math.round(file.size/1024)+'KB — compress at squoosh.app'; warn.style.display='block'; }
+  else if(warn) warn.style.display='none';
   var reader = new FileReader();
   reader.onload = function(e) {
-    genericPending[key] = e.target.result; // store in pending
-    
-    // Show preview using element IDs built from the key (e.g. 'unilag-upload-preview')
-    var prev    = document.getElementById(key+'-upload-preview');
-    var footer  = document.getElementById(key+'-upload-footer');
-    var fn      = document.getElementById(key+'-upload-filename');
-    var trigger = document.querySelector('#'+key+'-upload-widget .img-upload-trigger');
-    
-    if (prev)    { prev.src = e.target.result; prev.classList.add('show'); }
-    if (footer)  footer.classList.add('show');
-    if (fn)      fn.textContent = file.name+' ('+Math.round(file.size/1024)+'KB)';
-    if (trigger) trigger.style.display = 'none';
+    genericPending[key] = e.target.result;
+    var prev=document.getElementById(key+'-upload-preview');
+    var footer=document.getElementById(key+'-upload-footer');
+    var fn=document.getElementById(key+'-upload-filename');
+    var trigger=document.querySelector('#'+key+'-upload-widget .img-upload-trigger');
+    if(prev){prev.src=e.target.result;prev.classList.add('show');}
+    if(footer)footer.classList.add('show');
+    if(fn)fn.textContent=file.name+' ('+Math.round(file.size/1024)+'KB)';
+    if(trigger)trigger.style.display='none';
   };
   reader.readAsDataURL(file);
 };
 
 window.clearGenericUpload = function(key) {
-  genericPending[key] = null;
-  var prev      = document.getElementById(key+'-upload-preview');
-  var footer    = document.getElementById(key+'-upload-footer');
-  var fileInput = document.getElementById(key+'-file-input');
-  var trigger   = document.querySelector('#'+key+'-upload-widget .img-upload-trigger');
-  if (prev)      { prev.src=''; prev.classList.remove('show'); }
-  if (footer)    footer.classList.remove('show');
-  if (fileInput) fileInput.value = '';
-  if (trigger)   trigger.style.display = '';
+  genericPending[key]=null;
+  var prev=document.getElementById(key+'-upload-preview');
+  var footer=document.getElementById(key+'-upload-footer');
+  var fi=document.getElementById(key+'-file-input');
+  var trigger=document.querySelector('#'+key+'-upload-widget .img-upload-trigger');
+  if(prev){prev.src='';prev.classList.remove('show');}
+  if(footer)footer.classList.remove('show');
+  if(fi)fi.value='';
+  if(trigger)trigger.style.display='';
 };
 
 window.saveGenericPhoto = async function(key, docName) {
   if (!db) { showStatus('Connect Firebase first.','error'); return; }
-  if (!genericPending[key]) { showStatus('No photo selected. Choose a photo first.','error'); return; }
-  
+  if (!genericPending[key]) { showStatus('No photo selected.','error'); return; }
   showStatus('Saving photo...','loading');
   try {
-    // Save to Firebase — docName is e.g. 'unilagPhoto' or 'plugPhoto'
     await db.collection('settings').doc(docName).set({ photoData: genericPending[key] });
-    
-    // Update the "current photo" preview on the page
-    var img     = document.getElementById(key+'-current-img');
-    var noPhoto = document.getElementById(key+'-no-photo');
-    if (img)     { img.src = genericPending[key]; img.style.display='block'; }
-    if (noPhoto) noPhoto.style.display='none';
-    
-    showStatus('Photo saved! Live on site instantly. ✅','success');
-    clearGenericUpload(key); // reset the widget
+    var img=document.getElementById(key+'-current-img');
+    var noPhoto=document.getElementById(key+'-no-photo');
+    if(img){img.src=genericPending[key];img.style.display='block';}
+    if(noPhoto)noPhoto.style.display='none';
+    showStatus('Photo saved! ✅','success');
+    clearGenericUpload(key);
   } catch(e) { showStatus('Error: '+e.message,'error'); }
 };
 
-// loadGenericPhotos — loads the admission + plug photos when admin opens
 async function loadGenericPhotos() {
   if (!db) return;
-  
-  // Define which photos to load and which elements to update
-  var slots = [
-    { key:'unilag', doc:'unilagPhoto' },  // Admission Success section
-    { key:'plug',   doc:'plugPhoto'   },  // Sure Admission Plug section
-  ];
-  
+  var slots = [{ key:'unilag', doc:'unilagPhoto' }, { key:'plug', doc:'plugPhoto' }];
   slots.forEach(async function(slot) {
     try {
       var snap = await db.collection('settings').doc(slot.doc).get();
-      if (!snap.exists) return; // no photo saved yet — keep default
+      if (!snap.exists) return;
       var data = snap.data();
       if (data.photoData) {
-        var img     = document.getElementById(slot.key+'-current-img');
-        var noPhoto = document.getElementById(slot.key+'-no-photo');
-        if (img)     { img.src = data.photoData; img.style.display='block'; }
-        if (noPhoto) noPhoto.style.display='none';
+        var img=document.getElementById(slot.key+'-current-img');
+        var noPhoto=document.getElementById(slot.key+'-no-photo');
+        if(img){img.src=data.photoData;img.style.display='block';}
+        if(noPhoto)noPhoto.style.display='none';
       }
     } catch(e){}
   });
 }
 
-
-/*
------------------------------------------------------------------------
-  SECTION 18: UTILITY HELPERS
-  
-  These tiny functions are used throughout the code to reduce repetition.
-  
-  v(id)       — get the current value of an input field by its element ID
-                short for "value of". e.g. v('f-title') reads the title field.
-  
-  sv(id, val) — set the value of an input field
-                short for "set value". e.g. sv('f-title', 'ANJA 1.0')
-  
-  esc(s)      — escape special HTML characters in a string
-                IMPORTANT for security — prevents XSS attacks where someone
-                could inject HTML/JavaScript into your page through form fields.
-                e.g. if a name was script alert hacked /script , esc() 
-                turns it into safe text: &lt;script&gt;alert('hacked')&lt;/script&gt;
------------------------------------------------------------------------
-*/
-
-// Get the trimmed value of an input/textarea/select by ID
-function v(id) { 
-  const el = document.getElementById(id); 
-  return el ? el.value.trim() : ''; 
-}
-
-// Set the value of an input/textarea/select by ID
-function sv(id, val) { 
-  const el = document.getElementById(id); 
-  if (el && val !== undefined && val !== null) el.value = val; 
-}
-
-// Escape HTML special characters to prevent broken layouts and security issues
-function esc(s) { 
-  if (!s) return ''; 
-  return String(s)
-    .replace(/&/g,  '&amp;')   // & must come first
-    .replace(/</g,  '&lt;')    // < could start an HTML tag
-    .replace(/>/g,  '&gt;')    // > could close an HTML tag
-    .replace(/"/g,  '&quot;'); // " could break out of an attribute value
-}
+/* ----------------------------------------------------------------
+   UTILITIES
+---------------------------------------------------------------- */
+function v(id) { const el=document.getElementById(id); return el ? el.value.trim() : ''; }
+function sv(id, val) { const el=document.getElementById(id); if(el && val!==undefined && val!==null) el.value=val; }
+function esc(s) { if(!s) return ''; return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
 
 </script>
+
+<!--
+=======================================================================
+  HOW TO MAKE YOUR VERCEL WEBSITE READ FROM FIREBASE
+  (The missing piece — why changes weren't showing on your main site)
+=======================================================================
+
+  Your admin panel writes data TO Firebase.
+  Your index.html needs code to READ from Firebase.
+
+  Step 1: Add these two script tags to your index.html <head>:
+
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+
+  Step 2: Add this block to your index.html, just before </body>:
+  (Replace ALL the config values with your real Firebase values)
+
+  <script>
+  const firebaseConfig = {
+    apiKey: "YOUR_API_KEY",
+    authDomain: "YOUR_AUTH_DOMAIN",
+    projectId: "YOUR_PROJECT_ID",
+    storageBucket: "YOUR_STORAGE_BUCKET",
+    messagingSenderId: "YOUR_SENDER_ID",
+    appId: "YOUR_APP_ID"
+  };
+  firebase.initializeApp(firebaseConfig);
+  const db = firebase.firestore();
+
+  // LIVE EVENTS — updates the events section in real time
+  db.collection('events').onSnapshot(snap => {
+    const events = snap.docs.map(d => ({ id: d.id, ...d.data() }))
+                           .sort((a,b) => (a.order||99) - (b.order||99));
+    const container = document.getElementById('events-container'); // change to your actual events div ID
+    if (!container) return;
+    container.innerHTML = events.map(ev => `
+      <div class="event-card">
+        <span class="event-tag">${ev.tag || ''}</span>
+        <h3>${ev.title}</h3>
+        <p>📅 ${ev.date}</p>
+        <p>📍 ${ev.venue}</p>
+        <p>${ev.description || ''}</p>
+        <a href="${ev.waLink}" target="_blank">Register on WhatsApp</a>
+      </div>
+    `).join('');
+  });
+
+  // LEADERBOARD — updates in real time
+  db.collection('leaderboard').onSnapshot(snap => {
+    const students = snap.docs.map(d => ({ id: d.id, ...d.data() }))
+                             .sort((a,b) => (a.rank||99) - (b.rank||99));
+    const container = document.getElementById('leaderboard-container'); // your leaderboard div ID
+    if (!container) return;
+    container.innerHTML = students.map(s => `
+      <div class="leaderboard-row">
+        <span class="rank">#${s.rank}</span>
+        <span class="name">${s.name}</span>
+        <span class="score">${s.score}</span>
+        <span class="dept">${s.dept}</span>
+        <div class="progress-bar" style="width:${s.scorePct}%"></div>
+      </div>
+    `).join('');
+  });
+
+  // ALUMNI — updates in real time
+  db.collection('alumni').onSnapshot(snap => {
+    const alumni = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+    const container = document.getElementById('alumni-container'); // your alumni div ID
+    if (!container) return;
+    container.innerHTML = alumni.map(a => `
+      <div class="alumni-card">
+        ${a.photoUrl ? `<img src="${a.photoUrl}" alt="${a.name}">` : '<div class="alumni-icon">🎓</div>'}
+        <h4>${a.name}</h4>
+        <p>${a.score}</p>
+        <p>${a.university}</p>
+      </div>
+    `).join('');
+  });
+
+  // TESTIMONIALS — updates in real time
+  db.collection('testimonials').onSnapshot(snap => {
+    const testimonials = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+    const container = document.getElementById('testimonials-container'); // your testimonials div ID
+    if (!container) return;
+    container.innerHTML = testimonials.map(t => `
+      <div class="testimonial-card">
+        <div class="stars">${'★'.repeat(t.stars || 5)}</div>
+        <p>"${t.text}"</p>
+        <strong>${t.name}</strong>
+        <span>${t.subtitle}</span>
+      </div>
+    `).join('');
+  });
+
+  // HERO STATS — updates the 3 big numbers
+  db.collection('settings').doc('heroStats').onSnapshot(snap => {
+    if (!snap.exists) return;
+    const s = snap.data();
+    const n1 = document.getElementById('stat1-num');   // your stat elements
+    const l1 = document.getElementById('stat1-label');
+    const n2 = document.getElementById('stat2-num');
+    const l2 = document.getElementById('stat2-label');
+    const n3 = document.getElementById('stat3-num');
+    const l3 = document.getElementById('stat3-label');
+    if(n1) n1.textContent = s.stat1num;
+    if(l1) l1.textContent = s.stat1label;
+    if(n2) n2.textContent = s.stat2num;
+    if(l2) l2.textContent = s.stat2label;
+    if(n3) n3.textContent = s.stat3num;
+    if(l3) l3.textContent = s.stat3label;
+  });
+
+  // HERO PHOTOS
+  db.collection('settings').doc('heroPhotos').onSnapshot(snap => {
+    if (!snap.exists) return;
+    const d = snap.data();
+    const p1 = document.getElementById('hero-photo-1'); // your hero img elements
+    const p2 = document.getElementById('hero-photo-2');
+    const p3 = document.getElementById('hero-photo-3');
+    if(p1 && d.photo1) p1.src = d.photo1;
+    if(p2 && d.photo2) p2.src = d.photo2;
+    if(p3 && d.photo3) p3.src = d.photo3;
+  });
+
+  // ABOUT PHOTO
+  db.collection('settings').doc('aboutPhoto').onSnapshot(snap => {
+    if (!snap.exists) return;
+    const img = document.getElementById('about-photo'); // your about section img element
+    if (img && snap.data().photoData) img.src = snap.data().photoData;
+  });
+  </script>
+
+  IMPORTANT NOTES:
+  - Replace 'events-container', 'leaderboard-container' etc. with the
+    actual id="" values of the divs in YOUR index.html
+  - Replace the HTML templates inside .map() with your own HTML structure
+    to match your site's design
+  - Make sure your Firestore security rules allow reads:
+    Go to Firebase Console → Firestore → Rules → set:
+    rules_version = '2';
+    service cloud.firestore {
+      match /databases/{database}/documents {
+        match /{document=**} {
+          allow read: if true;
+          allow write: if false;
+        }
+      }
+    }
+    Then publish. This lets the website read but not write (admin panel
+    handles writes with its own connection).
+=======================================================================
+-->
+
 </body>
 </html>
