@@ -249,6 +249,24 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
         <div class="dash-row"><div class="dash-dot" style="background:var(--success)"></div><span>Changes go live on the main site instantly</span></div>
         <div class="dash-row"><div class="dash-dot" style="background:#3498db"></div><span>First time? Click <strong>Firebase Setup</strong>, then click <strong>Seed Default Data</strong> on each page</span></div>
       </div>
+
+      <div class="card" style="margin-top:20px;border-color:rgba(231,76,60,.3);background:rgba(231,76,60,.05);">
+        <div class="card-header" style="margin-bottom:12px;">
+          <h2 style="color:var(--danger);font-size:16px;">🧹 Clean Up Duplicates</h2>
+        </div>
+        <p style="font-size:13px;color:var(--muted);margin-bottom:16px;line-height:1.7;">
+          If you have duplicate entries in any section (caused by logging in multiple times before the fix), click the button below. It will automatically keep only the correct number of entries in each collection and delete the extras — <strong style="color:var(--text)">keeping the ones with the most data</strong> (e.g. entries with photos over ones without).
+        </p>
+        <div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:14px;">
+          <button class="seed-btn" style="background:var(--danger);" onclick="cleanDuplicates('events', 2)">🗑 Clean Events</button>
+          <button class="seed-btn" style="background:var(--danger);" onclick="cleanDuplicates('classes', 6)">🗑 Clean Classes</button>
+          <button class="seed-btn" style="background:var(--danger);" onclick="cleanDuplicates('leaderboard', 5)">🗑 Clean Leaderboard</button>
+          <button class="seed-btn" style="background:var(--danger);" onclick="cleanDuplicates('alumni', 6)">🗑 Clean Alumni</button>
+          <button class="seed-btn" style="background:var(--danger);" onclick="cleanDuplicates('testimonials', 3)">🗑 Clean Testimonials</button>
+          <button class="seed-btn" style="background:#555;" onclick="cleanAll()">🧹 Clean ALL Sections</button>
+        </div>
+        <div id="clean-log" style="font-size:12px;color:var(--muted);line-height:1.8;display:none;background:var(--surface2);border-radius:8px;padding:12px;max-height:200px;overflow-y:auto;"></div>
+      </div>
     </div>
 
     <!-- FIREBASE SETUP -->
@@ -1415,6 +1433,109 @@ async function loadGenericPhotos() {
     } catch(e){}
   });
 }
+
+/* ----------------------------------------------------------------
+   CLEAN DUPLICATES
+   Keeps only `keep` documents per collection, preferring docs with
+   more fields (e.g. with photos) and deleting the rest.
+   
+   HOW IT WORKS:
+   - Fetches all docs in the collection
+   - Groups them by title/name to find duplicates
+   - Within each duplicate group, keeps the one with the most fields
+     (most data = most likely to be the real one with photos etc.)
+   - Deletes all the others
+   - If there are still more docs than `keep`, removes the excess
+     by creation time (oldest extras first)
+---------------------------------------------------------------- */
+async function cleanDuplicates(colName, keep) {
+  if (!db) { showStatus('Connect Firebase first.', 'error'); return; }
+
+  const log = document.getElementById('clean-log');
+  log.style.display = 'block';
+  log.innerHTML += `<div style="color:var(--goldl)">▶ Cleaning <strong>${colName}</strong> (keeping ${keep})...</div>`;
+
+  try {
+    const snap = await db.collection(colName).get();
+    const docs = snap.docs.map(d => ({ id: d.id, data: d.data(), fieldCount: Object.keys(d.data()).length }));
+
+    if (docs.length <= keep) {
+      log.innerHTML += `<div style="color:var(--success)">✅ ${colName}: Only ${docs.length} docs found — no duplicates to remove.</div>`;
+      return;
+    }
+
+    log.innerHTML += `<div>Found ${docs.length} docs, need to reduce to ${keep}...</div>`;
+
+    // Group by title or name to find true duplicates
+    const groups = {};
+    docs.forEach(doc => {
+      const key = (doc.data.title || doc.data.name || doc.data.subtitle || doc.id).toLowerCase().trim();
+      if (!groups[key]) groups[key] = [];
+      groups[key].push(doc);
+    });
+
+    const toDelete = [];
+    const toKeep = [];
+
+    // Within each group of same-title docs, keep the one with most fields
+    Object.values(groups).forEach(group => {
+      if (group.length === 1) {
+        toKeep.push(group[0]);
+      } else {
+        // Sort by field count descending — most complete doc first
+        group.sort((a, b) => b.fieldCount - a.fieldCount);
+        toKeep.push(group[0]); // keep the richest one
+        group.slice(1).forEach(d => toDelete.push(d)); // delete the rest
+      }
+    });
+
+    // If we still have more than `keep` unique entries, trim by order/rank/createdAt
+    if (toKeep.length > keep) {
+      // Sort by order, rank, or createdAt to keep the "right" ones
+      toKeep.sort((a, b) => {
+        const ao = a.data.order || a.data.rank || a.data.createdAt || 0;
+        const bo = b.data.order || b.data.rank || b.data.createdAt || 0;
+        return ao - bo;
+      });
+      const extras = toKeep.splice(keep); // remove excess from end
+      extras.forEach(d => toDelete.push(d));
+    }
+
+    if (toDelete.length === 0) {
+      log.innerHTML += `<div style="color:var(--success)">✅ ${colName}: No duplicates found.</div>`;
+      return;
+    }
+
+    // Delete in batches of 10
+    const batch = db.batch();
+    toDelete.forEach(doc => batch.delete(db.collection(colName).doc(doc.id)));
+    await batch.commit();
+
+    log.innerHTML += `<div style="color:var(--success)">✅ ${colName}: Deleted ${toDelete.length} duplicate(s). ${toKeep.length} entries remain.</div>`;
+    showStatus(`Cleaned ${colName} — ${toDelete.length} duplicates removed ✅`, 'success');
+
+  } catch(e) {
+    log.innerHTML += `<div style="color:var(--danger)">❌ ${colName}: Error — ${e.message}</div>`;
+    showStatus('Error: ' + e.message, 'error');
+  }
+}
+
+// Clean all sections at once
+window.cleanAll = async function() {
+  if (!db) { showStatus('Connect Firebase first.', 'error'); return; }
+  if (!confirm('This will delete all duplicate entries across ALL sections. The correct entries will be kept. Continue?')) return;
+  const log = document.getElementById('clean-log');
+  log.style.display = 'block';
+  log.innerHTML = '<div style="color:var(--goldl);font-weight:700;">🧹 Starting full cleanup...</div>';
+  await cleanDuplicates('events',       2);
+  await cleanDuplicates('classes',      6);
+  await cleanDuplicates('leaderboard',  5);
+  await cleanDuplicates('alumni',       6);
+  await cleanDuplicates('testimonials', 3);
+  log.innerHTML += '<div style="color:var(--success);font-weight:700;margin-top:8px;">🎉 All done! Refresh the page to confirm.</div>';
+};
+
+window.cleanDuplicates = cleanDuplicates;
 
 /* ----------------------------------------------------------------
    UTILITIES
