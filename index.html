@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sir Philip's Academy | JAMB & WAEC Preparation Lagos</title>
@@ -2050,19 +2051,25 @@ yoruba:[
 // FIREBASE LIVE DATA READER
 // Reads live data from Firebase and updates the page in real-time.
 // ================================================================
-function getConfig(){
-  try{ return JSON.parse(localStorage.getItem('spa_fb_config')||'null'); }catch(e){ return null; }
-}
-
 function esc(s){ if(!s)return ''; return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
 
-const cfg = getConfig();
-if(!cfg || !cfg.apiKey){
-  console.log('[SPA] No Firebase config. Running in static mode.');
-} else {
+// ================================================================
+// YOUR FIREBASE CONFIG — paste your values from Firebase Console
+// Firebase Console → Project Settings → Your Apps → Web App → Config
+// ================================================================
+const FIREBASE_CONFIG = {
+  apiKey: "AIzaSyBGaU-273jkyHqXDIxsPMSsUahbclv_RyI",
+    authDomain: "sir-philip-academy.firebaseapp.com",
+    projectId: "sir-philip-academy",
+    storageBucket: "sir-philip-academy.firebasestorage.app",
+    messagingSenderId: "2211650989",
+    appId: "1:2211650989:web:0dda3f728525969bef5524"
+};
+
+{
   try {
     firebase.apps.forEach(a => { try { a.delete(); } catch(e){} });
-    const app = firebase.initializeApp(cfg);
+    const app = firebase.initializeApp(FIREBASE_CONFIG);
     const db  = app.firestore();
 
     // ── HERO STATS ──────────────────────────────────────────────

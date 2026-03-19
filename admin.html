@@ -70,7 +70,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 .item-row:hover{border-color:#444;}
 .item-row.protected{border-left:3px solid var(--gold);}
 .item-img{width:64px;height:64px;border-radius:8px;object-fit:cover;flex-shrink:0;background:var(--border);}
-.item-img.no-img{display:flex;align-items:center;justify-content:center;font-size:22px;}
+.item-img.no-img{display:flex;align-items:center;justify-content:center;font-size:22px;flex-direction:column;gap:2px;}
 .item-info{flex:1;min-width:0;}
 .item-title{font-size:14px;font-weight:700;color:var(--text);margin-bottom:4px;}
 .item-meta{font-size:12px;color:var(--muted);line-height:1.5;}
@@ -172,6 +172,13 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
   .mobile-toggle span{width:20px;height:2px;background:var(--text);border-radius:2px;}
 }
 @media(min-width:769px){.mobile-toggle{display:none;}}
+
+/* Current photo preview shown when editing an existing item */
+.current-photo-box{display:none;margin-bottom:14px;border-radius:10px;overflow:hidden;border:1px solid var(--border);position:relative;}
+.current-photo-box.show{display:block;}
+.current-photo-box .cp-label{font-size:11px;font-weight:700;color:var(--goldl);text-transform:uppercase;letter-spacing:1px;padding:8px 12px;background:rgba(201,146,42,.1);border-bottom:1px solid var(--border);}
+.current-photo-box img{width:100%;max-height:220px;object-fit:cover;display:block;}
+.current-photo-box .cp-hint{font-size:11px;color:var(--muted);padding:7px 12px;background:var(--surface2);}
 </style>
 </head>
 <body>
@@ -742,7 +749,7 @@ function renderEvents(items) {
   const sorted = [...items].sort((a,b) => (a.order||99) - (b.order||99));
   el.innerHTML = sorted.map(item => `
     <div class="item-row">
-      <div class="item-img no-img" style="background:#2a1a00;font-size:26px">${esc(item.emoji||'📅')}</div>
+      ${ item.imageData ? `<img class="item-img" src="${esc(item.imageData)}" alt="" style="object-fit:cover;">` : `<div class="item-img no-img" style="background:#2a1a00;font-size:26px">${esc(item.emoji||'📅')}</div>` }
       <div class="item-info">
         <div class="item-title">${esc(item.title)}</div>
         <div class="item-meta">📅 ${esc(item.date)}<br>📍 ${esc(item.venue)}<br><span style="color:var(--goldl)">${esc(item.tag||'')}</span></div>
@@ -760,7 +767,7 @@ function renderClasses(items) {
   const sorted = [...items].sort((a,b) => (a.order||99) - (b.order||99));
   el.innerHTML = sorted.map(item => `
     <div class="item-row">
-      ${item.imageUrl ? `<img class="item-img" src="${esc(item.imageUrl)}" alt="">` : '<div class="item-img no-img">🏫</div>'}
+      ${ (item.imageData||item.imageUrl) ? `<img class="item-img" src="${esc(item.imageData||item.imageUrl)}" alt="">` : '<div class="item-img no-img" style="background:var(--surface2);color:var(--muted);font-size:11px;text-align:center;padding:4px;">No photo</div>'}
       <div class="item-info">
         <div class="item-title">${esc(item.title)}</div>
         <div class="item-meta">${esc(item.tag||'')} · ${esc(item.description||'')}</div>
@@ -795,7 +802,7 @@ function renderAlumni(items) {
   if (!items.length) { el.innerHTML = '<div class="empty-state"><div class="empty-icon">🎓</div>No alumni yet.</div>'; return; }
   el.innerHTML = items.map(item => `
     <div class="item-row">
-      ${item.photoUrl ? `<img class="item-img" src="${esc(item.photoUrl)}" onerror="this.outerHTML='<div class=\\'item-img no-img\\'>🎓</div>'" alt="">` : '<div class="item-img no-img">🎓</div>'}
+      ${item.photoUrl ? `<img class="item-img" src="${esc(item.photoUrl)}" onerror="this.outerHTML='<div class=\\'item-img no-img\\' style=\\'font-size:22px\\'>🎓</div>'" alt="">` : '<div class="item-img no-img" style="color:var(--muted);font-size:11px;">No photo</div>'}
       <div class="item-info">
         <div class="item-title">${esc(item.name)}</div>
         <div class="item-meta">${esc(item.score)} · ${esc(item.university)}</div>
@@ -929,10 +936,15 @@ const FORMS = {
       <div class="form-row"><label>WhatsApp Register Link</label><input class="form-input" id="f-wa" placeholder="https://wa.me/..."></div>
       <div class="form-row">
         <label>Event Photo</label>
+        <div class="current-photo-box" id="event-current-photo-box">
+          <div class="cp-label">📸 Current photo (saved)</div>
+          <img id="event-current-photo-img" src="" alt="Current event photo">
+          <div class="cp-hint">Upload a new photo below to replace this one, or leave it to keep the current photo.</div>
+        </div>
         <div class="img-upload-widget">
           <label class="img-upload-trigger" for="event-photo-file" id="event-photo-trigger">
             <div class="upload-icon">📁</div>
-            <div class="upload-text">Click to choose from gallery</div>
+            <div class="upload-text">Click to choose a new photo</div>
             <div class="upload-hint">JPG, PNG · Under 300KB</div>
           </label>
           <input type="file" id="event-photo-file" accept="image/*" onchange="handleModalImgUpload('event-photo-file','event-photo-preview','event-photo-footer','event-photo-filename','event-size-warn')">
@@ -948,22 +960,21 @@ const FORMS = {
     getData: () => {
       const imgData = document.getElementById('f-imgdata-event')?.value || '';
       const d = { title:v('f-title'), tag:v('f-tag'), date:v('f-date'), venue:v('f-venue'), description:v('f-desc'), emoji:v('f-emoji'), order:parseInt(v('f-order'))||99, waLink:v('f-wa'), updatedAt:Date.now() };
-      if (imgData) d.imageData = imgData;
+      if (imgData) { d.imageData = imgData; d.imageUrl = imgData; }
       return d;
     },
     fill: d => {
       sv('f-title',d.title); sv('f-tag',d.tag); sv('f-date',d.date);
       sv('f-venue',d.venue); sv('f-desc',d.description);
       sv('f-emoji',d.emoji); sv('f-order',d.order); sv('f-wa',d.waLink);
-      if (d.imageData) setTimeout(() => {
-        const prev=document.getElementById('event-photo-preview');
-        const footer=document.getElementById('event-photo-footer');
-        const trigger=document.getElementById('event-photo-trigger');
+      const existingEventImg = d.imageData || d.imageUrl || '';
+      if (existingEventImg) setTimeout(() => {
+        const box=document.getElementById('event-current-photo-box');
+        const cur=document.getElementById('event-current-photo-img');
+        if(box)box.classList.add('show');
+        if(cur)cur.src=existingEventImg;
         const hidden=document.getElementById('f-imgdata-event');
-        if(prev){prev.src=d.imageData;prev.classList.add('show');}
-        if(footer)footer.classList.add('show');
-        if(trigger)trigger.style.display='none';
-        if(hidden)hidden.value=d.imageData;
+        if(hidden)hidden.value=existingEventImg;
       },100);
     },
     collection: 'events'
@@ -979,10 +990,15 @@ const FORMS = {
       <div class="form-row"><label>Description</label><input class="form-input" id="f-desc" placeholder="Short description"></div>
       <div class="form-row">
         <label>Class Photo</label>
+        <div class="current-photo-box" id="class-current-photo-box">
+          <div class="cp-label">📸 Current photo (saved)</div>
+          <img id="class-current-photo-img" src="" alt="Current class photo">
+          <div class="cp-hint">Upload a new photo below to replace this one, or leave it to keep the current photo.</div>
+        </div>
         <div class="img-upload-widget">
           <label class="img-upload-trigger" for="class-photo-file" id="class-photo-trigger">
             <div class="upload-icon">📁</div>
-            <div class="upload-text">Click to choose from gallery</div>
+            <div class="upload-text">Click to choose a new photo</div>
             <div class="upload-hint">JPG, PNG · Under 300KB</div>
           </label>
           <input type="file" id="class-photo-file" accept="image/*" onchange="handleModalImgUpload('class-photo-file','class-photo-preview','class-photo-footer','class-photo-filename','class-size-warn')">
@@ -998,20 +1014,19 @@ const FORMS = {
     getData: () => {
       const imgData = document.getElementById('f-imgdata-class')?.value || '';
       const d = { title:v('f-title'), tag:v('f-tag'), description:v('f-desc'), order:parseInt(v('f-order'))||99, updatedAt:Date.now() };
-      if (imgData) d.imageData = imgData;
+      if (imgData) { d.imageData = imgData; d.imageUrl = imgData; } // save both for compatibility
       return d;
     },
     fill: d => {
       sv('f-title',d.title); sv('f-tag',d.tag); sv('f-desc',d.description); sv('f-order',d.order);
-      if (d.imageData) setTimeout(() => {
-        const prev=document.getElementById('class-photo-preview');
-        const footer=document.getElementById('class-photo-footer');
-        const trigger=document.getElementById('class-photo-trigger');
+      const existingImg = d.imageData || d.imageUrl || '';
+      if (existingImg) setTimeout(() => {
+        const box=document.getElementById('class-current-photo-box');
+        const cur=document.getElementById('class-current-photo-img');
+        if(box)box.classList.add('show');
+        if(cur)cur.src=existingImg;
         const hidden=document.getElementById('f-imgdata-class');
-        if(prev){prev.src=d.imageData;prev.classList.add('show');}
-        if(footer)footer.classList.add('show');
-        if(trigger)trigger.style.display='none';
-        if(hidden)hidden.value=d.imageData;
+        if(hidden)hidden.value=existingImg;
       },100);
     },
     collection: 'classes'
@@ -1044,10 +1059,15 @@ const FORMS = {
       <div class="form-row"><label>University & Course</label><input class="form-input" id="f-uni" placeholder="e.g. UNILAG — Medicine"></div>
       <div class="form-row">
         <label>Alumni Photo</label>
+        <div class="current-photo-box" id="alumni-current-photo-box">
+          <div class="cp-label">📸 Current photo (saved)</div>
+          <img id="alumni-current-photo-img" src="" alt="Current alumni photo">
+          <div class="cp-hint">Upload a new photo below to replace this one, or leave it to keep the current photo.</div>
+        </div>
         <div class="img-upload-widget">
           <label class="img-upload-trigger" for="alumni-photo-file" id="alumni-photo-trigger">
             <div class="upload-icon">📁</div>
-            <div class="upload-text">Click to choose from gallery</div>
+            <div class="upload-text">Click to choose a new photo</div>
             <div class="upload-hint">JPG, PNG · Leave empty for default icon</div>
           </label>
           <input type="file" id="alumni-photo-file" accept="image/*" onchange="handleModalImgUpload('alumni-photo-file','alumni-photo-preview','alumni-photo-footer','alumni-photo-filename','alumni-size-warn')">
@@ -1063,19 +1083,17 @@ const FORMS = {
     getData: () => {
       const imgData = document.getElementById('f-imgdata-alumni')?.value || '';
       const d = { name:v('f-name'), score:v('f-score'), university:v('f-uni'), updatedAt:Date.now() };
-      if (imgData) d.photoUrl = imgData;
+      if (imgData) d.photoUrl = imgData; // includes existing photo pre-loaded into hidden field
       return d;
     },
     fill: d => {
       sv('f-name',d.name); sv('f-score',d.score); sv('f-uni',d.university);
       if (d.photoUrl) setTimeout(() => {
-        const prev=document.getElementById('alumni-photo-preview');
-        const footer=document.getElementById('alumni-photo-footer');
-        const trigger=document.getElementById('alumni-photo-trigger');
+        const box=document.getElementById('alumni-current-photo-box');
+        const cur=document.getElementById('alumni-current-photo-img');
+        if(box)box.classList.add('show');
+        if(cur)cur.src=d.photoUrl;
         const hidden=document.getElementById('f-imgdata-alumni');
-        if(prev){prev.src=d.photoUrl;prev.classList.add('show');}
-        if(footer)footer.classList.add('show');
-        if(trigger)trigger.style.display='none';
         if(hidden)hidden.value=d.photoUrl;
       },100);
     },
