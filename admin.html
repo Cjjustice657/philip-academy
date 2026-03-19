@@ -593,6 +593,8 @@ function getConfig() {
 
 function initFirebase(config) {
   try {
+    // Unsubscribe any existing listeners before reinitializing
+    unsubscribeAll();
     // Delete existing apps first to avoid "already initialized" errors
     if (firebase.apps && firebase.apps.length) {
       firebase.apps.forEach(a => { try { a.delete(); } catch(e){} });
@@ -660,6 +662,8 @@ window.doLogin = function() {
 };
 
 window.doLogout = function() {
+  unsubscribeAll(); // stop all Firebase listeners before logging out
+  db = null;
   document.getElementById('app').style.display = 'none';
   document.getElementById('loginScreen').style.display = 'flex';
   document.getElementById('loginPwd').value = '';
@@ -704,7 +708,18 @@ document.getElementById('mobileToggle').onclick = () =>
    LOAD ALL DATA
    FIX: seed banners now hidden by default, only shown when empty
 ---------------------------------------------------------------- */
+// Track active Firestore listeners so we can unsubscribe before re-subscribing
+// This prevents duplicate listeners stacking up on every login
+let activeListeners = [];
+
+function unsubscribeAll() {
+  activeListeners.forEach(unsub => { try { unsub(); } catch(e){} });
+  activeListeners = [];
+}
+
 function loadAll() {
+  // Always unsubscribe existing listeners first — prevents doubling on re-login
+  unsubscribeAll();
   listenCol('events',      renderEvents);
   listenCol('classes',     renderClasses);
   listenCol('leaderboard', renderLeaderboard);
@@ -718,7 +733,8 @@ function loadAll() {
 
 function listenCol(name, renderer) {
   if (!db) return;
-  db.collection(name).onSnapshot(snap => {
+  // onSnapshot returns an unsubscribe function — store it so we can cancel it later
+  const unsub = db.collection(name).onSnapshot(snap => {
     const items = snap.docs.map(d => ({ id: d.id, ...d.data() }));
     renderer(items);
 
@@ -726,15 +742,14 @@ function listenCol(name, renderer) {
     const map = { events:'dash-events', leaderboard:'dash-lb', alumni:'dash-alumni', testimonials:'dash-test' };
     if (map[name]) document.getElementById(map[name]).textContent = items.length;
 
-    // FIX: Only show seed banner if collection is truly empty
-    // Map collection name to banner ID suffix
+    // Show seed banner only when collection is truly empty
     const bannerSuffix = { events:'events', classes:'classes', leaderboard:'lb', alumni:'alumni', testimonials:'test' }[name];
     const banner = document.getElementById('seed-' + bannerSuffix + '-banner');
     if (banner) {
-      // Show banner only when empty, hide it when data exists
       banner.style.display = items.length === 0 ? 'flex' : 'none';
     }
   }, e => console.error(name, e));
+  activeListeners.push(unsub);
 }
 
 /* ----------------------------------------------------------------
@@ -1409,159 +1424,6 @@ function sv(id, val) { const el=document.getElementById(id); if(el && val!==unde
 function esc(s) { if(!s) return ''; return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
 
 </script>
-
-<!--
-=======================================================================
-  HOW TO MAKE YOUR VERCEL WEBSITE READ FROM FIREBASE
-  (The missing piece — why changes weren't showing on your main site)
-=======================================================================
-
-  Your admin panel writes data TO Firebase.
-  Your index.html needs code to READ from Firebase.
-
-  Step 1: Add these two script tags to your index.html <head>:
-
-  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
-
-  Step 2: Add this block to your index.html, just before </body>:
-  (Replace ALL the config values with your real Firebase values)
-
-  <script>
-  const firebaseConfig = {
-    apiKey: "YOUR_API_KEY",
-    authDomain: "YOUR_AUTH_DOMAIN",
-    projectId: "YOUR_PROJECT_ID",
-    storageBucket: "YOUR_STORAGE_BUCKET",
-    messagingSenderId: "YOUR_SENDER_ID",
-    appId: "YOUR_APP_ID"
-  };
-  firebase.initializeApp(firebaseConfig);
-  const db = firebase.firestore();
-
-  // LIVE EVENTS — updates the events section in real time
-  db.collection('events').onSnapshot(snap => {
-    const events = snap.docs.map(d => ({ id: d.id, ...d.data() }))
-                           .sort((a,b) => (a.order||99) - (b.order||99));
-    const container = document.getElementById('events-container'); // change to your actual events div ID
-    if (!container) return;
-    container.innerHTML = events.map(ev => `
-      <div class="event-card">
-        <span class="event-tag">${ev.tag || ''}</span>
-        <h3>${ev.title}</h3>
-        <p>📅 ${ev.date}</p>
-        <p>📍 ${ev.venue}</p>
-        <p>${ev.description || ''}</p>
-        <a href="${ev.waLink}" target="_blank">Register on WhatsApp</a>
-      </div>
-    `).join('');
-  });
-
-  // LEADERBOARD — updates in real time
-  db.collection('leaderboard').onSnapshot(snap => {
-    const students = snap.docs.map(d => ({ id: d.id, ...d.data() }))
-                             .sort((a,b) => (a.rank||99) - (b.rank||99));
-    const container = document.getElementById('leaderboard-container'); // your leaderboard div ID
-    if (!container) return;
-    container.innerHTML = students.map(s => `
-      <div class="leaderboard-row">
-        <span class="rank">#${s.rank}</span>
-        <span class="name">${s.name}</span>
-        <span class="score">${s.score}</span>
-        <span class="dept">${s.dept}</span>
-        <div class="progress-bar" style="width:${s.scorePct}%"></div>
-      </div>
-    `).join('');
-  });
-
-  // ALUMNI — updates in real time
-  db.collection('alumni').onSnapshot(snap => {
-    const alumni = snap.docs.map(d => ({ id: d.id, ...d.data() }));
-    const container = document.getElementById('alumni-container'); // your alumni div ID
-    if (!container) return;
-    container.innerHTML = alumni.map(a => `
-      <div class="alumni-card">
-        ${a.photoUrl ? `<img src="${a.photoUrl}" alt="${a.name}">` : '<div class="alumni-icon">🎓</div>'}
-        <h4>${a.name}</h4>
-        <p>${a.score}</p>
-        <p>${a.university}</p>
-      </div>
-    `).join('');
-  });
-
-  // TESTIMONIALS — updates in real time
-  db.collection('testimonials').onSnapshot(snap => {
-    const testimonials = snap.docs.map(d => ({ id: d.id, ...d.data() }));
-    const container = document.getElementById('testimonials-container'); // your testimonials div ID
-    if (!container) return;
-    container.innerHTML = testimonials.map(t => `
-      <div class="testimonial-card">
-        <div class="stars">${'★'.repeat(t.stars || 5)}</div>
-        <p>"${t.text}"</p>
-        <strong>${t.name}</strong>
-        <span>${t.subtitle}</span>
-      </div>
-    `).join('');
-  });
-
-  // HERO STATS — updates the 3 big numbers
-  db.collection('settings').doc('heroStats').onSnapshot(snap => {
-    if (!snap.exists) return;
-    const s = snap.data();
-    const n1 = document.getElementById('stat1-num');   // your stat elements
-    const l1 = document.getElementById('stat1-label');
-    const n2 = document.getElementById('stat2-num');
-    const l2 = document.getElementById('stat2-label');
-    const n3 = document.getElementById('stat3-num');
-    const l3 = document.getElementById('stat3-label');
-    if(n1) n1.textContent = s.stat1num;
-    if(l1) l1.textContent = s.stat1label;
-    if(n2) n2.textContent = s.stat2num;
-    if(l2) l2.textContent = s.stat2label;
-    if(n3) n3.textContent = s.stat3num;
-    if(l3) l3.textContent = s.stat3label;
-  });
-
-  // HERO PHOTOS
-  db.collection('settings').doc('heroPhotos').onSnapshot(snap => {
-    if (!snap.exists) return;
-    const d = snap.data();
-    const p1 = document.getElementById('hero-photo-1'); // your hero img elements
-    const p2 = document.getElementById('hero-photo-2');
-    const p3 = document.getElementById('hero-photo-3');
-    if(p1 && d.photo1) p1.src = d.photo1;
-    if(p2 && d.photo2) p2.src = d.photo2;
-    if(p3 && d.photo3) p3.src = d.photo3;
-  });
-
-  // ABOUT PHOTO
-  db.collection('settings').doc('aboutPhoto').onSnapshot(snap => {
-    if (!snap.exists) return;
-    const img = document.getElementById('about-photo'); // your about section img element
-    if (img && snap.data().photoData) img.src = snap.data().photoData;
-  });
-  </script>
-
-  IMPORTANT NOTES:
-  - Replace 'events-container', 'leaderboard-container' etc. with the
-    actual id="" values of the divs in YOUR index.html
-  - Replace the HTML templates inside .map() with your own HTML structure
-    to match your site's design
-  - Make sure your Firestore security rules allow reads:
-    Go to Firebase Console → Firestore → Rules → set:
-    rules_version = '2';
-    service cloud.firestore {
-      match /databases/{database}/documents {
-        match /{document=**} {
-          allow read: if true;
-          allow write: if false;
-        }
-      }
-    }
-    Then publish. This lets the website read but not write (admin panel
-    handles writes with its own connection).
-=======================================================================
--->
 
 </body>
 </html>
