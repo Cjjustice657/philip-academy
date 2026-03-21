@@ -3,7 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sir Philip's Academy — Admin Panel</title>
+<title>Sir Philip's Academy — Admin</title>
+<link rel="preconnect" href="https://www.gstatic.com">
+<link rel="preconnect" href="https://firestore.googleapis.com">
+<link rel="dns-prefetch" href="https://www.gstatic.com">
+<link rel="dns-prefetch" href="https://firestore.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#0e0e0e;--surface:#181818;--surface2:#222;--border:#2e2e2e;--gold:#C9922A;--goldl:#E8B84B;--goldp:rgba(201,146,42,0.12);--text:#f0ece4;--muted:#888;--danger:#e74c3c;--success:#2ecc71;--radius:12px;}
@@ -17,168 +21,183 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 .login-label{display:block;font-size:12px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:1px;text-align:left;margin-bottom:8px;}
 .login-input{width:100%;padding:14px 16px;background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius);color:var(--text);font-family:'DM Sans',sans-serif;font-size:15px;outline:none;transition:border-color .2s;margin-bottom:20px;}
 .login-input:focus{border-color:var(--gold);}
-.login-btn{width:100%;padding:14px;background:var(--gold);color:white;border:none;border-radius:var(--radius);font-family:'DM Sans',sans-serif;font-size:15px;font-weight:700;cursor:pointer;transition:all .2s;box-shadow:0 6px 20px rgba(201,146,42,.3);}
-.login-btn:hover{background:#b07d1e;transform:translateY(-1px);}
+.login-btn{width:100%;padding:14px;background:var(--gold);color:white;border:none;border-radius:var(--radius);font-family:'DM Sans',sans-serif;font-size:15px;font-weight:700;cursor:pointer;transition:all .2s;}
+.login-btn:hover{background:#b07d1e;}
 .login-error{color:var(--danger);font-size:13px;margin-top:-12px;margin-bottom:12px;display:none;}
-.app{display:none;min-height:100vh;}
-.sidebar{position:fixed;top:0;left:0;width:240px;height:100vh;background:var(--surface);border-right:1px solid var(--border);display:flex;flex-direction:column;z-index:100;overflow-y:auto;}
-.sidebar-logo{padding:24px 20px 16px;border-bottom:1px solid var(--border);}
-.sidebar-logo .name{font-family:'Playfair Display',serif;font-size:16px;font-weight:700;color:var(--gold);}
-.sidebar-logo .role{font-size:11px;color:var(--muted);letter-spacing:1px;text-transform:uppercase;margin-top:2px;}
-.sidebar-nav{flex:1;padding:16px 12px;display:flex;flex-direction:column;gap:4px;}
-.nav-item{display:flex;align-items:center;gap:12px;padding:10px 14px;border-radius:10px;cursor:pointer;transition:all .2s;font-size:14px;font-weight:500;color:var(--muted);border:none;background:none;width:100%;text-align:left;}
+.app{display:none;min-height:100vh;background:var(--bg);}
+.sidebar{position:fixed;top:0;left:0;width:250px;height:100vh;background:var(--surface);border-right:1px solid var(--border);display:flex;flex-direction:column;z-index:200;overflow-y:auto;}
+.sidebar-logo{padding:18px 16px 14px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:12px;}
+.spa-icon{width:36px;height:36px;background:var(--gold);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:900;font-size:14px;color:white;flex-shrink:0;}
+.sidebar-logo .name{font-family:'Playfair Display',serif;font-size:14px;font-weight:700;color:var(--text);line-height:1.2;}
+.sidebar-logo .role{font-size:10px;color:var(--muted);letter-spacing:1px;text-transform:uppercase;}
+.sidebar-nav{flex:1;padding:10px 8px;display:flex;flex-direction:column;gap:2px;}
+.nav-section-label{font-size:9px;font-weight:700;color:#444;text-transform:uppercase;letter-spacing:1.5px;padding:10px 10px 4px;}
+.nav-item{display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:8px;cursor:pointer;transition:all .15s;font-size:13px;font-weight:500;color:var(--muted);border:none;background:none;width:100%;text-align:left;}
 .nav-item:hover{background:var(--surface2);color:var(--text);}
 .nav-item.active{background:var(--goldp);color:var(--gold);}
-.nav-item .ni{font-size:18px;flex-shrink:0;}
-.nav-section-label{font-size:10px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:1.5px;padding:12px 14px 6px;}
-.logout-btn{padding:16px 12px;border-top:1px solid var(--border);display:flex;align-items:center;gap:12px;cursor:pointer;font-size:14px;color:var(--muted);transition:color .2s;}
+.nav-item .ni{font-size:16px;flex-shrink:0;width:20px;text-align:center;}
+.sidebar-footer{padding:10px;border-top:1px solid var(--border);display:flex;flex-direction:column;gap:6px;}
+.view-live-btn{display:flex;align-items:center;gap:10px;padding:10px 12px;background:var(--goldp);border:1px solid rgba(201,146,42,.3);border-radius:8px;color:var(--goldl);font-size:12px;font-weight:700;text-decoration:none;transition:all .2s;}
+.view-live-btn:hover{background:rgba(201,146,42,.2);}
+.logout-btn{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:8px;cursor:pointer;font-size:13px;color:var(--muted);transition:color .2s;border:none;background:none;width:100%;}
 .logout-btn:hover{color:var(--danger);}
-.main{margin-left:240px;padding:32px;min-height:100vh;}
+.mobile-toggle{display:none;position:fixed;top:12px;left:12px;z-index:300;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:9px 10px;cursor:pointer;flex-direction:column;gap:4px;}
+.mobile-toggle span{width:18px;height:2px;background:var(--text);border-radius:2px;display:block;}
+.sidebar-overlay{display:none;position:fixed;inset:0;z-index:150;background:rgba(0,0,0,.5);}
+.sidebar-overlay.show{display:block;}
+.main{margin-left:250px;padding:28px 32px;min-height:100vh;background:var(--bg);}
 .page{display:none;}
-.page.active{display:block;}
-.status-bar{position:fixed;top:20px;right:20px;z-index:999;background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:12px 18px;font-size:13px;font-weight:600;display:flex;align-items:center;gap:10px;transform:translateY(-80px);opacity:0;transition:all .3s;max-width:320px;}
+.page.active{display:block;min-height:50px;}
+.status-bar{position:fixed;top:16px;right:16px;z-index:999;background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:11px 16px;font-size:13px;font-weight:600;display:flex;align-items:center;gap:10px;transform:translateY(-80px);opacity:0;transition:all .3s;max-width:320px;}
 .status-bar.show{transform:translateY(0);opacity:1;}
 .status-bar.success{border-color:var(--success);color:var(--success);}
 .status-bar.error{border-color:var(--danger);color:var(--danger);}
 .status-bar.loading{border-color:var(--gold);color:var(--gold);}
-.seed-banner{background:rgba(201,146,42,.1);border:1px solid rgba(201,146,42,.3);border-radius:var(--radius);padding:18px 22px;margin-bottom:24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;}
-.seed-banner p{font-size:13px;color:var(--goldl);line-height:1.6;}
-.seed-btn{padding:10px 20px;background:var(--gold);color:white;border:none;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:700;cursor:pointer;transition:all .2s;white-space:nowrap;}
-.seed-btn:hover{background:#b07d1e;}
+.spinner{width:16px;height:16px;border:2px solid rgba(201,146,42,.3);border-top-color:var(--gold);border-radius:50%;animation:spin .7s linear infinite;flex-shrink:0;}
+@keyframes spin{to{transform:rotate(360deg);}}
+.page-header{margin-bottom:22px;}
+.page-header h1{font-family:'Playfair Display',serif;font-size:26px;font-weight:900;color:var(--text);margin-bottom:4px;}
+.page-header p{font-size:13px;color:var(--muted);}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:24px;margin-bottom:20px;}
+.card-header{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:18px;flex-wrap:wrap;gap:10px;}
+.card-header h2{font-family:'Playfair Display',serif;font-size:16px;font-weight:700;}
+.card-sub{font-family:'DM Sans',sans-serif;font-size:11px;font-weight:400;color:var(--muted);display:block;margin-top:2px;}
+.add-btn{display:flex;align-items:center;gap:7px;padding:8px 16px;background:var(--gold);color:white;border:none;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:700;cursor:pointer;transition:all .2s;white-space:nowrap;}
+.add-btn:hover{background:#b07d1e;}
+.save-btn{padding:10px 22px;background:var(--gold);color:white;border:none;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:700;cursor:pointer;transition:all .2s;}
+.save-btn:hover{background:#b07d1e;}
+.seed-banner{background:rgba(201,146,42,.08);border:1px solid rgba(201,146,42,.25);border-radius:10px;padding:14px 18px;margin-bottom:18px;display:none;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+.seed-banner p{font-size:12px;color:var(--goldl);line-height:1.5;}
+.seed-btn{padding:8px 16px;background:var(--gold);color:white;border:none;border-radius:7px;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:700;cursor:pointer;white-space:nowrap;}
 .seed-btn:disabled{background:var(--muted);cursor:not-allowed;}
-.config-banner{background:rgba(201,146,42,.1);border:1px solid rgba(201,146,42,.3);border-radius:var(--radius);padding:20px 24px;margin-bottom:28px;}
-.config-banner h3{font-size:15px;font-weight:700;color:var(--goldl);margin-bottom:8px;}
-.config-banner p{font-size:13px;color:var(--muted);line-height:1.6;margin-bottom:14px;}
-.config-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
-.cfg-wrap{display:flex;flex-direction:column;gap:4px;}
-.cfg-wrap label{font-size:11px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;}
-.cfg-input{padding:10px 12px;background:var(--surface2);border:1px solid var(--border);border-radius:8px;color:var(--text);font-family:'DM Sans',sans-serif;font-size:13px;outline:none;transition:border-color .2s;}
-.cfg-input:focus{border-color:var(--gold);}
-.cfg-save{margin-top:12px;padding:10px 20px;background:var(--gold);color:white;border:none;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:700;cursor:pointer;transition:all .2s;}
-.cfg-save:hover{background:#b07d1e;}
-.cfg-ok{font-size:12px;color:var(--success);margin-top:8px;display:none;}
-.page-header{margin-bottom:28px;}
-.page-header h1{font-family:'Playfair Display',serif;font-size:28px;font-weight:900;color:var(--text);margin-bottom:6px;}
-.page-header p{font-size:14px;color:var(--muted);}
-.card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:24px;margin-bottom:20px;}
-.card-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;flex-wrap:wrap;gap:12px;}
-.card-header h2{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;}
-.add-btn{display:flex;align-items:center;gap:8px;padding:9px 18px;background:var(--gold);color:white;border:none;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:700;cursor:pointer;transition:all .2s;}
-.add-btn:hover{background:#b07d1e;transform:translateY(-1px);}
-.item-list{display:flex;flex-direction:column;gap:12px;}
-.item-row{display:flex;align-items:flex-start;gap:14px;padding:16px;background:var(--surface2);border:1px solid var(--border);border-radius:10px;transition:border-color .2s;}
-.item-row:hover{border-color:#444;}
-.item-row.protected{border-left:3px solid var(--gold);}
-.item-img{width:64px;height:64px;border-radius:8px;object-fit:cover;flex-shrink:0;background:var(--border);}
-.item-img.no-img{display:flex;align-items:center;justify-content:center;font-size:22px;flex-direction:column;gap:2px;}
+.item-list{display:flex;flex-direction:column;gap:10px;}
+.item-row{display:flex;align-items:flex-start;gap:12px;padding:14px;background:var(--surface2);border:1px solid var(--border);border-radius:10px;transition:border-color .2s;}
+.item-row:hover{border-color:#3a3a3a;}
+.item-img{width:56px;height:56px;border-radius:8px;object-fit:cover;flex-shrink:0;background:var(--border);}
+.item-img.no-img{display:flex;align-items:center;justify-content:center;font-size:20px;flex-direction:column;gap:2px;}
 .item-info{flex:1;min-width:0;}
-.item-title{font-size:14px;font-weight:700;color:var(--text);margin-bottom:4px;}
-.item-meta{font-size:12px;color:var(--muted);line-height:1.5;}
-.protected-badge{display:inline-block;background:rgba(201,146,42,.2);color:var(--goldl);font-size:10px;font-weight:700;padding:2px 8px;border-radius:100px;margin-left:6px;letter-spacing:.5px;}
-.item-actions{display:flex;gap:8px;flex-shrink:0;}
-.edit-btn,.del-btn{padding:7px 14px;border-radius:7px;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:600;cursor:pointer;border:none;transition:all .2s;}
+.item-title{font-size:13px;font-weight:700;color:var(--text);margin-bottom:3px;}
+.item-meta{font-size:11px;color:var(--muted);line-height:1.5;}
+.item-actions{display:flex;gap:6px;flex-shrink:0;}
+.edit-btn,.del-btn{padding:6px 12px;border-radius:6px;font-family:'DM Sans',sans-serif;font-size:11px;font-weight:600;cursor:pointer;border:none;transition:all .2s;}
 .edit-btn{background:rgba(201,146,42,.15);color:var(--goldl);}
 .edit-btn:hover{background:rgba(201,146,42,.25);}
-.del-btn{background:rgba(231,76,60,.15);color:var(--danger);}
-.del-btn:hover{background:rgba(231,76,60,.25);}
-.del-btn:disabled{opacity:.3;cursor:not-allowed;}
-.empty-state{text-align:center;padding:40px;color:var(--muted);font-size:14px;}
-.empty-icon{font-size:36px;margin-bottom:10px;}
-.stats-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px;margin-bottom:24px;}
-.stat-card{background:var(--surface2);border:1px solid var(--border);border-radius:12px;padding:20px;display:flex;flex-direction:column;gap:8px;}
-.stat-card label{font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:1px;}
-.stat-num-input{padding:10px 12px;background:var(--surface);border:1px solid var(--border);border-radius:8px;color:var(--gold);font-family:'Playfair Display',serif;font-size:22px;font-weight:700;outline:none;width:100%;transition:border-color .2s;}
-.stat-num-input:focus{border-color:var(--gold);}
-.stat-lbl-input{padding:8px 12px;background:var(--surface);border:1px solid var(--border);border-radius:8px;color:var(--muted);font-family:'DM Sans',sans-serif;font-size:12px;outline:none;width:100%;}
-.stat-lbl-input:focus{border-color:var(--gold);}
-.save-stats-btn{padding:12px 24px;background:var(--gold);color:white;border:none;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:700;cursor:pointer;transition:all .2s;align-self:flex-start;}
-.save-stats-btn:hover{background:#b07d1e;}
-.dash-stats{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:14px;margin-bottom:28px;}
-.dash-stat{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:20px 18px;display:flex;flex-direction:column;gap:6px;}
-.dash-stat .ds-num{font-family:'Playfair Display',serif;font-size:28px;font-weight:900;color:var(--gold);}
-.dash-stat .ds-label{font-size:12px;color:var(--muted);}
-.dash-info{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:22px;}
-.dash-info h3{font-size:13px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:16px;}
-.dash-row{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--border);font-size:13px;}
+.del-btn{background:rgba(231,76,60,.12);color:var(--danger);}
+.del-btn:hover{background:rgba(231,76,60,.22);}
+.empty-state{text-align:center;padding:36px;color:var(--muted);font-size:13px;}
+.empty-icon{font-size:32px;margin-bottom:8px;}
+.fb-warning{background:rgba(231,76,60,.08);border:1px solid rgba(231,76,60,.25);border-radius:10px;padding:12px 16px;margin-bottom:18px;font-size:13px;color:#e74c3c;display:none;}
+.fb-warning.show{display:block;}
+.dash-stats{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:12px;margin-bottom:20px;}
+.dash-stat{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:18px 16px;}
+.dash-stat .ds-num{font-family:'Playfair Display',serif;font-size:26px;font-weight:900;color:var(--gold);}
+.dash-stat .ds-label{font-size:11px;color:var(--muted);margin-top:4px;}
+.dash-info{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:20px;}
+.dash-info h3{font-size:11px;font-weight:700;color:#444;text-transform:uppercase;letter-spacing:1px;margin-bottom:14px;}
+.dash-row{display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid var(--border);font-size:12px;}
 .dash-row:last-child{border-bottom:none;}
-.dash-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
-.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:500;display:none;align-items:center;justify-content:center;padding:20px;}
-.modal-overlay.open{display:flex;}
-.modal{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:28px;width:100%;max-width:580px;max-height:90vh;overflow-y:auto;box-shadow:0 32px 80px rgba(0,0,0,.7);}
-.modal-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;}
-.modal-header h3{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;}
-.modal-close{background:none;border:none;color:var(--muted);font-size:28px;cursor:pointer;line-height:1;}
-.modal-close:hover{color:var(--text);}
+.dash-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0;}
 .form-row{margin-bottom:18px;}
-.form-row label{display:block;font-size:12px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px;}
-.form-input,.form-textarea,.form-select{width:100%;padding:12px 14px;background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius);color:var(--text);font-family:'DM Sans',sans-serif;font-size:14px;outline:none;transition:border-color .2s;}
+.form-row label{display:block;font-size:11px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px;}
+.form-row + .form-row{margin-top:0;}
+.card > .form-row:last-of-type{margin-bottom:0;}
+.form-input,.form-textarea,.form-select{width:100%;padding:12px 14px;background:var(--surface2);border:1px solid var(--border);border-radius:10px;color:var(--text);font-family:'DM Sans',sans-serif;font-size:13px;outline:none;transition:border-color .2s;line-height:1.5;}
 .form-input:focus,.form-textarea:focus,.form-select:focus{border-color:var(--gold);}
-.form-textarea{resize:vertical;min-height:90px;}
+.form-textarea{resize:vertical;min-height:80px;}
 .form-select option{background:var(--surface2);}
-.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
-.img-upload-widget{border:2px dashed var(--border);border-radius:12px;padding:0;overflow:hidden;transition:border-color .2s;background:var(--surface2);}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:start;}
+.config-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:18px;align-items:start;}
+.cfg-wrap{display:flex;flex-direction:column;gap:6px;}
+.cfg-wrap label{display:block;font-size:11px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;margin-bottom:2px;}
+.stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:16px;}
+.stat-card{background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:16px;display:flex;flex-direction:column;gap:6px;}
+.stat-card label{font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:1px;}
+.stat-num-input{padding:9px 11px;background:var(--surface);border:1px solid var(--border);border-radius:8px;color:var(--gold);font-family:'Playfair Display',serif;font-size:20px;font-weight:700;outline:none;width:100%;}
+.stat-num-input:focus{border-color:var(--gold);}
+.toggle-wrap{display:flex;align-items:center;gap:12px;margin-bottom:16px;}
+.toggle-label{font-size:13px;color:var(--text);font-weight:500;}
+.toggle-switch{position:relative;width:44px;height:24px;flex-shrink:0;}
+.toggle-switch input{opacity:0;width:0;height:0;position:absolute;}
+.toggle-slider{position:absolute;inset:0;background:var(--border);border-radius:24px;cursor:pointer;transition:.3s;}
+.toggle-slider:before{content:'';position:absolute;width:18px;height:18px;left:3px;top:3px;background:white;border-radius:50%;transition:.3s;}
+.toggle-switch input:checked+.toggle-slider{background:var(--gold);}
+.toggle-switch input:checked+.toggle-slider:before{transform:translateX(20px);}
+.img-upload-widget{border:2px dashed var(--border);border-radius:10px;overflow:hidden;background:var(--surface2);transition:border-color .2s;}
 .img-upload-widget:hover{border-color:var(--gold);}
 .img-upload-widget input[type=file]{display:none;}
-.img-upload-trigger{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:24px;cursor:pointer;min-height:120px;}
-.img-upload-trigger .upload-icon{font-size:32px;}
-.img-upload-trigger .upload-text{font-size:13px;font-weight:600;color:var(--goldl);}
-.img-upload-trigger .upload-hint{font-size:11px;color:var(--muted);text-align:center;}
-.img-upload-preview{width:100%;max-height:200px;object-fit:cover;display:none;border-radius:0;}
+.img-upload-trigger{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding:20px;cursor:pointer;min-height:100px;}
+.img-upload-trigger .upload-icon{font-size:28px;}
+.img-upload-trigger .upload-text{font-size:12px;font-weight:600;color:var(--goldl);}
+.img-upload-trigger .upload-hint{font-size:10px;color:var(--muted);text-align:center;}
+.img-upload-preview{width:100%;max-height:180px;object-fit:cover;display:none;}
 .img-upload-preview.show{display:block;}
-.img-upload-footer{display:flex;align-items:center;justify-content:space-between;padding:10px 14px;border-top:1px solid var(--border);display:none;}
+.img-upload-footer{display:none;align-items:center;justify-content:space-between;padding:8px 12px;border-top:1px solid var(--border);}
 .img-upload-footer.show{display:flex;}
 .img-upload-filename{font-size:11px;color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1;}
-.img-clear-btn{background:rgba(231,76,60,.15);color:var(--danger);border:none;border-radius:6px;padding:4px 10px;font-size:11px;font-weight:600;cursor:pointer;flex-shrink:0;margin-left:10px;}
-.img-clear-btn:hover{background:rgba(231,76,60,.25);}
-.img-size-warn{font-size:11px;color:var(--danger);margin-top:6px;display:none;}
-.hero-photo-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:20px;}
-.hero-photo-slot{background:var(--surface2);border:1px solid var(--border);border-radius:12px;overflow:hidden;}
-.hero-photo-slot .slot-label{font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:1px;padding:12px 14px 8px;}
-.hero-photo-slot .slot-img{width:100%;aspect-ratio:16/9;object-fit:cover;display:none;}
-.hero-photo-slot .slot-img.show{display:block;}
-.hero-photo-slot .slot-empty{width:100%;aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;font-size:28px;color:var(--border);}
-.hero-photo-actions{padding:10px 14px;display:flex;gap:8px;}
-.slot-upload-btn{flex:1;padding:8px 12px;background:var(--goldp);color:var(--goldl);border:1px solid rgba(201,146,42,.3);border-radius:7px;font-family:"DM Sans",sans-serif;font-size:12px;font-weight:700;cursor:pointer;transition:all .2s;text-align:center;}
-.slot-upload-btn:hover{background:rgba(201,146,42,.25);}
-.slot-remove-btn{padding:8px 12px;background:rgba(231,76,60,.1);color:var(--danger);border:none;border-radius:7px;font-size:12px;font-weight:600;cursor:pointer;transition:all .2s;}
-.slot-remove-btn:hover{background:rgba(231,76,60,.2);}
-.save-photos-btn{padding:12px 24px;background:var(--gold);color:white;border:none;border-radius:8px;font-family:"DM Sans",sans-serif;font-size:14px;font-weight:700;cursor:pointer;transition:all .2s;margin-top:16px;}
-.save-photos-btn:hover{background:#b07d1e;}
-.about-photo-wrap{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start;}
-.about-current{border-radius:12px;overflow:hidden;border:1px solid var(--border);}
-.about-current img{width:100%;display:block;object-fit:cover;max-height:300px;}
-.about-current .no-photo{width:100%;height:200px;display:flex;align-items:center;justify-content:center;font-size:40px;background:var(--surface2);}
-.modal-actions{display:flex;gap:12px;justify-content:flex-end;margin-top:24px;padding-top:20px;border-top:1px solid var(--border);}
-.btn-cancel{padding:10px 22px;background:var(--surface2);border:1px solid var(--border);border-radius:8px;color:var(--muted);font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600;cursor:pointer;}
-.btn-cancel:hover{color:var(--text);border-color:#555;}
-.btn-save{padding:10px 28px;background:var(--gold);color:white;border:none;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:700;cursor:pointer;transition:all .2s;}
+.img-clear-btn{background:rgba(231,76,60,.12);color:var(--danger);border:none;border-radius:5px;padding:3px 8px;font-size:10px;font-weight:600;cursor:pointer;margin-left:8px;flex-shrink:0;}
+.img-size-warn{font-size:11px;color:var(--danger);margin-top:5px;display:none;}
+.current-photo-box{display:none;margin-bottom:12px;border-radius:10px;overflow:hidden;border:1px solid var(--border);}
+.current-photo-box.show{display:block;}
+.current-photo-box .cp-label{font-size:10px;font-weight:700;color:var(--goldl);text-transform:uppercase;letter-spacing:1px;padding:7px 11px;background:rgba(201,146,42,.1);border-bottom:1px solid var(--border);}
+.current-photo-box img{width:100%;max-height:200px;object-fit:cover;display:block;}
+.current-photo-box .cp-hint{font-size:10px;color:var(--muted);padding:6px 11px;background:var(--surface2);}
+.photo-grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-bottom:16px;}
+.photo-slot{background:var(--surface2);border:1px solid var(--border);border-radius:10px;overflow:hidden;}
+.photo-slot .slot-label{font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:1px;padding:10px 12px 6px;}
+.photo-slot .slot-img{width:100%;aspect-ratio:16/9;object-fit:cover;display:none;}
+.photo-slot .slot-img.show{display:block;}
+.photo-slot .slot-empty{width:100%;aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;font-size:24px;color:var(--border);}
+.photo-slot-actions{padding:8px 12px;display:flex;gap:6px;}
+.slot-upload-btn{flex:1;padding:7px 10px;background:var(--goldp);color:var(--goldl);border:1px solid rgba(201,146,42,.25);border-radius:6px;font-family:'DM Sans',sans-serif;font-size:11px;font-weight:700;cursor:pointer;text-align:center;}
+.slot-remove-btn{padding:7px 10px;background:rgba(231,76,60,.1);color:var(--danger);border:none;border-radius:6px;font-size:11px;font-weight:600;cursor:pointer;}
+.photo-edit-wrap{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start;}
+.current-photo-frame{border-radius:10px;overflow:hidden;border:1px solid var(--border);}
+.current-photo-frame img{width:100%;display:block;object-fit:cover;max-height:240px;}
+.current-photo-frame .no-photo{width:100%;height:140px;display:flex;align-items:center;justify-content:center;font-size:36px;background:var(--surface2);}
+.uni-tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px;min-height:36px;}
+.uni-tag{display:flex;align-items:center;gap:6px;padding:5px 10px;background:var(--surface2);border:1px solid var(--border);border-radius:6px;font-size:12px;}
+.uni-tag-name{font-weight:700;color:var(--goldl);}
+.uni-tag-course{color:var(--muted);}
+.uni-tag-del{background:none;border:none;color:var(--danger);cursor:pointer;font-size:14px;padding:0;line-height:1;}
+.uni-tag-edit{background:none;border:none;color:var(--muted);cursor:pointer;font-size:12px;padding:0 2px;line-height:1;transition:color .15s;}
+.uni-tag-edit:hover{color:var(--goldl);}
+.uni-tag.editing{background:var(--surface);border-color:var(--gold);padding:4px 8px;}
+.uni-tag-input{background:none;border:none;outline:none;color:var(--goldl);font-weight:700;font-size:12px;font-family:'DM Sans',sans-serif;width:70px;}
+.uni-tag-input.course{color:var(--muted);font-weight:400;}
+.uni-undo-toast{position:fixed;bottom:28px;left:50%;transform:translateX(-50%);background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:11px 18px;font-size:13px;color:var(--text);display:flex;align-items:center;gap:12px;z-index:9999;box-shadow:0 8px 32px rgba(0,0,0,.5);animation:fadeUp .25s ease;white-space:nowrap;}
+.uni-undo-btn{padding:5px 14px;background:var(--gold);color:white;border:none;border-radius:6px;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:700;cursor:pointer;}
+.uni-undo-btn:hover{background:#b07d1e;}
+.feat-emoji-btn{background:var(--surface2);border:1px solid var(--border);border-radius:6px;padding:6px 10px;font-size:18px;cursor:pointer;transition:border-color .2s;margin-right:6px;vertical-align:middle;flex-shrink:0;}
+.feat-emoji-btn:hover{border-color:var(--gold);}
+.emoji-picker-pop{position:fixed;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:10px;display:flex;flex-wrap:wrap;gap:6px;z-index:600;box-shadow:0 8px 32px rgba(0,0,0,.5);max-width:260px;}
+.emoji-picker-pop button{background:none;border:1px solid transparent;border-radius:6px;padding:4px 6px;font-size:18px;cursor:pointer;transition:all .15s;}
+.emoji-picker-pop button:hover{background:var(--surface2);border-color:var(--border);}
+.add-uni-row{display:grid;grid-template-columns:1fr 1fr auto;gap:10px;align-items:end;margin-top:8px;}
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:500;display:none;align-items:center;justify-content:center;padding:16px;}
+.modal-overlay.open{display:flex;}
+.modal{background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:24px;width:100%;max-width:560px;max-height:90vh;overflow-y:auto;box-shadow:0 32px 80px rgba(0,0,0,.7);}
+.modal-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;}
+.modal-header h3{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;}
+.modal-close{background:none;border:none;color:var(--muted);font-size:26px;cursor:pointer;line-height:1;}
+.modal-close:hover{color:var(--text);}
+.modal-actions{display:flex;gap:10px;justify-content:flex-end;margin-top:20px;padding-top:18px;border-top:1px solid var(--border);}
+.btn-cancel{padding:9px 20px;background:var(--surface2);border:1px solid var(--border);border-radius:8px;color:var(--muted);font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;cursor:pointer;}
+.btn-cancel:hover{color:var(--text);}
+.btn-save{padding:9px 24px;background:var(--gold);color:white;border:none;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:700;cursor:pointer;}
 .btn-save:hover{background:#b07d1e;}
 .btn-save:disabled{background:var(--muted);cursor:not-allowed;}
-.spinner{width:18px;height:18px;border:2px solid rgba(201,146,42,.3);border-top-color:var(--gold);border-radius:50%;animation:spin .7s linear infinite;flex-shrink:0;}
-@keyframes spin{to{transform:rotate(360deg);}}
-/* FIX BANNER — shown when Firebase not yet configured */
-.fb-warning{background:rgba(231,76,60,.1);border:1px solid rgba(231,76,60,.3);border-radius:10px;padding:14px 18px;margin-bottom:20px;font-size:13px;color:#e74c3c;display:none;}
-.fb-warning.show{display:block;}
 @media(max-width:768px){
-  .sidebar{transform:translateX(-100%);transition:transform .3s;}
+  .mobile-toggle{display:flex;}
+  .sidebar{transform:translateX(-100%);transition:transform .25s;}
   .sidebar.open{transform:translateX(0);}
-  .main{margin-left:0;padding:20px;}
-  .form-grid{grid-template-columns:1fr;}
-  .config-grid{grid-template-columns:1fr;}
+  .main{margin-left:0;padding:60px 16px 24px;}
+  .form-grid,.config-grid,.photo-edit-wrap,.add-uni-row{grid-template-columns:1fr;}
+  .stats-grid{grid-template-columns:1fr 1fr;}
+  .photo-grid-3{grid-template-columns:1fr;}
   .dash-stats{grid-template-columns:repeat(2,1fr);}
-  .hero-photo-grid{grid-template-columns:1fr;}
-  .about-photo-wrap{grid-template-columns:1fr;}
-  .mobile-toggle{position:fixed;top:16px;left:16px;z-index:200;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:10px;cursor:pointer;display:flex;flex-direction:column;gap:4px;}
-  .mobile-toggle span{width:20px;height:2px;background:var(--text);border-radius:2px;}
+  #page-firebase > div[style*="grid-template-columns"]{grid-template-columns:1fr !important;}
 }
 @media(min-width:769px){.mobile-toggle{display:none;}}
-
-/* Current photo preview shown when editing an existing item */
-.current-photo-box{display:none;margin-bottom:14px;border-radius:10px;overflow:hidden;border:1px solid var(--border);position:relative;}
-.current-photo-box.show{display:block;}
-.current-photo-box .cp-label{font-size:11px;font-weight:700;color:var(--goldl);text-transform:uppercase;letter-spacing:1px;padding:8px 12px;background:rgba(201,146,42,.1);border-bottom:1px solid var(--border);}
-.current-photo-box img{width:100%;max-height:220px;object-fit:cover;display:block;}
-.current-photo-box .cp-hint{font-size:11px;color:var(--muted);padding:7px 12px;background:var(--surface2);}
 </style>
 </head>
 <body>
@@ -188,7 +207,8 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
   <span id="statusMsg"></span>
 </div>
 
-<button class="mobile-toggle" id="mobileToggle"><span></span><span></span><span></span></button>
+<button class="mobile-toggle" id="mobileToggle" style="display:none"><span></span><span></span><span></span></button>
+<div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()"></div>
 
 <!-- LOGIN -->
 <div class="login-screen" id="loginScreen">
@@ -206,29 +226,29 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 <div class="app" id="app">
   <div class="sidebar" id="sidebar">
     <div class="sidebar-logo">
-      <div class="name">Sir Philip's Academy</div>
-      <div class="role">Admin Panel</div>
+      <div class="spa-icon">SP</div>
+      <div><div class="name">Sir Philip's Academy</div><div class="role">Admin Panel</div></div>
     </div>
     <nav class="sidebar-nav">
       <div class="nav-section-label">Overview</div>
-      <button class="nav-item active" data-page="dashboard" onclick="showPage('dashboard',this)"><span class="ni">📊</span> Dashboard</button>
-      <div class="nav-section-label">Content</div>
-      <button class="nav-item" data-page="events" onclick="showPage('events',this)"><span class="ni">📅</span> Events</button>
-      <button class="nav-item" data-page="classes" onclick="showPage('classes',this)"><span class="ni">🏫</span> Class Photos</button>
-      <button class="nav-item" data-page="leaderboard" onclick="showPage('leaderboard',this)"><span class="ni">🏆</span> Leaderboard</button>
-      <button class="nav-item" data-page="alumni" onclick="showPage('alumni',this)"><span class="ni">🎓</span> Alumni</button>
-      <button class="nav-item" data-page="testimonials" onclick="showPage('testimonials',this)"><span class="ni">💬</span> Testimonials</button>
-      <button class="nav-item" data-page="stats" onclick="showPage('stats',this)"><span class="ni">📈</span> Hero Stats</button>
-      <button class="nav-item" data-page="herophotos" onclick="showPage('herophotos',this)"><span class="ni">🖼️</span> Hero Photos</button>
-      <button class="nav-item" data-page="aboutphoto" onclick="showPage('aboutphoto',this)"><span class="ni">👨‍🏫</span> About Photo</button>
-      <button class="nav-item" data-page="admissionphotos" onclick="showPage('admissionphotos',this)"><span class="ni">🏛️</span> Admission Photos</button>
+      <button class="nav-item active" onclick="showPage('dashboard',this)"><span class="ni">📊</span> Dashboard</button>
+      <div class="nav-section-label">Live Content</div>
+      <button class="nav-item" onclick="showPage('events',this)"><span class="ni">📅</span> Events</button>
+      <button class="nav-item" onclick="showPage('leaderboard',this)"><span class="ni">🏆</span> Leaderboard</button>
+      <button class="nav-item" onclick="showPage('alumni',this)"><span class="ni">🎓</span> Alumni</button>
+      <button class="nav-item" onclick="showPage('testimonials',this)"><span class="ni">💬</span> Testimonials</button>
+      <div class="nav-section-label">Page Sections</div>
+      <button class="nav-item" onclick="showPage('hero',this)"><span class="ni">🏠</span> Hero Section</button>
+      <button class="nav-item" onclick="showPage('classes',this)"><span class="ni">🏫</span> Classes</button>
+      <button class="nav-item" onclick="showPage('admission',this)"><span class="ni">🏛️</span> Admission</button>
+      <button class="nav-item" onclick="showPage('aboutsec',this)"><span class="ni">👨‍🏫</span> About Us</button>
       <div class="nav-section-label">System</div>
-      <button class="nav-item" data-page="firebase" onclick="showPage('firebase',this)"><span class="ni">🔥</span> Firebase Setup</button>
+      <button class="nav-item" onclick="showPage('firebase',this)"><span class="ni">🔥</span> Firebase Setup</button>
     </nav>
-    <a href="https://spacademy.vercel.app" target="_blank" style="text-decoration:none;padding:14px 12px;margin:0 12px 12px;display:flex;align-items:center;gap:12px;background:var(--goldp);border:1px solid rgba(201,146,42,.3);border-radius:10px;color:var(--goldl);font-size:13px;font-weight:700;transition:all .2s;" onmouseover="this.style.background='rgba(201,146,42,.2)'" onmouseout="this.style.background='var(--goldp)'">
-      <span style="font-size:18px">🌐</span> View Live Site ↗
-    </a>
-    <div class="logout-btn" onclick="doLogout()"><span style="font-size:18px">🚪</span> Sign Out</div>
+    <div class="sidebar-footer">
+      <a href="https://spacademy.vercel.app" target="_blank" class="view-live-btn"><span>🌐</span> View Live Site ↗</a>
+      <button class="logout-btn" onclick="doLogout()"><span style="font-size:16px">🚪</span> Sign Out</button>
+    </div>
   </div>
 
   <div class="main">
@@ -236,7 +256,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
     <!-- DASHBOARD -->
     <div class="page active" id="page-dashboard">
       <div class="page-header"><h1>Dashboard</h1><p>Welcome back, Admin.</p></div>
-      <div class="fb-warning" id="fb-warning">⚠️ Firebase not connected. Go to <strong>Firebase Setup</strong> in the sidebar to connect — you only need to do this once.</div>
+      <div class="fb-warning" id="fb-warning" style="line-height:1.8;">⚠️ Firebase not connected — go to <strong>Firebase Setup</strong> in the sidebar.</div>
       <div class="dash-stats">
         <div class="dash-stat"><div class="ds-num" id="dash-events">—</div><div class="ds-label">Events</div></div>
         <div class="dash-stat"><div class="ds-num" id="dash-lb">—</div><div class="ds-label">Leaderboard</div></div>
@@ -247,1304 +267,1185 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
         <h3>Status</h3>
         <div class="dash-row"><div class="dash-dot" style="background:var(--gold)"></div><span>Firebase: <strong id="fb-status-text">Checking...</strong></span></div>
         <div class="dash-row"><div class="dash-dot" style="background:var(--success)"></div><span>Changes go live on the main site instantly</span></div>
-        <div class="dash-row"><div class="dash-dot" style="background:#3498db"></div><span>First time? Click <strong>Firebase Setup</strong>, then click <strong>Seed Default Data</strong> on each page</span></div>
+        <div class="dash-row" id="first-time-hint" style="display:none"><div class="dash-dot" style="background:#3498db"></div><span>First time? Scroll down and click <strong>Load All Default Data</strong></span></div>
+        <div class="dash-row" id="setup-done-hint" style="display:none"><div class="dash-dot" style="background:var(--success)"></div><span>✅ Setup complete — all sections loaded</span></div>
       </div>
 
-      <div class="card" style="margin-top:20px;border-color:rgba(231,76,60,.3);background:rgba(231,76,60,.05);">
-        <div class="card-header" style="margin-bottom:12px;">
-          <h2 style="color:var(--danger);font-size:16px;">🧹 Clean Up Duplicates</h2>
+      <!-- SEED ALL CARD — inside dashboard page div -->
+      <div class="card" id="seed-all-card" style="display:none;margin-top:16px;border-color:rgba(201,146,42,.3);background:rgba(201,146,42,.05);">
+        <div class="card-header" style="margin-bottom:10px;">
+          <h2 style="font-size:15px;">🌱 First Time Setup</h2>
         </div>
-        <p style="font-size:13px;color:var(--muted);margin-bottom:16px;line-height:1.7;">
-          If you have duplicate entries in any section (caused by logging in multiple times before the fix), click the button below. It will automatically keep only the correct number of entries in each collection and delete the extras — <strong style="color:var(--text)">keeping the ones with the most data</strong> (e.g. entries with photos over ones without).
+        <p style="font-size:12px;color:var(--muted);margin-bottom:16px;line-height:1.7;">
+          New here? Click the button below to load all default data into Firebase at once — events, classes, leaderboard, alumni and testimonials. <strong style="color:var(--text)">Only do this once.</strong>
         </p>
-        <div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:14px;">
-          <button class="seed-btn" style="background:var(--danger);" onclick="cleanDuplicates('events', 2)">🗑 Clean Events</button>
-          <button class="seed-btn" style="background:var(--danger);" onclick="cleanDuplicates('classes', 6)">🗑 Clean Classes</button>
-          <button class="seed-btn" style="background:var(--danger);" onclick="cleanDuplicates('leaderboard', 5)">🗑 Clean Leaderboard</button>
-          <button class="seed-btn" style="background:var(--danger);" onclick="cleanDuplicates('alumni', 6)">🗑 Clean Alumni</button>
-          <button class="seed-btn" style="background:var(--danger);" onclick="cleanDuplicates('testimonials', 3)">🗑 Clean Testimonials</button>
-          <button class="seed-btn" style="background:#555;" onclick="cleanAll()">🧹 Clean ALL Sections</button>
-        </div>
-        <div id="clean-log" style="font-size:12px;color:var(--muted);line-height:1.8;display:none;background:var(--surface2);border-radius:8px;padding:12px;max-height:200px;overflow-y:auto;"></div>
+        <button class="save-btn" id="seed-all-btn" onclick="seedAll()" style="width:100%;padding:14px;font-size:14px;">🚀 Load All Default Data</button>
+        <div id="seed-all-log" style="display:none;margin-top:14px;font-size:12px;line-height:1.9;background:var(--surface2);border-radius:8px;padding:12px;"></div>
       </div>
     </div>
 
     <!-- FIREBASE SETUP -->
     <div class="page" id="page-firebase">
-      <div class="page-header"><h1>Firebase Setup</h1><p>Paste your Firebase config below. <strong style="color:var(--goldl)">You only need to do this once</strong> — it is saved in your browser automatically.</p></div>
-      <div class="card">
-        <p style="font-size:14px;color:var(--muted);line-height:1.8;margin-bottom:20px;">
-          Go to <strong style="color:var(--goldl)">console.firebase.google.com</strong> → your project → Project Settings → Your apps → Web app → copy the config values below.<br><br>
-          <span style="color:var(--success)">✅ If the fields below are already filled in, your config is saved — just click <strong>Save Config &amp; Connect</strong> to reconnect.</span>
-        </p>
-        <div class="config-grid">
-          <div class="cfg-wrap"><label>API Key</label><input class="cfg-input form-input" id="cfg-apiKey" placeholder="AIzaSy..."></div>
-          <div class="cfg-wrap"><label>Auth Domain</label><input class="cfg-input form-input" id="cfg-authDomain" placeholder="yourapp.firebaseapp.com"></div>
-          <div class="cfg-wrap"><label>Project ID</label><input class="cfg-input form-input" id="cfg-projectId" placeholder="your-project-id"></div>
-          <div class="cfg-wrap"><label>Storage Bucket</label><input class="cfg-input form-input" id="cfg-storageBucket" placeholder="yourapp.appspot.com"></div>
-          <div class="cfg-wrap"><label>Messaging Sender ID</label><input class="cfg-input form-input" id="cfg-messagingSenderId" placeholder="123456789"></div>
-          <div class="cfg-wrap"><label>App ID</label><input class="cfg-input form-input" id="cfg-appId" placeholder="1:123:web:abc..."></div>
+      <div class="page-header"><h1>Firebase Setup</h1><p>Enter once — saved forever on this device. You will never need to re-enter this.</p></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start;">
+        <div class="card" style="margin-bottom:0;">
+          <p style="font-size:13px;color:var(--muted);line-height:1.8;margin-bottom:18px;">
+            Go to <strong style="color:var(--goldl)">console.firebase.google.com</strong> → your project → Project Settings → Your apps → Web app → copy the values below.<br>
+            <span style="color:var(--success);">✅ If fields are already filled, your config is saved — click Save &amp; Connect to reconnect.</span>
+          </p>
+          <div class="config-grid">
+            <div class="cfg-wrap"><label>API Key</label><input class="form-input" id="cfg-apiKey" placeholder="AIzaSy..."></div>
+            <div class="cfg-wrap"><label>Auth Domain</label><input class="form-input" id="cfg-authDomain" placeholder="yourapp.firebaseapp.com"></div>
+            <div class="cfg-wrap"><label>Project ID</label><input class="form-input" id="cfg-projectId" placeholder="your-project-id"></div>
+            <div class="cfg-wrap"><label>Storage Bucket</label><input class="form-input" id="cfg-storageBucket" placeholder="yourapp.appspot.com"></div>
+            <div class="cfg-wrap"><label>Messaging Sender ID</label><input class="form-input" id="cfg-messagingSenderId" placeholder="123456789"></div>
+            <div class="cfg-wrap"><label>App ID</label><input class="form-input" id="cfg-appId" placeholder="1:123:web:abc..."></div>
+          </div>
+          <button class="save-btn" onclick="saveFirebaseConfig()">💾 Save Config &amp; Connect</button>
+          <div id="cfg-ok" style="font-size:12px;color:var(--success);margin-top:10px;display:none;">✅ Connected! You won't need to do this again on this device.</div>
         </div>
-        <button class="cfg-save" onclick="saveFirebaseConfig()">💾 Save Config &amp; Connect</button>
-        <div class="cfg-ok" id="cfg-ok">✅ Connected successfully! You won't need to do this again on this device.</div>
+        <div class="card" style="margin-bottom:0;border-color:rgba(231,76,60,.15);background:rgba(231,76,60,.03);">
+          <h2 style="font-family:'Playfair Display',serif;font-size:15px;font-weight:700;color:var(--muted);margin-bottom:6px;">🛠️ Maintenance</h2>
+          <p style="font-size:11px;color:#555;line-height:1.7;margin-bottom:14px;">Only use this if you notice duplicate entries appearing on the site. It scans every collection and removes extra copies, keeping the most complete entry.</p>
+          <button onclick="cleanAll()" style="width:100%;padding:10px;background:rgba(231,76,60,.1);color:#c0392b;border:1px solid rgba(231,76,60,.25);border-radius:8px;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:700;cursor:pointer;transition:background .2s;" onmouseover="this.style.background='rgba(231,76,60,.2)'" onmouseout="this.style.background='rgba(231,76,60,.1)'">🗑️ Delete Duplicates (All Sections)</button>
+          <div id="clean-log" style="display:none;margin-top:12px;font-size:11px;line-height:1.9;background:var(--surface2);border-radius:8px;padding:10px;max-height:200px;overflow-y:auto;"></div>
+        </div>
       </div>
     </div>
 
     <!-- EVENTS -->
     <div class="page" id="page-events">
       <div class="page-header"><h1>Events</h1><p>Manage upcoming events shown on the main site.</p></div>
-      <div class="seed-banner" id="seed-events-banner" style="display:none">
-        <p>🌱 <strong>No events found.</strong> Click to load the original website events into Firebase. Only do this once!</p>
-        <button class="seed-btn" id="seed-events-btn" onclick="seedEvents()">Load Default Events</button>
-      </div>
+      <div class="seed-banner" id="seed-events-banner"><p>🌱 No events found. Load defaults to get started.</p><button class="seed-btn" id="seed-events-btn" onclick="seedEvents()">Load Default Events</button></div>
       <div class="card">
         <div class="card-header"><h2>All Events</h2><button class="add-btn" onclick="openModal('event',null)">+ Add Event</button></div>
-        <div class="item-list" id="events-list"><div class="empty-state"><div class="empty-icon">📅</div>Connecting to Firebase...</div></div>
-      </div>
-    </div>
-
-    <!-- CLASS PHOTOS -->
-    <div class="page" id="page-classes">
-      <div class="page-header"><h1>Class Photos</h1><p>Update the photos shown in the Classes section.</p></div>
-      <div class="seed-banner" id="seed-classes-banner" style="display:none">
-        <p>🌱 <strong>No classes found.</strong> Click to load the original class entries into Firebase. Only do this once!</p>
-        <button class="seed-btn" id="seed-classes-btn" onclick="seedClasses()">Load Default Classes</button>
-      </div>
-      <div class="card">
-        <div class="card-header"><h2>Class Photos</h2><button class="add-btn" onclick="openModal('classphoto',null)">+ Add Class</button></div>
-        <div class="item-list" id="classes-list"><div class="empty-state"><div class="empty-icon">🏫</div>Connecting to Firebase...</div></div>
+        <div class="item-list" id="events-list"><div class="empty-state"><div class="empty-icon">📅</div>Connecting...</div></div>
       </div>
     </div>
 
     <!-- LEADERBOARD -->
     <div class="page" id="page-leaderboard">
       <div class="page-header"><h1>Leaderboard</h1><p>Manage top performing students.</p></div>
-      <div class="seed-banner" id="seed-lb-banner" style="display:none">
-        <p>🌱 <strong>No entries found.</strong> Click to load the original leaderboard into Firebase. Only do this once!</p>
-        <button class="seed-btn" id="seed-lb-btn" onclick="seedLeaderboard()">Load Default Leaderboard</button>
-      </div>
+      <div class="seed-banner" id="seed-lb-banner"><p>🌱 No entries found. Load defaults to get started.</p><button class="seed-btn" id="seed-lb-btn" onclick="seedLeaderboard()">Load Default Leaderboard</button></div>
       <div class="card">
         <div class="card-header"><h2>Top Performers</h2><button class="add-btn" onclick="openModal('leaderboard',null)">+ Add Student</button></div>
-        <div class="item-list" id="leaderboard-list"><div class="empty-state"><div class="empty-icon">🏆</div>Connecting to Firebase...</div></div>
+        <div class="item-list" id="leaderboard-list"><div class="empty-state"><div class="empty-icon">🏆</div>Connecting...</div></div>
       </div>
     </div>
 
     <!-- ALUMNI -->
     <div class="page" id="page-alumni">
       <div class="page-header"><h1>Alumni</h1><p>Manage alumni success stories.</p></div>
-      <div class="seed-banner" id="seed-alumni-banner" style="display:none">
-        <p>🌱 <strong>No alumni found.</strong> Click to load the original alumni into Firebase. Only do this once!</p>
-        <button class="seed-btn" id="seed-alumni-btn" onclick="seedAlumni()">Load Default Alumni</button>
-      </div>
+      <div class="seed-banner" id="seed-alumni-banner"><p>🌱 No alumni found. Load defaults to get started.</p><button class="seed-btn" id="seed-alumni-btn" onclick="seedAlumni()">Load Default Alumni</button></div>
       <div class="card">
         <div class="card-header"><h2>Alumni Cards</h2><button class="add-btn" onclick="openModal('alumni',null)">+ Add Alumni</button></div>
-        <div class="item-list" id="alumni-list"><div class="empty-state"><div class="empty-icon">🎓</div>Connecting to Firebase...</div></div>
+        <div class="item-list" id="alumni-list"><div class="empty-state"><div class="empty-icon">🎓</div>Connecting...</div></div>
       </div>
     </div>
 
     <!-- TESTIMONIALS -->
     <div class="page" id="page-testimonials">
       <div class="page-header"><h1>Testimonials</h1><p>Manage student reviews.</p></div>
-      <div class="seed-banner" id="seed-test-banner" style="display:none">
-        <p>🌱 <strong>No testimonials found.</strong> Click to load the original testimonials into Firebase. Only do this once!</p>
-        <button class="seed-btn" id="seed-test-btn" onclick="seedTestimonials()">Load Default Testimonials</button>
-      </div>
+      <div class="seed-banner" id="seed-test-banner"><p>🌱 No testimonials found. Load defaults to get started.</p><button class="seed-btn" id="seed-test-btn" onclick="seedTestimonials()">Load Default Testimonials</button></div>
       <div class="card">
         <div class="card-header"><h2>Student Reviews</h2><button class="add-btn" onclick="openModal('testimonial',null)">+ Add Testimonial</button></div>
-        <div class="item-list" id="testimonials-list"><div class="empty-state"><div class="empty-icon">💬</div>Connecting to Firebase...</div></div>
+        <div class="item-list" id="testimonials-list"><div class="empty-state"><div class="empty-icon">💬</div>Connecting...</div></div>
       </div>
     </div>
 
-    <!-- HERO STATS -->
-    <div class="page" id="page-stats">
-      <div class="page-header"><h1>Hero Stats</h1><p>Update the headline numbers in the hero section.</p></div>
+    <!-- HERO SECTION -->
+    <div class="page" id="page-hero">
+      <div class="page-header"><h1>Hero Section</h1><p>Edit text, stats, photos and countdown for the top of the website.</p></div>
+
       <div class="card">
-        <div class="stats-grid">
-          <div class="stat-card">
-            <label>Stat 1 Number</label>
-            <input class="stat-num-input form-input" id="stat1-num" value="500+">
-            <input class="stat-lbl-input form-input" id="stat1-label" value="Students Enrolled">
-          </div>
-          <div class="stat-card">
-            <label>Stat 2 Number</label>
-            <input class="stat-num-input form-input" id="stat2-num" value="98%">
-            <input class="stat-lbl-input form-input" id="stat2-label" value="Pass Rate">
-          </div>
-          <div class="stat-card">
-            <label>Stat 3 Number</label>
-            <input class="stat-num-input form-input" id="stat3-num" value="300+">
-            <input class="stat-lbl-input form-input" id="stat3-label" value="JAMB 300+ Scorers">
-          </div>
+        <div class="card-header"><h2>🔤 Navbar &amp; Browser Tab<span class="card-sub">Logo text, tagline and browser tab title</span></h2></div>
+        <div class="form-grid">
+          <div class="form-row"><label>Site Name (in navbar)</label><input class="form-input" id="nav-sitename" placeholder="Sir Philip's Academy"></div>
+          <div class="form-row"><label>Tagline (e.g. Excellence In Education)</label><input class="form-input" id="nav-tagline" placeholder="Excellence In Education"></div>
         </div>
-        <button class="save-stats-btn" onclick="saveStats()">💾 Save Stats</button>
+        <div class="form-row"><label>Browser Tab Title</label><input class="form-input" id="nav-tabtitle" placeholder="Sir Philip's Academy — Nigeria's Best Tutorial Centre"></div>
+        <button class="save-btn" onclick="saveSection('navText',{siteName:v('nav-sitename'),tagline:v('nav-tagline'),tabTitle:v('nav-tabtitle')})">💾 Save Navbar Text</button>
       </div>
-    </div>
 
-    <!-- HERO PHOTOS -->
-    <div class="page" id="page-herophotos">
-      <div class="page-header"><h1>Hero Photos</h1><p>Update the 3 photos shown in the hero section.</p></div>
       <div class="card">
-        <div class="card-header"><h2>Hero Image Grid</h2></div>
-        <div class="hero-photo-grid">
-          <div class="hero-photo-slot">
-            <div class="slot-label">Photo 1 (Wide — top)</div>
-            <img class="slot-img" id="hero-preview-1" src="" alt="">
-            <div class="slot-empty" id="hero-empty-1">📸</div>
-            <div class="hero-photo-actions">
-              <label class="slot-upload-btn" for="hero-file-1">📁 Choose Photo</label>
-              <button class="slot-remove-btn" onclick="clearHeroSlot(1)">✕</button>
-            </div>
+        <div class="card-header"><h2>🦸 Hero Headline<span class="card-sub">"Where Students Become Champions" section</span></h2></div>
+        <div class="form-row"><label>Badge (small pill above heading)</label><input class="form-input" id="hero-badge" placeholder="Nigeria's Premier Tutorial Centre"></div>
+        <div class="form-row"><label>Headline Line 1</label><input class="form-input" id="hero-h1" placeholder="Where Students Become"></div>
+        <div class="form-row"><label>Headline Line 2 (the gold word)</label><input class="form-input" id="hero-h2" placeholder="Champions"></div>
+        <div class="form-row"><label>Subtext paragraph</label><textarea class="form-input" id="hero-sub" style="min-height:70px;resize:vertical;" placeholder="Sir Philip's Academy prepares students..."></textarea></div>
+        <button class="save-btn" onclick="saveSection('heroText',{badge:v('hero-badge'),headline1:v('hero-h1'),headline2:v('hero-h2'),subtext:v('hero-sub')})">💾 Save Hero Text</button>
+      </div>
+
+      <div class="card">
+        <div class="card-header"><h2>📈 Hero Stats<span class="card-sub">The 3 numbers below the headline</span></h2></div>
+        <div class="stats-grid">
+          <div class="stat-card"><label>Stat 1 Number</label><input class="stat-num-input" id="stat1-num" value="500+"><input class="form-input" id="stat1-label" value="Students Enrolled" style="font-size:12px;margin-top:6px;"></div>
+          <div class="stat-card"><label>Stat 2 Number</label><input class="stat-num-input" id="stat2-num" value="98%"><input class="form-input" id="stat2-label" value="Pass Rate" style="font-size:12px;margin-top:6px;"></div>
+          <div class="stat-card"><label>Stat 3 Number</label><input class="stat-num-input" id="stat3-num" value="300+"><input class="form-input" id="stat3-label" value="JAMB 300+ Scorers" style="font-size:12px;margin-top:6px;"></div>
+        </div>
+        <button class="save-btn" onclick="saveStats()">💾 Save Stats</button>
+      </div>
+
+      <div class="card">
+        <div class="card-header"><h2>🖼️ Hero Photos<span class="card-sub">3 images on the right of the hero section</span></h2></div>
+        <div class="photo-grid-3">
+          <div class="photo-slot">
+            <div class="slot-label">Photo 1 (Top)</div>
+            <img class="slot-img" id="hero-preview-1" src="" alt=""><div class="slot-empty" id="hero-empty-1">📸</div>
+            <div class="photo-slot-actions"><label class="slot-upload-btn" for="hero-file-1">📁 Choose</label><button class="slot-remove-btn" onclick="clearHeroSlot(1)">✕</button></div>
             <input type="file" id="hero-file-1" accept="image/*" onchange="handleHeroUpload(1,this)">
           </div>
-          <div class="hero-photo-slot">
+          <div class="photo-slot">
             <div class="slot-label">Photo 2 (Bottom left)</div>
-            <img class="slot-img" id="hero-preview-2" src="" alt="">
-            <div class="slot-empty" id="hero-empty-2">📸</div>
-            <div class="hero-photo-actions">
-              <label class="slot-upload-btn" for="hero-file-2">📁 Choose Photo</label>
-              <button class="slot-remove-btn" onclick="clearHeroSlot(2)">✕</button>
-            </div>
+            <img class="slot-img" id="hero-preview-2" src="" alt=""><div class="slot-empty" id="hero-empty-2">📸</div>
+            <div class="photo-slot-actions"><label class="slot-upload-btn" for="hero-file-2">📁 Choose</label><button class="slot-remove-btn" onclick="clearHeroSlot(2)">✕</button></div>
             <input type="file" id="hero-file-2" accept="image/*" onchange="handleHeroUpload(2,this)">
           </div>
-          <div class="hero-photo-slot">
+          <div class="photo-slot">
             <div class="slot-label">Photo 3 (Bottom right)</div>
-            <img class="slot-img" id="hero-preview-3" src="" alt="">
-            <div class="slot-empty" id="hero-empty-3">📸</div>
-            <div class="hero-photo-actions">
-              <label class="slot-upload-btn" for="hero-file-3">📁 Choose Photo</label>
-              <button class="slot-remove-btn" onclick="clearHeroSlot(3)">✕</button>
-            </div>
+            <img class="slot-img" id="hero-preview-3" src="" alt=""><div class="slot-empty" id="hero-empty-3">📸</div>
+            <div class="photo-slot-actions"><label class="slot-upload-btn" for="hero-file-3">📁 Choose</label><button class="slot-remove-btn" onclick="clearHeroSlot(3)">✕</button></div>
             <input type="file" id="hero-file-3" accept="image/*" onchange="handleHeroUpload(3,this)">
           </div>
         </div>
-        <p style="font-size:12px;color:var(--muted);margin-bottom:12px;">⚠️ Keep photos under <strong style="color:var(--goldl)">300KB</strong> each. Compress at <a href="https://squoosh.app" target="_blank" style="color:var(--goldl)">squoosh.app</a>.</p>
-        <button class="save-photos-btn" onclick="saveHeroPhotos()">💾 Save Hero Photos</button>
+        <p style="font-size:11px;color:var(--muted);margin-bottom:12px;">⚠️ Keep under 300KB. Compress at <a href="https://squoosh.app" target="_blank" style="color:var(--goldl)">squoosh.app</a>.</p>
+        <button class="save-btn" onclick="saveHeroPhotos()">💾 Save Hero Photos</button>
       </div>
-    </div>
 
-    <!-- ABOUT PHOTO -->
-    <div class="page" id="page-aboutphoto">
-      <div class="page-header"><h1>About Us Photo</h1><p>Update the photo shown in the About Us section.</p></div>
       <div class="card">
-        <div class="card-header"><h2>About Section Photo</h2></div>
-        <div class="about-photo-wrap">
-          <div>
-            <p style="font-size:13px;color:var(--muted);margin-bottom:14px;">Current photo:</p>
-            <div class="about-current">
-              <img id="about-current-img" src="" style="display:none" alt="About photo">
-              <div class="no-photo" id="about-no-photo">👨‍🏫</div>
-            </div>
-          </div>
-          <div>
-            <p style="font-size:13px;color:var(--muted);margin-bottom:14px;">Upload new photo:</p>
-            <div class="img-upload-widget" id="about-upload-widget">
-              <label class="img-upload-trigger" for="about-file-input">
-                <div class="upload-icon">📁</div>
-                <div class="upload-text">Click to choose from gallery</div>
-                <div class="upload-hint">JPG, PNG, WEBP · Under 300KB</div>
-              </label>
-              <input type="file" id="about-file-input" accept="image/*" onchange="handleAboutUpload(this)">
-              <img class="img-upload-preview" id="about-upload-preview" src="" alt="Preview">
-              <div class="img-upload-footer" id="about-upload-footer">
-                <span class="img-upload-filename" id="about-upload-filename">No file selected</span>
-                <button class="img-clear-btn" onclick="clearAboutUpload()">Remove</button>
-              </div>
-            </div>
-            <div class="img-size-warn" id="about-size-warn"></div>
-            <button class="save-photos-btn" onclick="saveAboutPhoto()" style="margin-top:16px;">💾 Save About Photo</button>
-          </div>
+        <div class="card-header"><h2>⏱️ JAMB Countdown Bar<span class="card-sub">The dark countdown banner — toggle on/off and update dates</span></h2></div>
+        <div class="toggle-wrap">
+          <label class="toggle-switch"><input type="checkbox" id="countdown-visible" checked><span class="toggle-slider"></span></label>
+          <span class="toggle-label">Show countdown bar on website</span>
         </div>
+        <div class="form-grid">
+          <div class="form-row"><label>Countdown Title</label><input class="form-input" id="countdown-title" placeholder="JAMB 2026 Countdown"></div>
+          <div class="form-row"><label>Target Date (exam date)</label><input class="form-input" id="countdown-date" type="date"></div>
+        </div>
+        <div class="form-row"><label>Subtext</label><input class="form-input" id="countdown-sub" placeholder="Register now — limited slots available!"></div>
+        <div class="form-row"><label>Register Button Link</label><input class="form-input" id="countdown-wa" placeholder="https://wa.me/2347089506428?text=..."></div>
+        <button class="save-btn" onclick="saveCountdown()">💾 Save Countdown</button>
       </div>
     </div>
 
-    <!-- ADMISSION PHOTOS -->
-    <div class="page" id="page-admissionphotos">
-      <div class="page-header"><h1>Admission Photos</h1><p>Update the photos in the Admission sections.</p></div>
-      <div class="card" style="margin-bottom:20px;">
-        <div class="card-header"><h2>🏛️ Admission Success Photo</h2></div>
-        <p style="font-size:13px;color:var(--muted);margin-bottom:16px;">Large photo in the "Our Students Get Into Top Universities" section.</p>
-        <div class="about-photo-wrap">
-          <div>
-            <p style="font-size:12px;color:var(--muted);margin-bottom:10px;">Current photo:</p>
-            <div class="about-current">
-              <img id="unilag-current-img" src="" style="display:none;max-height:200px;object-fit:cover;width:100%;border-radius:10px;" alt="">
-              <div class="no-photo" id="unilag-no-photo" style="height:140px;">🏛️</div>
-            </div>
-          </div>
-          <div>
-            <p style="font-size:12px;color:var(--muted);margin-bottom:10px;">Upload new photo:</p>
-            <div class="img-upload-widget" id="unilag-upload-widget">
-              <label class="img-upload-trigger" for="unilag-file-input">
-                <div class="upload-icon">📁</div>
-                <div class="upload-text">Click to choose from gallery</div>
-                <div class="upload-hint">JPG, PNG · Under 300KB</div>
-              </label>
-              <input type="file" id="unilag-file-input" accept="image/*" onchange="handleGenericUpload('unilag',this)">
-              <img class="img-upload-preview" id="unilag-upload-preview" src="" alt="">
-              <div class="img-upload-footer" id="unilag-upload-footer">
-                <span class="img-upload-filename" id="unilag-upload-filename">No file selected</span>
-                <button class="img-clear-btn" onclick="clearGenericUpload('unilag')">Remove</button>
-              </div>
-            </div>
-            <div class="img-size-warn" id="unilag-size-warn"></div>
-            <button class="save-photos-btn" onclick="saveGenericPhoto('unilag','unilagPhoto')" style="margin-top:14px;">💾 Save Admission Photo</button>
-          </div>
-        </div>
-      </div>
+    <!-- CLASSES -->
+    <div class="page" id="page-classes">
+      <div class="page-header"><h1>Classes</h1><p>Edit class cards and photos shown on the website.</p></div>
+      <div class="seed-banner" id="seed-classes-banner"><p>🌱 No classes found. Load defaults to get started.</p><button class="seed-btn" id="seed-classes-btn" onclick="seedClasses()">Load Default Classes</button></div>
       <div class="card">
-        <div class="card-header"><h2>🎯 Admission Guidance Photo</h2></div>
-        <p style="font-size:13px;color:var(--muted);margin-bottom:16px;">Photo in the "Your Sure Admission Plug" section.</p>
-        <div class="about-photo-wrap">
-          <div>
-            <p style="font-size:12px;color:var(--muted);margin-bottom:10px;">Current photo:</p>
-            <div class="about-current">
-              <img id="plug-current-img" src="" style="display:none;max-height:200px;object-fit:cover;width:100%;border-radius:10px;" alt="">
-              <div class="no-photo" id="plug-no-photo" style="height:140px;">🎯</div>
-            </div>
-          </div>
-          <div>
-            <p style="font-size:12px;color:var(--muted);margin-bottom:10px;">Upload new photo:</p>
-            <div class="img-upload-widget" id="plug-upload-widget">
-              <label class="img-upload-trigger" for="plug-file-input">
-                <div class="upload-icon">📁</div>
-                <div class="upload-text">Click to choose from gallery</div>
-                <div class="upload-hint">JPG, PNG · Under 300KB</div>
-              </label>
-              <input type="file" id="plug-file-input" accept="image/*" onchange="handleGenericUpload('plug',this)">
-              <img class="img-upload-preview" id="plug-upload-preview" src="" alt="">
-              <div class="img-upload-footer" id="plug-upload-footer">
-                <span class="img-upload-filename" id="plug-upload-filename">No file selected</span>
-                <button class="img-clear-btn" onclick="clearGenericUpload('plug')">Remove</button>
-              </div>
-            </div>
-            <div class="img-size-warn" id="plug-size-warn"></div>
-            <button class="save-photos-btn" onclick="saveGenericPhoto('plug','plugPhoto')" style="margin-top:14px;">💾 Save Guidance Photo</button>
-          </div>
-        </div>
+        <div class="card-header"><h2>Class Cards</h2><button class="add-btn" onclick="openModal('classphoto',null)">+ Add Class</button></div>
+        <div class="item-list" id="classes-list"><div class="empty-state"><div class="empty-icon">🏫</div>Connecting...</div></div>
       </div>
     </div>
 
-  </div><!-- end main -->
-</div><!-- end app -->
+    <!-- ADMISSION -->
+    <div class="page" id="page-admission">
+      <div class="page-header"><h1>Admission Section</h1><p>Edit text and photos for both admission sections.</p></div>
+
+      <div class="card">
+        <div class="card-header"><h2>🏛️ Admission Success<span class="card-sub">"Our Students Get Into Top Universities"</span></h2></div>
+        <div class="form-row"><label>Section Tag</label><input class="form-input" id="unilag-tag" placeholder="ADMISSION SUCCESS"></div>
+        <div class="form-row"><label>Main Heading</label><input class="form-input" id="unilag-heading" placeholder="Our Students Get Into Top Universities"></div>
+        <div class="form-row"><label>Paragraph 1</label><textarea class="form-input" id="unilag-p1" style="min-height:70px;resize:vertical;"></textarea></div>
+        <div class="form-row"><label>Paragraph 2</label><textarea class="form-input" id="unilag-p2" style="min-height:70px;resize:vertical;"></textarea></div>
+        <div class="form-row">
+          <label>University Badges</label>
+          <div class="uni-tags" id="uni-tags-list"></div>
+          <div class="add-uni-row">
+            <input class="form-input" id="uni-name" placeholder="University e.g. UNILAG">
+            <input class="form-input" id="uni-course" placeholder="Course e.g. Medicine">
+            <button class="save-btn" style="margin-top:0;white-space:nowrap;" onclick="addUniTag()">+ Add</button>
+          </div>
+        </div>
+        <div class="form-row">
+          <label>Section Photo</label>
+          <div class="photo-edit-wrap">
+            <div><p style="font-size:11px;color:var(--muted);margin-bottom:8px;">Current:</p><div class="current-photo-frame"><img id="unilag-current-img" src="" style="display:none;" alt=""><div class="no-photo" id="unilag-no-photo">🏛️</div></div></div>
+            <div><p style="font-size:11px;color:var(--muted);margin-bottom:8px;">Upload new:</p>
+              <div class="img-upload-widget" id="unilag-upload-widget">
+                <label class="img-upload-trigger" for="unilag-file-input"><div class="upload-icon">📁</div><div class="upload-text">Choose from gallery</div><div class="upload-hint">JPG, PNG · Under 300KB</div></label>
+                <input type="file" id="unilag-file-input" accept="image/*" onchange="handleGenericUpload('unilag',this)">
+                <img class="img-upload-preview" id="unilag-upload-preview" src="" alt="">
+                <div class="img-upload-footer" id="unilag-upload-footer"><span class="img-upload-filename" id="unilag-upload-filename">No file selected</span><button class="img-clear-btn" onclick="clearGenericUpload('unilag')">Remove</button></div>
+              </div>
+              <div class="img-size-warn" id="unilag-size-warn"></div>
+            </div>
+          </div>
+        </div>
+        <button class="save-btn" onclick="saveAdmissionSuccess()">💾 Save Admission Success</button>
+      </div>
+
+      <div class="card">
+        <div class="card-header"><h2>🎯 Admission Guidance<span class="card-sub">"Your Sure Admission Plug"</span></h2></div>
+        <div class="form-row"><label>Section Tag</label><input class="form-input" id="plug-tag" placeholder="ADMISSION GUIDANCE"></div>
+        <div class="form-row"><label>Main Heading</label><input class="form-input" id="plug-heading" placeholder="Your Sure Admission Plug"></div>
+        <div class="form-row"><label>Paragraph 1</label><textarea class="form-input" id="plug-p1" style="min-height:70px;resize:vertical;"></textarea></div>
+        <div class="form-row"><label>Paragraph 2</label><textarea class="form-input" id="plug-p2" style="min-height:70px;resize:vertical;"></textarea></div>
+        <div class="form-grid">
+          <div class="form-row"><label>Button Text</label><input class="form-input" id="plug-btn-text" placeholder="Get Admission Guidance"></div>
+          <div class="form-row"><label>Button Link</label><input class="form-input" id="plug-btn-link" placeholder="https://wa.me/..."></div>
+        </div>
+        <div class="form-row">
+          <label>Section Photo</label>
+          <div class="photo-edit-wrap">
+            <div><p style="font-size:11px;color:var(--muted);margin-bottom:8px;">Current:</p><div class="current-photo-frame"><img id="plug-current-img" src="" style="display:none;" alt=""><div class="no-photo" id="plug-no-photo">🎯</div></div></div>
+            <div><p style="font-size:11px;color:var(--muted);margin-bottom:8px;">Upload new:</p>
+              <div class="img-upload-widget" id="plug-upload-widget">
+                <label class="img-upload-trigger" for="plug-file-input"><div class="upload-icon">📁</div><div class="upload-text">Choose from gallery</div><div class="upload-hint">JPG, PNG · Under 300KB</div></label>
+                <input type="file" id="plug-file-input" accept="image/*" onchange="handleGenericUpload('plug',this)">
+                <img class="img-upload-preview" id="plug-upload-preview" src="" alt="">
+                <div class="img-upload-footer" id="plug-upload-footer"><span class="img-upload-filename" id="plug-upload-filename">No file selected</span><button class="img-clear-btn" onclick="clearGenericUpload('plug')">Remove</button></div>
+              </div>
+              <div class="img-size-warn" id="plug-size-warn"></div>
+            </div>
+          </div>
+        </div>
+        <button class="save-btn" onclick="saveAdmissionGuidance()">💾 Save Admission Guidance</button>
+      </div>
+    </div>
+
+    <!-- ABOUT -->
+    <div class="page" id="page-aboutsec">
+      <div class="page-header"><h1>About Us Section</h1><p>Edit the "Built on a Foundation of Excellence" section.</p></div>
+      <div class="card">
+        <div class="card-header"><h2>📖 About Us Text &amp; Photo</h2></div>
+        <div class="form-row"><label>Section Tag</label><input class="form-input" id="about-tag" placeholder="ABOUT US"></div>
+        <div class="form-row"><label>Main Heading</label><input class="form-input" id="about-heading" placeholder="Built on a Foundation of Excellence"></div>
+        <div class="form-row"><label>Paragraph 1</label><textarea class="form-input" id="about-p1" style="min-height:80px;resize:vertical;"></textarea></div>
+        <div class="form-row"><label>Paragraph 2</label><textarea class="form-input" id="about-p2" style="min-height:80px;resize:vertical;"></textarea></div>
+        <div class="form-row"><label>Paragraph 3</label><textarea class="form-input" id="about-p3" style="min-height:80px;resize:vertical;"></textarea></div>
+        <div class="form-row">
+          <label>Feature Cards (the 4 boxes)</label>
+          <div class="form-grid" style="gap:10px;">
+            <div>
+              <div style="display:flex;align-items:center;margin-bottom:6px;"><button class="feat-emoji-btn" id="f1-emoji-btn" onclick="toggleEmojiPicker(1,this)">🎯</button><input class="form-input" id="about-f1-title" placeholder="Feature 1 title e.g. Expert Tutors" style="flex:1;"></div>
+              <input class="form-input" id="about-f1-desc" placeholder="Feature 1 description"><input type="hidden" id="about-f1-emoji" value="🎯">
+            </div>
+            <div>
+              <div style="display:flex;align-items:center;margin-bottom:6px;"><button class="feat-emoji-btn" id="f2-emoji-btn" onclick="toggleEmojiPicker(2,this)">📚</button><input class="form-input" id="about-f2-title" placeholder="Feature 2 title e.g. Proven Curriculum" style="flex:1;"></div>
+              <input class="form-input" id="about-f2-desc" placeholder="Feature 2 description"><input type="hidden" id="about-f2-emoji" value="📚">
+            </div>
+            <div>
+              <div style="display:flex;align-items:center;margin-bottom:6px;"><button class="feat-emoji-btn" id="f3-emoji-btn" onclick="toggleEmojiPicker(3,this)">🏆</button><input class="form-input" id="about-f3-title" placeholder="Feature 3 title e.g. Track Record" style="flex:1;"></div>
+              <input class="form-input" id="about-f3-desc" placeholder="Feature 3 description"><input type="hidden" id="about-f3-emoji" value="🏆">
+            </div>
+            <div>
+              <div style="display:flex;align-items:center;margin-bottom:6px;"><button class="feat-emoji-btn" id="f4-emoji-btn" onclick="toggleEmojiPicker(4,this)">🤝</button><input class="form-input" id="about-f4-title" placeholder="Feature 4 title e.g. Supportive Community" style="flex:1;"></div>
+              <input class="form-input" id="about-f4-desc" placeholder="Feature 4 description"><input type="hidden" id="about-f4-emoji" value="🤝">
+            </div>
+          </div>
+          <div class="emoji-picker-pop" id="emojiPickerPop" style="display:none;"></div>
+        </div>
+        <div class="form-row">
+          <label>About Photo</label>
+          <div class="photo-edit-wrap">
+            <div><p style="font-size:11px;color:var(--muted);margin-bottom:8px;">Current:</p><div class="current-photo-frame"><img id="about-current-img" src="" style="display:none;" alt=""><div class="no-photo" id="about-no-photo">👨‍🏫</div></div></div>
+            <div><p style="font-size:11px;color:var(--muted);margin-bottom:8px;">Upload new:</p>
+              <div class="img-upload-widget" id="about-upload-widget">
+                <label class="img-upload-trigger" for="about-file-input"><div class="upload-icon">📁</div><div class="upload-text">Choose from gallery</div><div class="upload-hint">JPG, PNG · Under 300KB</div></label>
+                <input type="file" id="about-file-input" accept="image/*" onchange="handleAboutUpload(this)">
+                <img class="img-upload-preview" id="about-upload-preview" src="" alt="">
+                <div class="img-upload-footer" id="about-upload-footer"><span class="img-upload-filename" id="about-upload-filename">No file selected</span><button class="img-clear-btn" onclick="clearAboutUpload()">Remove</button></div>
+              </div>
+              <div class="img-size-warn" id="about-size-warn"></div>
+            </div>
+          </div>
+        </div>
+        <button class="save-btn" onclick="saveAboutSection()">💾 Save About Section</button>
+      </div>
+    </div>
+
+  </div>
+</div>
 
 <!-- MODAL -->
 <div class="modal-overlay" id="modalOverlay">
   <div class="modal">
-    <div class="modal-header">
-      <h3 id="modalTitle">Add Item</h3>
-      <button class="modal-close" onclick="closeModal()">&#215;</button>
-    </div>
+    <div class="modal-header"><h3 id="modalTitle">Add Item</h3><button class="modal-close" onclick="closeModal()">&#215;</button></div>
     <div id="modalBody"></div>
-    <div class="modal-actions">
-      <button class="btn-cancel" onclick="closeModal()">Cancel</button>
-      <button class="btn-save" id="modalSaveBtn" onclick="saveModal()">Save Changes</button>
-    </div>
+    <div class="modal-actions"><button class="btn-cancel" onclick="closeModal()">Cancel</button><button class="btn-save" id="modalSaveBtn" onclick="saveModal()">Save Changes</button></div>
   </div>
 </div>
 
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
 <script>
-/* =====================================================================
-   SIR PHILIP'S ACADEMY — ADMIN PANEL (FIXED VERSION)
-   
-   FIXES APPLIED:
-   1. DUPLICATE EVENTS BUG — seed banners now hidden by default and only
-      shown when a collection is confirmed empty. Seed checks count before
-      running to prevent accidental double-seeding.
-   2. FIREBASE CONFIG PERSISTENCE — config is loaded from localStorage on
-      login and auto-connected silently. You only enter it once ever.
-   3. MAIN SITE UPDATES — see the INDEX.HTML INTEGRATION section below
-      for the code snippet to paste into your Vercel index.html so it
-      reads from Firebase in real time.
-===================================================================== */
+const ADMIN_PASSWORD='spa-admin-2026';
+let db=null,activeListeners=[],loadAllRunning=false;
 
-/* ----------------------------------------------------------------
-   CONSTANTS
----------------------------------------------------------------- */
-const ADMIN_PASSWORD = 'spa-admin-2026';
-
-let db = null;
-
-/* ----------------------------------------------------------------
-   DEFAULT DATA (used only for first-time seeding)
----------------------------------------------------------------- */
-const DEFAULT_EVENTS = [
-  { title:'ANJA 1.0', tag:'JAMB Workshop', date:'March 30th, 2026', venue:'2, Richard Abimbola, Ilasamaja, Lagos', description:'Comprehensive 3-week intensive JAMB preparation bootcamp...', emoji:'📚', waLink:'https://wa.me/2347089506428?text=I want to register for ANJA 1.0', order:1 },
-  { title:'Secret To Passing JAMB English', tag:'Seminar', date:'March 27, 2026 | 3:00 PM – 7:00 PM', venue:'LivingSpring College, Ilasamaja, Lagos', description:"Prof D teaches you the secret to passing English in JAMB...", emoji:'🏆', waLink:'https://wa.me/2347089506428?text=I want to attend the JAMB English Seminar', protected:false, order:2 }
+const DEFAULT_EVENTS=[
+  {title:'ANJA 1.0',tag:'JAMB Workshop',date:'March 30th, 2026',venue:'2, Richard Abimbola, Ilasamaja, Lagos',description:'Comprehensive 3-week intensive JAMB preparation bootcamp...',emoji:'📚',waLink:'https://wa.me/2347089506428?text=I want to register for ANJA 1.0',order:1},
+  {title:'Secret To Passing JAMB English',tag:'Seminar',date:'March 27, 2026 | 3:00 PM – 7:00 PM',venue:'LivingSpring College, Ilasamaja, Lagos',description:'Prof D teaches you the secret to passing English in JAMB...',emoji:'🏆',waLink:'https://wa.me/2347089506428?text=I want to attend the JAMB English Seminar',order:2}
 ];
-const DEFAULT_CLASSES = [
-  { title:'JAMB Intensive Prep', tag:'JAMB / UTME', description:'Complete coverage of all JAMB subjects...', imageUrl:'', order:1 },
-  { title:'WAEC & NECO Coaching', tag:'WAEC / NECO', description:"O'Level preparation...", imageUrl:'', order:2 },
-  { title:'Science Subjects', tag:'Sciences', description:'Physics, Chemistry, Biology and Maths...', imageUrl:'', order:3 },
-  { title:'Arts & Social Sciences', tag:'Arts & Commercial', description:'Literature, Economics, Government...', imageUrl:'', order:4 },
-  { title:'English Language', tag:'Language', description:"Comprehension, essay writing...", imageUrl:'', order:5 },
-  { title:'Remedial Classes', tag:'Special Programme', description:'Dedicated support for students...', imageUrl:'', order:6 }
+const DEFAULT_CLASSES=[
+  {title:'JAMB Intensive Prep',tag:'JAMB / UTME',description:'Complete coverage of all JAMB subjects...',imageUrl:'',order:1},
+  {title:'WAEC & NECO Coaching',tag:'WAEC / NECO',description:"O'Level preparation...",imageUrl:'',order:2},
+  {title:'Science Subjects',tag:'Sciences',description:'Physics, Chemistry, Biology and Maths...',imageUrl:'',order:3},
+  {title:'Arts & Social Sciences',tag:'Arts & Commercial',description:'Literature, Economics, Government...',imageUrl:'',order:4},
+  {title:'English Language',tag:'Language',description:'Comprehension, essay writing...',imageUrl:'',order:5},
+  {title:'Remedial Classes',tag:'Special Programme',description:'Dedicated support for students...',imageUrl:'',order:6}
 ];
-const DEFAULT_LEADERBOARD = [
-  { name:'Adaeze Okonkwo', rank:1, score:'341/400', scorePct:85, exam:'MOCK', dept:'Sciences', year:'2026' },
-  { name:'Emeka Chukwuemeka', rank:2, score:'336/400', scorePct:84, exam:'MOCK', dept:'Arts', year:'2026' },
-  { name:'Fatima Abdullahi', rank:3, score:'329/400', scorePct:82, exam:'MOCK', dept:'Sciences', year:'2026' },
-  { name:'Chidi Nwosu', rank:4, score:"8 A's", scorePct:100, exam:'WAEC', dept:'Sciences', year:'2026' },
-  { name:'Ngozi Eze', rank:5, score:'318/400', scorePct:79, exam:'MOCK', dept:'Commercial', year:'2026' }
+const DEFAULT_LEADERBOARD=[
+  {name:'Adaeze Okonkwo',rank:1,score:'341/400',scorePct:85,exam:'MOCK',dept:'Sciences',year:'2026'},
+  {name:'Emeka Chukwuemeka',rank:2,score:'336/400',scorePct:84,exam:'MOCK',dept:'Arts',year:'2026'},
+  {name:'Fatima Abdullahi',rank:3,score:'329/400',scorePct:82,exam:'MOCK',dept:'Sciences',year:'2026'},
+  {name:'Chidi Nwosu',rank:4,score:"8 A's",scorePct:100,exam:'WAEC',dept:'Sciences',year:'2026'},
+  {name:'Ngozi Eze',rank:5,score:'318/400',scorePct:79,exam:'MOCK',dept:'Commercial',year:'2026'}
 ];
-const DEFAULT_ALUMNI = [
-  { name:'Chidinma Okonkwo', score:'JAMB: 342', university:'UNILAG — Medicine', photoUrl:'' },
-  { name:'Emmanuel Nwachukwu', score:'JAMB: 328', university:'OAU — Engineering', photoUrl:'' },
-  { name:'Aisha Mustapha', score:'JAMB: 315', university:'ABU Zaria — Law', photoUrl:'' },
-  { name:'Tobechukwu Eze', score:'JAMB: 310', university:'UNIPORT — Pharmacy', photoUrl:'' },
-  { name:'Grace Adeleke', score:"WAEC: 8 A's", university:'UI Ibadan — Accounting', photoUrl:'' },
-  { name:'Odili Shedrach', score:"WAEC: 7 A's", university:'UNILAG — Sciences', photoUrl:'' }
+const DEFAULT_ALUMNI=[
+  {name:'Chidinma Okonkwo',score:'JAMB: 342',university:'UNILAG — Medicine',photoUrl:''},
+  {name:'Emmanuel Nwachukwu',score:'JAMB: 328',university:'OAU — Engineering',photoUrl:''},
+  {name:'Aisha Mustapha',score:'JAMB: 315',university:'ABU Zaria — Law',photoUrl:''},
+  {name:'Tobechukwu Eze',score:'JAMB: 310',university:'UNIPORT — Pharmacy',photoUrl:''},
+  {name:'Grace Adeleke',score:"WAEC: 8 A's",university:'UI Ibadan — Accounting',photoUrl:''},
+  {name:'Odili Shedrach',score:"WAEC: 7 A's",university:'UNILAG — Sciences',photoUrl:''}
 ];
-const DEFAULT_TESTIMONIALS = [
-  { name:'Amaka Obi', subtitle:'JAMB 2024 — 318/400', text:"Sir Philip's Academy changed everything for me...", stars:5 },
-  { name:'Kingsley Eze', subtitle:"WAEC 2025 — 7A's, 1B", text:"The WAEC coaching here is second to none...", stars:5 },
-  { name:'Blessing Adeyemi', subtitle:'JAMB 2023 — 305/400', text:"I was struggling with Mathematics until Sir Philip's Academy...", stars:5 }
+const DEFAULT_TESTIMONIALS=[
+  {name:'Amaka Obi',subtitle:'JAMB 2024 — 318/400',text:"Sir Philip's Academy changed everything for me...",stars:5},
+  {name:'Kingsley Eze',subtitle:"WAEC 2025 — 7A's, 1B",text:'The WAEC coaching here is second to none...',stars:5},
+  {name:'Blessing Adeyemi',subtitle:'JAMB 2023 — 305/400',text:"I was struggling with Mathematics until Sir Philip's Academy...",stars:5}
 ];
 
-/* ----------------------------------------------------------------
-   FIREBASE CONFIG — auto-load from localStorage
----------------------------------------------------------------- */
-function getConfig() {
-  try { return JSON.parse(localStorage.getItem('spa_fb_config') || 'null'); } catch(e) { return null; }
-}
+function getConfig(){try{return JSON.parse(localStorage.getItem('spa_fb_config')||'null');}catch(e){return null;}}
 
-function initFirebase(config) {
-  try {
-    // Unsubscribe any existing listeners before reinitializing
-    unsubscribeAll();
-    // Delete existing apps first to avoid "already initialized" errors
-    if (firebase.apps && firebase.apps.length) {
-      firebase.apps.forEach(a => { try { a.delete(); } catch(e){} });
+// Pre-warm Firebase the instant the page loads — fires a tiny Firestore
+// request immediately so the TCP/TLS connection is fully open by the
+// time the user finishes typing their password
+(function(){
+  try{
+    const cfg = getConfig();
+    if(!cfg) return; // no config saved yet — first ever setup, nothing to warm
+    let app;
+    if(firebase.apps && firebase.apps.length > 0){
+      app = firebase.apps[0];
+    } else {
+      app = firebase.initializeApp(cfg);
     }
-    const app = firebase.initializeApp(config);
-    db = app.firestore();
+    // Fire a real (but tiny) Firestore request so the connection fully opens now
+    // We fetch just 1 doc from settings — lightweight, won't affect anything
+    const db_warm = app.firestore();
+    db_warm.collection('settings').doc('heroStats').get()
+      .then(() => console.log('🔥 Firebase pre-warmed'))
+      .catch(() => {}); // silently ignore errors — this is just a warmup
+  }catch(e){ console.log('Pre-warm skipped:', e.message); }
+})();
+function unsubscribeAll(){activeListeners.forEach(u=>{try{u();}catch(e){}});activeListeners=[];loadAllRunning=false;}
+
+function initFirebase(config){
+  try{
+    unsubscribeAll();
+
+    // If app already exists (from pre-warm), reuse it — never re-initialize
+    if(!firebase.apps || firebase.apps.length === 0){
+      firebase.initializeApp(config);
+    }
+
+    db = firebase.apps[0].firestore();
+
     document.getElementById('fb-status-text').textContent = 'Connected ✅';
     document.getElementById('cfg-ok').style.display = 'block';
     document.getElementById('fb-warning').classList.remove('show');
+
+    // Load data — errors show inline in each section, not as a modal status
     loadAll();
     return true;
-  } catch(e) {
-    console.error('Firebase init error:', e);
+
+  }catch(e){
+    console.error('Firebase init error:', e.message);
+    // Show the REAL error message so it's debuggable
+    const msg = e.message || String(e);
+    document.getElementById('fb-status-text').textContent = 'Error';
+    document.getElementById('fb-warning').classList.add('show');
+    document.getElementById('fb-warning').innerHTML =
+      '⚠️ Firebase error: <strong>' + msg + '</strong> — double-check your config in <strong>Firebase Setup</strong>.';
+    showStatus('Error: ' + msg, 'error');
     return false;
   }
 }
 
-window.saveFirebaseConfig = function() {
-  const config = {
-    apiKey:            v('cfg-apiKey'),
-    authDomain:        v('cfg-authDomain'),
-    projectId:         v('cfg-projectId'),
-    storageBucket:     v('cfg-storageBucket'),
-    messagingSenderId: v('cfg-messagingSenderId'),
-    appId:             v('cfg-appId')
-  };
-  if (!config.apiKey || !config.projectId) {
-    showStatus('Please fill in API Key and Project ID at minimum.', 'error');
-    return;
-  }
-  localStorage.setItem('spa_fb_config', JSON.stringify(config));
+window.saveFirebaseConfig=function(){
+  const config={apiKey:v('cfg-apiKey'),authDomain:v('cfg-authDomain'),projectId:v('cfg-projectId'),storageBucket:v('cfg-storageBucket'),messagingSenderId:v('cfg-messagingSenderId'),appId:v('cfg-appId')};
+  if(!config.apiKey||!config.projectId){showStatus('Fill in API Key and Project ID.','error');return;}
+  localStorage.setItem('spa_fb_config',JSON.stringify(config));
+  // initFirebase shows its own success/error messages
   const ok = initFirebase(config);
-  if (ok) showStatus('Firebase connected and saved! You will not need to do this again. ✅', 'success');
-  else showStatus('Connection failed. Double-check your config values.', 'error');
+  if(ok) showStatus('Config saved & connected! ✅','success');
 };
 
-/* ----------------------------------------------------------------
-   LOGIN / LOGOUT
-   FIX: auto-connects Firebase silently on every login using saved config
----------------------------------------------------------------- */
-window.doLogin = function() {
-  if (document.getElementById('loginPwd').value === ADMIN_PASSWORD) {
-    document.getElementById('loginScreen').style.display = 'none';
-    document.getElementById('app').style.display = 'block';
-
-    const cfg = getConfig();
-    if (cfg) {
-      // Pre-fill the Firebase Setup form with saved values
+window.doLogin=function(){
+  if(document.getElementById('loginPwd').value===ADMIN_PASSWORD){
+    document.getElementById('loginScreen').style.display='none';
+    document.getElementById('app').style.display='block';
+    document.getElementById('mobileToggle').style.display='';
+    const cfg=getConfig();
+    if(cfg){
       fillConfigInputs(cfg);
-      // Auto-connect silently — no need for user to go to Firebase Setup
-      const ok = initFirebase(cfg);
-      if (!ok) {
-        document.getElementById('fb-status-text').textContent = 'Failed to connect';
-        document.getElementById('fb-warning').classList.add('show');
-      }
-    } else {
-      // No config saved yet — point user to Firebase Setup
-      document.getElementById('fb-status-text').textContent = 'Not configured — see Firebase Setup';
+      // Hide warning before attempting — initFirebase will show it if it fails
+      document.getElementById('fb-warning').classList.remove('show');
+      initFirebase(cfg);
+    }else{
+      document.getElementById('fb-status-text').textContent='Not configured — see Firebase Setup';
       document.getElementById('fb-warning').classList.add('show');
     }
-  } else {
-    document.getElementById('loginError').style.display = 'block';
-    document.getElementById('loginPwd').value = '';
-  }
+  }else{document.getElementById('loginError').style.display='block';document.getElementById('loginPwd').value='';}
 };
 
-window.doLogout = function() {
-  unsubscribeAll(); // stop all Firebase listeners before logging out
-  db = null;
-  document.getElementById('app').style.display = 'none';
-  document.getElementById('loginScreen').style.display = 'flex';
-  document.getElementById('loginPwd').value = '';
+window.doLogout=function(){
+  unsubscribeAll();db=null;
+  document.getElementById('app').style.display='none';
+  document.getElementById('loginScreen').style.display='flex';
+  document.getElementById('mobileToggle').style.display='none';
+  document.getElementById('loginPwd').value='';
 };
 
-function fillConfigInputs(cfg) {
-  ['apiKey','authDomain','projectId','storageBucket','messagingSenderId','appId'].forEach(k => {
-    const el = document.getElementById('cfg-'+k);
-    if (el) el.value = cfg[k] || '';
-  });
-}
+function fillConfigInputs(cfg){['apiKey','authDomain','projectId','storageBucket','messagingSenderId','appId'].forEach(k=>{const el=document.getElementById('cfg-'+k);if(el)el.value=cfg[k]||'';});}
 
-/* ----------------------------------------------------------------
-   STATUS BAR
----------------------------------------------------------------- */
 let st;
-window.showStatus = function(msg, type = 'loading') {
-  clearTimeout(st);
-  const bar = document.getElementById('statusBar');
-  bar.className = 'status-bar show ' + type;
-  document.getElementById('statusMsg').textContent = msg;
-  document.getElementById('statusSpinner').style.display = type === 'loading' ? 'block' : 'none';
-  if (type !== 'loading') st = setTimeout(() => bar.classList.remove('show'), 3500);
+window.showStatus=function(msg,type='loading'){
+  clearTimeout(st);const bar=document.getElementById('statusBar');
+  bar.className='status-bar show '+type;
+  document.getElementById('statusMsg').textContent=msg;
+  document.getElementById('statusSpinner').style.display=type==='loading'?'block':'none';
+  if(type!=='loading')st=setTimeout(()=>bar.classList.remove('show'),3500);
 };
 
-/* ----------------------------------------------------------------
-   NAVIGATION
----------------------------------------------------------------- */
-window.showPage = function(name, btn) {
-  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
-  const page = document.getElementById('page-' + name);
-  if (page) page.classList.add('active');
-  if (btn) btn.classList.add('active');
+window.showPage=function(name,btn){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
+  const page=document.getElementById('page-'+name);
+  if(page)page.classList.add('active');
+  if(btn)btn.classList.add('active');
+  closeSidebar();
+};
+
+document.getElementById('mobileToggle').onclick=()=>{
+  document.getElementById('sidebar').classList.add('open');
+  document.getElementById('sidebarOverlay').classList.add('show');
+};
+window.closeSidebar=function(){
   document.getElementById('sidebar').classList.remove('open');
+  document.getElementById('sidebarOverlay').classList.remove('show');
 };
 
-document.getElementById('mobileToggle').onclick = () =>
-  document.getElementById('sidebar').classList.toggle('open');
-
-/* ----------------------------------------------------------------
-   LOAD ALL DATA
-   FIX: seed banners now hidden by default, only shown when empty
----------------------------------------------------------------- */
-// Track active Firestore listeners so we can unsubscribe before re-subscribing
-// This prevents duplicate listeners stacking up on every login
-let activeListeners = [];
-
-function unsubscribeAll() {
-  activeListeners.forEach(unsub => { try { unsub(); } catch(e){} });
-  activeListeners = [];
-}
-
-function loadAll() {
-  // Always unsubscribe existing listeners first — prevents doubling on re-login
+function loadAll(){
+  if(!db){ console.error('loadAll: db is null'); return; }
   unsubscribeAll();
-  listenCol('events',      renderEvents);
-  listenCol('classes',     renderClasses);
-  listenCol('leaderboard', renderLeaderboard);
-  listenCol('alumni',      renderAlumni);
-  listenCol('testimonials',renderTestimonials);
-  loadStats();
-  loadHeroPhotos();
-  loadAboutPhoto();
-  loadGenericPhotos();
+  loadAllRunning = true;
+
+  const cols = [
+    { name:'events',       renderer:renderEvents,       dashId:'dash-events', seedId:'seed-events-banner' },
+    { name:'classes',      renderer:renderClasses,       dashId:null,          seedId:'seed-classes-banner' },
+    { name:'leaderboard',  renderer:renderLeaderboard,   dashId:'dash-lb',     seedId:'seed-lb-banner' },
+    { name:'alumni',       renderer:renderAlumni,        dashId:'dash-alumni', seedId:'seed-alumni-banner' },
+    { name:'testimonials', renderer:renderTestimonials,  dashId:'dash-test',   seedId:'seed-test-banner' },
+  ];
+
+  const snapshotResults = {};
+  const firstFired = {};
+  let firstFireCount = 0;
+
+  cols.forEach(col => {
+    const unsub = db.collection(col.name).onSnapshot(snap => {
+      const items = snap.docs.map(d => ({ id:d.id, ...d.data() }));
+      col.renderer(items);
+      if(col.dashId) document.getElementById(col.dashId).textContent = items.length;
+      const banner = document.getElementById(col.seedId);
+      if(banner) banner.style.display = items.length === 0 ? 'flex' : 'none';
+
+      snapshotResults[col.name] = snap;
+
+      // Only count the FIRST fire per collection — real-time updates must NOT re-trigger setup check
+      if(!firstFired[col.name]){
+        firstFired[col.name] = true;
+        firstFireCount++;
+        if(firstFireCount === cols.length){
+          checkSetupStatus(cols.map(c => snapshotResults[c.name]), cols.map(c => c.name));
+        }
+      }
+    }, err => {
+      console.error('onSnapshot error for', col.name, '|', err.code, '|', err.message);
+      const listId = col.name + '-list';
+      const el = document.getElementById(listId);
+      let hint = '';
+      if(err.code === 'permission-denied'){
+        hint = '🔒 <strong>Permission denied</strong> — your Firestore security rules are blocking reads.<br>' +
+               '<small>Go to <a href="https://console.firebase.google.com" target="_blank" style="color:var(--goldl)">Firebase Console</a> → Firestore → Rules and set <code style="background:var(--surface2);padding:2px 5px;border-radius:4px;">allow read, write: if true;</code></small>';
+      } else if(err.code === 'unavailable'){
+        hint = '📡 Firebase is unreachable — check your internet connection.';
+      } else {
+        hint = '<strong>' + (err.code||'unknown') + '</strong>: ' + err.message;
+      }
+      if(el) el.innerHTML = '<div class="empty-state" style="color:var(--danger);text-align:left;padding:20px;">' +
+        '<div style="font-size:28px;margin-bottom:10px">⚠️</div>' + hint + '</div>';
+      const warn = document.getElementById('fb-warning');
+      if(warn){ warn.innerHTML = hint; warn.classList.add('show'); }
+    });
+    activeListeners.push(unsub);
+  });
+
+  loadAllSettings();
 }
 
-function listenCol(name, renderer) {
-  if (!db) return;
-  // onSnapshot returns an unsubscribe function — store it so we can cancel it later
-  const unsub = db.collection(name).onSnapshot(snap => {
-    const items = snap.docs.map(d => ({ id: d.id, ...d.data() }));
-    renderer(items);
+// Shows first-time setup card if any collection is empty.
+// Marks setup as done in localStorage once all collections have data.
+function checkSetupStatus(snaps, cols){
+  // Always trust Firebase directly — never rely on localStorage alone
+  // localStorage only speeds things up, Firebase is the source of truth
+  const allHaveData = snaps.every(s => !s.empty);
+  const emptyCols   = cols.filter((_,i) => snaps[i].empty);
 
-    // Update dashboard counts
-    const map = { events:'dash-events', leaderboard:'dash-lb', alumni:'dash-alumni', testimonials:'dash-test' };
-    if (map[name]) document.getElementById(map[name]).textContent = items.length;
+  const seedCard   = document.getElementById('seed-all-card');
+  const firstHint  = document.getElementById('first-time-hint');
+  const doneHint   = document.getElementById('setup-done-hint');
 
-    // Show seed banner only when collection is truly empty
-    const bannerSuffix = { events:'events', classes:'classes', leaderboard:'lb', alumni:'alumni', testimonials:'test' }[name];
-    const banner = document.getElementById('seed-' + bannerSuffix + '-banner');
-    if (banner) {
-      banner.style.display = items.length === 0 ? 'flex' : 'none';
+  if(allHaveData){
+    // Firebase has data in all collections — setup is genuinely done
+    localStorage.setItem('spa_setup_done','true');
+    if(seedCard)  seedCard.style.display  = 'none';
+    if(firstHint) firstHint.style.display = 'none';
+    if(doneHint){
+      doneHint.style.display = 'flex';
+      setTimeout(()=>{ doneHint.style.display='none'; }, 4000);
     }
-  }, e => console.error(name, e));
+  } else {
+    // One or more collections are empty in Firebase — show setup card
+    // regardless of what localStorage says
+    localStorage.removeItem('spa_setup_done'); // clear stale flag
+    if(seedCard){
+      seedCard.style.display = 'block';
+      // Show which collections are missing
+      const log = document.getElementById('seed-all-log');
+      if(log && emptyCols.length){
+        log.style.display = 'block';
+        log.innerHTML = '<div style="color:var(--goldl)">⚠️ Missing data in: <strong>' + emptyCols.join(', ') + '</strong> — click the button above to load defaults.</div>';
+      }
+    }
+    if(firstHint) firstHint.style.display = 'flex';
+    if(doneHint)  doneHint.style.display  = 'none';
+  }
+}
+
+function listenCol(name,renderer){
+  if(!db){ console.error('listenCol: db is null for', name); return; }
+  const unsub=db.collection(name).onSnapshot(snap=>{
+    const items=snap.docs.map(d=>({id:d.id,...d.data()}));
+    renderer(items);
+    const map={events:'dash-events',leaderboard:'dash-lb',alumni:'dash-alumni',testimonials:'dash-test'};
+    if(map[name])document.getElementById(map[name]).textContent=items.length;
+    const suffix={events:'events',classes:'classes',leaderboard:'lb',alumni:'alumni',testimonials:'test'}[name];
+    const banner=document.getElementById('seed-'+suffix+'-banner');
+    if(banner)banner.style.display=items.length===0?'flex':'none';
+  },e=>{
+    console.error('onSnapshot error for',name,e);
+    showStatus('Live update error for '+name+': '+e.message,'error');
+  });
   activeListeners.push(unsub);
 }
 
-/* ----------------------------------------------------------------
-   RENDER FUNCTIONS
----------------------------------------------------------------- */
-function renderEvents(items) {
-  const el = document.getElementById('events-list');
-  if (!items.length) {
-    el.innerHTML = '<div class="empty-state"><div class="empty-icon">📅</div>No events yet. Click "Load Default Events" above or "+ Add Event".</div>';
-    return;
-  }
-  const sorted = [...items].sort((a,b) => (a.order||99) - (b.order||99));
-  el.innerHTML = sorted.map(item => `
-    <div class="item-row">
-      ${ item.imageData ? `<img class="item-img" src="${esc(item.imageData)}" alt="" style="object-fit:cover;">` : `<div class="item-img no-img" style="background:#2a1a00;font-size:26px">${esc(item.emoji||'📅')}</div>` }
-      <div class="item-info">
-        <div class="item-title">${esc(item.title)}</div>
-        <div class="item-meta">📅 ${esc(item.date)}<br>📍 ${esc(item.venue)}<br><span style="color:var(--goldl)">${esc(item.tag||'')}</span></div>
-      </div>
-      <div class="item-actions">
-        <button class="edit-btn" onclick="openModal('event','${item.id}')">✏️ Edit</button>
-        <button class="del-btn" onclick="deleteItem('events','${item.id}')">🗑 Delete</button>
-      </div>
-    </div>`).join('');
+function renderEvents(items){
+  const el=document.getElementById('events-list');
+  if(!items.length){el.innerHTML='<div class="empty-state"><div class="empty-icon">📅</div>No events yet.</div>';return;}
+  const sorted=[...items].sort((a,b)=>(a.order||99)-(b.order||99));
+  el.innerHTML=sorted.map(item=>`<div class="item-row">
+    ${(item.imageData||item.imageUrl)?`<img class="item-img" src="${esc(item.imageData||item.imageUrl)}" alt="" style="object-fit:cover;">`:`<div class="item-img no-img" style="background:#2a1a00;font-size:22px">${esc(item.emoji||'📅')}</div>`}
+    <div class="item-info"><div class="item-title">${esc(item.title)}</div><div class="item-meta">📅 ${esc(item.date)} · 📍 ${esc(item.venue)}<br><span style="color:var(--goldl)">${esc(item.tag||'')}</span></div></div>
+    <div class="item-actions"><button class="edit-btn" onclick="openModal('event','${item.id}')">✏️ Edit</button><button class="del-btn" onclick="deleteItem('events','${item.id}')">🗑</button></div>
+  </div>`).join('');
 }
 
-function renderClasses(items) {
-  const el = document.getElementById('classes-list');
-  if (!items.length) { el.innerHTML = '<div class="empty-state"><div class="empty-icon">🏫</div>No class photos yet.</div>'; return; }
-  const sorted = [...items].sort((a,b) => (a.order||99) - (b.order||99));
-  el.innerHTML = sorted.map(item => `
-    <div class="item-row">
-      ${ (item.imageData||item.imageUrl) ? `<img class="item-img" src="${esc(item.imageData||item.imageUrl)}" alt="">` : '<div class="item-img no-img" style="background:var(--surface2);color:var(--muted);font-size:11px;text-align:center;padding:4px;">No photo</div>'}
-      <div class="item-info">
-        <div class="item-title">${esc(item.title)}</div>
-        <div class="item-meta">${esc(item.tag||'')} · ${esc(item.description||'')}</div>
-      </div>
-      <div class="item-actions">
-        <button class="edit-btn" onclick="openModal('classphoto','${item.id}')">✏️ Edit</button>
-        <button class="del-btn" onclick="deleteItem('classes','${item.id}')">🗑 Delete</button>
-      </div>
-    </div>`).join('');
+function renderClasses(items){
+  const el=document.getElementById('classes-list');
+  if(!items.length){el.innerHTML='<div class="empty-state"><div class="empty-icon">🏫</div>No classes yet.</div>';return;}
+  const sorted=[...items].sort((a,b)=>(a.order||99)-(b.order||99));
+  el.innerHTML=sorted.map(item=>`<div class="item-row">
+    ${(item.imageData||item.imageUrl)?`<img class="item-img" src="${esc(item.imageData||item.imageUrl)}" alt="">`:'<div class="item-img no-img" style="font-size:11px;color:var(--muted);">No photo</div>'}
+    <div class="item-info"><div class="item-title">${esc(item.title)}</div><div class="item-meta">${esc(item.tag||'')} · ${esc(item.description||'')}</div></div>
+    <div class="item-actions"><button class="edit-btn" onclick="openModal('classphoto','${item.id}')">✏️ Edit</button><button class="del-btn" onclick="deleteItem('classes','${item.id}')">🗑</button></div>
+  </div>`).join('');
 }
 
-function renderLeaderboard(items) {
-  const el = document.getElementById('leaderboard-list');
-  if (!items.length) { el.innerHTML = '<div class="empty-state"><div class="empty-icon">🏆</div>No entries yet.</div>'; return; }
-  const sorted = [...items].sort((a,b) => (a.rank||99) - (b.rank||99));
-  el.innerHTML = sorted.map(item => `
-    <div class="item-row">
-      <div class="item-img no-img" style="font-size:26px">${item.rank <= 3 ? ['🥇','🥈','🥉'][item.rank-1] : '🏅'}</div>
-      <div class="item-info">
-        <div class="item-title">${esc(item.name)}</div>
-        <div class="item-meta">Rank #${item.rank} · ${esc(item.exam)} · Score: ${esc(item.score)} · ${esc(item.dept)} · ${esc(item.year)}</div>
-      </div>
-      <div class="item-actions">
-        <button class="edit-btn" onclick="openModal('leaderboard','${item.id}')">✏️ Edit</button>
-        <button class="del-btn" onclick="deleteItem('leaderboard','${item.id}')">🗑 Delete</button>
-      </div>
-    </div>`).join('');
+function renderLeaderboard(items){
+  const el=document.getElementById('leaderboard-list');
+  if(!items.length){el.innerHTML='<div class="empty-state"><div class="empty-icon">🏆</div>No entries yet.</div>';return;}
+  const sorted=[...items].sort((a,b)=>(a.rank||99)-(b.rank||99));
+  el.innerHTML=sorted.map(item=>`<div class="item-row">
+    <div class="item-img no-img" style="font-size:22px">${item.rank<=3?['🥇','🥈','🥉'][item.rank-1]:'🏅'}</div>
+    <div class="item-info"><div class="item-title">${esc(item.name)}</div><div class="item-meta">#${item.rank} · ${esc(item.exam)} · ${esc(item.score)} · ${esc(item.dept)} · ${esc(item.year)}</div></div>
+    <div class="item-actions"><button class="edit-btn" onclick="openModal('leaderboard','${item.id}')">✏️ Edit</button><button class="del-btn" onclick="deleteItem('leaderboard','${item.id}')">🗑</button></div>
+  </div>`).join('');
 }
 
-function renderAlumni(items) {
-  const el = document.getElementById('alumni-list');
-  if (!items.length) { el.innerHTML = '<div class="empty-state"><div class="empty-icon">🎓</div>No alumni yet.</div>'; return; }
-  el.innerHTML = items.map(item => `
-    <div class="item-row">
-      ${item.photoUrl ? `<img class="item-img" src="${esc(item.photoUrl)}" onerror="this.outerHTML='<div class=\\'item-img no-img\\' style=\\'font-size:22px\\'>🎓</div>'" alt="">` : '<div class="item-img no-img" style="color:var(--muted);font-size:11px;">No photo</div>'}
-      <div class="item-info">
-        <div class="item-title">${esc(item.name)}</div>
-        <div class="item-meta">${esc(item.score)} · ${esc(item.university)}</div>
-      </div>
-      <div class="item-actions">
-        <button class="edit-btn" onclick="openModal('alumni','${item.id}')">✏️ Edit</button>
-        <button class="del-btn" onclick="deleteItem('alumni','${item.id}')">🗑 Delete</button>
-      </div>
-    </div>`).join('');
+function renderAlumni(items){
+  const el=document.getElementById('alumni-list');
+  if(!items.length){el.innerHTML='<div class="empty-state"><div class="empty-icon">🎓</div>No alumni yet.</div>';return;}
+  el.innerHTML=items.map(item=>`<div class="item-row">
+    ${item.photoUrl?`<img class="item-img" src="${esc(item.photoUrl)}" onerror="this.outerHTML='<div class=\\'item-img no-img\\'>🎓</div>'" alt="">`:'<div class="item-img no-img" style="font-size:11px;color:var(--muted);">No photo</div>'}
+    <div class="item-info"><div class="item-title">${esc(item.name)}</div><div class="item-meta">${esc(item.score)} · ${esc(item.university)}</div></div>
+    <div class="item-actions"><button class="edit-btn" onclick="openModal('alumni','${item.id}')">✏️ Edit</button><button class="del-btn" onclick="deleteItem('alumni','${item.id}')">🗑</button></div>
+  </div>`).join('');
 }
 
-function renderTestimonials(items) {
-  const el = document.getElementById('testimonials-list');
-  if (!items.length) { el.innerHTML = '<div class="empty-state"><div class="empty-icon">💬</div>No testimonials yet.</div>'; return; }
-  el.innerHTML = items.map(item => `
-    <div class="item-row">
-      <div class="item-img no-img" style="background:var(--goldp);font-size:22px">💬</div>
-      <div class="item-info">
-        <div class="item-title">${esc(item.name)} — ${'★'.repeat(item.stars||5)}</div>
-        <div class="item-meta">"${esc((item.text||'').substring(0,80))}..." · ${esc(item.subtitle)}</div>
-      </div>
-      <div class="item-actions">
-        <button class="edit-btn" onclick="openModal('testimonial','${item.id}')">✏️ Edit</button>
-        <button class="del-btn" onclick="deleteItem('testimonials','${item.id}')">🗑 Delete</button>
-      </div>
-    </div>`).join('');
+function renderTestimonials(items){
+  const el=document.getElementById('testimonials-list');
+  if(!items.length){el.innerHTML='<div class="empty-state"><div class="empty-icon">💬</div>No testimonials yet.</div>';return;}
+  el.innerHTML=items.map(item=>`<div class="item-row">
+    <div class="item-img no-img" style="background:var(--goldp);font-size:20px">💬</div>
+    <div class="item-info"><div class="item-title">${esc(item.name)} ${'★'.repeat(item.stars||5)}</div><div class="item-meta">"${esc((item.text||'').substring(0,80))}..." · ${esc(item.subtitle)}</div></div>
+    <div class="item-actions"><button class="edit-btn" onclick="openModal('testimonial','${item.id}')">✏️ Edit</button><button class="del-btn" onclick="deleteItem('testimonials','${item.id}')">🗑</button></div>
+  </div>`).join('');
 }
 
-/* ----------------------------------------------------------------
-   SEED FUNCTIONS
-   FIX: checks collection is empty before seeding to prevent duplicates
----------------------------------------------------------------- */
-async function seedCollection(colName, data, btnId) {
-  if (!db) { showStatus('Connect Firebase first (Firebase Setup).', 'error'); return; }
+async function seedCollection(colName,data,btnId){
+  if(!db){showStatus('Connect Firebase first.','error');return;}
+  const existing=await db.collection(colName).limit(1).get();
+  if(!existing.empty){showStatus('Data already exists — not re-seeding.','error');const btn=document.getElementById(btnId);if(btn){btn.disabled=true;btn.textContent='Already loaded';}return;}
+  const btn=document.getElementById(btnId);btn.disabled=true;btn.textContent='Loading...';
+  showStatus('Loading default data...','loading');
+  try{
+    const batch=db.batch();
+    data.forEach(item=>{const ref=db.collection(colName).doc();batch.set(ref,{...item,createdAt:Date.now()});});
+    await batch.commit();showStatus('Default data loaded! ✅','success');
+  }catch(e){showStatus('Error: '+e.message,'error');btn.disabled=false;btn.textContent='Try Again';}
+}
+window.seedEvents=()=>seedCollection('events',DEFAULT_EVENTS,'seed-events-btn');
+window.seedClasses=()=>seedCollection('classes',DEFAULT_CLASSES,'seed-classes-btn');
+window.seedLeaderboard=()=>seedCollection('leaderboard',DEFAULT_LEADERBOARD,'seed-lb-btn');
+window.seedAlumni=()=>seedCollection('alumni',DEFAULT_ALUMNI,'seed-alumni-btn');
+window.seedTestimonials=()=>seedCollection('testimonials',DEFAULT_TESTIMONIALS,'seed-test-btn');
 
-  // *** KEY FIX: Check if data already exists before seeding ***
-  const existing = await db.collection(colName).limit(1).get();
-  if (!existing.empty) {
-    showStatus('Data already exists in Firebase — not re-seeding to avoid duplicates.', 'error');
-    const btn = document.getElementById(btnId);
-    if (btn) { btn.disabled = true; btn.textContent = 'Already loaded'; }
-    return;
-  }
+window.seedAll = async function(){
+  if(!db){ showStatus('Connect Firebase first.','error'); return; }
+  const btn = document.getElementById('seed-all-btn');
+  const log = document.getElementById('seed-all-log');
+  if(!confirm('Load all default data into Firebase? Only do this once on a fresh setup.')) return;
 
-  const btn = document.getElementById(btnId);
   btn.disabled = true;
-  btn.textContent = 'Loading...';
-  showStatus('Seeding data...', 'loading');
+  btn.textContent = '⏳ Loading...';
+  log.style.display = 'block';
+  log.innerHTML = '<div style="color:var(--goldl);font-weight:700;">🚀 Starting setup...</div>';
 
-  try {
-    const batch = db.batch();
-    data.forEach(item => {
-      const ref = db.collection(colName).doc();
-      batch.set(ref, { ...item, createdAt: Date.now() });
-    });
-    await batch.commit();
-    showStatus('Default data loaded! ✅ You can now edit or delete them.', 'success');
-  } catch(e) {
-    showStatus('Error: ' + e.message, 'error');
-    btn.disabled = false;
-    btn.textContent = 'Try Again';
-  }
-}
+  const collections = [
+    { name:'events',      data:DEFAULT_EVENTS,      label:'Events' },
+    { name:'classes',     data:DEFAULT_CLASSES,      label:'Classes' },
+    { name:'leaderboard', data:DEFAULT_LEADERBOARD,  label:'Leaderboard' },
+    { name:'alumni',      data:DEFAULT_ALUMNI,       label:'Alumni' },
+    { name:'testimonials',data:DEFAULT_TESTIMONIALS, label:'Testimonials' },
+  ];
 
-window.seedEvents       = () => seedCollection('events',       DEFAULT_EVENTS,       'seed-events-btn');
-window.seedClasses      = () => seedCollection('classes',      DEFAULT_CLASSES,      'seed-classes-btn');
-window.seedLeaderboard  = () => seedCollection('leaderboard',  DEFAULT_LEADERBOARD,  'seed-lb-btn');
-window.seedAlumni       = () => seedCollection('alumni',       DEFAULT_ALUMNI,       'seed-alumni-btn');
-window.seedTestimonials = () => seedCollection('testimonials', DEFAULT_TESTIMONIALS, 'seed-test-btn');
-
-/* ----------------------------------------------------------------
-   HERO STATS
----------------------------------------------------------------- */
-async function loadStats() {
-  if (!db) return;
-  try {
-    const snap = await db.collection('settings').doc('heroStats').get();
-    if (snap.exists) {
-      const s = snap.data();
-      sv('stat1-num', s.stat1num); sv('stat1-label', s.stat1label);
-      sv('stat2-num', s.stat2num); sv('stat2-label', s.stat2label);
-      sv('stat3-num', s.stat3num); sv('stat3-label', s.stat3label);
+  let allSkipped = true;
+  for(const col of collections){
+    try{
+      const existing = await db.collection(col.name).limit(1).get();
+      if(!existing.empty){
+        log.innerHTML += '<div style="color:var(--muted)">⏭️ '+col.label+' — already has data, skipped.</div>';
+        continue;
+      }
+      allSkipped = false;
+      const batch = db.batch();
+      col.data.forEach(item=>{ const ref=db.collection(col.name).doc(); batch.set(ref,{...item,createdAt:Date.now()}); });
+      await batch.commit();
+      log.innerHTML += '<div style="color:var(--success)">✅ '+col.label+' loaded ('+col.data.length+' entries)</div>';
+    }catch(e){
+      log.innerHTML += '<div style="color:var(--danger)">❌ '+col.label+' failed: '+e.message+'</div>';
     }
-  } catch(e) {}
+  }
+
+  if(allSkipped){
+    log.innerHTML += '<div style="color:var(--goldl);margin-top:6px;font-weight:700;">⚠️ All collections already have data — nothing was changed.</div>';
+    btn.textContent = '✅ Already Set Up';
+  } else {
+    log.innerHTML += '<div style="color:var(--success);font-weight:700;margin-top:6px;">🎉 Done! All default data is now live on your site.</div>';
+    btn.textContent = '✅ Done!';
+    // Mark first-time setup as complete — never show this card again
+    localStorage.setItem('spa_setup_done','true');
+    setTimeout(()=>{
+      const seedCard  = document.getElementById('seed-all-card');
+      const firstHint = document.getElementById('first-time-hint');
+      const doneHint  = document.getElementById('setup-done-hint');
+      if(seedCard)  seedCard.style.display  = 'none';
+      if(firstHint) firstHint.style.display = 'none';
+      if(doneHint){ doneHint.style.display = 'flex'; setTimeout(()=>{ doneHint.style.display='none'; }, 5000); }
+    }, 1500);
+  }
+};
+
+// Load ALL settings docs in one parallel batch — stats, photos, text, everything
+async function loadAllSettings(){
+  if(!db) return;
+  try{
+    const docs = ['heroStats','heroPhotos','aboutPhoto','unilagPhoto','plugPhoto',
+                  'navText','heroText','countdown','admissionSuccess','admissionGuidance','aboutSection'];
+    const snaps = await Promise.all(docs.map(d => db.collection('settings').doc(d).get().catch(()=>null)));
+    const data = {};
+    docs.forEach((d,i) => { if(snaps[i] && snaps[i].exists) data[d] = snaps[i].data(); });
+
+    // Hero Stats
+    if(data.heroStats){
+      const s=data.heroStats;
+      sv('stat1-num',s.stat1num);sv('stat1-label',s.stat1label);
+      sv('stat2-num',s.stat2num);sv('stat2-label',s.stat2label);
+      sv('stat3-num',s.stat3num);sv('stat3-label',s.stat3label);
+    }
+    // Hero Photos
+    if(data.heroPhotos){
+      const hp=data.heroPhotos;
+      [1,2,3].forEach(i=>{
+        if(hp['photo'+i]){
+          heroPendingData[i]=hp['photo'+i];
+          const prev=document.getElementById('hero-preview-'+i),empty=document.getElementById('hero-empty-'+i);
+          if(prev){prev.src=hp['photo'+i];prev.classList.add('show');}
+          if(empty)empty.style.display='none';
+        }
+      });
+    }
+    // About Photo
+    if(data.aboutPhoto&&data.aboutPhoto.photoData){
+      const img=document.getElementById('about-current-img'),noP=document.getElementById('about-no-photo');
+      if(img){img.src=data.aboutPhoto.photoData;img.style.display='block';}
+      if(noP)noP.style.display='none';
+    }
+    // Unilag Photo
+    if(data.unilagPhoto&&data.unilagPhoto.photoData){
+      const img=document.getElementById('unilag-current-img'),noP=document.getElementById('unilag-no-photo');
+      if(img){img.src=data.unilagPhoto.photoData;img.style.display='block';}
+      if(noP)noP.style.display='none';
+    }
+    // Plug Photo
+    if(data.plugPhoto&&data.plugPhoto.photoData){
+      const img=document.getElementById('plug-current-img'),noP=document.getElementById('plug-no-photo');
+      if(img){img.src=data.plugPhoto.photoData;img.style.display='block';}
+      if(noP)noP.style.display='none';
+    }
+    // Nav Text
+    if(data.navText){const d=data.navText;sv('nav-sitename',d.siteName);sv('nav-tagline',d.tagline);sv('nav-tabtitle',d.tabTitle);}
+    // Hero Text
+    if(data.heroText){const d=data.heroText;sv('hero-badge',d.badge);sv('hero-h1',d.headline1);sv('hero-h2',d.headline2);sv('hero-sub',d.subtext);}
+    // Countdown
+    if(data.countdown){const d=data.countdown;const cb=document.getElementById('countdown-visible');if(cb)cb.checked=d.visible!==false;sv('countdown-title',d.title);sv('countdown-date',d.targetDate);sv('countdown-sub',d.subtext);sv('countdown-wa',d.waLink);}
+    // Admission Success
+    if(data.admissionSuccess){const d=data.admissionSuccess;sv('unilag-tag',d.tag);sv('unilag-heading',d.heading);sv('unilag-p1',d.p1);sv('unilag-p2',d.p2);if(d.universities){uniTags=d.universities;renderUniTags();}}
+    // Admission Guidance
+    if(data.admissionGuidance){const d=data.admissionGuidance;sv('plug-tag',d.tag);sv('plug-heading',d.heading);sv('plug-p1',d.p1);sv('plug-p2',d.p2);sv('plug-btn-text',d.btnText);sv('plug-btn-link',d.btnLink);}
+    // About Section
+    if(data.aboutSection){const d=data.aboutSection;sv('about-tag',d.tag);sv('about-heading',d.heading);sv('about-p1',d.p1);sv('about-p2',d.p2);sv('about-p3',d.p3);if(d.features&&d.features.length>=4){sv('about-f1-title',d.features[0].title);sv('about-f1-desc',d.features[0].desc);sv('about-f2-title',d.features[1].title);sv('about-f2-desc',d.features[1].desc);sv('about-f3-title',d.features[2].title);sv('about-f3-desc',d.features[2].desc);sv('about-f4-title',d.features[3].title);sv('about-f4-desc',d.features[3].desc);[1,2,3,4].forEach(i=>{const e=d.features[i-1].emoji;if(e){sv('about-f'+i+'-emoji',e);const btn=document.getElementById('f'+i+'-emoji-btn');if(btn)btn.textContent=e;}});}}
+  }catch(e){console.error('loadAllSettings error:',e);}
 }
 
-window.saveStats = async function() {
-  if (!db) { showStatus('Connect Firebase first.', 'error'); return; }
-  showStatus('Saving...', 'loading');
-  try {
-    await db.collection('settings').doc('heroStats').set({
-      stat1num: v('stat1-num'), stat1label: v('stat1-label'),
-      stat2num: v('stat2-num'), stat2label: v('stat2-label'),
-      stat3num: v('stat3-num'), stat3label: v('stat3-label'),
-    });
-    showStatus('Stats saved! ✅', 'success');
-  } catch(e) { showStatus('Error: ' + e.message, 'error'); }
+async function loadStats(){
+  if(!db)return;
+  try{const snap=await db.collection('settings').doc('heroStats').get();
+    if(snap.exists){const s=snap.data();sv('stat1-num',s.stat1num);sv('stat1-label',s.stat1label);sv('stat2-num',s.stat2num);sv('stat2-label',s.stat2label);sv('stat3-num',s.stat3num);sv('stat3-label',s.stat3label);}
+  }catch(e){}
+}
+window.saveStats=async function(){
+  if(!db){showStatus('Connect Firebase first.','error');return;}showStatus('Saving...','loading');
+  try{await db.collection('settings').doc('heroStats').set({stat1num:v('stat1-num'),stat1label:v('stat1-label'),stat2num:v('stat2-num'),stat2label:v('stat2-label'),stat3num:v('stat3-num'),stat3label:v('stat3-label')});showStatus('Stats saved! ✅','success');}
+  catch(e){showStatus('Error: '+e.message,'error');}
 };
 
-/* ----------------------------------------------------------------
-   DELETE ITEM
----------------------------------------------------------------- */
-window.deleteItem = async function(col, id) {
-  if (!confirm('Delete this item? This cannot be undone.')) return;
-  if (!db) { showStatus('Not connected.', 'error'); return; }
-  showStatus('Deleting...', 'loading');
-  try {
+window.saveSection=async function(docName,data){
+  if(!db){showStatus('Connect Firebase first.','error');return;}showStatus('Saving...','loading');
+  try{await db.collection('settings').doc(docName).set(data,{merge:true});showStatus('Saved! ✅','success');}
+  catch(e){showStatus('Error: '+e.message,'error');}
+};
+
+window.saveCountdown=async function(){
+  if(!db){showStatus('Connect Firebase first.','error');return;}showStatus('Saving...','loading');
+  try{
+    await db.collection('settings').doc('countdown').set({
+      visible:document.getElementById('countdown-visible').checked,
+      title:v('countdown-title'),targetDate:v('countdown-date'),subtext:v('countdown-sub'),waLink:v('countdown-wa')
+    });showStatus('Countdown saved! ✅','success');
+  }catch(e){showStatus('Error: '+e.message,'error');}
+};
+
+let uniTags=[
+  {uni:'UNILAG',    course:'Medicine'},
+  {uni:'OAU',       course:'Engineering'},
+  {uni:'ABU Zaria', course:'Law'},
+  {uni:'UNIPORT',   course:'Pharmacy'},
+  {uni:'UI Ibadan', course:'Accounting'},
+  {uni:'UNILAG',    course:'Sciences'}
+];
+let uniUndoTimer=null,uniUndoToast=null;
+
+function renderUniTags(){
+  const el=document.getElementById('uni-tags-list');if(!el)return;
+  if(!uniTags.length){el.innerHTML='<span style="font-size:12px;color:var(--muted);">No badges yet — add one below.</span>';return;}
+  el.innerHTML=uniTags.map((t,i)=>`<div class="uni-tag" id="utag-${i}"><span class="uni-tag-name">${esc(t.uni)}</span><span class="uni-tag-course">${t.course?esc(t.course):''}</span><button class="uni-tag-edit" onclick="editUniTag(${i})" title="Edit">✏️</button><button class="uni-tag-del" onclick="removeUniTag(${i})" title="Remove">✕</button></div>`).join('');
+}
+
+window.editUniTag=function(i){
+  const tag=document.getElementById('utag-'+i);if(!tag)return;
+  const t=uniTags[i];
+  tag.classList.add('editing');
+  tag.innerHTML=`<input class="uni-tag-input" id="uedit-uni-${i}" value="${esc(t.uni)}" placeholder="University" onkeydown="if(event.key==='Enter')saveUniTagEdit(${i});if(event.key==='Escape')renderUniTags();"><input class="uni-tag-input course" id="uedit-course-${i}" value="${esc(t.course||'')}" placeholder="Course" onkeydown="if(event.key==='Enter')saveUniTagEdit(${i});if(event.key==='Escape')renderUniTags();"><button class="uni-tag-edit" onclick="saveUniTagEdit(${i})">✔</button>`;
+  setTimeout(()=>{const inp=document.getElementById('uedit-uni-'+i);if(inp)inp.focus();},0);
+};
+
+window.saveUniTagEdit=function(i){
+  const uni=document.getElementById('uedit-uni-'+i)?.value.trim();
+  const course=document.getElementById('uedit-course-'+i)?.value.trim();
+  if(!uni)return;
+  uniTags[i]={uni,course:course||''};
+  renderUniTags();
+};
+
+window.removeUniTag=function(i){
+  const removed={...uniTags[i]};
+  uniTags.splice(i,1);
+  renderUniTags();
+  showUniUndoToast(removed,i);
+};
+
+function showUniUndoToast(removed,atIndex){
+  if(uniUndoTimer)clearTimeout(uniUndoTimer);
+  if(uniUndoToast&&uniUndoToast.parentNode)uniUndoToast.parentNode.removeChild(uniUndoToast);
+  const toast=document.createElement('div');
+  toast.className='uni-undo-toast';
+  toast.innerHTML=`<span>Removed <strong>${esc(removed.uni)}</strong>${removed.course?' — '+esc(removed.course):''}</span><button class="uni-undo-btn" id="undoTagBtn">Undo</button>`;
+  document.body.appendChild(toast);
+  uniUndoToast=toast;
+  document.getElementById('undoTagBtn').onclick=()=>{uniTags.splice(atIndex,0,removed);renderUniTags();dismissUniToast();};
+  const outsideClick=(e)=>{if(!toast.contains(e.target)){dismissUniToast();document.removeEventListener('click',outsideClick,true);}};
+  setTimeout(()=>document.addEventListener('click',outsideClick,true),200);
+  uniUndoTimer=setTimeout(()=>{dismissUniToast();document.removeEventListener('click',outsideClick,true);},3000);
+}
+
+function dismissUniToast(){
+  if(uniUndoTimer){clearTimeout(uniUndoTimer);uniUndoTimer=null;}
+  if(uniUndoToast){uniUndoToast.style.opacity='0';uniUndoToast.style.transition='opacity .2s';setTimeout(()=>{if(uniUndoToast&&uniUndoToast.parentNode)uniUndoToast.parentNode.removeChild(uniUndoToast);uniUndoToast=null;},200);}
+}
+
+window.addUniTag=function(){const uni=v('uni-name');const course=v('uni-course');if(!uni)return;uniTags.push({uni,course});sv('uni-name','');sv('uni-course','');renderUniTags();};
+window.removeUniTag=window.removeUniTag; // already defined above
+
+// Render defaults immediately on page load
+renderUniTags();
+
+// ── EMOJI PICKER FOR ABOUT FEATURE CARDS ───────────────────────
+const FEAT_EMOJIS=['🎯','📚','🏆','🤝','⭐','🔥','💡','📐','🧠','🎓','✅','🚀','💪','🌟','📝','🏅','👨‍🏫','🎉','🔑','📊'];
+let emojiPickerTarget=null;
+
+window.toggleEmojiPicker=function(n,btn){
+  const pop=document.getElementById('emojiPickerPop');
+  if(emojiPickerTarget===n&&pop.style.display!=='none'){pop.style.display='none';emojiPickerTarget=null;return;}
+  emojiPickerTarget=n;
+  pop.innerHTML=FEAT_EMOJIS.map(e=>`<button onclick="pickFeatEmoji(${n},'${e}')">${e}</button>`).join('');
+  const rect=btn.getBoundingClientRect();
+  pop.style.top=(rect.bottom+window.scrollY+6)+'px';
+  pop.style.left=(rect.left+window.scrollX)+'px';
+  pop.style.display='flex';
+};
+
+window.pickFeatEmoji=function(n,emoji){
+  sv('about-f'+n+'-emoji',emoji);
+  const btn=document.getElementById('f'+n+'-emoji-btn');if(btn)btn.textContent=emoji;
+  const pop=document.getElementById('emojiPickerPop');if(pop)pop.style.display='none';
+  emojiPickerTarget=null;
+};
+
+document.addEventListener('click',function(e){
+  const pop=document.getElementById('emojiPickerPop');if(!pop||pop.style.display==='none')return;
+  if(!pop.contains(e.target)&&!e.target.classList.contains('feat-emoji-btn')){pop.style.display='none';emojiPickerTarget=null;}
+});
+
+window.saveAdmissionSuccess=async function(){
+  if(!db){showStatus('Connect Firebase first.','error');return;}showStatus('Saving...','loading');
+  try{
+    await db.collection('settings').doc('admissionSuccess').set({tag:v('unilag-tag'),heading:v('unilag-heading'),p1:v('unilag-p1'),p2:v('unilag-p2'),universities:uniTags},{merge:true});
+    if(genericPending['unilag']){
+      await db.collection('settings').doc('unilagPhoto').set({photoData:genericPending['unilag']});
+      const img=document.getElementById('unilag-current-img'),noP=document.getElementById('unilag-no-photo');
+      if(img){img.src=genericPending['unilag'];img.style.display='block';}if(noP)noP.style.display='none';
+      clearGenericUpload('unilag');
+    }showStatus('Admission Success saved! ✅','success');
+  }catch(e){showStatus('Error: '+e.message,'error');}
+};
+
+window.saveAdmissionGuidance=async function(){
+  if(!db){showStatus('Connect Firebase first.','error');return;}showStatus('Saving...','loading');
+  try{
+    await db.collection('settings').doc('admissionGuidance').set({tag:v('plug-tag'),heading:v('plug-heading'),p1:v('plug-p1'),p2:v('plug-p2'),btnText:v('plug-btn-text'),btnLink:v('plug-btn-link')},{merge:true});
+    if(genericPending['plug']){
+      await db.collection('settings').doc('plugPhoto').set({photoData:genericPending['plug']});
+      const img=document.getElementById('plug-current-img'),noP=document.getElementById('plug-no-photo');
+      if(img){img.src=genericPending['plug'];img.style.display='block';}if(noP)noP.style.display='none';
+      clearGenericUpload('plug');
+    }showStatus('Admission Guidance saved! ✅','success');
+  }catch(e){showStatus('Error: '+e.message,'error');}
+};
+
+window.saveAboutSection=async function(){
+  if(!db){showStatus('Connect Firebase first.','error');return;}showStatus('Saving...','loading');
+  try{
+    await db.collection('settings').doc('aboutSection').set({
+      tag:v('about-tag'),heading:v('about-heading'),p1:v('about-p1'),p2:v('about-p2'),p3:v('about-p3'),
+      features:[{emoji:v('about-f1-emoji')||'🎯',title:v('about-f1-title'),desc:v('about-f1-desc')},{emoji:v('about-f2-emoji')||'📚',title:v('about-f2-title'),desc:v('about-f2-desc')},{emoji:v('about-f3-emoji')||'🏆',title:v('about-f3-title'),desc:v('about-f3-desc')},{emoji:v('about-f4-emoji')||'🤝',title:v('about-f4-title'),desc:v('about-f4-desc')}]
+    },{merge:true});
+    if(aboutPendingData){
+      await db.collection('settings').doc('aboutPhoto').set({photoData:aboutPendingData});
+      const img=document.getElementById('about-current-img'),noP=document.getElementById('about-no-photo');
+      if(img){img.src=aboutPendingData;img.style.display='block';}if(noP)noP.style.display='none';
+      clearAboutUpload();
+    }showStatus('About section saved! ✅','success');
+  }catch(e){showStatus('Error: '+e.message,'error');}
+};
+
+async function loadSectionText(){
+  if(!db)return;
+  try{
+    const docs=['navText','heroText','countdown','admissionSuccess','admissionGuidance','aboutSection'];
+    const results=await Promise.all(docs.map(d=>db.collection('settings').doc(d).get().catch(()=>null)));
+    if(results[0]&&results[0].exists){const d=results[0].data();sv('nav-sitename',d.siteName);sv('nav-tagline',d.tagline);sv('nav-tabtitle',d.tabTitle);}
+    if(results[1]&&results[1].exists){const d=results[1].data();sv('hero-badge',d.badge);sv('hero-h1',d.headline1);sv('hero-h2',d.headline2);sv('hero-sub',d.subtext);}
+    if(results[2]&&results[2].exists){const d=results[2].data();const cb=document.getElementById('countdown-visible');if(cb)cb.checked=d.visible!==false;sv('countdown-title',d.title);sv('countdown-date',d.targetDate);sv('countdown-sub',d.subtext);sv('countdown-wa',d.waLink);}
+    if(results[3]&&results[3].exists){const d=results[3].data();sv('unilag-tag',d.tag);sv('unilag-heading',d.heading);sv('unilag-p1',d.p1);sv('unilag-p2',d.p2);if(d.universities){uniTags=d.universities;renderUniTags();}}
+    if(results[4]&&results[4].exists){const d=results[4].data();sv('plug-tag',d.tag);sv('plug-heading',d.heading);sv('plug-p1',d.p1);sv('plug-p2',d.p2);sv('plug-btn-text',d.btnText);sv('plug-btn-link',d.btnLink);}
+    if(results[5]&&results[5].exists){const d=results[5].data();sv('about-tag',d.tag);sv('about-heading',d.heading);sv('about-p1',d.p1);sv('about-p2',d.p2);sv('about-p3',d.p3);if(d.features&&d.features.length>=4){sv('about-f1-title',d.features[0].title);sv('about-f1-desc',d.features[0].desc);sv('about-f2-title',d.features[1].title);sv('about-f2-desc',d.features[1].desc);sv('about-f3-title',d.features[2].title);sv('about-f3-desc',d.features[2].desc);sv('about-f4-title',d.features[3].title);sv('about-f4-desc',d.features[3].desc);[1,2,3,4].forEach(i=>{const e=d.features[i-1].emoji;if(e){sv('about-f'+i+'-emoji',e);const btn=document.getElementById('f'+i+'-emoji-btn');if(btn)btn.textContent=e;}});}}
+  }catch(e){console.error(e);}
+}
+
+// ── UNDO DELETE SYSTEM ─────────────────────────────────────────
+let itemUndoTimer=null,itemUndoToast=null;
+
+window.deleteItem=async function(col,id){
+  if(!db){showStatus('Not connected.','error');return;}
+  // Fetch full doc data first so we can restore it on undo
+  let savedData=null;
+  try{const snap=await db.collection(col).doc(id).get();if(snap.exists)savedData={id,data:snap.data()};}catch(e){}
+  showStatus('Deleting...','loading');
+  try{
     await db.collection(col).doc(id).delete();
-    showStatus('Deleted. ✅', 'success');
-  } catch(e) { showStatus('Error: ' + e.message, 'error'); }
+    showStatus('Deleted ✅','success');
+    if(savedData) showItemUndoToast(col,savedData);
+  }catch(e){showStatus('Error: '+e.message,'error');}
 };
 
-/* ----------------------------------------------------------------
-   MODAL FORMS
----------------------------------------------------------------- */
-const FORMS = {
-  event: {
-    title: id => id ? 'Edit Event' : 'Add New Event',
-    fields: `
-      <div class="form-row"><label>Event Title *</label><input class="form-input" id="f-title" placeholder="e.g. ANJA 1.0"></div>
-      <div class="form-grid">
-        <div class="form-row"><label>Tag / Type</label><input class="form-input" id="f-tag" placeholder="e.g. JAMB Workshop"></div>
-        <div class="form-row"><label>Date & Time</label><input class="form-input" id="f-date" placeholder="e.g. March 30th, 2026"></div>
-      </div>
+function showItemUndoToast(col,saved){
+  if(itemUndoTimer)clearTimeout(itemUndoTimer);
+  if(itemUndoToast&&itemUndoToast.parentNode)itemUndoToast.parentNode.removeChild(itemUndoToast);
+  const label=saved.data.title||saved.data.name||saved.data.subtitle||'item';
+  const toast=document.createElement('div');
+  toast.className='uni-undo-toast';
+  toast.innerHTML=`<span>Deleted <strong>${esc(label)}</strong></span><button class="uni-undo-btn" id="undoItemBtn">Undo</button>`;
+  document.body.appendChild(toast);
+  itemUndoToast=toast;
+
+  document.getElementById('undoItemBtn').onclick=async()=>{
+    if(!db){dismissItemToast();return;}
+    try{
+      // Restore with original id
+      await db.collection(col).doc(saved.id).set(saved.data);
+      showStatus('Restored ✅','success');
+    }catch(e){showStatus('Restore failed: '+e.message,'error');}
+    dismissItemToast();
+  };
+
+  const outsideClick=(e)=>{if(!toast.contains(e.target)){dismissItemToast();document.removeEventListener('click',outsideClick,true);}};
+  setTimeout(()=>document.addEventListener('click',outsideClick,true),200);
+  itemUndoTimer=setTimeout(()=>{dismissItemToast();document.removeEventListener('click',outsideClick,true);},3000);
+}
+
+function dismissItemToast(){
+  if(itemUndoTimer){clearTimeout(itemUndoTimer);itemUndoTimer=null;}
+  if(itemUndoToast){itemUndoToast.style.opacity='0';itemUndoToast.style.transition='opacity .2s';setTimeout(()=>{if(itemUndoToast&&itemUndoToast.parentNode)itemUndoToast.parentNode.removeChild(itemUndoToast);itemUndoToast=null;},200);}
+}
+
+const FORMS={
+  event:{
+    title:id=>id?'Edit Event':'Add New Event',
+    fields:`<div class="form-row"><label>Event Title *</label><input class="form-input" id="f-title" placeholder="e.g. ANJA 1.0"></div>
+      <div class="form-grid"><div class="form-row"><label>Tag / Type</label><input class="form-input" id="f-tag" placeholder="e.g. JAMB Workshop"></div><div class="form-row"><label>Date &amp; Time</label><input class="form-input" id="f-date" placeholder="e.g. March 30th, 2026"></div></div>
       <div class="form-row"><label>Venue</label><input class="form-input" id="f-venue" placeholder="Address or location"></div>
       <div class="form-row"><label>Description</label><textarea class="form-textarea" id="f-desc"></textarea></div>
-      <div class="form-grid">
-        <div class="form-row"><label>Emoji</label><input class="form-input" id="f-emoji" placeholder="📚" maxlength="4"></div>
-        <div class="form-row"><label>Display Order (1=first)</label><input class="form-input" id="f-order" type="number" placeholder="1" min="1"></div>
-      </div>
+      <div class="form-grid"><div class="form-row"><label>Emoji (if no photo)</label><input class="form-input" id="f-emoji" placeholder="📚" maxlength="4"></div><div class="form-row"><label>Display Order</label><input class="form-input" id="f-order" type="number" placeholder="1" min="1"></div></div>
       <div class="form-row"><label>WhatsApp Register Link</label><input class="form-input" id="f-wa" placeholder="https://wa.me/..."></div>
-      <div class="form-row">
-        <label>Event Photo</label>
-        <div class="current-photo-box" id="event-current-photo-box">
-          <div class="cp-label">📸 Current photo (saved)</div>
-          <img id="event-current-photo-img" src="" alt="Current event photo">
-          <div class="cp-hint">Upload a new photo below to replace this one, or leave it to keep the current photo.</div>
-        </div>
-        <div class="img-upload-widget">
-          <label class="img-upload-trigger" for="event-photo-file" id="event-photo-trigger">
-            <div class="upload-icon">📁</div>
-            <div class="upload-text">Click to choose a new photo</div>
-            <div class="upload-hint">JPG, PNG · Under 300KB</div>
-          </label>
+      <div class="form-row"><label>Event Photo</label>
+        <div class="current-photo-box" id="event-current-photo-box"><div class="cp-label">📸 Current photo (saved)</div><img id="event-current-photo-img" src="" alt=""><div class="cp-hint">Upload below to replace, or leave to keep current.</div></div>
+        <div class="img-upload-widget"><label class="img-upload-trigger" for="event-photo-file" id="event-photo-trigger"><div class="upload-icon">📁</div><div class="upload-text">Choose a new photo</div><div class="upload-hint">JPG, PNG · Under 300KB</div></label>
           <input type="file" id="event-photo-file" accept="image/*" onchange="handleModalImgUpload('event-photo-file','event-photo-preview','event-photo-footer','event-photo-filename','event-size-warn')">
           <img class="img-upload-preview" id="event-photo-preview" src="" alt="">
-          <div class="img-upload-footer" id="event-photo-footer">
-            <span class="img-upload-filename" id="event-photo-filename">No file selected</span>
-            <button class="img-clear-btn" onclick="clearModalImg('event-photo-preview','event-photo-footer','event-photo-file','event-photo-trigger','f-imgdata-event')">Remove</button>
-          </div>
-        </div>
-        <div class="img-size-warn" id="event-size-warn"></div>
-        <input type="hidden" id="f-imgdata-event">
-      </div>`,
-    getData: () => {
-      const imgData = document.getElementById('f-imgdata-event')?.value || '';
-      const d = { title:v('f-title'), tag:v('f-tag'), date:v('f-date'), venue:v('f-venue'), description:v('f-desc'), emoji:v('f-emoji'), order:parseInt(v('f-order'))||99, waLink:v('f-wa'), updatedAt:Date.now() };
-      if (imgData) { d.imageData = imgData; d.imageUrl = imgData; }
-      return d;
-    },
-    fill: d => {
-      sv('f-title',d.title); sv('f-tag',d.tag); sv('f-date',d.date);
-      sv('f-venue',d.venue); sv('f-desc',d.description);
-      sv('f-emoji',d.emoji); sv('f-order',d.order); sv('f-wa',d.waLink);
-      const existingEventImg = d.imageData || d.imageUrl || '';
-      if (existingEventImg) setTimeout(() => {
-        const box=document.getElementById('event-current-photo-box');
-        const cur=document.getElementById('event-current-photo-img');
-        if(box)box.classList.add('show');
-        if(cur)cur.src=existingEventImg;
-        const hidden=document.getElementById('f-imgdata-event');
-        if(hidden)hidden.value=existingEventImg;
-      },100);
-    },
-    collection: 'events'
+          <div class="img-upload-footer" id="event-photo-footer"><span class="img-upload-filename" id="event-photo-filename">No file selected</span><button class="img-clear-btn" onclick="clearModalImg('event-photo-preview','event-photo-footer','event-photo-file','event-photo-trigger','f-imgdata-event')">Remove</button></div>
+        </div><div class="img-size-warn" id="event-size-warn"></div><input type="hidden" id="f-imgdata-event"></div>`,
+    getData:()=>{const imgData=document.getElementById('f-imgdata-event')?.value||'';const d={title:v('f-title'),tag:v('f-tag'),date:v('f-date'),venue:v('f-venue'),description:v('f-desc'),emoji:v('f-emoji'),order:parseInt(v('f-order'))||99,waLink:v('f-wa'),updatedAt:Date.now()};if(imgData){d.imageData=imgData;d.imageUrl=imgData;}return d;},
+    fill:d=>{sv('f-title',d.title);sv('f-tag',d.tag);sv('f-date',d.date);sv('f-venue',d.venue);sv('f-desc',d.description);sv('f-emoji',d.emoji);sv('f-order',d.order);sv('f-wa',d.waLink);const img=d.imageData||d.imageUrl||'';if(img)setTimeout(()=>{const box=document.getElementById('event-current-photo-box'),cur=document.getElementById('event-current-photo-img'),hidden=document.getElementById('f-imgdata-event');if(box)box.classList.add('show');if(cur)cur.src=img;if(hidden)hidden.value=img;},100);},
+    collection:'events'
   },
-  classphoto: {
-    title: id => id ? 'Edit Class Photo' : 'Add Class Photo',
-    fields: `
-      <div class="form-row"><label>Title *</label><input class="form-input" id="f-title" placeholder="e.g. JAMB Intensive Prep"></div>
-      <div class="form-grid">
-        <div class="form-row"><label>Tag</label><input class="form-input" id="f-tag" placeholder="e.g. JAMB / UTME"></div>
-        <div class="form-row"><label>Order (1 = first)</label><input class="form-input" id="f-order" type="number" placeholder="1" min="1"></div>
-      </div>
+  classphoto:{
+    title:id=>id?'Edit Class':'Add Class',
+    fields:`<div class="form-row"><label>Title *</label><input class="form-input" id="f-title" placeholder="e.g. JAMB Intensive Prep"></div>
+      <div class="form-grid"><div class="form-row"><label>Tag</label><input class="form-input" id="f-tag" placeholder="e.g. JAMB / UTME"></div><div class="form-row"><label>Order (1=first)</label><input class="form-input" id="f-order" type="number" placeholder="1" min="1"></div></div>
       <div class="form-row"><label>Description</label><input class="form-input" id="f-desc" placeholder="Short description"></div>
-      <div class="form-row">
-        <label>Class Photo</label>
-        <div class="current-photo-box" id="class-current-photo-box">
-          <div class="cp-label">📸 Current photo (saved)</div>
-          <img id="class-current-photo-img" src="" alt="Current class photo">
-          <div class="cp-hint">Upload a new photo below to replace this one, or leave it to keep the current photo.</div>
-        </div>
-        <div class="img-upload-widget">
-          <label class="img-upload-trigger" for="class-photo-file" id="class-photo-trigger">
-            <div class="upload-icon">📁</div>
-            <div class="upload-text">Click to choose a new photo</div>
-            <div class="upload-hint">JPG, PNG · Under 300KB</div>
-          </label>
+      <div class="form-row"><label>Class Photo</label>
+        <div class="current-photo-box" id="class-current-photo-box"><div class="cp-label">📸 Current photo (saved)</div><img id="class-current-photo-img" src="" alt=""><div class="cp-hint">Upload below to replace, or leave to keep current.</div></div>
+        <div class="img-upload-widget"><label class="img-upload-trigger" for="class-photo-file" id="class-photo-trigger"><div class="upload-icon">📁</div><div class="upload-text">Choose a new photo</div><div class="upload-hint">JPG, PNG · Under 300KB</div></label>
           <input type="file" id="class-photo-file" accept="image/*" onchange="handleModalImgUpload('class-photo-file','class-photo-preview','class-photo-footer','class-photo-filename','class-size-warn')">
           <img class="img-upload-preview" id="class-photo-preview" src="" alt="">
-          <div class="img-upload-footer" id="class-photo-footer">
-            <span class="img-upload-filename" id="class-photo-filename">No file selected</span>
-            <button class="img-clear-btn" onclick="clearModalImg('class-photo-preview','class-photo-footer','class-photo-file','class-photo-trigger','f-imgdata-class')">Remove</button>
-          </div>
-        </div>
-        <div class="img-size-warn" id="class-size-warn"></div>
-        <input type="hidden" id="f-imgdata-class">
-      </div>`,
-    getData: () => {
-      const imgData = document.getElementById('f-imgdata-class')?.value || '';
-      const d = { title:v('f-title'), tag:v('f-tag'), description:v('f-desc'), order:parseInt(v('f-order'))||99, updatedAt:Date.now() };
-      if (imgData) { d.imageData = imgData; d.imageUrl = imgData; } // save both for compatibility
-      return d;
-    },
-    fill: d => {
-      sv('f-title',d.title); sv('f-tag',d.tag); sv('f-desc',d.description); sv('f-order',d.order);
-      const existingImg = d.imageData || d.imageUrl || '';
-      if (existingImg) setTimeout(() => {
-        const box=document.getElementById('class-current-photo-box');
-        const cur=document.getElementById('class-current-photo-img');
-        if(box)box.classList.add('show');
-        if(cur)cur.src=existingImg;
-        const hidden=document.getElementById('f-imgdata-class');
-        if(hidden)hidden.value=existingImg;
-      },100);
-    },
-    collection: 'classes'
+          <div class="img-upload-footer" id="class-photo-footer"><span class="img-upload-filename" id="class-photo-filename">No file selected</span><button class="img-clear-btn" onclick="clearModalImg('class-photo-preview','class-photo-footer','class-photo-file','class-photo-trigger','f-imgdata-class')">Remove</button></div>
+        </div><div class="img-size-warn" id="class-size-warn"></div><input type="hidden" id="f-imgdata-class"></div>`,
+    getData:()=>{const imgData=document.getElementById('f-imgdata-class')?.value||'';const d={title:v('f-title'),tag:v('f-tag'),description:v('f-desc'),order:parseInt(v('f-order'))||99,updatedAt:Date.now()};if(imgData){d.imageData=imgData;d.imageUrl=imgData;}return d;},
+    fill:d=>{sv('f-title',d.title);sv('f-tag',d.tag);sv('f-desc',d.description);sv('f-order',d.order);const img=d.imageData||d.imageUrl||'';if(img)setTimeout(()=>{const box=document.getElementById('class-current-photo-box'),cur=document.getElementById('class-current-photo-img'),hidden=document.getElementById('f-imgdata-class');if(box)box.classList.add('show');if(cur)cur.src=img;if(hidden)hidden.value=img;},100);},
+    collection:'classes'
   },
-  leaderboard: {
-    title: id => id ? 'Edit Student' : 'Add to Leaderboard',
-    fields: `
-      <div class="form-row"><label>Student Name *</label><input class="form-input" id="f-name" placeholder="e.g. Adaeze Okonkwo"></div>
-      <div class="form-grid">
-        <div class="form-row"><label>Rank *</label><input class="form-input" id="f-rank" type="number" placeholder="1" min="1"></div>
-        <div class="form-row"><label>Score</label><input class="form-input" id="f-score" placeholder="e.g. 341/400 or 8 A's"></div>
-      </div>
-      <div class="form-grid">
-        <div class="form-row"><label>Score % (for progress bar, 0-100)</label><input class="form-input" id="f-pct" type="number" placeholder="85" min="0" max="100"></div>
-        <div class="form-row"><label>Year</label><input class="form-input" id="f-year" placeholder="2026"></div>
-      </div>
-      <div class="form-grid">
-        <div class="form-row"><label>Exam Type</label><select class="form-select" id="f-exam"><option>MOCK</option><option>JAMB</option><option>WAEC</option><option>NECO</option><option>POST-UTME</option></select></div>
-        <div class="form-row"><label>Department</label><select class="form-select" id="f-dept"><option>Sciences</option><option>Arts</option><option>Commercial</option></select></div>
-      </div>`,
-    getData: () => ({ name:v('f-name'), rank:parseInt(v('f-rank'))||1, score:v('f-score'), scorePct:parseInt(v('f-pct'))||80, year:v('f-year'), exam:v('f-exam'), dept:v('f-dept'), updatedAt:Date.now() }),
-    fill: d => { sv('f-name',d.name); sv('f-rank',d.rank); sv('f-score',d.score); sv('f-pct',d.scorePct); sv('f-year',d.year); sv('f-exam',d.exam); sv('f-dept',d.dept); },
-    collection: 'leaderboard'
+  leaderboard:{
+    title:id=>id?'Edit Student':'Add to Leaderboard',
+    fields:`<div class="form-row"><label>Student Name *</label><input class="form-input" id="f-name" placeholder="e.g. Adaeze Okonkwo"></div>
+      <div class="form-grid"><div class="form-row"><label>Rank *</label><input class="form-input" id="f-rank" type="number" placeholder="1" min="1"></div><div class="form-row"><label>Score</label><input class="form-input" id="f-score" placeholder="e.g. 341/400"></div></div>
+      <div class="form-grid"><div class="form-row"><label>Score % (0-100)</label><input class="form-input" id="f-pct" type="number" placeholder="85" min="0" max="100"></div><div class="form-row"><label>Year</label><input class="form-input" id="f-year" placeholder="2026"></div></div>
+      <div class="form-grid"><div class="form-row"><label>Exam Type</label><select class="form-select" id="f-exam"><option>MOCK</option><option>JAMB</option><option>WAEC</option><option>NECO</option><option>POST-UTME</option></select></div><div class="form-row"><label>Department</label><select class="form-select" id="f-dept"><option>Sciences</option><option>Arts</option><option>Commercial</option></select></div></div>`,
+    getData:()=>({name:v('f-name'),rank:parseInt(v('f-rank'))||1,score:v('f-score'),scorePct:parseInt(v('f-pct'))||80,year:v('f-year'),exam:v('f-exam'),dept:v('f-dept'),updatedAt:Date.now()}),
+    fill:d=>{sv('f-name',d.name);sv('f-rank',d.rank);sv('f-score',d.score);sv('f-pct',d.scorePct);sv('f-year',d.year);sv('f-exam',d.exam);sv('f-dept',d.dept);},
+    collection:'leaderboard'
   },
-  alumni: {
-    title: id => id ? 'Edit Alumni' : 'Add Alumni',
-    fields: `
-      <div class="form-row"><label>Full Name *</label><input class="form-input" id="f-name" placeholder="e.g. Chidinma Okonkwo"></div>
+  alumni:{
+    title:id=>id?'Edit Alumni':'Add Alumni',
+    fields:`<div class="form-row"><label>Full Name *</label><input class="form-input" id="f-name" placeholder="e.g. Chidinma Okonkwo"></div>
       <div class="form-row"><label>Score / Grade</label><input class="form-input" id="f-score" placeholder="e.g. JAMB: 342"></div>
-      <div class="form-row"><label>University & Course</label><input class="form-input" id="f-uni" placeholder="e.g. UNILAG — Medicine"></div>
-      <div class="form-row">
-        <label>Alumni Photo</label>
-        <div class="current-photo-box" id="alumni-current-photo-box">
-          <div class="cp-label">📸 Current photo (saved)</div>
-          <img id="alumni-current-photo-img" src="" alt="Current alumni photo">
-          <div class="cp-hint">Upload a new photo below to replace this one, or leave it to keep the current photo.</div>
-        </div>
-        <div class="img-upload-widget">
-          <label class="img-upload-trigger" for="alumni-photo-file" id="alumni-photo-trigger">
-            <div class="upload-icon">📁</div>
-            <div class="upload-text">Click to choose a new photo</div>
-            <div class="upload-hint">JPG, PNG · Leave empty for default icon</div>
-          </label>
+      <div class="form-row"><label>University &amp; Course</label><input class="form-input" id="f-uni" placeholder="e.g. UNILAG — Medicine"></div>
+      <div class="form-row"><label>Alumni Photo</label>
+        <div class="current-photo-box" id="alumni-current-photo-box"><div class="cp-label">📸 Current photo (saved)</div><img id="alumni-current-photo-img" src="" alt=""><div class="cp-hint">Upload below to replace, or leave to keep current.</div></div>
+        <div class="img-upload-widget"><label class="img-upload-trigger" for="alumni-photo-file" id="alumni-photo-trigger"><div class="upload-icon">📁</div><div class="upload-text">Choose a photo</div><div class="upload-hint">JPG, PNG · Leave empty for default icon</div></label>
           <input type="file" id="alumni-photo-file" accept="image/*" onchange="handleModalImgUpload('alumni-photo-file','alumni-photo-preview','alumni-photo-footer','alumni-photo-filename','alumni-size-warn')">
           <img class="img-upload-preview" id="alumni-photo-preview" src="" alt="">
-          <div class="img-upload-footer" id="alumni-photo-footer">
-            <span class="img-upload-filename" id="alumni-photo-filename">No file selected</span>
-            <button class="img-clear-btn" onclick="clearModalImg('alumni-photo-preview','alumni-photo-footer','alumni-photo-file','alumni-photo-trigger','f-imgdata-alumni')">Remove</button>
-          </div>
-        </div>
-        <div class="img-size-warn" id="alumni-size-warn"></div>
-        <input type="hidden" id="f-imgdata-alumni">
-      </div>`,
-    getData: () => {
-      const imgData = document.getElementById('f-imgdata-alumni')?.value || '';
-      const d = { name:v('f-name'), score:v('f-score'), university:v('f-uni'), updatedAt:Date.now() };
-      if (imgData) d.photoUrl = imgData; // includes existing photo pre-loaded into hidden field
-      return d;
-    },
-    fill: d => {
-      sv('f-name',d.name); sv('f-score',d.score); sv('f-uni',d.university);
-      if (d.photoUrl) setTimeout(() => {
-        const box=document.getElementById('alumni-current-photo-box');
-        const cur=document.getElementById('alumni-current-photo-img');
-        if(box)box.classList.add('show');
-        if(cur)cur.src=d.photoUrl;
-        const hidden=document.getElementById('f-imgdata-alumni');
-        if(hidden)hidden.value=d.photoUrl;
-      },100);
-    },
-    collection: 'alumni'
+          <div class="img-upload-footer" id="alumni-photo-footer"><span class="img-upload-filename" id="alumni-photo-filename">No file selected</span><button class="img-clear-btn" onclick="clearModalImg('alumni-photo-preview','alumni-photo-footer','alumni-photo-file','alumni-photo-trigger','f-imgdata-alumni')">Remove</button></div>
+        </div><div class="img-size-warn" id="alumni-size-warn"></div><input type="hidden" id="f-imgdata-alumni"></div>`,
+    getData:()=>{const imgData=document.getElementById('f-imgdata-alumni')?.value||'';const d={name:v('f-name'),score:v('f-score'),university:v('f-uni'),updatedAt:Date.now()};if(imgData)d.photoUrl=imgData;return d;},
+    fill:d=>{sv('f-name',d.name);sv('f-score',d.score);sv('f-uni',d.university);if(d.photoUrl)setTimeout(()=>{const box=document.getElementById('alumni-current-photo-box'),cur=document.getElementById('alumni-current-photo-img'),hidden=document.getElementById('f-imgdata-alumni');if(box)box.classList.add('show');if(cur)cur.src=d.photoUrl;if(hidden)hidden.value=d.photoUrl;},100);},
+    collection:'alumni'
   },
-  testimonial: {
-    title: id => id ? 'Edit Testimonial' : 'Add Testimonial',
-    fields: `
-      <div class="form-row"><label>Student Name *</label><input class="form-input" id="f-name" placeholder="e.g. Amaka Obi"></div>
+  testimonial:{
+    title:id=>id?'Edit Testimonial':'Add Testimonial',
+    fields:`<div class="form-row"><label>Student Name *</label><input class="form-input" id="f-name" placeholder="e.g. Amaka Obi"></div>
       <div class="form-row"><label>Subtitle</label><input class="form-input" id="f-subtitle" placeholder="e.g. JAMB 2024 — 318/400"></div>
       <div class="form-row"><label>Testimonial Text *</label><textarea class="form-textarea" id="f-text" placeholder="What did the student say?"></textarea></div>
       <div class="form-row"><label>Star Rating</label><select class="form-select" id="f-stars"><option value="5">★★★★★ 5 stars</option><option value="4">★★★★ 4 stars</option><option value="3">★★★ 3 stars</option></select></div>`,
-    getData: () => ({ name:v('f-name'), subtitle:v('f-subtitle'), text:v('f-text'), stars:parseInt(v('f-stars'))||5, updatedAt:Date.now() }),
-    fill: d => { sv('f-name',d.name); sv('f-subtitle',d.subtitle); sv('f-text',d.text); sv('f-stars',d.stars); },
-    collection: 'testimonials'
+    getData:()=>({name:v('f-name'),subtitle:v('f-subtitle'),text:v('f-text'),stars:parseInt(v('f-stars'))||5,updatedAt:Date.now()}),
+    fill:d=>{sv('f-name',d.name);sv('f-subtitle',d.subtitle);sv('f-text',d.text);sv('f-stars',d.stars);},
+    collection:'testimonials'
   }
 };
 
-let currentModal = { type:null, id:null };
-
-window.openModal = async function(type, id) {
-  if (!db) { showStatus('Connect Firebase first (Firebase Setup page).', 'error'); return; }
-  const form = FORMS[type];
-  currentModal = { type, id };
-  document.getElementById('modalTitle').textContent = form.title(id);
-  document.getElementById('modalBody').innerHTML = form.fields;
-  document.getElementById('modalSaveBtn').disabled = false;
-  if (id) {
-    try {
-      const snap = await db.collection(form.collection).doc(id).get();
-      if (snap.exists) form.fill(snap.data());
-    } catch(e) { console.error(e); }
-  }
+let currentModal={type:null,id:null};
+window.openModal=async function(type,id){
+  if(!db){showStatus('Connect Firebase first.','error');return;}
+  const form=FORMS[type];currentModal={type,id};
+  document.getElementById('modalTitle').textContent=form.title(id);
+  document.getElementById('modalBody').innerHTML=form.fields;
+  document.getElementById('modalSaveBtn').disabled=false;
+  if(id){try{const snap=await db.collection(form.collection).doc(id).get();if(snap.exists)form.fill(snap.data());}catch(e){}}
   document.getElementById('modalOverlay').classList.add('open');
 };
-
-window.closeModal = function() {
-  document.getElementById('modalOverlay').classList.remove('open');
-  currentModal = { type:null, id:null };
+window.closeModal=function(){document.getElementById('modalOverlay').classList.remove('open');currentModal={type:null,id:null};};
+window.saveModal=async function(){
+  if(!db){showStatus('Not connected.','error');return;}
+  const{type,id}=currentModal;const form=FORMS[type];const data=form.getData();
+  if(!data.title&&!data.name){showStatus('Fill in the required fields.','error');return;}
+  document.getElementById('modalSaveBtn').disabled=true;showStatus('Saving...','loading');
+  try{
+    if(id)await db.collection(form.collection).doc(id).update(data);
+    else await db.collection(form.collection).add({...data,createdAt:Date.now()});
+    showStatus('Saved! ✅','success');closeModal();
+  }catch(e){showStatus('Error: '+e.message,'error');document.getElementById('modalSaveBtn').disabled=false;}
 };
+document.getElementById('modalOverlay').addEventListener('click',e=>{if(e.target===document.getElementById('modalOverlay'))closeModal();});
 
-window.saveModal = async function() {
-  if (!db) { showStatus('Not connected.', 'error'); return; }
-  const { type, id } = currentModal;
-  const form = FORMS[type];
-  const data = form.getData();
-  if (!data.title && !data.name) { showStatus('Please fill in the required fields.', 'error'); return; }
-  document.getElementById('modalSaveBtn').disabled = true;
-  showStatus('Saving...', 'loading');
-  try {
-    if (id) {
-      await db.collection(form.collection).doc(id).update(data);
-    } else {
-      await db.collection(form.collection).add({ ...data, createdAt: Date.now() });
-    }
-    showStatus('Saved! Live on site instantly. ✅', 'success');
-    closeModal();
-  } catch(e) {
-    showStatus('Error: ' + e.message, 'error');
-    document.getElementById('modalSaveBtn').disabled = false;
-  }
-};
-
-document.getElementById('modalOverlay').addEventListener('click', e => {
-  if (e.target === document.getElementById('modalOverlay')) closeModal();
-});
-
-/* ----------------------------------------------------------------
-   IMAGE UPLOAD HELPERS
----------------------------------------------------------------- */
-window.handleModalImgUpload = function(fileInputId, previewId, footerId, filenameId, warnId) {
-  const file = document.getElementById(fileInputId)?.files[0];
-  if (!file) return;
-  const warn = document.getElementById(warnId);
-  if (file.size > 400 * 1024 && warn) { warn.textContent = '⚠️ '+Math.round(file.size/1024)+'KB — large. Compress at squoosh.app first.'; warn.style.display='block'; }
-  else if (warn) warn.style.display='none';
-  const reader = new FileReader();
-  reader.onload = function(e) {
-    const b64 = e.target.result;
-    const hiddenMap = { 'event-photo-file':'f-imgdata-event', 'class-photo-file':'f-imgdata-class', 'alumni-photo-file':'f-imgdata-alumni' };
-    const hiddenId = hiddenMap[fileInputId];
-    if (hiddenId) { const h=document.getElementById(hiddenId); if(h) h.value=b64; }
-    const prev=document.getElementById(previewId);
-    if(prev){prev.src=b64;prev.classList.add('show');}
-    const footer=document.getElementById(footerId);
-    if(footer)footer.classList.add('show');
-    const fn=document.getElementById(filenameId);
-    if(fn)fn.textContent=file.name+' ('+Math.round(file.size/1024)+'KB)';
+window.handleModalImgUpload=function(fileInputId,previewId,footerId,filenameId,warnId){
+  const file=document.getElementById(fileInputId)?.files[0];if(!file)return;
+  const warn=document.getElementById(warnId);
+  if(file.size>400*1024&&warn){warn.textContent='⚠️ '+Math.round(file.size/1024)+'KB — compress at squoosh.app first.';warn.style.display='block';}else if(warn)warn.style.display='none';
+  const reader=new FileReader();
+  reader.onload=function(e){
+    const b64=e.target.result;
+    const hiddenMap={'event-photo-file':'f-imgdata-event','class-photo-file':'f-imgdata-class','alumni-photo-file':'f-imgdata-alumni'};
+    const hiddenId=hiddenMap[fileInputId];if(hiddenId){const h=document.getElementById(hiddenId);if(h)h.value=b64;}
+    const prev=document.getElementById(previewId);if(prev){prev.src=b64;prev.classList.add('show');}
+    const footer=document.getElementById(footerId);if(footer)footer.classList.add('show');
+    const fn=document.getElementById(filenameId);if(fn)fn.textContent=file.name+' ('+Math.round(file.size/1024)+'KB)';
     const triggerMap={'event-photo-file':'event-photo-trigger','class-photo-file':'class-photo-trigger','alumni-photo-file':'alumni-photo-trigger'};
-    const trig=document.getElementById(triggerMap[fileInputId]);
-    if(trig)trig.style.display='none';
-  };
+    const trig=document.getElementById(triggerMap[fileInputId]);if(trig)trig.style.display='none';
+  };reader.readAsDataURL(file);
+};
+window.clearModalImg=function(previewId,footerId,fileInputId,triggerId,hiddenId){
+  const prev=document.getElementById(previewId),footer=document.getElementById(footerId),fi=document.getElementById(fileInputId),trigger=document.getElementById(triggerId),hidden=document.getElementById(hiddenId);
+  if(prev){prev.src='';prev.classList.remove('show');}if(footer)footer.classList.remove('show');if(fi)fi.value='';if(trigger)trigger.style.display='';if(hidden)hidden.value='';
+};
+
+let heroPendingData={1:null,2:null,3:null};
+async function loadHeroPhotos(){
+  if(!db)return;
+  try{const snap=await db.collection('settings').doc('heroPhotos').get();if(!snap.exists)return;const data=snap.data();
+    [1,2,3].forEach(i=>{if(data['photo'+i]){heroPendingData[i]=data['photo'+i];const prev=document.getElementById('hero-preview-'+i),empty=document.getElementById('hero-empty-'+i);if(prev){prev.src=data['photo'+i];prev.classList.add('show');}if(empty)empty.style.display='none';}});
+  }catch(e){}
+}
+window.handleHeroUpload=function(slot,input){
+  const file=input.files[0];if(!file)return;
+  if(file.size>500*1024)showStatus('Image is '+Math.round(file.size/1024)+'KB — compress at squoosh.app.','error');
+  const reader=new FileReader();
+  reader.onload=function(e){heroPendingData[slot]=e.target.result;const prev=document.getElementById('hero-preview-'+slot),empty=document.getElementById('hero-empty-'+slot);if(prev){prev.src=e.target.result;prev.classList.add('show');}if(empty)empty.style.display='none';showStatus('Photo '+slot+' selected. Click Save.','success');};
   reader.readAsDataURL(file);
 };
-
-window.clearModalImg = function(previewId, footerId, fileInputId, triggerId, hiddenId) {
-  const prev=document.getElementById(previewId);
-  const footer=document.getElementById(footerId);
-  const fileInput=document.getElementById(fileInputId);
-  const trigger=document.getElementById(triggerId);
-  const hidden=document.getElementById(hiddenId);
-  if(prev){prev.src='';prev.classList.remove('show');}
-  if(footer)footer.classList.remove('show');
-  if(fileInput)fileInput.value='';
-  if(trigger)trigger.style.display='';
-  if(hidden)hidden.value='';
+window.clearHeroSlot=function(slot){heroPendingData[slot]=null;const prev=document.getElementById('hero-preview-'+slot),empty=document.getElementById('hero-empty-'+slot),fi=document.getElementById('hero-file-'+slot);if(prev){prev.src='';prev.classList.remove('show');}if(empty)empty.style.display='';if(fi)fi.value='';};
+window.saveHeroPhotos=async function(){
+  if(!db){showStatus('Connect Firebase first.','error');return;}showStatus('Saving...','loading');
+  try{const payload={};if(heroPendingData[1])payload.photo1=heroPendingData[1];if(heroPendingData[2])payload.photo2=heroPendingData[2];if(heroPendingData[3])payload.photo3=heroPendingData[3];if(!Object.keys(payload).length){showStatus('No photos selected.','error');return;}await db.collection('settings').doc('heroPhotos').set(payload,{merge:true});showStatus('Hero photos saved! ✅','success');}
+  catch(e){showStatus('Error: '+e.message,'error');}
 };
 
-/* ----------------------------------------------------------------
-   HERO PHOTOS
----------------------------------------------------------------- */
-let heroPendingData = { 1:null, 2:null, 3:null };
-
-async function loadHeroPhotos() {
-  if (!db) return;
-  try {
-    const snap = await db.collection('settings').doc('heroPhotos').get();
-    if (!snap.exists) return;
-    const data = snap.data();
-    [1,2,3].forEach(i => {
-      if (data['photo'+i]) {
-        heroPendingData[i] = data['photo'+i];
-        const prev=document.getElementById('hero-preview-'+i);
-        const empty=document.getElementById('hero-empty-'+i);
-        if(prev){prev.src=data['photo'+i];prev.classList.add('show');}
-        if(empty)empty.style.display='none';
-      }
-    });
-  } catch(e) {}
+let aboutPendingData=null;
+async function loadAboutPhoto(){
+  if(!db)return;
+  try{const snap=await db.collection('settings').doc('aboutPhoto').get();if(!snap.exists)return;const data=snap.data();if(data.photoData){const img=document.getElementById('about-current-img'),noP=document.getElementById('about-no-photo');if(img){img.src=data.photoData;img.style.display='block';}if(noP)noP.style.display='none';}}catch(e){}
 }
-
-window.handleHeroUpload = function(slot, input) {
-  const file = input.files[0]; if (!file) return;
-  if (file.size > 500*1024) showStatus('Image is '+Math.round(file.size/1024)+'KB. Compress at squoosh.app for faster loading.','error');
-  const reader = new FileReader();
-  reader.onload = function(e) {
-    heroPendingData[slot] = e.target.result;
-    const prev=document.getElementById('hero-preview-'+slot);
-    const empty=document.getElementById('hero-empty-'+slot);
-    if(prev){prev.src=e.target.result;prev.classList.add('show');}
-    if(empty)empty.style.display='none';
-    showStatus('Photo '+slot+' selected. Click Save to apply.','success');
-  };
+window.handleAboutUpload=function(input){
+  const file=input.files[0];if(!file)return;
+  const warn=document.getElementById('about-size-warn');if(file.size>400*1024&&warn){warn.textContent='⚠️ '+Math.round(file.size/1024)+'KB — compress first.';warn.style.display='block';}else if(warn)warn.style.display='none';
+  const reader=new FileReader();
+  reader.onload=function(e){aboutPendingData=e.target.result;const prev=document.getElementById('about-upload-preview'),footer=document.getElementById('about-upload-footer'),fn=document.getElementById('about-upload-filename'),trigger=document.querySelector('#about-upload-widget .img-upload-trigger');if(prev){prev.src=e.target.result;prev.classList.add('show');}if(footer)footer.classList.add('show');if(fn)fn.textContent=file.name+' ('+Math.round(file.size/1024)+'KB)';if(trigger)trigger.style.display='none';};
   reader.readAsDataURL(file);
 };
+window.clearAboutUpload=function(){aboutPendingData=null;const prev=document.getElementById('about-upload-preview'),footer=document.getElementById('about-upload-footer'),fi=document.getElementById('about-file-input'),trigger=document.querySelector('#about-upload-widget .img-upload-trigger');if(prev){prev.src='';prev.classList.remove('show');}if(footer)footer.classList.remove('show');if(fi)fi.value='';if(trigger)trigger.style.display='';};
 
-window.clearHeroSlot = function(slot) {
-  heroPendingData[slot]=null;
-  const prev=document.getElementById('hero-preview-'+slot);
-  const empty=document.getElementById('hero-empty-'+slot);
-  const fi=document.getElementById('hero-file-'+slot);
-  if(prev){prev.src='';prev.classList.remove('show');}
-  if(empty)empty.style.display='';
-  if(fi)fi.value='';
-};
-
-window.saveHeroPhotos = async function() {
-  if (!db) { showStatus('Connect Firebase first.','error'); return; }
-  showStatus('Saving hero photos...','loading');
-  try {
-    const payload = {};
-    if(heroPendingData[1])payload.photo1=heroPendingData[1];
-    if(heroPendingData[2])payload.photo2=heroPendingData[2];
-    if(heroPendingData[3])payload.photo3=heroPendingData[3];
-    if (!Object.keys(payload).length) { showStatus('No photos selected.','error'); return; }
-    await db.collection('settings').doc('heroPhotos').set(payload,{merge:true});
-    showStatus('Hero photos saved! ✅','success');
-  } catch(e) { showStatus('Error: '+e.message,'error'); }
-};
-
-/* ----------------------------------------------------------------
-   ABOUT PHOTO
----------------------------------------------------------------- */
-let aboutPendingData = null;
-
-async function loadAboutPhoto() {
-  if (!db) return;
-  try {
-    const snap = await db.collection('settings').doc('aboutPhoto').get();
-    if (!snap.exists) return;
-    const data = snap.data();
-    if (data.photoData) {
-      const img=document.getElementById('about-current-img');
-      const noPhoto=document.getElementById('about-no-photo');
-      if(img){img.src=data.photoData;img.style.display='block';}
-      if(noPhoto)noPhoto.style.display='none';
-    }
-  } catch(e) {}
-}
-
-window.handleAboutUpload = function(input) {
-  const file = input.files[0]; if (!file) return;
-  const warn = document.getElementById('about-size-warn');
-  if (file.size > 400*1024 && warn) { warn.textContent='⚠️ '+Math.round(file.size/1024)+'KB — compress at squoosh.app first.'; warn.style.display='block'; }
-  else if(warn) warn.style.display='none';
-  const reader = new FileReader();
-  reader.onload = function(e) {
-    aboutPendingData = e.target.result;
-    const prev=document.getElementById('about-upload-preview');
-    const footer=document.getElementById('about-upload-footer');
-    const fn=document.getElementById('about-upload-filename');
-    const trigger=document.querySelector('#about-upload-widget .img-upload-trigger');
-    if(prev){prev.src=e.target.result;prev.classList.add('show');}
-    if(footer)footer.classList.add('show');
-    if(fn)fn.textContent=file.name+' ('+Math.round(file.size/1024)+'KB)';
-    if(trigger)trigger.style.display='none';
-  };
+var genericPending={};
+window.handleGenericUpload=function(key,input){
+  var file=input.files[0];if(!file)return;
+  var warn=document.getElementById(key+'-size-warn');if(file.size>400*1024&&warn){warn.textContent='⚠️ '+Math.round(file.size/1024)+'KB';warn.style.display='block';}else if(warn)warn.style.display='none';
+  var reader=new FileReader();
+  reader.onload=function(e){genericPending[key]=e.target.result;var prev=document.getElementById(key+'-upload-preview'),footer=document.getElementById(key+'-upload-footer'),fn=document.getElementById(key+'-upload-filename'),trigger=document.querySelector('#'+key+'-upload-widget .img-upload-trigger');if(prev){prev.src=e.target.result;prev.classList.add('show');}if(footer)footer.classList.add('show');if(fn)fn.textContent=file.name+' ('+Math.round(file.size/1024)+'KB)';if(trigger)trigger.style.display='none';};
   reader.readAsDataURL(file);
 };
-
-window.clearAboutUpload = function() {
-  aboutPendingData=null;
-  const prev=document.getElementById('about-upload-preview');
-  const footer=document.getElementById('about-upload-footer');
-  const fi=document.getElementById('about-file-input');
-  const trigger=document.querySelector('#about-upload-widget .img-upload-trigger');
-  if(prev){prev.src='';prev.classList.remove('show');}
-  if(footer)footer.classList.remove('show');
-  if(fi)fi.value='';
-  if(trigger)trigger.style.display='';
-};
-
-window.saveAboutPhoto = async function() {
-  if (!db) { showStatus('Connect Firebase first.','error'); return; }
-  if (!aboutPendingData) { showStatus('No photo selected.','error'); return; }
-  showStatus('Saving...','loading');
-  try {
-    await db.collection('settings').doc('aboutPhoto').set({ photoData: aboutPendingData });
-    const img=document.getElementById('about-current-img');
-    const noPhoto=document.getElementById('about-no-photo');
-    if(img){img.src=aboutPendingData;img.style.display='block';}
-    if(noPhoto)noPhoto.style.display='none';
-    showStatus('About photo saved! ✅','success');
-    clearAboutUpload();
-  } catch(e) { showStatus('Error: '+e.message,'error'); }
-};
-
-/* ----------------------------------------------------------------
-   GENERIC PHOTO HANDLER
----------------------------------------------------------------- */
-var genericPending = {};
-
-window.handleGenericUpload = function(key, input) {
-  var file = input.files[0]; if (!file) return;
-  var warn = document.getElementById(key+'-size-warn');
-  if (file.size > 400*1024 && warn) { warn.textContent='⚠️ '+Math.round(file.size/1024)+'KB — compress at squoosh.app'; warn.style.display='block'; }
-  else if(warn) warn.style.display='none';
-  var reader = new FileReader();
-  reader.onload = function(e) {
-    genericPending[key] = e.target.result;
-    var prev=document.getElementById(key+'-upload-preview');
-    var footer=document.getElementById(key+'-upload-footer');
-    var fn=document.getElementById(key+'-upload-filename');
-    var trigger=document.querySelector('#'+key+'-upload-widget .img-upload-trigger');
-    if(prev){prev.src=e.target.result;prev.classList.add('show');}
-    if(footer)footer.classList.add('show');
-    if(fn)fn.textContent=file.name+' ('+Math.round(file.size/1024)+'KB)';
-    if(trigger)trigger.style.display='none';
-  };
-  reader.readAsDataURL(file);
-};
-
-window.clearGenericUpload = function(key) {
-  genericPending[key]=null;
-  var prev=document.getElementById(key+'-upload-preview');
-  var footer=document.getElementById(key+'-upload-footer');
-  var fi=document.getElementById(key+'-file-input');
-  var trigger=document.querySelector('#'+key+'-upload-widget .img-upload-trigger');
-  if(prev){prev.src='';prev.classList.remove('show');}
-  if(footer)footer.classList.remove('show');
-  if(fi)fi.value='';
-  if(trigger)trigger.style.display='';
-};
-
-window.saveGenericPhoto = async function(key, docName) {
-  if (!db) { showStatus('Connect Firebase first.','error'); return; }
-  if (!genericPending[key]) { showStatus('No photo selected.','error'); return; }
-  showStatus('Saving photo...','loading');
-  try {
-    await db.collection('settings').doc(docName).set({ photoData: genericPending[key] });
-    var img=document.getElementById(key+'-current-img');
-    var noPhoto=document.getElementById(key+'-no-photo');
-    if(img){img.src=genericPending[key];img.style.display='block';}
-    if(noPhoto)noPhoto.style.display='none';
-    showStatus('Photo saved! ✅','success');
-    clearGenericUpload(key);
-  } catch(e) { showStatus('Error: '+e.message,'error'); }
-};
-
-async function loadGenericPhotos() {
-  if (!db) return;
-  var slots = [{ key:'unilag', doc:'unilagPhoto' }, { key:'plug', doc:'plugPhoto' }];
-  slots.forEach(async function(slot) {
-    try {
-      var snap = await db.collection('settings').doc(slot.doc).get();
-      if (!snap.exists) return;
-      var data = snap.data();
-      if (data.photoData) {
-        var img=document.getElementById(slot.key+'-current-img');
-        var noPhoto=document.getElementById(slot.key+'-no-photo');
-        if(img){img.src=data.photoData;img.style.display='block';}
-        if(noPhoto)noPhoto.style.display='none';
-      }
-    } catch(e){}
-  });
+window.clearGenericUpload=function(key){genericPending[key]=null;var prev=document.getElementById(key+'-upload-preview'),footer=document.getElementById(key+'-upload-footer'),fi=document.getElementById(key+'-file-input'),trigger=document.querySelector('#'+key+'-upload-widget .img-upload-trigger');if(prev){prev.src='';prev.classList.remove('show');}if(footer)footer.classList.remove('show');if(fi)fi.value='';if(trigger)trigger.style.display='';};
+async function loadGenericPhotos(){
+  if(!db)return;
+  [['unilag','unilagPhoto'],['plug','plugPhoto']].forEach(async([key,doc])=>{try{const snap=await db.collection('settings').doc(doc).get();if(!snap.exists)return;const data=snap.data();if(data.photoData){const img=document.getElementById(key+'-current-img'),noP=document.getElementById(key+'-no-photo');if(img){img.src=data.photoData;img.style.display='block';}if(noP)noP.style.display='none';}}catch(e){}});
 }
 
-/* ----------------------------------------------------------------
-   CLEAN DUPLICATES
-   Keeps only `keep` documents per collection, preferring docs with
-   more fields (e.g. with photos) and deleting the rest.
-   
-   HOW IT WORKS:
-   - Fetches all docs in the collection
-   - Groups them by title/name to find duplicates
-   - Within each duplicate group, keeps the one with the most fields
-     (most data = most likely to be the real one with photos etc.)
-   - Deletes all the others
-   - If there are still more docs than `keep`, removes the excess
-     by creation time (oldest extras first)
----------------------------------------------------------------- */
-async function cleanDuplicates(colName, keep) {
-  if (!db) { showStatus('Connect Firebase first.', 'error'); return; }
-
-  const log = document.getElementById('clean-log');
-  log.style.display = 'block';
-  log.innerHTML += `<div style="color:var(--goldl)">▶ Cleaning <strong>${colName}</strong> (keeping ${keep})...</div>`;
-
-  try {
-    const snap = await db.collection(colName).get();
-    const docs = snap.docs.map(d => ({ id: d.id, data: d.data(), fieldCount: Object.keys(d.data()).length }));
-
-    if (docs.length <= keep) {
-      log.innerHTML += `<div style="color:var(--success)">✅ ${colName}: Only ${docs.length} docs found — no duplicates to remove.</div>`;
-      return;
-    }
-
-    log.innerHTML += `<div>Found ${docs.length} docs, need to reduce to ${keep}...</div>`;
-
-    // Group by title or name to find true duplicates
-    const groups = {};
-    docs.forEach(doc => {
-      const key = (doc.data.title || doc.data.name || doc.data.subtitle || doc.id).toLowerCase().trim();
-      if (!groups[key]) groups[key] = [];
-      groups[key].push(doc);
-    });
-
-    const toDelete = [];
-    const toKeep = [];
-
-    // Within each group of same-title docs, keep the one with most fields
-    Object.values(groups).forEach(group => {
-      if (group.length === 1) {
-        toKeep.push(group[0]);
-      } else {
-        // Sort by field count descending — most complete doc first
-        group.sort((a, b) => b.fieldCount - a.fieldCount);
-        toKeep.push(group[0]); // keep the richest one
-        group.slice(1).forEach(d => toDelete.push(d)); // delete the rest
-      }
-    });
-
-    // If we still have more than `keep` unique entries, trim by order/rank/createdAt
-    if (toKeep.length > keep) {
-      // Sort by order, rank, or createdAt to keep the "right" ones
-      toKeep.sort((a, b) => {
-        const ao = a.data.order || a.data.rank || a.data.createdAt || 0;
-        const bo = b.data.order || b.data.rank || b.data.createdAt || 0;
-        return ao - bo;
-      });
-      const extras = toKeep.splice(keep); // remove excess from end
-      extras.forEach(d => toDelete.push(d));
-    }
-
-    if (toDelete.length === 0) {
-      log.innerHTML += `<div style="color:var(--success)">✅ ${colName}: No duplicates found.</div>`;
-      return;
-    }
-
-    // Delete in batches of 10
-    const batch = db.batch();
-    toDelete.forEach(doc => batch.delete(db.collection(colName).doc(doc.id)));
-    await batch.commit();
-
-    log.innerHTML += `<div style="color:var(--success)">✅ ${colName}: Deleted ${toDelete.length} duplicate(s). ${toKeep.length} entries remain.</div>`;
-    showStatus(`Cleaned ${colName} — ${toDelete.length} duplicates removed ✅`, 'success');
-
-  } catch(e) {
-    log.innerHTML += `<div style="color:var(--danger)">❌ ${colName}: Error — ${e.message}</div>`;
-    showStatus('Error: ' + e.message, 'error');
-  }
+async function cleanDuplicates(colName,keep){
+  if(!db){showStatus('Connect Firebase first.','error');return;}
+  const log=document.getElementById('clean-log');log.style.display='block';log.innerHTML+='<div style="color:var(--goldl)">▶ Cleaning '+colName+'...</div>';
+  try{
+    const snap=await db.collection(colName).get();const docs=snap.docs.map(d=>({id:d.id,data:d.data(),fieldCount:Object.keys(d.data()).length}));
+    if(docs.length<=keep){log.innerHTML+='<div style="color:var(--success)">✅ '+colName+': Only '+docs.length+' docs — nothing to remove.</div>';return;}
+    const groups={};docs.forEach(doc=>{const key=(doc.data.title||doc.data.name||doc.data.subtitle||doc.id).toLowerCase().trim();if(!groups[key])groups[key]=[];groups[key].push(doc);});
+    const toDelete=[],toKeep=[];
+    Object.values(groups).forEach(group=>{if(group.length===1){toKeep.push(group[0]);}else{group.sort((a,b)=>b.fieldCount-a.fieldCount);toKeep.push(group[0]);group.slice(1).forEach(d=>toDelete.push(d));}});
+    if(toKeep.length>keep){toKeep.sort((a,b)=>((a.data.order||a.data.rank||a.data.createdAt||0)-(b.data.order||b.data.rank||b.data.createdAt||0)));toKeep.splice(keep).forEach(d=>toDelete.push(d));}
+    if(!toDelete.length){log.innerHTML+='<div style="color:var(--success)">✅ '+colName+': No duplicates found.</div>';return;}
+    const batch=db.batch();toDelete.forEach(doc=>batch.delete(db.collection(colName).doc(doc.id)));await batch.commit();
+    log.innerHTML+='<div style="color:var(--success)">✅ '+colName+': Deleted '+toDelete.length+'. '+toKeep.length+' remain.</div>';
+  }catch(e){log.innerHTML+='<div style="color:var(--danger)">❌ '+colName+': '+e.message+'</div>';}
 }
-
-// Clean all sections at once
-window.cleanAll = async function() {
-  if (!db) { showStatus('Connect Firebase first.', 'error'); return; }
-  if (!confirm('This will delete all duplicate entries across ALL sections. The correct entries will be kept. Continue?')) return;
-  const log = document.getElementById('clean-log');
-  log.style.display = 'block';
-  log.innerHTML = '<div style="color:var(--goldl);font-weight:700;">🧹 Starting full cleanup...</div>';
-  await cleanDuplicates('events',       2);
-  await cleanDuplicates('classes',      6);
-  await cleanDuplicates('leaderboard',  5);
-  await cleanDuplicates('alumni',       6);
-  await cleanDuplicates('testimonials', 3);
-  log.innerHTML += '<div style="color:var(--success);font-weight:700;margin-top:8px;">🎉 All done! Refresh the page to confirm.</div>';
+window.cleanAll=async function(){
+  if(!db){showStatus('Connect Firebase first.','error');return;}if(!confirm('Delete all duplicates across ALL sections?'))return;
+  const log=document.getElementById('clean-log');log.style.display='block';log.innerHTML='<div style="color:var(--goldl);font-weight:700">🧹 Starting cleanup...</div>';
+  await cleanDuplicates('events',2);await cleanDuplicates('classes',6);await cleanDuplicates('leaderboard',5);await cleanDuplicates('alumni',6);await cleanDuplicates('testimonials',3);
+  log.innerHTML+='<div style="color:var(--success);font-weight:700;margin-top:6px;">🎉 Done!</div>';
 };
+window.cleanDuplicates=cleanDuplicates;
 
-window.cleanDuplicates = cleanDuplicates;
-
-/* ----------------------------------------------------------------
-   UTILITIES
----------------------------------------------------------------- */
-function v(id) { const el=document.getElementById(id); return el ? el.value.trim() : ''; }
-function sv(id, val) { const el=document.getElementById(id); if(el && val!==undefined && val!==null) el.value=val; }
-function esc(s) { if(!s) return ''; return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
-
+function v(id){const el=document.getElementById(id);return el?el.value.trim():'';}
+function sv(id,val){const el=document.getElementById(id);if(el&&val!==undefined&&val!==null)el.value=val;}
+function esc(s){if(!s)return '';return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
 </script>
-
 </body>
 </html>

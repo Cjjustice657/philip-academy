@@ -1420,7 +1420,7 @@ function renderQ(sid, qi, q, data){
       cls += ' sel'; // not yet submitted but this option is selected (highlighted)
     }
     
-    opts += '<button class="'+cls+'" '+(sub?'disabled':'')+' onclick="pickOpt('+sid+','+qi+','+i+')">'
+    opts += '<button class="'+cls+'" '+(sub?'disabled':'')+' onclick="pickOpt(\''+sid+'\','+qi+','+i+')">'
           + '<span class="opt-l" style="'+ls+'">'+L[i]+'</span>'
           + '<span>'+t+'</span>'
           + '</button>';
@@ -1438,7 +1438,7 @@ function renderQ(sid, qi, q, data){
     +'<div class="q-opts" id="qo-'+sid+'-'+qi+'">'+opts+'</div>'
     +'<div class="q-exp '+eshow+'" id="qe-'+sid+'-'+qi+'"><strong>'+elabel+'</strong>'+(sub ? q.exp : '')+'</div>'
     +'<div class="q-actions">'
-    +'<button class="q-submit" id="qb-'+sid+'-'+qi+'" '+bdis+' onclick="submitQ('+sid+','+qi+')">'+btxt+'</button>'
+    +'<button class="q-submit" id="qb-'+sid+'-'+qi+'" '+bdis+' onclick="submitQ(\''+sid+'\','+qi+')">'+btxt+'</button>'
     +'</div>';
 }
 
