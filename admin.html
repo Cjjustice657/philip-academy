@@ -358,13 +358,12 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
       <div class="page-header"><h1>Hero Section</h1><p>Edit text, stats, photos and countdown for the top of the website.</p></div>
 
       <div class="card">
-        <div class="card-header"><h2>🔤 Navbar &amp; Browser Tab<span class="card-sub">Logo text, tagline and browser tab title</span></h2></div>
+        <div class="card-header"><h2>🔤 Navbar Text<span class="card-sub">Logo name and tagline shown in the navbar</span></h2></div>
         <div class="form-grid">
           <div class="form-row"><label>Site Name (in navbar)</label><input class="form-input" id="nav-sitename" placeholder="Sir Philip's Academy"></div>
           <div class="form-row"><label>Tagline (e.g. Excellence In Education)</label><input class="form-input" id="nav-tagline" placeholder="Excellence In Education"></div>
         </div>
-        <div class="form-row"><label>Browser Tab Title</label><input class="form-input" id="nav-tabtitle" placeholder="Sir Philip's Academy — Nigeria's Best Tutorial Centre"></div>
-        <button class="save-btn" onclick="saveSection('navText',{siteName:v('nav-sitename'),tagline:v('nav-tagline'),tabTitle:v('nav-tabtitle')})">💾 Save Navbar Text</button>
+        <button class="save-btn" onclick="saveSection('navText',{siteName:v('nav-sitename'),tagline:v('nav-tagline')})">💾 Save Navbar Text</button>
       </div>
 
       <div class="card">
@@ -1017,7 +1016,7 @@ async function loadAllSettings(){
       if(noP)noP.style.display='none';
     }
     // Nav Text
-    if(data.navText){const d=data.navText;sv('nav-sitename',d.siteName);sv('nav-tagline',d.tagline);sv('nav-tabtitle',d.tabTitle);}
+    if(data.navText){const d=data.navText;sv('nav-sitename',d.siteName);sv('nav-tagline',d.tagline);}
     // Hero Text
     if(data.heroText){const d=data.heroText;sv('hero-badge',d.badge);sv('hero-h1',d.headline1);sv('hero-h2',d.headline2);sv('hero-sub',d.subtext);}
     // Countdown
@@ -1197,7 +1196,7 @@ async function loadSectionText(){
   try{
     const docs=['navText','heroText','countdown','admissionSuccess','admissionGuidance','aboutSection'];
     const results=await Promise.all(docs.map(d=>db.collection('settings').doc(d).get().catch(()=>null)));
-    if(results[0]&&results[0].exists){const d=results[0].data();sv('nav-sitename',d.siteName);sv('nav-tagline',d.tagline);sv('nav-tabtitle',d.tabTitle);}
+    if(results[0]&&results[0].exists){const d=results[0].data();sv('nav-sitename',d.siteName);sv('nav-tagline',d.tagline);}
     if(results[1]&&results[1].exists){const d=results[1].data();sv('hero-badge',d.badge);sv('hero-h1',d.headline1);sv('hero-h2',d.headline2);sv('hero-sub',d.subtext);}
     if(results[2]&&results[2].exists){const d=results[2].data();const cb=document.getElementById('countdown-visible');if(cb)cb.checked=d.visible!==false;sv('countdown-title',d.title);sv('countdown-date',d.targetDate);sv('countdown-sub',d.subtext);sv('countdown-wa',d.waLink);}
     if(results[3]&&results[3].exists){const d=results[3].data();sv('unilag-tag',d.tag);sv('unilag-heading',d.heading);sv('unilag-p1',d.p1);sv('unilag-p2',d.p2);if(d.universities){uniTags=d.universities;renderUniTags();}}
